@@ -12,6 +12,10 @@ using Microsoft.Extensions.Logging;
 using MansionDashboardNET.Data;
 using MansionDashboardNET.Models;
 using MansionDashboardNET.Services;
+using Microsoft.AspNetCore.Http;
+using React.AspNet;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace MansionDashboardNET
 {
@@ -47,6 +51,8 @@ namespace MansionDashboardNET
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddReact();
             services.AddMvc();
 
             // Add application services.
@@ -70,7 +76,29 @@ namespace MansionDashboardNET
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+            app.UseReact(config =>
+            {
+                // If you want to use server-side rendering of React components,
+                // add all the necessary JavaScript files here. This includes
+                // your components as well as all of their dependencies.
+                // See http://reactjs.net/ for more information. Example:
+                config
+                  .AddScript("~/js/remarkable.min.js")
+                  .AddScript("~/js/tutorial.jsx").SetJsonSerializerSettings(new JsonSerializerSettings
+                  {
+                      StringEscapeHandling = StringEscapeHandling.EscapeHtml, 
+                      ContractResolver = new CamelCasePropertyNamesContractResolver()
+                  });
 
+
+            // If you use an external build too (for example, Babel, Webpack,
+            // Browserify or Gulp), you can improve performance by disabling
+            // ReactJS.NET's version of Babel and loading the pre-transpiled
+            // scripts. Example:
+            //config
+            //  .SetLoadBabel(false)
+            //  .AddScriptWithoutTransform("~/Scripts/bundle.server.js");
+        });
             app.UseStaticFiles();
 
             app.UseIdentity();

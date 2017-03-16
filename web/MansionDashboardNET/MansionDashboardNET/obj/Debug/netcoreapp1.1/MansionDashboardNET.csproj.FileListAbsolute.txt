@@ -4,7 +4,7 @@ C:\Users\rwojda\Documents\GitHub\mansion_house\web\MansionDashboardNET\MansionDa
 C:\Users\rwojda\Documents\GitHub\mansion_house\web\MansionDashboardNET\MansionDashboardNET\bin\Debug\netcoreapp1.1\MansionDashboardNET.dll
 C:\Users\rwojda\Documents\GitHub\mansion_house\web\MansionDashboardNET\MansionDashboardNET\bin\Debug\netcoreapp1.1\MansionDashboardNET.pdb
 C:\Users\rwojda\Documents\GitHub\mansion_house\web\MansionDashboardNET\MansionDashboardNET\obj\Debug\netcoreapp1.1\MansionDashboardNET.csprojResolveAssemblyReference.cache
-C:\Users\rwojda\Documents\GitHub\mansion_house\web\MansionDashboardNET\MansionDashboardNET\obj\Debug\netcoreapp1.1\UserSecretsAssemblyInfo.cs
 C:\Users\rwojda\Documents\GitHub\mansion_house\web\MansionDashboardNET\MansionDashboardNET\obj\Debug\netcoreapp1.1\MansionDashboardNET.AssemblyInfo.cs
 C:\Users\rwojda\Documents\GitHub\mansion_house\web\MansionDashboardNET\MansionDashboardNET\obj\Debug\netcoreapp1.1\MansionDashboardNET.dll
 C:\Users\rwojda\Documents\GitHub\mansion_house\web\MansionDashboardNET\MansionDashboardNET\obj\Debug\netcoreapp1.1\MansionDashboardNET.pdb
+C:\Users\rwojda\Documents\GitHub\mansion_house\web\MansionDashboardNET\MansionDashboardNET\obj\Debug\netcoreapp1.1\UserSecretsAssemblyInfo.cs
