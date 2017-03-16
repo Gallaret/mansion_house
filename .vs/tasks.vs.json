@@ -1,0 +1,10 @@
+{
+  "version": "0.2.1",
+  "tasks": [
+    {
+      "taskName": "task-MansionHouseNET",
+      "appliesTo": "web/MansionHouseNET/MansionHouseNET.csproj",
+      "type": "command"
+    }
+  ]
+}
