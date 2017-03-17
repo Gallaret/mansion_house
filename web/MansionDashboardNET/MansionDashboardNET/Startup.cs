@@ -1,26 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using MansionDashboardNET.Data;
-using MansionDashboardNET.Models;
-using MansionDashboardNET.Services;
 using Microsoft.AspNetCore.Http;
 using React.AspNet;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using Microsoft.AspNetCore.Mvc.Controllers;
+using SimpleInjector;
+using SimpleInjector.Integration.AspNetCore;
+using SimpleInjector.Integration.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ViewComponents;
 
 namespace MansionDashboardNET
 {
     public class Startup
     {
+        private Container container = new Container();
+
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
@@ -43,26 +41,25 @@ namespace MansionDashboardNET
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Add framework services.
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
-
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddReact();
             services.AddMvc();
 
-            // Add application services.
-            services.AddTransient<IEmailSender, AuthMessageSender>();
-            services.AddTransient<ISmsSender, AuthMessageSender>();
+            services.AddSingleton<IControllerActivator>(new SimpleInjectorControllerActivator(container));
+            services.AddSingleton<IViewComponentActivator>(new SimpleInjectorViewComponentActivator(container));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            app.UseSimpleInjectorAspNetRequestScoping(container);
+            container.Options.DefaultScopedLifestyle = new AspNetRequestLifestyle();
+
+            InitializeContainer(app);
+
+            container.Verify();
+
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
@@ -98,10 +95,8 @@ namespace MansionDashboardNET
             //config
             //  .SetLoadBabel(false)
             //  .AddScriptWithoutTransform("~/Scripts/bundle.server.js");
-        });
+            });
             app.UseStaticFiles();
-
-            app.UseIdentity();
 
             // Add external authentication middleware below. To configure them please see https://go.microsoft.com/fwlink/?LinkID=532715
 
@@ -111,6 +106,14 @@ namespace MansionDashboardNET
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+        }
+
+        private void InitializeContainer(IApplicationBuilder app)
+        {
+            container.RegisterMvcControllers(app);
+            container.RegisterMvcViewComponents(app);
+
+            container.RegisterSingleton(app.ApplicationServices.GetService<ILoggerFactory>());
         }
     }
 }

@@ -283,19 +283,6 @@
           "lib/netstandard1.3/Microsoft.AspNetCore.Cryptography.Internal.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Cryptography.KeyDerivation/1.1.1": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNetCore.Cryptography.Internal": "1.1.1",
-          "NETStandard.Library": "1.6.1"
-        },
-        "compile": {
-          "lib/netstandard1.3/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.3/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll": {}
-        }
-      },
       "Microsoft.AspNetCore.DataProtection/1.1.1": {
         "type": "package",
         "dependencies": {
@@ -531,36 +518,6 @@
         },
         "runtime": {
           "lib/netstandard1.3/Microsoft.AspNetCore.HttpOverrides.dll": {}
-        }
-      },
-      "Microsoft.AspNetCore.Identity/1.1.1": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNetCore.Authentication.Cookies": "1.1.1",
-          "Microsoft.AspNetCore.Cryptography.KeyDerivation": "1.1.1",
-          "Microsoft.AspNetCore.Hosting.Abstractions": "1.1.1",
-          "NETStandard.Library": "1.6.1"
-        },
-        "compile": {
-          "lib/netstandard1.3/Microsoft.AspNetCore.Identity.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.3/Microsoft.AspNetCore.Identity.dll": {}
-        }
-      },
-      "Microsoft.AspNetCore.Identity.EntityFrameworkCore/1.1.1": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNetCore.Identity": "1.1.1",
-          "Microsoft.EntityFrameworkCore.Relational": "1.1.1",
-          "NETStandard.Library": "1.6.1",
-          "System.ComponentModel.TypeConverter": "4.3.0"
-        },
-        "compile": {
-          "lib/netstandard1.3/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.3/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll": {}
         }
       },
       "Microsoft.AspNetCore.JsonPatch/1.1.1": {
@@ -2391,6 +2348,61 @@
             "assetType": "native",
             "rid": "win7-x86"
           }
+        }
+      },
+      "SimpleInjector/3.3.2": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "System.ComponentModel": "4.0.1"
+        },
+        "compile": {
+          "lib/netstandard1.0/SimpleInjector.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/SimpleInjector.dll": {}
+        }
+      },
+      "SimpleInjector.Extensions.ExecutionContextScoping/3.3.2": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "SimpleInjector": "3.3.2"
+        },
+        "compile": {
+          "lib/netstandard1.3/SimpleInjector.Extensions.ExecutionContextScoping.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/SimpleInjector.Extensions.ExecutionContextScoping.dll": {}
+        }
+      },
+      "SimpleInjector.Integration.AspNetCore/3.3.2": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Abstractions": "1.0.0",
+          "SimpleInjector": "3.3.2",
+          "SimpleInjector.Extensions.ExecutionContextScoping": "3.3.2"
+        },
+        "compile": {
+          "lib/netstandard1.6/SimpleInjector.Integration.AspNetCore.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.6/SimpleInjector.Integration.AspNetCore.dll": {}
+        }
+      },
+      "SimpleInjector.Integration.AspNetCore.Mvc/3.3.2": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Mvc.Core": "1.0.0",
+          "Microsoft.AspNetCore.Mvc.Razor": "1.0.0",
+          "Microsoft.AspNetCore.Mvc.ViewFeatures": "1.0.0",
+          "SimpleInjector.Integration.AspNetCore": "3.3.2"
+        },
+        "compile": {
+          "lib/netstandard1.6/SimpleInjector.Integration.AspNetCore.Mvc.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.6/SimpleInjector.Integration.AspNetCore.Mvc.dll": {}
         }
       },
       "System.AppContext/4.3.0": {
@@ -4656,19 +4668,6 @@
         "microsoft.aspnetcore.cryptography.internal.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.Cryptography.KeyDerivation/1.1.1": {
-      "sha512": "sSfIghqM0VgbQ6cX4ieYywrZu7viAmvEozqruFXJy6XOJu3ceZdpaLMC+C4nJRr/76VSA+KvkSlD1ICCYeI8SA==",
-      "type": "package",
-      "path": "microsoft.aspnetcore.cryptography.keyderivation/1.1.1",
-      "files": [
-        "lib/net451/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll",
-        "lib/net451/Microsoft.AspNetCore.Cryptography.KeyDerivation.xml",
-        "lib/netstandard1.3/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll",
-        "lib/netstandard1.3/Microsoft.AspNetCore.Cryptography.KeyDerivation.xml",
-        "microsoft.aspnetcore.cryptography.keyderivation.1.1.1.nupkg.sha512",
-        "microsoft.aspnetcore.cryptography.keyderivation.nuspec"
-      ]
-    },
     "Microsoft.AspNetCore.DataProtection/1.1.1": {
       "sha512": "5R0AKqx/NJ/GHuDymZx1/gXcYl1+/OLo5XPNejBKnWqm/EiZs6+bOM1+O8uEdr3RygUIDTWSCEHq3W7bKt0GSg==",
       "type": "package",
@@ -4847,32 +4846,6 @@
         "lib/netstandard1.3/Microsoft.AspNetCore.HttpOverrides.xml",
         "microsoft.aspnetcore.httpoverrides.1.1.1.nupkg.sha512",
         "microsoft.aspnetcore.httpoverrides.nuspec"
-      ]
-    },
-    "Microsoft.AspNetCore.Identity/1.1.1": {
-      "sha512": "cSNJ3D0kfkW/TSEnvdIShEysrAX2D7sRzRCwNwrElhm+YzzG9WBY4a0+pWuz/1uFMMoOY9MfszhhHNBcNtWCCQ==",
-      "type": "package",
-      "path": "microsoft.aspnetcore.identity/1.1.1",
-      "files": [
-        "lib/net451/Microsoft.AspNetCore.Identity.dll",
-        "lib/net451/Microsoft.AspNetCore.Identity.xml",
-        "lib/netstandard1.3/Microsoft.AspNetCore.Identity.dll",
-        "lib/netstandard1.3/Microsoft.AspNetCore.Identity.xml",
-        "microsoft.aspnetcore.identity.1.1.1.nupkg.sha512",
-        "microsoft.aspnetcore.identity.nuspec"
-      ]
-    },
-    "Microsoft.AspNetCore.Identity.EntityFrameworkCore/1.1.1": {
-      "sha512": "ah1BFKtuzYMGg0NeAJ7f3Iay3yCTNrEJKMspmECS4hl6uuV+Nit53VWKhdkr63yDsCZOHCtozGSas5hF2GJUzw==",
-      "type": "package",
-      "path": "microsoft.aspnetcore.identity.entityframeworkcore/1.1.1",
-      "files": [
-        "lib/net451/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll",
-        "lib/net451/Microsoft.AspNetCore.Identity.EntityFrameworkCore.xml",
-        "lib/netstandard1.3/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll",
-        "lib/netstandard1.3/Microsoft.AspNetCore.Identity.EntityFrameworkCore.xml",
-        "microsoft.aspnetcore.identity.entityframeworkcore.1.1.1.nupkg.sha512",
-        "microsoft.aspnetcore.identity.entityframeworkcore.nuspec"
       ]
     },
     "Microsoft.AspNetCore.JsonPatch/1.1.1": {
@@ -6577,6 +6550,62 @@
         "runtime.win7-x86.runtime.native.system.data.sqlclient.sni.4.3.0.nupkg.sha512",
         "runtime.win7-x86.runtime.native.system.data.sqlclient.sni.nuspec",
         "runtimes/win7-x86/native/sni.dll"
+      ]
+    },
+    "SimpleInjector/3.3.2": {
+      "sha512": "V7CPIh44KpkevYg93o+yAnQN/fNmvQnnEx/Y1aFGQ4cmU0evsU3qpw2ONEAdC9Av0i08twS730JL2MJgl02+Eg==",
+      "type": "package",
+      "path": "simpleinjector/3.3.2",
+      "files": [
+        "lib/net40-client/SimpleInjector.dll",
+        "lib/net40-client/SimpleInjector.xml",
+        "lib/net45/SimpleInjector.dll",
+        "lib/net45/SimpleInjector.xml",
+        "lib/netstandard1.0/SimpleInjector.dll",
+        "lib/netstandard1.0/SimpleInjector.xml",
+        "lib/portable-net4+sl4+wp8+win8+wpa81/SimpleInjector.dll",
+        "lib/portable-net4+sl4+wp8+win8+wpa81/SimpleInjector.xml",
+        "simpleinjector.3.3.2.nupkg.sha512",
+        "simpleinjector.nuspec"
+      ]
+    },
+    "SimpleInjector.Extensions.ExecutionContextScoping/3.3.2": {
+      "sha512": "MA1WI5IEQwiNjAU5qhMFnFdSQOKNIlua78eq0UPooSPeNGAGTTVCmT3n8a0yX4ORVMjAcUh70N8KfZMJiIqfag==",
+      "type": "package",
+      "path": "simpleinjector.extensions.executioncontextscoping/3.3.2",
+      "files": [
+        "lib/net45/SimpleInjector.Extensions.ExecutionContextScoping.dll",
+        "lib/net45/SimpleInjector.Extensions.ExecutionContextScoping.xml",
+        "lib/netstandard1.3/SimpleInjector.Extensions.ExecutionContextScoping.dll",
+        "lib/netstandard1.3/SimpleInjector.Extensions.ExecutionContextScoping.xml",
+        "simpleinjector.extensions.executioncontextscoping.3.3.2.nupkg.sha512",
+        "simpleinjector.extensions.executioncontextscoping.nuspec"
+      ]
+    },
+    "SimpleInjector.Integration.AspNetCore/3.3.2": {
+      "sha512": "u7QO0Ieue2rol04awAVctk9rcCdKQsPnZGAaf+5Icdb14rAAXyUbKBopJSumaPSz1HPUc8PpCyW8ceeBRGsmDQ==",
+      "type": "package",
+      "path": "simpleinjector.integration.aspnetcore/3.3.2",
+      "files": [
+        "lib/net451/SimpleInjector.Integration.AspNetCore.dll",
+        "lib/net451/SimpleInjector.Integration.AspNetCore.xml",
+        "lib/netstandard1.6/SimpleInjector.Integration.AspNetCore.dll",
+        "lib/netstandard1.6/SimpleInjector.Integration.AspNetCore.xml",
+        "simpleinjector.integration.aspnetcore.3.3.2.nupkg.sha512",
+        "simpleinjector.integration.aspnetcore.nuspec"
+      ]
+    },
+    "SimpleInjector.Integration.AspNetCore.Mvc/3.3.2": {
+      "sha512": "b0r/U3BLtRmzd6AafjyV3FU7E8zZK9oPZT0JQ8lCzHPfS1C+RtGTklEDXt+BDmPGOwBfVzIEtGqz13Ua+qyZmA==",
+      "type": "package",
+      "path": "simpleinjector.integration.aspnetcore.mvc/3.3.2",
+      "files": [
+        "lib/net451/SimpleInjector.Integration.AspNetCore.Mvc.dll",
+        "lib/net451/SimpleInjector.Integration.AspNetCore.Mvc.xml",
+        "lib/netstandard1.6/SimpleInjector.Integration.AspNetCore.Mvc.dll",
+        "lib/netstandard1.6/SimpleInjector.Integration.AspNetCore.Mvc.xml",
+        "simpleinjector.integration.aspnetcore.mvc.3.3.2.nupkg.sha512",
+        "simpleinjector.integration.aspnetcore.mvc.nuspec"
       ]
     },
     "System.AppContext/4.3.0": {
@@ -11343,7 +11372,6 @@
       "Microsoft.AspNetCore >= 1.1.1",
       "Microsoft.AspNetCore.Authentication.Cookies >= 1.1.1",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 1.1.1",
-      "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 1.1.1",
       "Microsoft.AspNetCore.Mvc >= 1.1.2",
       "Microsoft.AspNetCore.StaticFiles >= 1.1.1",
       "Microsoft.EntityFrameworkCore.Design >= 1.1.1",
@@ -11355,7 +11383,9 @@
       "Microsoft.NETCore.App >= 1.1.1",
       "Microsoft.VisualStudio.Web.BrowserLink >= 1.1.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 1.1.0",
-      "React.AspNet >= 3.0.1"
+      "React.AspNet >= 3.0.1",
+      "SimpleInjector.Integration.AspNetCore >= 3.3.2",
+      "SimpleInjector.Integration.AspNetCore.Mvc >= 3.3.2"
     ]
   },
   "packageFolders": {
@@ -11381,10 +11411,6 @@
     "frameworks": {
       "netcoreapp1.1": {
         "dependencies": {
-          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
-            "target": "Package",
-            "version": "1.1.1"
-          },
           "Microsoft.AspNetCore": {
             "target": "Package",
             "version": "1.1.1"
@@ -11416,6 +11442,10 @@
             "target": "Package",
             "version": "1.1.1"
           },
+          "SimpleInjector.Integration.AspNetCore": {
+            "target": "Package",
+            "version": "3.3.2"
+          },
           "Microsoft.NETCore.App": {
             "target": "Package",
             "version": "1.1.1",
@@ -11424,6 +11454,10 @@
           "Microsoft.VisualStudio.Web.BrowserLink": {
             "target": "Package",
             "version": "1.1.0"
+          },
+          "SimpleInjector.Integration.AspNetCore.Mvc": {
+            "target": "Package",
+            "version": "3.3.2"
           },
           "Microsoft.Extensions.Configuration.UserSecrets": {
             "target": "Package",

@@ -10,5 +10,5 @@
 
 ReactDOM.render(
     <CommentBox />,
-    document.getElementById('testDiv')
+    document.getElementById('content')
 );

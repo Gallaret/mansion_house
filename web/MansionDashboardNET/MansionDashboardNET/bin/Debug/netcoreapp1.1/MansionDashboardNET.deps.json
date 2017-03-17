@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v1.1",
-    "signature": "57d27c82d9f25e41ee9a0c675ff866eceb78cba9"
+    "signature": "82365ff9d374092fe377ce1783e1e67a2b858ab4"
   },
   "compilationOptions": {
     "defines": [
@@ -27,7 +27,6 @@
           "Microsoft.AspNetCore": "1.1.1",
           "Microsoft.AspNetCore.Authentication.Cookies": "1.1.1",
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "1.1.1",
-          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "1.1.1",
           "Microsoft.AspNetCore.Mvc": "1.1.2",
           "Microsoft.AspNetCore.StaticFiles": "1.1.1",
           "Microsoft.EntityFrameworkCore.Design": "1.1.1",
@@ -39,7 +38,9 @@
           "Microsoft.NETCore.App": "1.1.1",
           "Microsoft.VisualStudio.Web.BrowserLink": "1.1.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "1.1.0",
-          "React.AspNet": "3.0.1"
+          "React.AspNet": "3.0.1",
+          "SimpleInjector.Integration.AspNetCore": "3.3.2",
+          "SimpleInjector.Integration.AspNetCore.Mvc": "3.3.2"
         },
         "runtime": {
           "MansionDashboardNET.dll": {}
@@ -276,18 +277,6 @@
           "lib/netstandard1.3/Microsoft.AspNetCore.Cryptography.Internal.dll": {}
         }
       },
-      "microsoft.aspnetcore.cryptography.keyderivation/1.1.1": {
-        "dependencies": {
-          "Microsoft.AspNetCore.Cryptography.Internal": "1.1.1",
-          "NETStandard.Library": "1.6.1"
-        },
-        "runtime": {
-          "lib/netstandard1.3/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll": {}
-        },
-        "compile": {
-          "lib/netstandard1.3/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll": {}
-        }
-      },
       "microsoft.aspnetcore.dataprotection/1.1.1": {
         "dependencies": {
           "Microsoft.AspNetCore.Cryptography.Internal": "1.1.1",
@@ -509,34 +498,6 @@
         },
         "compile": {
           "lib/netstandard1.3/Microsoft.AspNetCore.HttpOverrides.dll": {}
-        }
-      },
-      "microsoft.aspnetcore.identity/1.1.1": {
-        "dependencies": {
-          "Microsoft.AspNetCore.Authentication.Cookies": "1.1.1",
-          "Microsoft.AspNetCore.Cryptography.KeyDerivation": "1.1.1",
-          "Microsoft.AspNetCore.Hosting.Abstractions": "1.1.1",
-          "NETStandard.Library": "1.6.1"
-        },
-        "runtime": {
-          "lib/netstandard1.3/Microsoft.AspNetCore.Identity.dll": {}
-        },
-        "compile": {
-          "lib/netstandard1.3/Microsoft.AspNetCore.Identity.dll": {}
-        }
-      },
-      "microsoft.aspnetcore.identity.entityframeworkcore/1.1.1": {
-        "dependencies": {
-          "Microsoft.AspNetCore.Identity": "1.1.1",
-          "Microsoft.EntityFrameworkCore.Relational": "1.1.1",
-          "NETStandard.Library": "1.6.1",
-          "System.ComponentModel.TypeConverter": "4.3.0"
-        },
-        "runtime": {
-          "lib/netstandard1.3/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll": {}
-        },
-        "compile": {
-          "lib/netstandard1.3/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll": {}
         }
       },
       "microsoft.aspnetcore.jsonpatch/1.1.1": {
@@ -1743,6 +1704,57 @@
             "rid": "win7-x86",
             "assetType": "native"
           }
+        }
+      },
+      "simpleinjector/3.3.2": {
+        "dependencies": {
+          "NETStandard.Library": "1.6.1",
+          "System.ComponentModel": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard1.0/SimpleInjector.dll": {}
+        },
+        "compile": {
+          "lib/netstandard1.0/SimpleInjector.dll": {}
+        }
+      },
+      "simpleinjector.extensions.executioncontextscoping/3.3.2": {
+        "dependencies": {
+          "NETStandard.Library": "1.6.1",
+          "SimpleInjector": "3.3.2"
+        },
+        "runtime": {
+          "lib/netstandard1.3/SimpleInjector.Extensions.ExecutionContextScoping.dll": {}
+        },
+        "compile": {
+          "lib/netstandard1.3/SimpleInjector.Extensions.ExecutionContextScoping.dll": {}
+        }
+      },
+      "simpleinjector.integration.aspnetcore/3.3.2": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Abstractions": "1.1.1",
+          "SimpleInjector": "3.3.2",
+          "SimpleInjector.Extensions.ExecutionContextScoping": "3.3.2"
+        },
+        "runtime": {
+          "lib/netstandard1.6/SimpleInjector.Integration.AspNetCore.dll": {}
+        },
+        "compile": {
+          "lib/netstandard1.6/SimpleInjector.Integration.AspNetCore.dll": {}
+        }
+      },
+      "simpleinjector.integration.aspnetcore.mvc/3.3.2": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Mvc.Core": "1.1.2",
+          "Microsoft.AspNetCore.Mvc.Razor": "1.1.2",
+          "Microsoft.AspNetCore.Mvc.ViewFeatures": "1.1.2",
+          "SimpleInjector.Integration.AspNetCore": "3.3.2"
+        },
+        "runtime": {
+          "lib/netstandard1.6/SimpleInjector.Integration.AspNetCore.Mvc.dll": {}
+        },
+        "compile": {
+          "lib/netstandard1.6/SimpleInjector.Integration.AspNetCore.Mvc.dll": {}
         }
       },
       "system.collections.nongeneric/4.3.0": {
@@ -3830,13 +3842,6 @@
       "path": "microsoft.aspnetcore.cryptography.internal/1.1.1",
       "hashPath": "microsoft.aspnetcore.cryptography.internal.1.1.1.nupkg.sha512"
     },
-    "microsoft.aspnetcore.cryptography.keyderivation/1.1.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-sSfIghqM0VgbQ6cX4ieYywrZu7viAmvEozqruFXJy6XOJu3ceZdpaLMC+C4nJRr/76VSA+KvkSlD1ICCYeI8SA==",
-      "path": "microsoft.aspnetcore.cryptography.keyderivation/1.1.1",
-      "hashPath": "microsoft.aspnetcore.cryptography.keyderivation.1.1.1.nupkg.sha512"
-    },
     "microsoft.aspnetcore.dataprotection/1.1.1": {
       "type": "package",
       "serviceable": true,
@@ -3934,20 +3939,6 @@
       "sha512": "sha512-RIb0Zdih2GW+BgR4px3iLd6/p8AlzDxbxcYY032FHKvuRWlLPGja/c5fdu9t6DHr7hsQl08yf3YcduWbscltbQ==",
       "path": "microsoft.aspnetcore.httpoverrides/1.1.1",
       "hashPath": "microsoft.aspnetcore.httpoverrides.1.1.1.nupkg.sha512"
-    },
-    "microsoft.aspnetcore.identity/1.1.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-cSNJ3D0kfkW/TSEnvdIShEysrAX2D7sRzRCwNwrElhm+YzzG9WBY4a0+pWuz/1uFMMoOY9MfszhhHNBcNtWCCQ==",
-      "path": "microsoft.aspnetcore.identity/1.1.1",
-      "hashPath": "microsoft.aspnetcore.identity.1.1.1.nupkg.sha512"
-    },
-    "microsoft.aspnetcore.identity.entityframeworkcore/1.1.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-ah1BFKtuzYMGg0NeAJ7f3Iay3yCTNrEJKMspmECS4hl6uuV+Nit53VWKhdkr63yDsCZOHCtozGSas5hF2GJUzw==",
-      "path": "microsoft.aspnetcore.identity.entityframeworkcore/1.1.1",
-      "hashPath": "microsoft.aspnetcore.identity.entityframeworkcore.1.1.1.nupkg.sha512"
     },
     "microsoft.aspnetcore.jsonpatch/1.1.1": {
       "type": "package",
@@ -4529,6 +4520,34 @@
       "sha512": "sha512-4cXRTIcttvIreAoqK/5hzTtzepeggac+m5A0rzH+9zLtnFh2J0rLuGeJR4KjNLyKqPzO0kjqrs5lkRJEKX8HAA==",
       "path": "runtime.win7-x86.runtime.native.system.data.sqlclient.sni/4.3.0",
       "hashPath": "runtime.win7-x86.runtime.native.system.data.sqlclient.sni.4.3.0.nupkg.sha512"
+    },
+    "simpleinjector/3.3.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-V7CPIh44KpkevYg93o+yAnQN/fNmvQnnEx/Y1aFGQ4cmU0evsU3qpw2ONEAdC9Av0i08twS730JL2MJgl02+Eg==",
+      "path": "simpleinjector/3.3.2",
+      "hashPath": "simpleinjector.3.3.2.nupkg.sha512"
+    },
+    "simpleinjector.extensions.executioncontextscoping/3.3.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-MA1WI5IEQwiNjAU5qhMFnFdSQOKNIlua78eq0UPooSPeNGAGTTVCmT3n8a0yX4ORVMjAcUh70N8KfZMJiIqfag==",
+      "path": "simpleinjector.extensions.executioncontextscoping/3.3.2",
+      "hashPath": "simpleinjector.extensions.executioncontextscoping.3.3.2.nupkg.sha512"
+    },
+    "simpleinjector.integration.aspnetcore/3.3.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-u7QO0Ieue2rol04awAVctk9rcCdKQsPnZGAaf+5Icdb14rAAXyUbKBopJSumaPSz1HPUc8PpCyW8ceeBRGsmDQ==",
+      "path": "simpleinjector.integration.aspnetcore/3.3.2",
+      "hashPath": "simpleinjector.integration.aspnetcore.3.3.2.nupkg.sha512"
+    },
+    "simpleinjector.integration.aspnetcore.mvc/3.3.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-b0r/U3BLtRmzd6AafjyV3FU7E8zZK9oPZT0JQ8lCzHPfS1C+RtGTklEDXt+BDmPGOwBfVzIEtGqz13Ua+qyZmA==",
+      "path": "simpleinjector.integration.aspnetcore.mvc/3.3.2",
+      "hashPath": "simpleinjector.integration.aspnetcore.mvc.3.3.2.nupkg.sha512"
     },
     "system.collections.nongeneric/4.3.0": {
       "type": "package",
