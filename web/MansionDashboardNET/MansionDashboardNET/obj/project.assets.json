@@ -4457,6 +4457,13 @@
         "runtime": {
           "lib/netstandard1.6/VroomJs.dll": {}
         }
+      },
+      "Mansion.Core.User/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v1.1",
+        "dependencies": {
+          "Microsoft.NETCore.App": "1.1.1"
+        }
       }
     }
   },
@@ -11364,10 +11371,16 @@
         "vroomjs.1.2.3.nupkg.sha512",
         "vroomjs.nuspec"
       ]
+    },
+    "Mansion.Core.User/1.0.0": {
+      "type": "project",
+      "path": "../Mansion.Core.User/Mansion.Core.User.csproj",
+      "msbuildProject": "../Mansion.Core.User/Mansion.Core.User.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v1.1": [
+      "Mansion.Core.User >= 1.0.0",
       "Microsoft.ApplicationInsights.AspNetCore >= 2.0.0",
       "Microsoft.AspNetCore >= 1.1.1",
       "Microsoft.AspNetCore.Authentication.Cookies >= 1.1.1",
@@ -11404,7 +11417,11 @@
       ],
       "frameworks": {
         "netcoreapp1.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\rwojda\\Documents\\GitHub\\mansion_house\\web\\MansionDashboardNET\\Mansion.Core.User\\Mansion.Core.User.csproj": {
+              "projectPath": "C:\\Users\\rwojda\\Documents\\GitHub\\mansion_house\\web\\MansionDashboardNET\\Mansion.Core.User\\Mansion.Core.User.csproj"
+            }
+          }
         }
       }
     },

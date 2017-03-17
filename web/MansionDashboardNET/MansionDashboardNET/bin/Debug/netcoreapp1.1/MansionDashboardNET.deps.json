@@ -23,6 +23,7 @@
     ".NETCoreApp,Version=v1.1": {
       "mansiondashboardnet/1.0.0": {
         "dependencies": {
+          "Mansion.Core.User": "1.0.0",
           "Microsoft.ApplicationInsights.AspNetCore": "2.0.0",
           "Microsoft.AspNetCore": "1.1.1",
           "Microsoft.AspNetCore.Authentication.Cookies": "1.1.1",
@@ -2090,6 +2091,17 @@
         },
         "compile": {
           "lib/netstandard1.6/VroomJs.dll": {}
+        }
+      },
+      "mansion.core.user/1.0.0": {
+        "dependencies": {
+          "Microsoft.NETCore.App": "1.1.1"
+        },
+        "runtime": {
+          "Mansion.Core.User.dll": {}
+        },
+        "compile": {
+          "Mansion.Core.User.dll": {}
         }
       },
       "libuv/1.9.1": {
@@ -4667,6 +4679,11 @@
       "sha512": "sha512-UeothAnvWK9f2LqPO1Nj5YRkuoOHBqjUnBtLm6yogiE9DNhDMqO/ipsI3qGe7dbeORAcbbCxRrnaqdlTZaT59A==",
       "path": "vroomjs/1.2.3",
       "hashPath": "vroomjs.1.2.3.nupkg.sha512"
+    },
+    "mansion.core.user/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "libuv/1.9.1": {
       "type": "package",

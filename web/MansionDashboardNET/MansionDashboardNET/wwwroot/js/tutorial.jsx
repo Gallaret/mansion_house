@@ -1,14 +1,25 @@
-﻿var CommentBox = React.createClass({
+﻿var UserList = React.createClass({
     render: function () {
-        return (
-          <div className="commentBox">
-                Hello, world! I am a CommentBox.
-          </div>
+        console.log(this.props.data);
+        return (    
+            <div>
+                <label>{this.props.data.id}</label> <br />
+                <label>{this.props.data.password}</label> <br />
+                <label>{this.props.data.userName}</label>
+            </div>
         );
     }
 });
 
-ReactDOM.render(
-    <CommentBox />,
-    document.getElementById('content')
-);
+var UserBox = React.createClass({
+    getInitialState: function () {
+        return { data: this.props.initialData };
+    },
+    render: function () {
+        return (
+          <div className="userBox">
+                <UserList data={this.state.data} />
+          </div>
+        );
+    }
+});

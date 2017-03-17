@@ -1,0 +1,7 @@
+C:\Users\rwojda\Documents\GitHub\mansion_house\web\MansionDashboardNET\Mansion.Core.User\bin\Debug\netcoreapp1.1\Mansion.Core.User.deps.json
+C:\Users\rwojda\Documents\GitHub\mansion_house\web\MansionDashboardNET\Mansion.Core.User\bin\Debug\netcoreapp1.1\Mansion.Core.User.dll
+C:\Users\rwojda\Documents\GitHub\mansion_house\web\MansionDashboardNET\Mansion.Core.User\bin\Debug\netcoreapp1.1\Mansion.Core.User.pdb
+C:\Users\rwojda\Documents\GitHub\mansion_house\web\MansionDashboardNET\Mansion.Core.User\obj\Debug\netcoreapp1.1\Mansion.Core.User.csprojResolveAssemblyReference.cache
+C:\Users\rwojda\Documents\GitHub\mansion_house\web\MansionDashboardNET\Mansion.Core.User\obj\Debug\netcoreapp1.1\Mansion.Core.User.AssemblyInfo.cs
+C:\Users\rwojda\Documents\GitHub\mansion_house\web\MansionDashboardNET\Mansion.Core.User\obj\Debug\netcoreapp1.1\Mansion.Core.User.dll
+C:\Users\rwojda\Documents\GitHub\mansion_house\web\MansionDashboardNET\Mansion.Core.User\obj\Debug\netcoreapp1.1\Mansion.Core.User.pdb

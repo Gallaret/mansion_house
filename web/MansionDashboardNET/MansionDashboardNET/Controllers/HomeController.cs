@@ -3,28 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Mansion.Core.User.Services;
 
 namespace MansionDashboardNET.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly UserService userService;
+        public HomeController(UserService userService)
+        {
+            this.userService = userService;
+        }
+
         public IActionResult Index()
         {
-            return View();
+            var user = userService.CreateUser("test", "test1234");
+            return View(user);
         }
 
-        public IActionResult About()
+        [Route("users")]
+        [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
+        public ActionResult Users()
         {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
+            var user = userService.CreateUser("test", "test1234");
+            return Json(user);
         }
 
         public IActionResult Error()

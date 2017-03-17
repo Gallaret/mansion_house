@@ -12,6 +12,7 @@ using SimpleInjector;
 using SimpleInjector.Integration.AspNetCore;
 using SimpleInjector.Integration.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewComponents;
+using Mansion.Core.User.Services;
 
 namespace MansionDashboardNET
 {
@@ -86,15 +87,13 @@ namespace MansionDashboardNET
                       StringEscapeHandling = StringEscapeHandling.EscapeHtml, 
                       ContractResolver = new CamelCasePropertyNamesContractResolver()
                   });
-
-
-            // If you use an external build too (for example, Babel, Webpack,
-            // Browserify or Gulp), you can improve performance by disabling
-            // ReactJS.NET's version of Babel and loading the pre-transpiled
-            // scripts. Example:
-            //config
-            //  .SetLoadBabel(false)
-            //  .AddScriptWithoutTransform("~/Scripts/bundle.server.js");
+                // If you use an external build too (for example, Babel, Webpack,
+                // Browserify or Gulp), you can improve performance by disabling
+                // ReactJS.NET's version of Babel and loading the pre-transpiled
+                // scripts. Example:
+                //config
+                //  .SetLoadBabel(false)
+                //  .AddScriptWithoutTransform("~/Scripts/bundle.server.js");
             });
             app.UseStaticFiles();
 
@@ -114,6 +113,7 @@ namespace MansionDashboardNET
             container.RegisterMvcViewComponents(app);
 
             container.RegisterSingleton(app.ApplicationServices.GetService<ILoggerFactory>());
+            container.Register<UserService>();
         }
     }
 }
