@@ -79,6 +79,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(/*! react */ 4);
+	var NotificationBar = __webpack_require__(/*! ./top/NotificationBar */ 5);
 	
 	var UserList = React.createClass({displayName: "UserList",
 	    render: function () {
@@ -96,15 +97,20 @@
 	    getInitialState: function () {
 	        return { data: this.props.initialData };
 	    },
+	    handleClick: function () {
+	        console.log('clicked');
+	    },
 	    render: function () {
 	        return (
 	            React.createElement("div", {className: "userBox"}, 
+	                React.createElement(NotificationBar, null), 
 	                React.createElement("header", null, 
 	                    React.createElement("hgroup", null, 
 	                        React.createElement("h1", null, "Dashboard")
 	                    )
 	                ), 
-	                React.createElement(UserList, {data: this.state.data})
+	                React.createElement(UserList, {data: this.state.data}), 
+	                React.createElement("button", {onClick: this.handleClick}, "Click")
 	            )
 	        );
 	    }
@@ -120,6 +126,27 @@
 /***/ function(module, exports) {
 
 	module.exports = React;
+
+/***/ },
+/* 5 */
+/*!********************************************!*\
+  !*** ./components/top/NotificationBar.jsx ***!
+  \********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(/*! react */ 4);
+	
+	var NotificationBar = React.createClass({displayName: "NotificationBar",
+	    render: function () {
+	        return (
+	            React.createElement("div", {className: "notificationBar", style: { position: 'fixed', top: 0, left: 0, background: 'blue', width: '100%'}}, 
+	                "asdasdasdas"
+	            )
+	        );
+	    }
+	});
+	
+	module.exports = NotificationBar;
 
 /***/ }
 /******/ ]);
