@@ -1,5 +1,6 @@
 ﻿var React = require('react');
 var NotificationBar = require('./top/NotificationBar');
+var styles = require('../stylesheets/dashboard.scss');
 
 var UserList = React.createClass({
     render: function () {
@@ -18,19 +19,31 @@ var UsersBox = React.createClass({
         return { data: this.props.initialData };
     },
     handleClick: function () {
-        console.log('clicked');
+        console.log(styles);
     },
     render: function () {
+
+
         return (
-            <div className="userBox">
+            <div className="dashboard">
                 <NotificationBar />
-                <header>
-                    <hgroup>
-                        <h1>Dashboard</h1>
-                    </hgroup>
-                </header>
-                <UserList data={this.state.data} />
-                <button onClick={this.handleClick}>Click</button>
+                <div className={styles.content}>
+                    <header>
+                        <hgroup>
+                            <h1>Dashboard</h1>
+                        </hgroup>
+                    </header>
+                    <div className="left" style={{ height: '500px', width: '65%', float: 'left', backgroundColor: 'silver' }}>
+                        <UserList data={this.state.data} />
+                        <button onClick={this.handleClick}>Click</button>
+                    </div>
+                    <div className="right" style={{ height: '500px', width: '35%', float: 'right', backgroundColor: 'skyblue' }}>
+                        Right content
+                    </div>
+                    <footer>
+
+                    </footer>
+                </div>
             </div>
         );
     }

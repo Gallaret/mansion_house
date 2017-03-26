@@ -1,0 +1,12 @@
+header {
+  color: red; }
+
+.content {
+  margin-top: 50px;
+  border-radius: 5px; }
+
+footer {
+  height: 150px;
+  width: 100%;
+  background-color: lawngreen;
+  clear: both; }

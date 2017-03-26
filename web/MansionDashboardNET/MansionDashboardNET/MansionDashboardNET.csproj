@@ -38,5 +38,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Mansion.Core.User\Mansion.Core.User.csproj" />
   </ItemGroup>
+  <ProjectExtensions><VisualStudio><UserProperties package_1json__JSONSchema="" /></VisualStudio></ProjectExtensions>
 
 </Project>

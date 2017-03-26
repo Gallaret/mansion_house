@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\web"
+    "\\web",
+    "\\web\\MansionDashboardNET"
   ],
-  "SelectedNode": "\\web",
+  "SelectedNode": "\\web\\MansionDashboardNET\\MansionDashboardNET.sln",
   "PreviewInSolutionExplorer": false
 }

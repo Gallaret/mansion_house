@@ -1,1 +1,1 @@
-﻿var Components = require('expose?Components!./components');
+﻿var Components = require('expose-loader?Components!./components');
