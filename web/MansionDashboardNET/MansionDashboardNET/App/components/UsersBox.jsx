@@ -1,5 +1,6 @@
 ﻿var React = require('react');
 var NotificationBar = require('./top/NotificationBar');
+var LeftPanel = require('./left/LeftPanel');
 var styles = require('../stylesheets/dashboard.scss');
 
 var UserList = React.createClass({
@@ -23,25 +24,26 @@ var UsersBox = React.createClass({
     },
     render: function () {
 
-
         return (
-            <div className="dashboard">
+            <div className="container-fluid">
                 <NotificationBar />
-                <div className={styles.content}>
+                <div className="content">
                     <header>
-                        <hgroup>
-                            <h1>Dashboard</h1>
+                        <hgroup className="panel panel-info center-block">
+                            <h1 className="panel-heading" style={{ marginTop: '0px', fontSize: '25px' }}>Smart-Home Dashboard</h1>
+                            <h2 className="panel-body" style={{ fontSize: '15px' }}>System do zarządzania inteligentnym mieszkaniem</h2>
                         </hgroup>
                     </header>
-                    <div className="left" style={{ height: '500px', width: '65%', float: 'left', backgroundColor: 'silver' }}>
-                        <UserList data={this.state.data} />
-                        <button onClick={this.handleClick}>Click</button>
-                    </div>
-                    <div className="right" style={{ height: '500px', width: '35%', float: 'right', backgroundColor: 'skyblue' }}>
-                        Right content
+                    <LeftPanel />
+                    <div className="panel panel-primary" style={{ height: '500px', width: '33%', float: 'right', marginLeft:'2%' }}>
+                        <div className="panel-heading">Panel informacyjny</div>
+                        <div className="panel-body">
+                            <UserList data={this.state.data} />
+                            <button onClick={this.handleClick}>Click</button>
+                        </div>
                     </div>
                     <footer>
-
+                        Powered by ReactJS
                     </footer>
                 </div>
             </div>

@@ -1,12 +1,14 @@
 header {
-  color: red; }
+  margin-top: 50px; }
 
 .content {
   margin-top: 50px;
-  border-radius: 5px; }
+  border-radius: 5px;
+  padding: 25px; }
 
 footer {
+  margin-top: 50px;
   height: 150px;
   width: 100%;
-  background-color: lawngreen;
+  background-color: seagreen;
   clear: both; }

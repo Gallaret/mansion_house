@@ -3,9 +3,16 @@
 var NotificationBar = React.createClass({
     render: function () {
         return (
-            <div className="notificationBar" style={{ position: 'fixed', top: 0, left: 0, background: 'blue', width: '100%' }}>
-                asdasdasdas
-            </div>
+            <nav className="navbar navbar-fixed-top navbar-inverse">
+                <a className="navbar-brand" href="#">Navbar</a>
+                <ul className="navbar-nav" style={{ marginTop: '15px' }}>
+                    <li> <a className="navbar-link" href="#" style={{ textDecoration: 'none' }}>Active</a> </li>
+                    <li> <a className="navbar-link" href="#" style={{ marginLeft: '15px', textDecoration: 'none' }}>Link</a> </li>
+                    <li> <a className="navbar-link" href="#" style={{ marginLeft: '15px', textDecoration: 'none' }}>Link</a> </li>
+                    <li> <a className="navbar-link" href="#" style={{ marginLeft: '15px', textDecoration: 'none' }}>Disabled</a> </li>
+                </ul>
+                
+            </nav>
         );
     }
 });

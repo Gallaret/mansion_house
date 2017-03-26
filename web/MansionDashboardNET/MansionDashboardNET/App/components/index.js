@@ -1,4 +1,3 @@
-﻿require('../stylesheets/dashboard.scss');
-module.exports = {
+﻿module.exports = {
     UsersBox: require('./UsersBox')
 };
