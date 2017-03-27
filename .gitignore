@@ -46,5 +46,9 @@ Network Trash Folder
 Temporary Items
 .apdisk
 /web/MansionDashboardNET/MansionDashboardNET/node_modules
-
 /web/MansionDashboardNET/node_modules
+/web/MansionDashboardNET/Mansion.Core.User/bin/*
+/web/MansionDashboardNET/Mansion.Core.User/obj/*
+/web/MansionDashboardNET/MansionDashboardNET/bin/*
+/web/MansionDashboardNET/MansionDashboardNET/obj/*
+/web/MansionDashboardNET/.vs/*

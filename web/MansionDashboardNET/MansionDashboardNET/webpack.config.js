@@ -1,6 +1,6 @@
 var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-
+var combineLoaders = require('webpack-combine-loaders');
 module.exports = {
     context: path.join(__dirname, 'App'),
     entry: {
@@ -14,10 +14,20 @@ module.exports = {
     module: {
         loaders: [
             {
-                test: /\.scss$/,
+                test: /\.scss?$/,
                 loader: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
-                    use: 'css-loader!sass-loader'
+                    use:
+                    combineLoaders([{
+                        loader: 'css-loader',
+                        query: {
+                            modules: true,
+                            localIdentName: '[hash:base64:5]'
+                        }
+                    }, {
+                        loader: 'sass-loader'
+                    }
+                    ])
                 })
             },
             // Transform JSX in .jsx files

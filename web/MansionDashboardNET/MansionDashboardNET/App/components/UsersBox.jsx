@@ -27,7 +27,7 @@ var UsersBox = React.createClass({
         return (
             <div className="container-fluid">
                 <NotificationBar />
-                <div className="content">
+                <div className={styles.content}>
                     <header>
                         <hgroup className="panel panel-info center-block">
                             <h1 className="panel-heading" style={{ marginTop: '0px', fontSize: '25px' }}>Smart-Home Dashboard</h1>
