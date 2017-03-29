@@ -9,15 +9,16 @@ var LeftPanel = React.createClass({
             showDevices: true,
             showStorage: true,
             visibleCount: 3,
-            sectionCount: 3
+            sectionCount: 3,
+            toogleAllText: 'Zwiń'
         };
     },
     toogleSection: function (visibility, action) {
 
         if (visibility)
-            this.visibleCount++;
+            this.props.visibleCount++;
         else
-            this.visibleCount--;
+            this.props.visibleCount--;
 
         switch (action)
         {
@@ -32,17 +33,22 @@ var LeftPanel = React.createClass({
         }
     },
     toogleAll: function () {
-        console.log('toogle!');
-        if (this.visibleCount < this.sectionCount && this.visibleCount > 0) {
+        if (this.state.visibleCount > 0) {
+            console.log('hide!');
             this.setState({ showCameras: false });
             this.setState({ showDevices: false });
             this.setState({ showStorage: false });
+            this.setState({ toogleAllText: 'Rozwiń' });
+            this.state.visibleCount = 0;
         }
         else
         {
+            console.log(this.state.visibleCount);
             this.setState({ showCameras: true });
             this.setState({ showDevices: true });
             this.setState({ showStorage: true });
+            this.setState({ toogleAllText: 'Zwiń' });
+            this.state.visibleCount = this.state.sectionCount;
         }
         return;
     },
@@ -54,7 +60,7 @@ var LeftPanel = React.createClass({
             <div className={leftPanel}>
                 <div className="panel-heading">Panel Smart-Home</div>
                 <div className="panel-body">
-                    <a onClick={this.toogleAll}>Rozwiń/Zwiń</a>
+                    <a onClick={this.toogleAll}>{this.state.toogleAllText}</a>
                     <ul className="list-group">
                         <li className="list-group-item">
                             <label className="text-primary">
