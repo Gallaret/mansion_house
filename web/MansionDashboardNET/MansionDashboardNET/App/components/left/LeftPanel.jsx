@@ -15,10 +15,14 @@ var LeftPanel = React.createClass({
     },
     toogleSection: function (visibility, action) {
 
-        if (visibility)
-            this.props.visibleCount++;
-        else
-            this.props.visibleCount--;
+        if (visibility) {
+            this.state.visibleCount--;
+        }
+        else {
+            this.state.visibleCount++;
+        }
+
+        console.log(this.state.visibleCount);
 
         switch (action)
         {
@@ -63,38 +67,41 @@ var LeftPanel = React.createClass({
                     <a onClick={this.toogleAll}>{this.state.toogleAllText}</a>
                     <ul className="list-group">
                         <li className="list-group-item">
-                            <label className="text-primary">
-                                <span onClick={() => this.toogleSection(this.state.showCameras, 'showCameras')}
-                                    className={this.state.showCameras ? 'glyphicon glyphicon-minus' : 'glyphicon glyphicon-plus'}>
-                                </span>
+                            <label className="text-primary" style={{ fontSize: '22px' }}>
+                                <span style={{ marginRight: '10px' }} className="glyphicon glyphicon-facetime-video" />
                                 Monitoring
                             </label>
-                            <span className="badge">12</span><br />
+                            <span onClick={() => this.toogleSection(this.state.showCameras, 'showCameras')}
+                                className={this.state.showCameras ? 'glyphicon glyphicon-minus' : 'glyphicon glyphicon-plus'} style={{ float: 'right' }}>
+                            </span>
+                            <span style={{ marginRight: '10px' }} className="badge">12</span><br />
                             <div id="camerasList" className={this.state.showCameras ? 'show' : 'hide'}>
                                 <CamerasList />
                             </div>
                         </li>
 
                         <li className="list-group-item">
-                            <label className="text-primary">
-                                <span onClick={() => this.toogleSection(this.state.showDevices, 'showDevices')}
-                                    className={this.state.showDevices ? 'glyphicon glyphicon-minus' : 'glyphicon glyphicon-plus'}>
-                                </span>
+                            <label className="text-primary" style={{ fontSize: '22px' }}>
+                                <span style={{ marginRight: '10px' }} className="glyphicon glyphicon-phone" />
                                 Urządzenia
                             </label>
-                            <span className="badge">5</span><br />
+                            <span onClick={() => this.toogleSection(this.state.showDevices, 'showDevices')}
+                                className={this.state.showDevices ? 'glyphicon glyphicon-minus' : 'glyphicon glyphicon-plus'} style={{ float: 'right' }}>
+                            </span>
+                            <span style={{ marginRight: '10px' }} className="badge">5</span><br />
                             <div id="camerasList" className={this.state.showDevices ? 'show' : 'hide'}>
                                 <DevicesList />
                             </div>
                         </li>
                         <li className="list-group-item">
-                            <label className="text-primary">
-                                <span onClick={() => this.toogleSection(this.state.showStorage, 'showStorage')}
-                                    className={this.state.showStorage ? 'glyphicon glyphicon-minus' : 'glyphicon glyphicon-plus'}>
-                                </span>
+                            <label className="text-primary" style={{ fontSize: '22px' }}>
+                                <span className="glyphicon glyphicon-hdd" style={{ marginRight: '10px' }} />                  
                                 Magazyn danych
                             </label>
-                            <span className="badge">5</span><br />
+                            <span onClick={() => this.toogleSection(this.state.showStorage, 'showStorage')}
+                                className={this.state.showStorage ? 'glyphicon glyphicon-minus' : 'glyphicon glyphicon-plus'} style={{ float: 'right' }}>
+                            </span>
+                            <span style={{ marginRight: '10px' }} className="badge">5</span><br />
                             <div id="camerasList" className={this.state.showStorage ? 'show' : 'hide'}>
                                 <DevicesList />
                             </div>

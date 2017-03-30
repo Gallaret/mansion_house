@@ -30,25 +30,28 @@ var RightPanel = React.createClass({
                 <div className="panel-body">
                     <ul className="list-group">
                         <li className="list-group-item">
-                            <label className="text-primary">
-                                <span onClick={() => this.toogleSection(this.state.showReservations, 'showReservations')}
-                                    className={this.state.showReservations ? 'glyphicon glyphicon-minus' : 'glyphicon glyphicon-plus'}>
-                                </span>
-                                Najbliższe rezerwacje:
+                            <label className="text-primary" style={{ fontSize: '18px' }}>
+                                <span style={{ marginRight: '10px' }} className="glyphicon glyphicon-list-alt" />
+                                Najbliższe rezerwacje:               
                             </label>
-                            <span className="badge">2</span><br />
+                            <span onClick={() => this.toogleSection(this.state.showReservations, 'showReservations')}
+                                className={this.state.showReservations ? 'glyphicon glyphicon-minus' : 'glyphicon glyphicon-plus'} style={{ float: 'right' }}>
+                            </span>
+                            <span style={{ marginRight: '10px' }} className="badge">2</span>
+                            <br />
                             <div id="reservationsList" className={this.state.showReservations ? 'show' : 'hide'}>
                                 <ReservationsList />
                             </div>
                         </li>
                         <li className="list-group-item">
-                            <label className="text-primary">
-                                <span onClick={() => this.toogleSection(this.state.showMembers, 'showMembers')}
-                                    className={this.state.showMembers ? 'glyphicon glyphicon-minus' : 'glyphicon glyphicon-plus'}>
-                                </span>
-                                Użytkownicy
+                            <label className="text-primary" style={{ fontSize: '18px' }}>
+                                <span style={{ marginRight: '10px' }} className="glyphicon glyphicon-user" />
+                                Użytkownicy:             
                             </label>
-                            <span className="badge">2</span><br />
+                            <span onClick={() => this.toogleSection(this.state.showMembers, 'showMembers')}
+                                className={this.state.showMembers ? 'glyphicon glyphicon-minus' : 'glyphicon glyphicon-plus'} style={{ float: 'right' }}>
+                            </span>
+                            <span style={{ marginRight: '10px' }}  className="badge">2</span><br />
                             <div id="membersList" className={this.state.showMembers ? 'show' : 'hide'}>
                                 <MembersList />
                             </div>
