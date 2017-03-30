@@ -10,7 +10,7 @@ var MembersList = React.createClass({
             <div className="form-inline"> {
                 list.map(function (listValue) {
                     return <div key={listValue.key} style={{ marginRight: '25px' }}>
-                        <img src={listValue.url} height="50px" width="50px" />
+                        <img src={listValue.url} height="50px" width="50px" className="img-circle" />
                         <label>{listValue.id}</label>
                     </div>;
                 })}

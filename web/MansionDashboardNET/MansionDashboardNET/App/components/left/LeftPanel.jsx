@@ -68,7 +68,7 @@ var LeftPanel = React.createClass({
                     <ul className="list-group">
                         <li className="list-group-item">
                             <label className="text-primary" style={{ fontSize: '22px' }}>
-                                <span style={{ marginRight: '10px' }} className="glyphicon glyphicon-facetime-video" />
+                                <span style={{ marginRight: '10px' }} className="glyphicon glyphicon-camera" />
                                 Monitoring
                             </label>
                             <span onClick={() => this.toogleSection(this.state.showCameras, 'showCameras')}
