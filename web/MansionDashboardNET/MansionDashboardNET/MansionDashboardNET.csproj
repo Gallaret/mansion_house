@@ -13,6 +13,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="wwwroot\images\default-avatar.png" />
     <Content Include="wwwroot\images\printer.png" />
     <Content Include="wwwroot\images\projector.png" />
     <Content Include="wwwroot\images\ps4.png" />

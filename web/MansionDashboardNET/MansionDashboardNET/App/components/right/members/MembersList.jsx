@@ -4,14 +4,16 @@ var MembersList = React.createClass({
 
     render: function () {
 
-        var list = [{ id: 'Test1', key: '1', url: '../images/banner1.svg' }, { id: 'Test2', key: '2', url: '../images/banner2.svg' }];
+        var list = [{ id: 'Roman Erotoman', key: '1', url: '../images/default-avatar.png', desc: '"Mama nakarm kurwia"' },
+                    { id: 'Zdzichu Testowy', key: '2', url: '../images/default-avatar.png', desc: '"Wychodzę i nie wiem czy wrócę trzeźwy!"' }];
 
         return (
             <div className="form-inline"> {
                 list.map(function (listValue) {
-                    return <div key={listValue.key} style={{ marginRight: '25px' }}>
-                        <img src={listValue.url} height="50px" width="50px" className="img-circle" />
-                        <label>{listValue.id}</label>
+                    return <div key={listValue.key} style={{ margin: '15px' }}>
+                        <img src={listValue.url} height="30px" width="30px" className="img-circle" />
+                        <label style={{ marginLeft: '10px' }}>{listValue.id}:</label>
+                        <label style={{ marginLeft: '10px' }} className="small">{listValue.desc}</label>
                     </div>;
                 })}
             </div>
