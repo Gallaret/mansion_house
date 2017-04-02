@@ -10,8 +10,19 @@ footer {
   margin-top: 50px;
   height: 150px;
   width: 100%;
-  background-color: seagreen;
-  clear: both; }
+  clear: both;
+  color: white;
+  background-color: sandybrown;
+  border: 1px solid silver;
+  border-radius: 3px; }
+
+._193kY {
+  margin: 20px;
+  font-size: 13px;
+  padding: 5px;
+  width: 25%;
+  border-right: 1px solid saddlebrown;
+  height: 100px; }
 
 ._1Sekv {
   min-height: 600px; }

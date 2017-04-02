@@ -11402,15 +11402,15 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\rwojda\\.nuget\\packages\\": {}
+    "C:\\Users\\Robert\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rwojda\\Documents\\GitHub\\mansion_house\\web\\MansionDashboardNET\\MansionDashboardNET\\MansionDashboardNET.csproj",
+      "projectUniqueName": "C:\\Github\\src\\web\\MansionDashboardNET\\MansionDashboardNET\\MansionDashboardNET.csproj",
       "projectName": "MansionDashboardNET",
-      "projectPath": "C:\\Users\\rwojda\\Documents\\GitHub\\mansion_house\\web\\MansionDashboardNET\\MansionDashboardNET\\MansionDashboardNET.csproj",
-      "outputPath": "C:\\Users\\rwojda\\Documents\\GitHub\\mansion_house\\web\\MansionDashboardNET\\MansionDashboardNET\\obj\\",
+      "projectPath": "C:\\Github\\src\\web\\MansionDashboardNET\\MansionDashboardNET\\MansionDashboardNET.csproj",
+      "outputPath": "C:\\Github\\src\\web\\MansionDashboardNET\\MansionDashboardNET\\obj\\",
       "projectStyle": "PackageReference",
       "originalTargetFrameworks": [
         "netcoreapp1.1"
@@ -11418,8 +11418,8 @@
       "frameworks": {
         "netcoreapp1.1": {
           "projectReferences": {
-            "C:\\Users\\rwojda\\Documents\\GitHub\\mansion_house\\web\\MansionDashboardNET\\Mansion.Core.User\\Mansion.Core.User.csproj": {
-              "projectPath": "C:\\Users\\rwojda\\Documents\\GitHub\\mansion_house\\web\\MansionDashboardNET\\Mansion.Core.User\\Mansion.Core.User.csproj"
+            "C:\\Github\\src\\web\\MansionDashboardNET\\Mansion.Core.User\\Mansion.Core.User.csproj": {
+              "projectPath": "C:\\Github\\src\\web\\MansionDashboardNET\\Mansion.Core.User\\Mansion.Core.User.csproj"
             }
           }
         }

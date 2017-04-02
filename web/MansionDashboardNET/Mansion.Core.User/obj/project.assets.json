@@ -7075,15 +7075,15 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\rwojda\\.nuget\\packages\\": {}
+    "C:\\Users\\Robert\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rwojda\\Documents\\GitHub\\mansion_house\\web\\MansionDashboardNET\\Mansion.Core.User\\Mansion.Core.User.csproj",
+      "projectUniqueName": "C:\\Github\\src\\web\\MansionDashboardNET\\Mansion.Core.User\\Mansion.Core.User.csproj",
       "projectName": "Mansion.Core.User",
-      "projectPath": "C:\\Users\\rwojda\\Documents\\GitHub\\mansion_house\\web\\MansionDashboardNET\\Mansion.Core.User\\Mansion.Core.User.csproj",
-      "outputPath": "C:\\Users\\rwojda\\Documents\\GitHub\\mansion_house\\web\\MansionDashboardNET\\Mansion.Core.User\\obj\\",
+      "projectPath": "C:\\Github\\src\\web\\MansionDashboardNET\\Mansion.Core.User\\Mansion.Core.User.csproj",
+      "outputPath": "C:\\Github\\src\\web\\MansionDashboardNET\\Mansion.Core.User\\obj\\",
       "projectStyle": "PackageReference",
       "originalTargetFrameworks": [
         "netcoreapp1.1"

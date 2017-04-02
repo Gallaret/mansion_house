@@ -38,7 +38,12 @@ var UsersBox = React.createClass({
                     <LeftPanel styles={styles} />
                     <RightPanel styles={styles} />
                     <footer>
-                        Powered by ReactJS
+                        <section className={styles.footerSection}>Powered By: <br />
+                            <img src="/images/react.png" height="80px" style={{ marginRight: '15px' }} />
+                            <img src="/images/bootstrap.png" height="80px" style={{ marginRight: '15px' }} />
+                            <img src="/images/aspnetcore.png" height="60px" style={{ marginRight: '15px' }} />
+                        </section>
+                      
                     </footer>
                 </div>
             </div>

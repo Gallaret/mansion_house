@@ -13,10 +13,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="wwwroot\images\aspnetcore.png" />
+    <Content Include="wwwroot\images\bootstrap.png" />
     <Content Include="wwwroot\images\default-avatar.png" />
     <Content Include="wwwroot\images\printer.png" />
     <Content Include="wwwroot\images\projector.png" />
     <Content Include="wwwroot\images\ps4.png" />
+    <Content Include="wwwroot\images\react.png" />
     <Content Include="wwwroot\images\speaker.png" />
     <Content Include="wwwroot\images\tv.png" />
   </ItemGroup>
