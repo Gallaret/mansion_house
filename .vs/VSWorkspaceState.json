@@ -1,9 +1,12 @@
 {
   "ExpandedNodes": [
     "",
+    "\\api",
+    "\\core",
+    "\\services",
     "\\web",
-    "\\web\\MansionDashboardNET"
+    "\\web\\Smart.House.Dashboard"
   ],
-  "SelectedNode": "\\web\\MansionDashboardNET\\MansionDashboardNET.sln",
+  "SelectedNode": "\\web\\Smart.House.Web.sln",
   "PreviewInSolutionExplorer": false
 }
