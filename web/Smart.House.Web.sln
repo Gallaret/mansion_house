@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.12
+VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Dashboard", "Smart.House.Dashboard\Smart.House.Dashboard.csproj", "{F288721E-98E9-438C-8B40-56F6C84F625F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Domain", "..\core\Smart.House.Core\Smart.House.Domain\Smart.House.Domain.csproj", "{FDD0D7D0-1695-4CAB-B93E-B0185C4CB6D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{F288721E-98E9-438C-8B40-56F6C84F625F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F288721E-98E9-438C-8B40-56F6C84F625F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F288721E-98E9-438C-8B40-56F6C84F625F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDD0D7D0-1695-4CAB-B93E-B0185C4CB6D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDD0D7D0-1695-4CAB-B93E-B0185C4CB6D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDD0D7D0-1695-4CAB-B93E-B0185C4CB6D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDD0D7D0-1695-4CAB-B93E-B0185C4CB6D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

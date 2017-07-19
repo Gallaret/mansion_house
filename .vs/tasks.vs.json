@@ -5,6 +5,11 @@
       "taskName": "task-MansionHouseNET",
       "appliesTo": "web/MansionHouseNET/MansionHouseNET.csproj",
       "type": "command"
+    },
+    {
+      "taskName": "zadanie-core",
+      "appliesTo": "core/",
+      "type": "command"
     }
   ]
 }

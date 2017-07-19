@@ -5,16 +5,14 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
 using React.AspNet;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using SimpleInjector;
 using SimpleInjector.Integration.AspNetCore;
 using SimpleInjector.Integration.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewComponents;
-using Mansion.Core.User.Services;
+using Smart.House.Domain.Services;
 
-namespace MansionDashboardNET
+namespace Smart.House.Dashboard
 {
     public class Startup
     {
@@ -45,10 +43,8 @@ namespace MansionDashboardNET
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddReact();
             services.AddMvc();
-
             services.AddSingleton<IControllerActivator>(new SimpleInjectorControllerActivator(container));
             services.AddSingleton<IViewComponentActivator>(new SimpleInjectorViewComponentActivator(container));
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

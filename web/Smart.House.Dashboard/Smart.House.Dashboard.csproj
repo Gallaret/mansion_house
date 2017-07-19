@@ -50,6 +50,9 @@
   <ItemGroup>
     <Folder Include="App\components\left\storage\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\core\Smart.House.Core\Smart.House.Domain\Smart.House.Domain.csproj" />
+  </ItemGroup>
   <ProjectExtensions><VisualStudio><UserProperties package_1json__JSONSchema="" /></VisualStudio></ProjectExtensions>
 
 </Project>

@@ -4449,6 +4449,13 @@
         "runtime": {
           "lib/netstandard1.6/VroomJs.dll": {}
         }
+      },
+      "Smart.House.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v1.1",
+        "dependencies": {
+          "Microsoft.NETCore.App": "1.1.2"
+        }
       }
     }
   },
@@ -11318,6 +11325,11 @@
         "vroomjs.1.2.3.nupkg.sha512",
         "vroomjs.nuspec"
       ]
+    },
+    "Smart.House.Domain/1.0.0": {
+      "type": "project",
+      "path": "../../core/Smart.House.Core/Smart.House.Domain/Smart.House.Domain.csproj",
+      "msbuildProject": "../../core/Smart.House.Core/Smart.House.Domain/Smart.House.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -11339,7 +11351,8 @@
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 1.1.1",
       "React.AspNet >= 3.0.1",
       "SimpleInjector.Integration.AspNetCore >= 4.0.8",
-      "SimpleInjector.Integration.AspNetCore.Mvc >= 4.0.8"
+      "SimpleInjector.Integration.AspNetCore.Mvc >= 4.0.8",
+      "Smart.House.Domain >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -11358,7 +11371,11 @@
       ],
       "frameworks": {
         "netcoreapp1.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\core\\Smart.House.Core\\Smart.House.Domain\\Smart.House.Domain.csproj": {
+              "projectPath": "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\core\\Smart.House.Core\\Smart.House.Domain\\Smart.House.Domain.csproj"
+            }
+          }
         }
       }
     },

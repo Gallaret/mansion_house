@@ -1,0 +1,11 @@
+C:\Users\Robert Wojda\Source\Repos\mansion_house\web\Smart.House.Dashboard\bin\Release\netcoreapp1.1\Smart.House.Dashboard.deps.json
+C:\Users\Robert Wojda\Source\Repos\mansion_house\web\Smart.House.Dashboard\bin\Release\netcoreapp1.1\Smart.House.Dashboard.runtimeconfig.json
+C:\Users\Robert Wojda\Source\Repos\mansion_house\web\Smart.House.Dashboard\bin\Release\netcoreapp1.1\Smart.House.Dashboard.runtimeconfig.dev.json
+C:\Users\Robert Wojda\Source\Repos\mansion_house\web\Smart.House.Dashboard\bin\Release\netcoreapp1.1\Smart.House.Dashboard.dll
+C:\Users\Robert Wojda\Source\Repos\mansion_house\web\Smart.House.Dashboard\bin\Release\netcoreapp1.1\Smart.House.Dashboard.pdb
+C:\Users\Robert Wojda\Source\Repos\mansion_house\web\Smart.House.Dashboard\bin\Release\netcoreapp1.1\Smart.House.Domain.dll
+C:\Users\Robert Wojda\Source\Repos\mansion_house\web\Smart.House.Dashboard\bin\Release\netcoreapp1.1\Smart.House.Domain.pdb
+C:\Users\Robert Wojda\Source\Repos\mansion_house\web\Smart.House.Dashboard\obj\Release\netcoreapp1.1\UserSecretsAssemblyInfo.cs
+C:\Users\Robert Wojda\Source\Repos\mansion_house\web\Smart.House.Dashboard\obj\Release\netcoreapp1.1\Smart.House.Dashboard.AssemblyInfo.cs
+C:\Users\Robert Wojda\Source\Repos\mansion_house\web\Smart.House.Dashboard\obj\Release\netcoreapp1.1\Smart.House.Dashboard.dll
+C:\Users\Robert Wojda\Source\Repos\mansion_house\web\Smart.House.Dashboard\obj\Release\netcoreapp1.1\Smart.House.Dashboard.pdb

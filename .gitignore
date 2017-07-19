@@ -52,3 +52,6 @@ Temporary Items
 /web/MansionDashboardNET/MansionDashboardNET/bin/*
 /web/MansionDashboardNET/MansionDashboardNET/obj/*
 /web/MansionDashboardNET/.vs/*
+/core/Lib
+/core/Smart.House.Core/Smart.House.Domain/bin
+/core/Smart.House.Core/Smart.House.Domain/obj
