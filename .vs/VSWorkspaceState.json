@@ -1,9 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\core",
+    "\\api",
     "\\web"
   ],
-  "SelectedNode": "\\core",
+  "SelectedNode": "\\api",
   "PreviewInSolutionExplorer": false
 }

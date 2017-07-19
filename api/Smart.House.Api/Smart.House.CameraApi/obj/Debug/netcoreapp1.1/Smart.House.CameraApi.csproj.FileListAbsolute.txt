@@ -1,0 +1,9 @@
+C:\Users\Robert Wojda\Source\Repos\mansion_house\api\Smart.House.Api\Smart.House.CameraApi\bin\Debug\netcoreapp1.1\Smart.House.CameraApi.deps.json
+C:\Users\Robert Wojda\Source\Repos\mansion_house\api\Smart.House.Api\Smart.House.CameraApi\bin\Debug\netcoreapp1.1\Smart.House.CameraApi.runtimeconfig.json
+C:\Users\Robert Wojda\Source\Repos\mansion_house\api\Smart.House.Api\Smart.House.CameraApi\bin\Debug\netcoreapp1.1\Smart.House.CameraApi.runtimeconfig.dev.json
+C:\Users\Robert Wojda\Source\Repos\mansion_house\api\Smart.House.Api\Smart.House.CameraApi\bin\Debug\netcoreapp1.1\Smart.House.CameraApi.dll
+C:\Users\Robert Wojda\Source\Repos\mansion_house\api\Smart.House.Api\Smart.House.CameraApi\bin\Debug\netcoreapp1.1\Smart.House.CameraApi.pdb
+C:\Users\Robert Wojda\Source\Repos\mansion_house\api\Smart.House.Api\Smart.House.CameraApi\obj\Debug\netcoreapp1.1\Smart.House.CameraApi.csprojResolveAssemblyReference.cache
+C:\Users\Robert Wojda\Source\Repos\mansion_house\api\Smart.House.Api\Smart.House.CameraApi\obj\Debug\netcoreapp1.1\Smart.House.CameraApi.AssemblyInfo.cs
+C:\Users\Robert Wojda\Source\Repos\mansion_house\api\Smart.House.Api\Smart.House.CameraApi\obj\Debug\netcoreapp1.1\Smart.House.CameraApi.dll
+C:\Users\Robert Wojda\Source\Repos\mansion_house\api\Smart.House.Api\Smart.House.CameraApi\obj\Debug\netcoreapp1.1\Smart.House.CameraApi.pdb
