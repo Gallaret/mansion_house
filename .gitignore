@@ -45,13 +45,13 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
-/web/MansionDashboardNET/MansionDashboardNET/node_modules
-/web/MansionDashboardNET/node_modules
-/web/MansionDashboardNET/Mansion.Core.User/bin/*
-/web/MansionDashboardNET/Mansion.Core.User/obj/*
-/web/MansionDashboardNET/MansionDashboardNET/bin/*
-/web/MansionDashboardNET/MansionDashboardNET/obj/*
-/web/MansionDashboardNET/.vs/*
+/web/Smart.House.Dashboard/node_modules
+/web/Smart.House.Dashboard/node_modules/bin
+/web/Smart.House.Dashboard/bin/*
+/web/Smart.House.Dashboard/obj/*
+/web/Smart.House.Dashboard/.vs/*
 /core/Lib
 /core/Smart.House.Core/Smart.House.Domain/bin
 /core/Smart.House.Core/Smart.House.Domain/obj
+/api/Smart.House.Api/Smart.House.CameraApi/bin/Debug/netcoreapp1.1
+/api/Smart.House.Api/Smart.House.CameraApi/obj

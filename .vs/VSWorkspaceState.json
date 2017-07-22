@@ -2,6 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\api",
+    "\\api\\Smart.House.Api",
+    "\\core",
+    "\\core\\Smart.House.Core",
+    "\\services",
     "\\web"
   ],
   "SelectedNode": "\\api",

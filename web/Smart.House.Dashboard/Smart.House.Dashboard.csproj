@@ -2,6 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp1.1</TargetFramework>
+    <PreserveCompilationContext>true</PreserveCompilationContext>
+    <UserSecretsId>Rodos-Secrets</UserSecretsId>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TypescriptCompileBlocked>true</TypescriptCompileBlocked>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -49,6 +53,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App\components\left\storage\" />
+    <Folder Include="App\dist\" />
+    <Folder Include="App\types\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\core\Smart.House.Core\Smart.House.Domain\Smart.House.Domain.csproj" />

@@ -1,25 +1,19 @@
-﻿@model Smart.House.Domain.User
-@{
-    Layout = null;
+﻿@{
+    ViewData["Title"] = "Home Page";
 }
-<html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hello React</title>
-    <link href="~/css/dashboard.css" rel="stylesheet" />
-    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script> 
-</head>
-<body>
-    @Html.React("Components.UsersBox", new
-    {
-        initialData = Model
-        //url = Url.Action("Users")
-    })
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react-dom.js"></script>
-    <script src="@Url.Content("~/js/client.bundle.js")"></script>
-    @Html.ReactInitJavaScript()
-</body>
-</html>
+@* Save the request token in a div. CORS needs to make sure this token can't be read by javascript from other sources than ours *@
+@*<div id="xsrf-token" data-xsrf-token="@ViewBag.AntiForgeryRequestToken"></div>
+<div id="access-token" data-access-token="@ViewBag.accessToken"></div>*@
+<environment names="Development">
+    <div id="react-app" asp-prerender-module="App/dist/main-server" asp-prerender-data=data>Loading...</div>
+</environment>
+<environment names="Staging,Production">
+    <cache expires-after="@TimeSpan.FromMinutes(10)" vary-by-user="true" vary-by="@this.Context.Request.Path">
+        <div id="react-app" asp-prerender-module="App/dist/main-server" asp-prerender-data=data>Loading...</div>
+    </cache>
+</environment>
+
+@section scripts {
+    <script src="~/vendor.js" asp-append-version="true"></script>
+    <script src="~/main-client.js" asp-append-version="true"></script>
+}
