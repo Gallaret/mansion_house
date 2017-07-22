@@ -1,0 +1,8 @@
+C:\Users\Robert Wojda\Source\Repos\mansion_house\web\Smart.House.Dashboard\App\boot-client.jsx
+C:\Users\Robert Wojda\Source\Repos\mansion_house\web\Smart.House.Dashboard\App\boot-client.jsx.map
+C:\Users\Robert Wojda\Source\Repos\mansion_house\web\Smart.House.Dashboard\App\boot-server.jsx
+C:\Users\Robert Wojda\Source\Repos\mansion_house\web\Smart.House.Dashboard\App\boot-server.jsx.map
+C:\Users\Robert Wojda\Source\Repos\mansion_house\web\Smart.House.Dashboard\App\boot-client.jsx
+C:\Users\Robert Wojda\Source\Repos\mansion_house\web\Smart.House.Dashboard\App\boot-client.jsx.map
+C:\Users\Robert Wojda\Source\Repos\mansion_house\web\Smart.House.Dashboard\App\boot-server.jsx
+C:\Users\Robert Wojda\Source\Repos\mansion_house\web\Smart.House.Dashboard\App\boot-server.jsx.map
