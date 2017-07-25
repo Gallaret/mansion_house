@@ -8,7 +8,7 @@ C:\Users\Robert Wojda\Source\Repos\mansion_house\web\Smart.House.Dashboard\bin\D
 C:\Users\Robert Wojda\Source\Repos\mansion_house\web\Smart.House.Dashboard\bin\Debug\netcoreapp1.1\Smart.House.Domain.pdb
 C:\Users\Robert Wojda\Source\Repos\mansion_house\web\Smart.House.Dashboard\obj\Debug\netcoreapp1.1\Smart.House.Dashboard.csprojResolveAssemblyReference.cache
 C:\Users\Robert Wojda\Source\Repos\mansion_house\web\Smart.House.Dashboard\obj\Debug\netcoreapp1.1\Smart.House.Dashboard.csproj.Smart.House.Dashboard.dll.config
-C:\Users\Robert Wojda\Source\Repos\mansion_house\web\Smart.House.Dashboard\obj\Debug\netcoreapp1.1\UserSecretsAssemblyInfo.cs
 C:\Users\Robert Wojda\Source\Repos\mansion_house\web\Smart.House.Dashboard\obj\Debug\netcoreapp1.1\Smart.House.Dashboard.AssemblyInfo.cs
 C:\Users\Robert Wojda\Source\Repos\mansion_house\web\Smart.House.Dashboard\obj\Debug\netcoreapp1.1\Smart.House.Dashboard.dll
 C:\Users\Robert Wojda\Source\Repos\mansion_house\web\Smart.House.Dashboard\obj\Debug\netcoreapp1.1\Smart.House.Dashboard.pdb
+C:\Users\Robert Wojda\Source\Repos\mansion_house\web\Smart.House.Dashboard\obj\Debug\netcoreapp1.1\UserSecretsAssemblyInfo.cs

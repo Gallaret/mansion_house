@@ -41,7 +41,6 @@ namespace Smart.House.Dashboard
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddReact();
             services.AddMvc();
             services.AddSingleton<IControllerActivator>(new SimpleInjectorControllerActivator(container));
             services.AddSingleton<IViewComponentActivator>(new SimpleInjectorViewComponentActivator(container));
@@ -70,28 +69,28 @@ namespace Smart.House.Dashboard
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-            app.UseReact(config =>
-            {
-                // If you want to use server-side rendering of React components,
-                // add all the necessary JavaScript files here. This includes
-                // your components as well as all of their dependencies.
-                // See http://reactjs.net/ for more information. Example:
-                //config
-                //  .AddScript("~/js/remarkable.min.js")
-                //  .AddScript("~/js/components/header/notificationBar.jsx")
-                //  .AddScript("~/js/tutorial.jsx").SetJsonSerializerSettings(new JsonSerializerSettings
-                //  {
-                //      StringEscapeHandling = StringEscapeHandling.EscapeHtml, 
-                //      ContractResolver = new CamelCasePropertyNamesContractResolver()
-                //  });
-                //// If you use an external build too (for example, Babel, Webpack,
-                //// Browserify or Gulp), you can improve performance by disabling
-                //// ReactJS.NET's version of Babel and loading the pre-transpiled
-                //// scripts. Example:
-                config
-                  .SetLoadBabel(false)
-                  .AddScriptWithoutTransform("~/js/server.bundle.js");
-            });
+            //app.UseReact(config =>
+            //{
+            //    // If you want to use server-side rendering of React components,
+            //    // add all the necessary JavaScript files here. This includes
+            //    // your components as well as all of their dependencies.
+            //    // See http://reactjs.net/ for more information. Example:
+            //    //config
+            //    //  .AddScript("~/js/remarkable.min.js")
+            //    //  .AddScript("~/js/components/header/notificationBar.jsx")
+            //    //  .AddScript("~/js/tutorial.jsx").SetJsonSerializerSettings(new JsonSerializerSettings
+            //    //  {
+            //    //      StringEscapeHandling = StringEscapeHandling.EscapeHtml, 
+            //    //      ContractResolver = new CamelCasePropertyNamesContractResolver()
+            //    //  });
+            //    //// If you use an external build too (for example, Babel, Webpack,
+            //    //// Browserify or Gulp), you can improve performance by disabling
+            //    //// ReactJS.NET's version of Babel and loading the pre-transpiled
+            //    //// scripts. Example:
+            //    config
+            //      .SetLoadBabel(false)
+            //      .AddScriptWithoutTransform("~/js/server.bundle.js");
+            //});
             app.UseStaticFiles();
 
             // Add external authentication middleware below. To configure them please see https://go.microsoft.com/fwlink/?LinkID=532715
@@ -101,6 +100,10 @@ namespace Smart.House.Dashboard
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+
+                routes.MapSpaFallbackRoute(
+                    name: "spa-fallback",
+                    defaults: new { controller = "Home", action = "Index" });
             });
         }
 

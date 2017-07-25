@@ -1,5 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    dynamic data = new { user = "Robert" };
 }
 @* Save the request token in a div. CORS needs to make sure this token can't be read by javascript from other sources than ours *@
 @*<div id="xsrf-token" data-xsrf-token="@ViewBag.AntiForgeryRequestToken"></div>

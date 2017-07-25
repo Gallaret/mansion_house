@@ -50,6 +50,7 @@ Temporary Items
 /web/Smart.House.Dashboard/bin/*
 /web/Smart.House.Dashboard/obj/*
 /web/Smart.House.Dashboard/.vs/*
+/web/Smart.House.Dashboard/wwwroot/*
 /core/Lib
 /core/Smart.House.Core/Smart.House.Domain/bin
 /core/Smart.House.Core/Smart.House.Domain/obj
