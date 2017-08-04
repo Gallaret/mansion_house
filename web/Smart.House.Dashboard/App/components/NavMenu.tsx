@@ -11,11 +11,8 @@ interface NavMenuProps {
     isAuthenticated: boolean;
     roles: string[];
 }
-
-interface NavMenuState {
-}
-
-class NavMenu extends React.Component<NavMenuProps, NavMenuState> {
+ 
+class NavMenu extends React.Component<NavMenuProps, ApplicationState> {
     public render() {
         return <Navbar fixedTop={true}>
             <Navbar.Header>
@@ -55,7 +52,7 @@ class NavMenu extends React.Component<NavMenuProps, NavMenuState> {
 
 export default connect(
     (state: ApplicationState) => {
-        return { isAuthenticated: true, roles: [] };
+        return { isAuthenticated: false, roles: [] };
     }, // Selects which state properties are merged into the component's props
     {} // Selects which action creators are merged into the component's props
 )(NavMenu);

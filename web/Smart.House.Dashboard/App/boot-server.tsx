@@ -6,12 +6,14 @@ import createMemoryHistory from 'history/lib/createMemoryHistory';
 import { createServerRenderer, RenderResult } from 'aspnet-prerendering';
 import routes from './routes';
 import configureStore from './configureStore';
+import { INIT_CAMERAS_REQUEST } from './store/camera'
+import { CameraModel } from './models/cameraModel';
 
 export default createServerRenderer(params => {
     return new Promise<RenderResult>((resolve, reject) => {
         // Match the incoming request against the list of client-side routes
         match({ routes, location: params.location }, (error, redirectLocation, renderProps: any) => {
-             if (error) {
+            if (error) {
                 throw error;
             }
 
@@ -23,11 +25,26 @@ export default createServerRenderer(params => {
 
             // If it didn't match any route, renderProps will be undefined
             if (!renderProps) {
-                throw new Error(`The location '${ params.url }' doesn't match any route configured in react-router.`);
+                throw new Error(`The location '${params.url}' doesn't match any route configured in react-router.`);
             }
 
+            let Cameras = ([] as CameraModel[]);
+            Cameras.push({
+                name: 'dupa2',
+                url: 'http://192.168.0.234/image/jpeg.cgi',
+                id: 1,
+                isActive: false
+            });
+            Cameras.push({
+                name: 'dupa3',
+                url: 'http://192.168.0.234/image/jpeg.cgi',
+                id: 2,
+                isActive: false
+            });
+
             const store = configureStore();
-            
+            store.dispatch({ type: INIT_CAMERAS_REQUEST, payload: Cameras });
+
             const app = (
                 <Provider store={store}>
                     <RouterContext {...renderProps} />

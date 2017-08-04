@@ -2,12 +2,14 @@
 import * as Scroll from 'react-scroll';
 import ScrollEffect from '../lib/scroll-effect';
 import Fullscreen from '../lib/fullscreen';
+import CameraList from './devices/camera/CameraList';
 
 export default class Home extends React.Component<{}, {}> {
     public render() {
         return <div className="container-fluid">
-            <Fullscreen>
+            <Fullscreen>           
                 <div className="row" id="hero">
+                    <CameraList />
                     <div className="container">
                         <div id="tagline">
                             <ScrollEffect animate="bounceIn">

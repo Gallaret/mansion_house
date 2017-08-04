@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v1.1",
-    "signature": "21d3bd656fc11e169e2f42925ca72420623f289d"
+    "signature": "e2af3e37b5892ae35ce69724d87ba7318fff85ff"
   },
   "compilationOptions": {
     "defines": [
@@ -23,6 +23,7 @@
     ".NETCoreApp,Version=v1.1": {
       "smart.house.dashboard/1.0.0": {
         "dependencies": {
+          "FluentFTP": "17.6.1",
           "Microsoft.ApplicationInsights.AspNetCore": "2.0.0",
           "Microsoft.AspNetCore": "1.1.2",
           "Microsoft.AspNetCore.Authentication.Cookies": "1.1.2",
@@ -49,6 +50,24 @@
         },
         "compile": {
           "Smart.House.Dashboard.dll": {}
+        }
+      },
+      "fluentftp/17.6.1": {
+        "dependencies": {
+          "System.Collections": "4.3.0",
+          "System.IO": "4.3.0",
+          "System.Net.NameResolution": "4.3.0",
+          "System.Net.Security": "4.3.1",
+          "System.Net.Sockets": "4.3.0",
+          "System.Runtime": "4.3.0",
+          "System.Threading.Tasks": "4.3.0",
+          "System.Threading.Thread": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard1.6/FluentFTP.dll": {}
+        },
+        "compile": {
+          "lib/netstandard1.6/FluentFTP.dll": {}
         }
       },
       "javascriptengineswitcher.chakracore/2.3.2": {
@@ -3809,6 +3828,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "fluentftp/17.6.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7/whFWLg0F0HSvYwoVVUqeEkDF6xNbeoY4R7mP6m0kNm+nfYC9F2lWZGF9pXhjLUWaG7yKe93XJzW/HLi7rvxA==",
+      "path": "fluentftp/17.6.1",
+      "hashPath": "fluentftp.17.6.1.nupkg.sha512"
     },
     "javascriptengineswitcher.chakracore/2.3.2": {
       "type": "package",

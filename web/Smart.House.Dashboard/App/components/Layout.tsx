@@ -14,7 +14,7 @@ export class Layout extends React.Component<LayoutProps, LayoutStates> {
     public render() {
         return <div>
             <NavMenu />
-            <RouteTransition pathname={typeof window !== 'undefined' ? window.location.pathname : ''} >
+            <RouteTransition pathname={typeof window !== 'undefined' ? window.location.pathname : ''}>
                 {this.props.body}
             </RouteTransition>
         </div>;

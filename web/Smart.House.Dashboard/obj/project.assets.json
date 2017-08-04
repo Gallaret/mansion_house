@@ -2,6 +2,25 @@
   "version": 2,
   "targets": {
     ".NETCoreApp,Version=v1.1": {
+      "FluentFTP/17.6.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.3.0",
+          "System.IO": "4.3.0",
+          "System.Net.NameResolution": "4.3.0",
+          "System.Net.Security": "4.3.0",
+          "System.Net.Sockets": "4.3.0",
+          "System.Runtime": "4.3.0",
+          "System.Threading.Tasks": "4.3.0",
+          "System.Threading.Thread": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard1.6/FluentFTP.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.6/FluentFTP.dll": {}
+        }
+      },
       "JavaScriptEngineSwitcher.ChakraCore/2.3.2": {
         "type": "package",
         "dependencies": {
@@ -4512,6 +4531,29 @@
     }
   },
   "libraries": {
+    "FluentFTP/17.6.1": {
+      "sha512": "7/whFWLg0F0HSvYwoVVUqeEkDF6xNbeoY4R7mP6m0kNm+nfYC9F2lWZGF9pXhjLUWaG7yKe93XJzW/HLi7rvxA==",
+      "type": "package",
+      "path": "fluentftp/17.6.1",
+      "files": [
+        "fluentftp.17.6.1.nupkg.sha512",
+        "fluentftp.nuspec",
+        "lib/dnxcore50/FluentFTP.deps.json",
+        "lib/dnxcore50/FluentFTP.dll",
+        "lib/net20/FluentFTP.dll",
+        "lib/net20/FluentFTP.xml",
+        "lib/net35/FluentFTP.dll",
+        "lib/net35/FluentFTP.xml",
+        "lib/net40/FluentFTP.dll",
+        "lib/net40/FluentFTP.xml",
+        "lib/net45/FluentFTP.dll",
+        "lib/net45/FluentFTP.xml",
+        "lib/netstandard1.4/FluentFTP.deps.json",
+        "lib/netstandard1.4/FluentFTP.dll",
+        "lib/netstandard1.6/FluentFTP.deps.json",
+        "lib/netstandard1.6/FluentFTP.dll"
+      ]
+    },
     "JavaScriptEngineSwitcher.ChakraCore/2.3.2": {
       "sha512": "B09+pwvPB57y6bBoIXqk96u/b+vCHn5cul1teBI+LpSGoVEnqEf7ijM5lUZAJSxGzg4SCm3/S7qPK4hxmsXcfw==",
       "type": "package",
@@ -11435,6 +11477,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v1.1": [
+      "FluentFTP >= 17.6.1",
       "Microsoft.ApplicationInsights.AspNetCore >= 2.0.0",
       "Microsoft.AspNetCore >= 1.1.2",
       "Microsoft.AspNetCore.Authentication.Cookies >= 1.1.2",
@@ -11495,6 +11538,10 @@
           "Microsoft.Extensions.Logging.Debug": {
             "target": "Package",
             "version": "1.1.2"
+          },
+          "FluentFTP": {
+            "target": "Package",
+            "version": "17.6.1"
           },
           "Microsoft.EntityFrameworkCore.Tools": {
             "suppressParent": "All",

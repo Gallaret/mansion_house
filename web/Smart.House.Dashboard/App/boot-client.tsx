@@ -10,9 +10,8 @@ import { ApplicationState } from './store';
 import configureStore from './configureStore';
 
 const initialState = (window as any).initialReduxState as ApplicationState;
-const history = syncHistoryWithStore(browserHistory, store);
-
 var store = configureStore(initialState)
+const history = syncHistoryWithStore(browserHistory, store);
 
 ReactDOM.render(
     <Provider store={store}>
