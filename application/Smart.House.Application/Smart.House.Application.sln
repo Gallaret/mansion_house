@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smart.House.Commands", "Smart.House.Commands\Smart.House.Commands.csproj", "{AA83EACE-81BC-4D12-8B40-0A07431D5726}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Commands", "Smart.House.Commands\Smart.House.Commands.csproj", "{AA83EACE-81BC-4D12-8B40-0A07431D5726}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smart.House.Application", "Smart.House.Application\Smart.House.Application.csproj", "{18CFE5BD-523D-4CD1-B497-265AB9D90FCC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Application", "Smart.House.Application\Smart.House.Application.csproj", "{18CFE5BD-523D-4CD1-B497-265AB9D90FCC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Domain", "..\..\core\Smart.House.Core\Smart.House.Domain\Smart.House.Domain.csproj", "{9734E024-952D-4D42-8DC4-CA78EF278BEC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{18CFE5BD-523D-4CD1-B497-265AB9D90FCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18CFE5BD-523D-4CD1-B497-265AB9D90FCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18CFE5BD-523D-4CD1-B497-265AB9D90FCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9734E024-952D-4D42-8DC4-CA78EF278BEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9734E024-952D-4D42-8DC4-CA78EF278BEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9734E024-952D-4D42-8DC4-CA78EF278BEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9734E024-952D-4D42-8DC4-CA78EF278BEC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

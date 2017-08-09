@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp1.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\core\Smart.House.Core\Smart.House.Domain\Smart.House.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

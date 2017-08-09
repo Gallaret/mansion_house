@@ -2271,6 +2271,14 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v1.1",
         "dependencies": {
+          "Microsoft.NETCore.App": "1.1.2",
+          "Smart.House.Domain": "1.0.0"
+        }
+      },
+      "Smart.House.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v1.1",
+        "dependencies": {
           "Microsoft.NETCore.App": "1.1.2"
         }
       }
@@ -7041,6 +7049,11 @@
       "type": "project",
       "path": "../Smart.House.Application/Smart.House.Application.csproj",
       "msbuildProject": "../Smart.House.Application/Smart.House.Application.csproj"
+    },
+    "Smart.House.Domain/1.0.0": {
+      "type": "project",
+      "path": "../../../core/Smart.House.Core/Smart.House.Domain/Smart.House.Domain.csproj",
+      "msbuildProject": "../../../core/Smart.House.Core/Smart.House.Domain/Smart.House.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {

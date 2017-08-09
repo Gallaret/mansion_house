@@ -5,8 +5,9 @@
     "\\api\\Smart.House.Api",
     "\\application",
     "\\core",
+    "\\core\\Smart.House.Core",
     "\\services"
   ],
-  "SelectedNode": "\\application",
+  "SelectedNode": "\\core\\Smart.House.Core\\Smart.House.Core.sln",
   "PreviewInSolutionExplorer": false
 }

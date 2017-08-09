@@ -56,3 +56,9 @@ Temporary Items
 /core/Smart.House.Core/Smart.House.Domain/obj
 /api/Smart.House.Api/Smart.House.CameraApi/bin/Debug/netcoreapp1.1
 /api/Smart.House.Api/Smart.House.CameraApi/obj
+/application/Smart.House.Application/Smart.House.Application/obj/Debug/netcoreapp1.1
+/application/Smart.House.Application/Smart.House.Application/obj
+/application/Smart.House.Application/Smart.House.Commands/obj
+/application/Smart.House.Application/Smart.House.Application/bin/Debug/netcoreapp1.1
+/application/Smart.House.Application/Smart.House.Commands/bin/Debug/netcoreapp1.1
+/application/Smart.House.Application/Smart.House.Application/bin/Debug/netcoreapp1.1

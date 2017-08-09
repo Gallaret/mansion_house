@@ -1,4 +1,5 @@
-﻿using Smart.House.Application.Services;
+﻿using Smart.House.Application.Providers;
+using Smart.House.Application.Services;
 using Smart.House.Commands.Commands;
 using System;
 using System.Threading.Tasks;
@@ -9,7 +10,7 @@ namespace Smart.House.Commands.Handlers
     {
         private readonly IFtpClientService _ftpClientService;
 
-        public FetchCameraStatusHandler(IFtpClientService ftpClientService)
+        public FetchCameraStatusHandler(IFtpClientService ftpClientService, ICameraProvider provider)
         {
             _ftpClientService = ftpClientService;
         }
