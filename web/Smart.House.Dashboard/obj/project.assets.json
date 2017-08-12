@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "targets": {
     ".NETCoreApp,Version=v1.1": {
       "FluentFTP/17.6.1": {
@@ -2411,7 +2411,7 @@
           "lib/netstandard1.3/SimpleInjector.dll": {}
         }
       },
-      "SimpleInjector.Integration.AspNetCore/4.0.8": {
+      "SimpleInjector.Integration.AspNetCore/4.0.10": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.Hosting.Abstractions": "1.0.0",
@@ -2425,11 +2425,11 @@
           "lib/netstandard1.6/SimpleInjector.Integration.AspNetCore.dll": {}
         }
       },
-      "SimpleInjector.Integration.AspNetCore.Mvc/4.0.8": {
+      "SimpleInjector.Integration.AspNetCore.Mvc/4.0.10": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.Mvc.Razor": "1.0.0",
-          "SimpleInjector.Integration.AspNetCore.Mvc.Core": "4.0.8"
+          "SimpleInjector.Integration.AspNetCore.Mvc.Core": "4.0.10"
         },
         "compile": {
           "lib/netstandard1.6/SimpleInjector.Integration.AspNetCore.Mvc.dll": {}
@@ -2438,12 +2438,12 @@
           "lib/netstandard1.6/SimpleInjector.Integration.AspNetCore.Mvc.dll": {}
         }
       },
-      "SimpleInjector.Integration.AspNetCore.Mvc.Core/4.0.8": {
+      "SimpleInjector.Integration.AspNetCore.Mvc.Core/4.0.10": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.Mvc.Core": "1.0.0",
           "Microsoft.AspNetCore.Mvc.ViewFeatures": "1.0.0",
-          "SimpleInjector.Integration.AspNetCore": "4.0.8"
+          "SimpleInjector.Integration.AspNetCore": "4.0.10"
         },
         "compile": {
           "lib/netstandard1.6/SimpleInjector.Integration.AspNetCore.Mvc.Core.dll": {}
@@ -4526,6 +4526,29 @@
         "framework": ".NETCoreApp,Version=v1.1",
         "dependencies": {
           "Microsoft.NETCore.App": "1.1.2"
+        },
+        "compile": {
+          "bin/placeholder/Smart.House.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Smart.House.Domain.dll": {}
+        }
+      },
+      "Smart.House.EntityFramework/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v1.1",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "1.1.2",
+          "Microsoft.EntityFrameworkCore.SqlServer": "1.1.2",
+          "Microsoft.EntityFrameworkCore.Tools": "1.1.1",
+          "Microsoft.NETCore.App": "1.1.2",
+          "Smart.House.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Smart.House.EntityFramework.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Smart.House.EntityFramework.dll": {}
         }
       }
     }
@@ -6686,42 +6709,42 @@
         "simpleinjector.nuspec"
       ]
     },
-    "SimpleInjector.Integration.AspNetCore/4.0.8": {
-      "sha512": "mQkMWfHzDB6VbUs2KF245fRoWln2sf61PtJedtnOHUFfA9vKnVFnObDq2tmYzDwA+xq93+rRv8GdMNkqA4Xerw==",
+    "SimpleInjector.Integration.AspNetCore/4.0.10": {
+      "sha512": "4j81ECEp6619LZOuW1FBwF/2P6GjcebhfbKhvpn3eUxPlWeWSlgYoTS/f09N6kQIz2hvy9XKbiY975vER+3zug==",
       "type": "package",
-      "path": "simpleinjector.integration.aspnetcore/4.0.8",
+      "path": "simpleinjector.integration.aspnetcore/4.0.10",
       "files": [
         "lib/net451/SimpleInjector.Integration.AspNetCore.dll",
         "lib/net451/SimpleInjector.Integration.AspNetCore.xml",
         "lib/netstandard1.6/SimpleInjector.Integration.AspNetCore.dll",
         "lib/netstandard1.6/SimpleInjector.Integration.AspNetCore.xml",
-        "simpleinjector.integration.aspnetcore.4.0.8.nupkg.sha512",
+        "simpleinjector.integration.aspnetcore.4.0.10.nupkg.sha512",
         "simpleinjector.integration.aspnetcore.nuspec"
       ]
     },
-    "SimpleInjector.Integration.AspNetCore.Mvc/4.0.8": {
-      "sha512": "0QtxWf5nWi92ay0jHzn1EnBU2iJTE97KVdO+Zx4FTMIrtW8fCU2SKbquUmOgLzfMbzdqHk9a14T5XkjFOWkmyw==",
+    "SimpleInjector.Integration.AspNetCore.Mvc/4.0.10": {
+      "sha512": "e7ASDJrYsEwrtR8KybcY7hpy7Jwx7Bo1K6iL56tWij4yeMH8ILUDGZn1RuecEb0Ggp8VF14aTIgahyHHaxnxsQ==",
       "type": "package",
-      "path": "simpleinjector.integration.aspnetcore.mvc/4.0.8",
+      "path": "simpleinjector.integration.aspnetcore.mvc/4.0.10",
       "files": [
         "lib/net451/SimpleInjector.Integration.AspNetCore.Mvc.dll",
         "lib/net451/SimpleInjector.Integration.AspNetCore.Mvc.xml",
         "lib/netstandard1.6/SimpleInjector.Integration.AspNetCore.Mvc.dll",
         "lib/netstandard1.6/SimpleInjector.Integration.AspNetCore.Mvc.xml",
-        "simpleinjector.integration.aspnetcore.mvc.4.0.8.nupkg.sha512",
+        "simpleinjector.integration.aspnetcore.mvc.4.0.10.nupkg.sha512",
         "simpleinjector.integration.aspnetcore.mvc.nuspec"
       ]
     },
-    "SimpleInjector.Integration.AspNetCore.Mvc.Core/4.0.8": {
-      "sha512": "sVsbKC7uanAPwRyFHDx2IHeYb6p0ht0puc4y8dz+ZD6PqDGxTeJXtGJmtT3t3DGhEpWT/ZTxvLHAa78YLF76/Q==",
+    "SimpleInjector.Integration.AspNetCore.Mvc.Core/4.0.10": {
+      "sha512": "x+S7xOLGm6790QqcHu/aOrdxJV3bVy5h+8FQMRnRxYdcL3AS3kdgHsokp83rGwqC8WxQgmJ76wGGPokvMt00fw==",
       "type": "package",
-      "path": "simpleinjector.integration.aspnetcore.mvc.core/4.0.8",
+      "path": "simpleinjector.integration.aspnetcore.mvc.core/4.0.10",
       "files": [
         "lib/net451/SimpleInjector.Integration.AspNetCore.Mvc.Core.dll",
         "lib/net451/SimpleInjector.Integration.AspNetCore.Mvc.Core.xml",
         "lib/netstandard1.6/SimpleInjector.Integration.AspNetCore.Mvc.Core.dll",
         "lib/netstandard1.6/SimpleInjector.Integration.AspNetCore.Mvc.Core.xml",
-        "simpleinjector.integration.aspnetcore.mvc.core.4.0.8.nupkg.sha512",
+        "simpleinjector.integration.aspnetcore.mvc.core.4.0.10.nupkg.sha512",
         "simpleinjector.integration.aspnetcore.mvc.core.nuspec"
       ]
     },
@@ -11473,6 +11496,11 @@
       "type": "project",
       "path": "../../core/Smart.House.Core/Smart.House.Domain/Smart.House.Domain.csproj",
       "msbuildProject": "../../core/Smart.House.Core/Smart.House.Domain/Smart.House.Domain.csproj"
+    },
+    "Smart.House.EntityFramework/1.0.0": {
+      "type": "project",
+      "path": "../../infrastructure/Smart.House.Infrastructure/Smart.House.EntityFramework/Smart.House.EntityFramework.csproj",
+      "msbuildProject": "../../infrastructure/Smart.House.Infrastructure/Smart.House.EntityFramework/Smart.House.EntityFramework.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -11495,9 +11523,10 @@
       "Microsoft.VisualStudio.Web.BrowserLink >= 1.1.2",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 1.1.1",
       "React.AspNet >= 3.0.1",
-      "SimpleInjector.Integration.AspNetCore >= 4.0.8",
-      "SimpleInjector.Integration.AspNetCore.Mvc >= 4.0.8",
-      "Smart.House.Domain >= 1.0.0"
+      "SimpleInjector.Integration.AspNetCore >= 4.0.10",
+      "SimpleInjector.Integration.AspNetCore.Mvc >= 4.0.10",
+      "Smart.House.Domain >= 1.0.0",
+      "Smart.House.EntityFramework >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -11505,23 +11534,44 @@
   },
   "project": {
     "version": "1.0.0",
+    "restoreSettings": {
+      "hideWarningsAndErrors": true
+    },
     "restore": {
       "projectUniqueName": "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\web\\Smart.House.Dashboard\\Smart.House.Dashboard.csproj",
       "projectName": "Smart.House.Dashboard",
       "projectPath": "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\web\\Smart.House.Dashboard\\Smart.House.Dashboard.csproj",
+      "packagesPath": "C:\\Users\\Robert Wojda\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\web\\Smart.House.Dashboard\\obj\\",
       "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\Robert Wojda\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
       "originalTargetFrameworks": [
         "netcoreapp1.1"
       ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Users\\Robert Wojda\\.dotnet\\NuGetFallbackFolder": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
       "frameworks": {
         "netcoreapp1.1": {
           "projectReferences": {
             "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\core\\Smart.House.Core\\Smart.House.Domain\\Smart.House.Domain.csproj": {
               "projectPath": "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\core\\Smart.House.Core\\Smart.House.Domain\\Smart.House.Domain.csproj"
+            },
+            "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\infrastructure\\Smart.House.Infrastructure\\Smart.House.EntityFramework\\Smart.House.EntityFramework.csproj": {
+              "projectPath": "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\infrastructure\\Smart.House.Infrastructure\\Smart.House.EntityFramework\\Smart.House.EntityFramework.csproj"
             }
           }
         }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
       }
     },
     "frameworks": {
@@ -11544,7 +11594,6 @@
             "version": "17.6.1"
           },
           "Microsoft.EntityFrameworkCore.Tools": {
-            "suppressParent": "All",
             "target": "Package",
             "version": "1.1.1"
           },
@@ -11564,7 +11613,7 @@
           },
           "SimpleInjector.Integration.AspNetCore": {
             "target": "Package",
-            "version": "4.0.8"
+            "version": "4.0.10"
           },
           "Microsoft.NETCore.App": {
             "target": "Package",
@@ -11577,7 +11626,7 @@
           },
           "SimpleInjector.Integration.AspNetCore.Mvc": {
             "target": "Package",
-            "version": "4.0.8"
+            "version": "4.0.10"
           },
           "Microsoft.Extensions.Configuration.UserSecrets": {
             "target": "Package",

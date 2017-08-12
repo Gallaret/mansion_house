@@ -4,13 +4,17 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
-using React.AspNet;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using SimpleInjector;
 using SimpleInjector.Integration.AspNetCore;
 using SimpleInjector.Integration.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewComponents;
+using Microsoft.EntityFrameworkCore;
 using Smart.House.Domain.Services;
+using Smart.House.EntityFramework.DataModel;
+using Smart.House.Domain.Repositories;
+using Smart.House.EntityFramework.Repositories;
+using SimpleInjector.Lifestyles;
 
 namespace Smart.House.Dashboard
 {
@@ -40,18 +44,32 @@ namespace Smart.House.Dashboard
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddMvc();
-            services.AddSingleton<IControllerActivator>(new SimpleInjectorControllerActivator(container));
-            services.AddSingleton<IViewComponentActivator>(new SimpleInjectorViewComponentActivator(container));
+
+            IntegrateSimpleInjector(services);
         }
+
+        private void IntegrateSimpleInjector(IServiceCollection services)
+        {
+            container.Options.DefaultScopedLifestyle = new AsyncScopedLifestyle();
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            services.AddSingleton<IControllerActivator>(
+                new SimpleInjectorControllerActivator(container));
+            services.AddSingleton<IViewComponentActivator>(
+                new SimpleInjectorViewComponentActivator(container));
+            //var connection = @"Server=localhost\SQLEXPRESS;Database=SmartHouse;Trusted_Connection=True;";
+            //services.AddEntityFrameworkSqlServer();
+            //services.AddDbContext<DataContext>(options => options.UseSqlServer(connection));
+            services.EnableSimpleInjectorCrossWiring(container);
+            services.UseSimpleInjectorAspNetRequestScoping(container);
+        }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            app.UseSimpleInjectorAspNetRequestScoping(container);
-            container.Options.DefaultScopedLifestyle = new AspNetRequestLifestyle();
-
             InitializeContainer(app);
 
             container.Verify();
@@ -94,7 +112,6 @@ namespace Smart.House.Dashboard
             app.UseStaticFiles();
 
             // Add external authentication middleware below. To configure them please see https://go.microsoft.com/fwlink/?LinkID=532715
-
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
@@ -112,8 +129,13 @@ namespace Smart.House.Dashboard
             container.RegisterMvcControllers(app);
             container.RegisterMvcViewComponents(app);
 
+            var optionsBuilder = new DbContextOptionsBuilder<DataContext>();
+            optionsBuilder.UseSqlServer(@"Server=localhost\SQLEXPRESS;Database=SmartHouse;Trusted_Connection=True;");
+            container.Register(() => new DataContext(optionsBuilder.Options), Lifestyle.Scoped);
+
             container.RegisterSingleton(app.ApplicationServices.GetService<ILoggerFactory>());
             container.Register<UserService>();
+            container.Register<ICameraRepository, CameraRepository>(Lifestyle.Scoped);
         }
     }
 }

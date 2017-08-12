@@ -35,12 +35,12 @@ export default createServerRenderer(params => {
                 id: 1,
                 isActive: false
             });
-            Cameras.push({
-                name: 'dupa3',
-                url: 'http://192.168.0.234/image/jpeg.cgi',
-                id: 2,
-                isActive: false
-            });
+            //Cameras.push({
+            //    name: 'dupa3',
+            //    url: 'http://192.168.0.234/image/jpeg.cgi',
+            //    id: 2,
+            //    isActive: false
+            //});
 
             const store = configureStore();
             store.dispatch({ type: INIT_CAMERAS_REQUEST, payload: Cameras });

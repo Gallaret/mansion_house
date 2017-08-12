@@ -12,25 +12,18 @@ namespace Smart.House.Domain.Entities.Camera
         private bool _isMotionDetected;
         private string _lastDetectedMotionFileName;
 
+        public string Identifier { get; private set; }
         public string FtpMotionPath { get; private set; }
-        public bool AmbientNotification { get; private set; }
-        public bool SoundNotification { get; private set; }
+        public bool MotionDetectionEnabled { get; private set; }
+        public bool AmbientNotificationEnabled { get; private set; }
+        public bool SoundNotificationEnabled { get; private set; }
         public string FtpLogin { get; private set; }
         public string FtpPassword { get; private set; }
 
-        public Credential FtpCredentials
+        public Camera(string identifier): base(DeviceType.Camera, identifier)
         {
-            get
-            {
-                return new Credential
-                {
-                    Login = FtpLogin,
-                    Password = FtpPassword
-                };
-            } 
-        } 
-
-        public Camera(string identifier): base(DeviceType.Camera, identifier) { }
+            Identifier = DeviceIdentifier;
+        }
 
         public Camera(CameraSettings settings) 
             : base(DeviceType.Camera, settings.Identifier)
@@ -65,6 +58,18 @@ namespace Smart.House.Domain.Entities.Camera
             }
         }
 
+        public void EnableMotionDetection()
+        {
+            MotionDetectionEnabled = true;
+        }
+
+        public void DisableMotionDetection()
+        {
+            MotionDetectionEnabled = false;
+            AmbientNotificationEnabled = false;
+            SoundNotificationEnabled = false;
+        }
+
         public void AddNotification(Notification notification)
         {
             _notifications.Add(notification);
@@ -78,7 +83,6 @@ namespace Smart.House.Domain.Entities.Camera
 
         public string LastDetectedMotionFileName => _lastDetectedMotionFileName;
         public bool IsMotionDetected => _isMotionDetected;
-        public override string DeviceIdentifier => Identifier;
         public override bool IsActive => true;
         public IReadOnlyCollection<Notification> Notifications => _notifications;
     }

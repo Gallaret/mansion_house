@@ -62,3 +62,5 @@ Temporary Items
 /application/Smart.House.Application/Smart.House.Application/bin/Debug/netcoreapp1.1
 /application/Smart.House.Application/Smart.House.Commands/bin/Debug/netcoreapp1.1
 /application/Smart.House.Application/Smart.House.Application/bin/Debug/netcoreapp1.1
+/infrastructure/Smart.House.Infrastructure/Smart.House.EntityFramework/obj
+/infrastructure/Smart.House.Infrastructure/Smart.House.EntityFramework/bin/Debug/netcoreapp1.1

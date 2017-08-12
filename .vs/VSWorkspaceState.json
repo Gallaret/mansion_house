@@ -4,10 +4,13 @@
     "\\api",
     "\\api\\Smart.House.Api",
     "\\application",
+    "\\application\\Smart.House.Application",
+    "\\application\\Smart.House.Application\\Smart.House.Application",
+    "\\application\\Smart.House.Application\\Smart.House.Application\\Services\\Devices",
     "\\core",
     "\\core\\Smart.House.Core",
-    "\\services"
+    "\\infrastructure"
   ],
-  "SelectedNode": "\\core\\Smart.House.Core\\Smart.House.Core.sln",
+  "SelectedNode": "\\infrastructure",
   "PreviewInSolutionExplorer": false
 }
