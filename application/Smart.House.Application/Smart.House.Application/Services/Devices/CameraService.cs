@@ -1,4 +1,5 @@
 ﻿using Smart.House.Application.Providers;
+using Smart.House.Domain.Entities.Camera;
 using Smart.House.Domain.Values;
 
 namespace Smart.House.Application.Services.Devices
@@ -20,20 +21,42 @@ namespace Smart.House.Application.Services.Devices
         
         public void UpdateCameraState(CameraStatus status)
         {
-            var provider = _providerFactory.Create(status.Identifier);
-
+            var provider = _providerFactory.Create("dlink"); //move to state
             var camera = provider.GetCameraInfo(status.Identifier);
-            var catalog = provider.GetMotionDirectory(camera.FtpMotionPath);
-            var files = _ftpClient.ScanFiles(catalog, camera.FtpCredentials); //credentials
+            var cameraMotionPath = provider.GetMotionDirectory("Motion"); //camera.FtpMotionPath
 
-            camera.DetectMotion(files, status.CurrentMotionFileName); //perform all operation relied by infra parameters
+            CheckMotionStatus(camera, cameraMotionPath, status.CurrentMotionFileName);
 
             _service.CheckCameraStatus(camera);
 
-            status.IsMotionDetected = camera.IsMotionDetected;
-            status.CurrentMotionFilePath = catalog;
-            status.CurrentMotionFileName = camera.LastDetectedMotionFileName;
+            UpdateMotionStatus(status, camera, cameraMotionPath);
+
             status.Notifications = camera.Notifications;
+        }
+
+        private void CheckMotionStatus(Camera camera, string currentDirectory, string currentFileName)
+        {
+            var ftpCredentials = CreateCredentials(camera);
+            var files = _ftpClient.ScanFiles(currentDirectory, ftpCredentials); //credentials
+
+            camera.DetectMotion(files, currentFileName); //perform all operation relied by infra parameters
+        }
+
+        private void UpdateMotionStatus(CameraStatus status, Camera camera, string cameraMotionPath)
+        {
+            status.IsMotionDetected = camera.IsMotionDetected;
+            status.CurrentMotionFileName = camera.LastDetectedMotionFileName;
+            status.CurrentMotionFilePath = cameraMotionPath;
+        }
+
+        private FtpCredentials CreateCredentials(Camera camera)
+        {
+            return new FtpCredentials
+            {
+                Login =  "FTPCamera", //camera.FtpLogin,
+                Password = "DLink942", //camera.FtpMotionPath,
+                Uri = "192.168.0.24" //camera.Uri
+            };
         }
     }
 }

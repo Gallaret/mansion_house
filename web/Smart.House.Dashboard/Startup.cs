@@ -6,7 +6,6 @@ using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using SimpleInjector;
-using SimpleInjector.Integration.AspNetCore;
 using SimpleInjector.Integration.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewComponents;
 using Microsoft.EntityFrameworkCore;
@@ -15,6 +14,11 @@ using Smart.House.EntityFramework.DataModel;
 using Smart.House.Domain.Repositories;
 using Smart.House.EntityFramework.Repositories;
 using SimpleInjector.Lifestyles;
+using Smart.House.Application.Providers;
+using Smart.House.DLink;
+using Smart.House.Dashboard.Factories;
+using Smart.House.Application.Services;
+using Smart.House.Ftp;
 
 namespace Smart.House.Dashboard
 {
@@ -60,7 +64,7 @@ namespace Smart.House.Dashboard
             services.AddSingleton<IViewComponentActivator>(
                 new SimpleInjectorViewComponentActivator(container));
             //var connection = @"Server=localhost\SQLEXPRESS;Database=SmartHouse;Trusted_Connection=True;";
-            //services.AddEntityFrameworkSqlServer();
+            ////services.AddEntityFrameworkSqlServer();
             //services.AddDbContext<DataContext>(options => options.UseSqlServer(connection));
             services.EnableSimpleInjectorCrossWiring(container);
             services.UseSimpleInjectorAspNetRequestScoping(container);
@@ -134,8 +138,13 @@ namespace Smart.House.Dashboard
             container.Register(() => new DataContext(optionsBuilder.Options), Lifestyle.Scoped);
 
             container.RegisterSingleton(app.ApplicationServices.GetService<ILoggerFactory>());
-            container.Register<UserService>();
+            container.Register<CameraService>();
+            container.Register<IFtpClientService, FtpClientService>(Lifestyle.Singleton);
             container.Register<ICameraRepository, CameraRepository>(Lifestyle.Scoped);
+            container.RegisterSingleton<ICameraProviderFactory>(new CameraProviderFactory
+            {
+                { "dlink", () => container.GetInstance<CameraProvider>()},
+            });
         }
     }
 }

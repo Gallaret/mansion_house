@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v1.1": {
-      "smart.house.domain/1.0.0": {
+      "Smart.House.Domain/1.0.0": {
         "runtime": {
           "Smart.House.Domain.dll": {}
         }
@@ -14,7 +14,7 @@
     }
   },
   "libraries": {
-    "smart.house.domain/1.0.0": {
+    "Smart.House.Domain/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

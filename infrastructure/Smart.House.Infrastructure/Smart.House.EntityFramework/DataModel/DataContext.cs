@@ -8,6 +8,7 @@ namespace Smart.House.EntityFramework.DataModel
     {
         public DbSet<Camera> Cameras { get; set; }
 
+
         public DataContext(DbContextOptions<DataContext> options)
             : base(options)
         {

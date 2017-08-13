@@ -11,6 +11,8 @@ namespace Smart.House.Domain.Entities
     {
         protected readonly string DeviceIdentifier;
 
+        public Device() {    }
+
         public Device(DeviceType type, string identifier)
         {
             if (identifier == null)

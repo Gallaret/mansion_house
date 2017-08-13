@@ -57,7 +57,7 @@ export const actionCreators = {
     getCameras: (): AppThunkAction<KnownAction> => async (dispatch, getState) => {
         dispatch({ type: GET_CAMERAS_REQUEST });
 
-        let response = <Response>await fetch('/camera/getCameras', {
+        let response = <Response>await fetch('/camera/getCameras?id=camera2', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

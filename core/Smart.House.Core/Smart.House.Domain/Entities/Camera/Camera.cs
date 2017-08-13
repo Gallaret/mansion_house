@@ -20,10 +20,7 @@ namespace Smart.House.Domain.Entities.Camera
         public string FtpLogin { get; private set; }
         public string FtpPassword { get; private set; }
 
-        public Camera(string identifier): base(DeviceType.Camera, identifier)
-        {
-            Identifier = DeviceIdentifier;
-        }
+        public Camera() { }
 
         public Camera(CameraSettings settings) 
             : base(DeviceType.Camera, settings.Identifier)

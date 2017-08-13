@@ -1,13 +1,16 @@
-﻿using Smart.House.Domain.Values;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
+﻿using System.IO;
 
 namespace Smart.House.Application.Services
 {
+    public struct FtpCredentials
+    {
+        public string Uri { get; set; }
+        public string Login { get; set; }
+        public string Password { get; set; }
+    }
+
     public interface IFtpClientService
     {
-        FileInfo[] ScanFiles(string path, Credential credentials);
+        FileInfo[] ScanFiles(string path, FtpCredentials credentials);
     }
 }

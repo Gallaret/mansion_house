@@ -8,5 +8,7 @@ namespace Smart.House.Domain.Repositories
     public interface ICameraRepository
     {
         void Add(Camera camera);
+
+        Camera Get(string identifier);
     }
 }

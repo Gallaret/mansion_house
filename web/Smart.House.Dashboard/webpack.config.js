@@ -1,3 +1,5 @@
+"use strict";
+
 let isDevBuild = process.argv.indexOf('--env.prod') < 0;
 let path = require('path');
 let webpack = require('webpack');

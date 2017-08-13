@@ -64,3 +64,9 @@ Temporary Items
 /application/Smart.House.Application/Smart.House.Application/bin/Debug/netcoreapp1.1
 /infrastructure/Smart.House.Infrastructure/Smart.House.EntityFramework/obj
 /infrastructure/Smart.House.Infrastructure/Smart.House.EntityFramework/bin/Debug/netcoreapp1.1
+/application/Smart.House.Application/Smart.House.Application/bin/Debug/netcoreapp2.0
+/infrastructure/Smart.House.Infrastructure/Smart.House.DLink/bin/Debug/netcoreapp2.0
+/infrastructure/Smart.House.Infrastructure/Smart.House.DLink/obj
+/infrastructure/Smart.House.Infrastructure/Smart.House.EntityFramework/bin/Debug/netcoreapp2.0
+/infrastructure/Smart.House.Infrastructure/Smart.House.Ftp/bin/Debug/netcoreapp2.0
+/infrastructure/Smart.House.Infrastructure/Smart.House.Ftp/obj

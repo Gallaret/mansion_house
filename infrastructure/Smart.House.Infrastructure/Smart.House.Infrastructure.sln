@@ -1,11 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.16
+VisualStudioVersion = 15.0.26730.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.EntityFramework", "Smart.House.EntityFramework\Smart.House.EntityFramework.csproj", "{4EAD27AD-670B-4271-8E1E-39ED58D4B5DD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Domain", "..\..\core\Smart.House.Core\Smart.House.Domain\Smart.House.Domain.csproj", "{DCC9F93E-6451-427C-8069-A86410BBE7CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smart.House.Ftp", "Smart.House.Ftp\Smart.House.Ftp.csproj", "{FDAD7868-24D6-4377-8E57-71A974E4EF1B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Application", "..\..\application\Smart.House.Application\Smart.House.Application\Smart.House.Application.csproj", "{33E91A24-36EA-402F-B09D-5EAAB464C712}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smart.House.DLink", "Smart.House.DLink\Smart.House.DLink.csproj", "{A82E9827-EB9B-4087-A1FF-386207F18D42}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,8 +27,23 @@ Global
 		{DCC9F93E-6451-427C-8069-A86410BBE7CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DCC9F93E-6451-427C-8069-A86410BBE7CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DCC9F93E-6451-427C-8069-A86410BBE7CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDAD7868-24D6-4377-8E57-71A974E4EF1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDAD7868-24D6-4377-8E57-71A974E4EF1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDAD7868-24D6-4377-8E57-71A974E4EF1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDAD7868-24D6-4377-8E57-71A974E4EF1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33E91A24-36EA-402F-B09D-5EAAB464C712}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33E91A24-36EA-402F-B09D-5EAAB464C712}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33E91A24-36EA-402F-B09D-5EAAB464C712}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33E91A24-36EA-402F-B09D-5EAAB464C712}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A82E9827-EB9B-4087-A1FF-386207F18D42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A82E9827-EB9B-4087-A1FF-386207F18D42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A82E9827-EB9B-4087-A1FF-386207F18D42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A82E9827-EB9B-4087-A1FF-386207F18D42}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0A3731BF-38EA-496D-9066-4EB7965BCEB0}
 	EndGlobalSection
 EndGlobal
