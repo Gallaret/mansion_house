@@ -1,6 +1,4 @@
-﻿using Smart.House.Application.Providers;
-using Smart.House.Application.Services;
-using Smart.House.Commands.Commands;
+﻿using Smart.House.Commands.Commands;
 using System;
 using System.Threading.Tasks;
 
@@ -8,12 +6,12 @@ namespace Smart.House.Commands.Handlers
 {
     public class FetchCameraStatusHandler : IAsyncCommandHandler<FetchCameraStatusCommand>
     {
-        private readonly IFtpClientService _ftpClientService;
+        //private readonly IFtpClientService _ftpClientService;
 
-        public FetchCameraStatusHandler(IFtpClientService ftpClientService, ICameraProvider provider)
-        {
-            _ftpClientService = ftpClientService;
-        }
+        //public FetchCameraStatusHandler(IFtpClientService ftpClientService, ICameraProvider provider)
+        //{
+        //    _ftpClientService = ftpClientService;
+        //}
 
         public async Task Execute(FetchCameraStatusCommand command)
         {

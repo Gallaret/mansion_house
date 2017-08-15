@@ -9,18 +9,6 @@ export const GET_CAMERAS_RECEIVED = 'GetCamerasReceivedAction';
 
 
 let Cameras = ([] as CameraModel[]);
-Cameras.push({
-    name: 'camera1',
-    url: 'http://192.168.0.234/image/jpeg.cgi',
-    id: 1,
-    isActive: false
-});
-Cameras.push({
-    name: 'camera2',
-    url: 'http://192.168.0.234/image/jpeg.cgi',
-    id: 2,
-    isActive: false
-});
 
 export interface CameraListState {
     cameraList: CameraModel[];

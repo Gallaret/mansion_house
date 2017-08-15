@@ -3,4 +3,5 @@
     name: string;
     url: string;
     isActive: boolean;
+    isMotionDetected: boolean;
 }

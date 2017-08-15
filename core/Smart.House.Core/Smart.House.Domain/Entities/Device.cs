@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Smart.House.Domain.Entities
 {
@@ -9,19 +10,31 @@ namespace Smart.House.Domain.Entities
 
     public abstract class Device
     {
-        protected readonly string DeviceIdentifier;
+        public string Identifier { get; private set; }
+        public string Producent { get; private set; }
+        public bool AmbientNotificationEnabled { get; protected set; }
+        public bool SoundNotificationEnabled { get; protected set; }
+        public bool EmailNotificationEnabled { get; protected set; }
+        public bool SmsNotificationEnabled { get; protected set; }
+        public List<Harmonogram> Harmonograms { get; private set; }
 
-        public Device() {    }
+        public Device() { }
 
-        public Device(DeviceType type, string identifier)
+        public Device(int id, string producent, DeviceType type)
         {
-            if (identifier == null)
+            Identifier = type.ToString().ToLower() + id;
+            Producent = producent;
+            Harmonograms = new List<Harmonogram>();
+        }
+
+        public void AddHarmonogram(Harmonogram harmonogram)
+        {
+            if (string.IsNullOrEmpty(harmonogram.Identifier))
             {
-                var rand = new Random();
-                DeviceIdentifier = type.ToString() + rand.Next();
+                throw new ArgumentNullException(nameof(harmonogram.Identifier));
             }
 
-            DeviceIdentifier = identifier;
+            Harmonograms.Add(harmonogram);
         }
 
         public abstract bool IsActive { get; }

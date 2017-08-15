@@ -6,6 +6,7 @@ import { CameraModel } from '../models/cameraModel';
 export const INIT_CAMERAS_REQUEST = 'InitCamerasRequestAction';
 export const GET_CAMERA_IMAGE_REQUEST = 'GetCameraImageRequestAction';
 export const GET_CAMERA_IMAGE_RECEIVED = 'GetCameraImageReceivedAction';
+export const GET_CAMERA_STATUS_RECEIVED = "GetCameraStatusReceivedAction";
 
 export interface CameraState {
     list: CameraModel[]
@@ -28,13 +29,18 @@ interface GetCameraImageReceivedAction {
     payload: CameraModel[]
 }
 
+interface GetCameraStatusReceivedAction {
+    type: 'GetCameraStatusReceivedAction';
+    payload: CameraModel[]
+}
+
 interface InitCamerasAction {
     type: 'InitCamerasRequestAction',
     payload: CameraModel[]
 }
 
 // TODO import Success and Invalid actions from server and handle them
-type KnownAction = GetCameraImageReceivedAction | GetCameraImageRequestAction | InitCamerasAction;
+type KnownAction = GetCameraImageReceivedAction | GetCameraImageRequestAction | InitCamerasAction | GetCameraStatusReceivedAction;
 
 let counter = 0;
 
@@ -45,17 +51,20 @@ export const actionCreators = {
         var state = getState();
         var newState = [];
         for (var i in state.camera.list) {
-            if (state.camera.list[i].id == model.id) {
+            var camera = state.camera.list[i];
+            if (camera.id == model.id) {
+                var camera = state.camera.list[i];
                 newState.push({
-                    name: model.name,
-                    url: model.url + '?data=' + counter++,
-                    id: model.id,
-                    isActive: false
+                    name: camera.name,
+                    url: camera.url + '?data=' + counter++,
+                    id: camera.id,
+                    isActive: camera.isActive,
+                    isMotionDetected: camera.isMotionDetected
                 });
             }
             else
             {
-                newState.push(state.camera.list[i]);
+                newState.push(camera);
             }
         }
 
@@ -76,10 +85,26 @@ export const actionCreators = {
         if (response.ok) {
             var result = await response.json();
 
-            if (result){
-                console.log(result);
+            console.log(result.isMotionDetected);
+
+            var state = getState();
+            var newState = [];
+            for (var i in state.camera.list) {
+                if (state.camera.list[i].id == model.id) {
+                    newState.push({
+                        name: model.name,
+                        url: model.url,
+                        id: model.id,
+                        isMotionDetected: result.isMotionDetected,
+                        isActive: false
+                    });
+                }
+                else {
+                    newState.push(state.camera.list[i]);
+                }
             }
-            //dispatch({ type: GET_CAMERAS_RECEIVED, payload: result });
+
+            dispatch({ type: GET_CAMERA_STATUS_RECEIVED, payload: newState });
         }
     }
 };
@@ -91,6 +116,8 @@ export const reducer: Reducer<CameraState> = (state: CameraState, action: KnownA
         case GET_CAMERA_IMAGE_REQUEST:
             return { ...state };
         case GET_CAMERA_IMAGE_RECEIVED:
+            return { ...state, list: action.payload };
+        case GET_CAMERA_STATUS_RECEIVED:
             return { ...state, list: action.payload };
         default:
             const exhaustiveCheck: never = action;

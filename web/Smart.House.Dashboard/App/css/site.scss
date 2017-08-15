@@ -92,6 +92,14 @@ footer {
     font-size: 28px;
 }
 
+.camera-alert {
+    border: 2px solid red;
+}
+
+.camera-no-alert {
+    border: none;
+}
+
 // Login
 .omb_login {
     .omb_authTitle {

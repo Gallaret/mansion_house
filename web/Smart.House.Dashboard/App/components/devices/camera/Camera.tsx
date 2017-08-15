@@ -36,7 +36,7 @@ export default class CameraItem extends React.Component<CameraProps, CameraStore
         this.defaultProps.intervals.push(
             setInterval(function () {
                 checkCameraMotion(model);
-            }, 5000));
+            }, 10000));
     }
 
     componentWillUnmount() {
@@ -49,10 +49,10 @@ export default class CameraItem extends React.Component<CameraProps, CameraStore
     render() {
         const { camera } = this.props
         return <div className="form-group text-center" style={{ margin: 'auto' }}>
-                <p className="text-center">
-                    <img src={camera.url} style={{ height: '150px', width: '250px' }} />
-                </p>
-                <label>{camera.name}</label>
+                   <p className="text-center">
+                       <img src={camera.url} style={{ height: '150px', width: '250px' }} className={camera.isMotionDetected ? 'camera-alert' : 'camera-no-alert'} />
+                   </p>
+                   <label>{camera.name}</label>
                </div>;
     }
 }

@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\application\Smart.House.Application\Smart.House.Application\Smart.House.Application.csproj" />
+    <ProjectReference Include="..\..\application\Smart.House.Application\Smart.House.Services\Smart.House.Services.csproj" />
     <ProjectReference Include="..\..\core\Smart.House.Core\Smart.House.Domain\Smart.House.Domain.csproj" />
     <ProjectReference Include="..\..\infrastructure\Smart.House.Infrastructure\Smart.House.DLink\Smart.House.DLink.csproj" />
     <ProjectReference Include="..\..\infrastructure\Smart.House.Infrastructure\Smart.House.EntityFramework\Smart.House.EntityFramework.csproj" />

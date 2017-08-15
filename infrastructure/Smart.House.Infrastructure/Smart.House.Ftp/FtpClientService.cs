@@ -1,5 +1,6 @@
 ﻿using FluentFTP;
 using Smart.House.Application.Services;
+using Smart.House.Domain.Infrastructure;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
@@ -26,6 +27,7 @@ namespace Smart.House.Ftp
             {
                 if (item.Type == FtpFileSystemObjectType.File)
                 {
+                    
                     var file = new FileInfo(@"C:\Serwer\FTP-Camera" + item.FullName);
                     files.Add(file);
                 }

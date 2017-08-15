@@ -9,16 +9,15 @@ using SimpleInjector;
 using SimpleInjector.Integration.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewComponents;
 using Microsoft.EntityFrameworkCore;
-using Smart.House.Domain.Services;
 using Smart.House.EntityFramework.DataModel;
-using Smart.House.Domain.Repositories;
 using Smart.House.EntityFramework.Repositories;
 using SimpleInjector.Lifestyles;
-using Smart.House.Application.Providers;
 using Smart.House.DLink;
-using Smart.House.Dashboard.Factories;
-using Smart.House.Application.Services;
 using Smart.House.Ftp;
+using Smart.House.Application.Services.Devices;
+using Smart.House.Services.Devices;
+using Smart.House.Domain.Infrastructure;
+using Smart.House.Camera.Providers;
 
 namespace Smart.House.Dashboard
 {
@@ -91,28 +90,7 @@ namespace Smart.House.Dashboard
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-            //app.UseReact(config =>
-            //{
-            //    // If you want to use server-side rendering of React components,
-            //    // add all the necessary JavaScript files here. This includes
-            //    // your components as well as all of their dependencies.
-            //    // See http://reactjs.net/ for more information. Example:
-            //    //config
-            //    //  .AddScript("~/js/remarkable.min.js")
-            //    //  .AddScript("~/js/components/header/notificationBar.jsx")
-            //    //  .AddScript("~/js/tutorial.jsx").SetJsonSerializerSettings(new JsonSerializerSettings
-            //    //  {
-            //    //      StringEscapeHandling = StringEscapeHandling.EscapeHtml, 
-            //    //      ContractResolver = new CamelCasePropertyNamesContractResolver()
-            //    //  });
-            //    //// If you use an external build too (for example, Babel, Webpack,
-            //    //// Browserify or Gulp), you can improve performance by disabling
-            //    //// ReactJS.NET's version of Babel and loading the pre-transpiled
-            //    //// scripts. Example:
-            //    config
-            //      .SetLoadBabel(false)
-            //      .AddScriptWithoutTransform("~/js/server.bundle.js");
-            //});
+         
             app.UseStaticFiles();
 
             // Add external authentication middleware below. To configure them please see https://go.microsoft.com/fwlink/?LinkID=532715
@@ -138,10 +116,10 @@ namespace Smart.House.Dashboard
             container.Register(() => new DataContext(optionsBuilder.Options), Lifestyle.Scoped);
 
             container.RegisterSingleton(app.ApplicationServices.GetService<ILoggerFactory>());
-            container.Register<CameraService>();
+            container.Register<ICameraService, CameraService>();
             container.Register<IFtpClientService, FtpClientService>(Lifestyle.Singleton);
-            container.Register<ICameraRepository, CameraRepository>(Lifestyle.Scoped);
-            container.RegisterSingleton<ICameraProviderFactory>(new CameraProviderFactory
+            container.Register<Camera.Repositories.ICameraRepository, CameraRepository>(Lifestyle.Scoped);
+            container.RegisterSingleton<ICameraProviderFactory>(new Camera.Factories.CameraProviderFactory
             {
                 { "dlink", () => container.GetInstance<CameraProvider>()},
             });

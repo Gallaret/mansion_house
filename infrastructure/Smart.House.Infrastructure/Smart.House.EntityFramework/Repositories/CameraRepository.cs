@@ -1,7 +1,6 @@
-﻿using Smart.House.Domain.Repositories;
-using Smart.House.Domain.Entities.Camera;
-using Smart.House.EntityFramework.DataModel;
+﻿using Smart.House.EntityFramework.DataModel;
 using System.Linq;
+using Smart.House.Camera.Repositories;
 
 namespace Smart.House.EntityFramework.Repositories
 {
@@ -14,16 +13,16 @@ namespace Smart.House.EntityFramework.Repositories
             _context = context;
         }
 
-        public void Add(Camera camera)
+        public void Add(Camera.Entities.Camera camera)
         {
-            _context.Cameras.Add(camera);
+            _context.Devices.Add(camera);
             _context.SaveChanges();
         }
 
-        public Camera Get(string identifier)
+        public Camera.Entities.Camera Get(string identifier)
         {
-            var camera = _context.Cameras.SingleOrDefault(c => c.Identifier == identifier);
-            return camera;
+            var camera = _context.Devices.SingleOrDefault(c => c.Identifier == identifier);
+            return camera as Camera.Entities.Camera;
         }
     }
 }

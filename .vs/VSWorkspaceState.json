@@ -6,9 +6,9 @@
     "\\application",
     "\\application\\Smart.House.Application",
     "\\application\\Smart.House.Application\\Smart.House.Application",
-    "\\application\\Smart.House.Application\\Smart.House.Application\\Services\\Devices",
     "\\core",
     "\\core\\Smart.House.Core",
+    "\\core\\Smart.House.Core\\Smart.House.Domain",
     "\\infrastructure"
   ],
   "SelectedNode": "\\infrastructure",

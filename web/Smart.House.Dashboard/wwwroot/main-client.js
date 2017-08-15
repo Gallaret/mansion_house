@@ -922,6 +922,7 @@ module.exports = Events;
 /* unused harmony export INIT_CAMERAS_REQUEST */
 /* unused harmony export GET_CAMERA_IMAGE_REQUEST */
 /* unused harmony export GET_CAMERA_IMAGE_RECEIVED */
+/* unused harmony export GET_CAMERA_STATUS_RECEIVED */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return actionCreators; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return reducer; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(410);
@@ -934,6 +935,7 @@ var _this = this;
 var INIT_CAMERAS_REQUEST = 'InitCamerasRequestAction';
 var GET_CAMERA_IMAGE_REQUEST = 'GetCameraImageRequestAction';
 var GET_CAMERA_IMAGE_RECEIVED = 'GetCameraImageReceivedAction';
+var GET_CAMERA_STATUS_RECEIVED = "GetCameraStatusReceivedAction";
 var DefaultCameraState = {
     list: null
 };
@@ -942,7 +944,7 @@ var actionCreators = {
     getCameraImage: function getCameraImage(model) {
         return function (dispatch, getState) {
             return __WEBPACK_IMPORTED_MODULE_0_tslib__["b" /* __awaiter */](_this, void 0, void 0, regeneratorRuntime.mark(function _callee() {
-                var state, newState, i;
+                var state, newState, i, camera;
                 return regeneratorRuntime.wrap(function _callee$(_context) {
                     while (1) {
                         switch (_context.prev = _context.next) {
@@ -951,15 +953,20 @@ var actionCreators = {
                                 newState = [];
 
                                 for (i in state.camera.list) {
-                                    if (state.camera.list[i].id == model.id) {
+                                    camera = state.camera.list[i];
+
+                                    if (camera.id == model.id) {
+                                        camera = state.camera.list[i];
+
                                         newState.push({
-                                            name: model.name,
-                                            url: model.url + '?data=' + counter++,
-                                            id: model.id,
-                                            isActive: false
+                                            name: camera.name,
+                                            url: camera.url + '?data=' + counter++,
+                                            id: camera.id,
+                                            isActive: camera.isActive,
+                                            isMotionDetected: camera.isMotionDetected
                                         });
                                     } else {
-                                        newState.push(state.camera.list[i]);
+                                        newState.push(camera);
                                     }
                                 }
                                 dispatch({
@@ -978,7 +985,7 @@ var actionCreators = {
     checkCameraMotion: function checkCameraMotion(model) {
         return function (dispatch, getState) {
             return __WEBPACK_IMPORTED_MODULE_0_tslib__["b" /* __awaiter */](_this, void 0, void 0, regeneratorRuntime.mark(function _callee2() {
-                var response, result;
+                var response, result, state, newState, i;
                 return regeneratorRuntime.wrap(function _callee2$(_context2) {
                     while (1) {
                         switch (_context2.prev = _context2.next) {
@@ -995,7 +1002,7 @@ var actionCreators = {
                                 response = _context2.sent;
 
                                 if (!response.ok) {
-                                    _context2.next = 8;
+                                    _context2.next = 12;
                                     break;
                                 }
 
@@ -1005,11 +1012,26 @@ var actionCreators = {
                             case 6:
                                 result = _context2.sent;
 
-                                if (result) {
-                                    console.log(result);
-                                }
+                                console.log(result.isMotionDetected);
+                                state = getState();
+                                newState = [];
 
-                            case 8:
+                                for (i in state.camera.list) {
+                                    if (state.camera.list[i].id == model.id) {
+                                        newState.push({
+                                            name: model.name,
+                                            url: model.url,
+                                            id: model.id,
+                                            isMotionDetected: result.isMotionDetected,
+                                            isActive: false
+                                        });
+                                    } else {
+                                        newState.push(state.camera.list[i]);
+                                    }
+                                }
+                                dispatch({ type: GET_CAMERA_STATUS_RECEIVED, payload: newState });
+
+                            case 12:
                             case 'end':
                                 return _context2.stop();
                         }
@@ -1026,6 +1048,8 @@ var reducer = function reducer(state, action) {
         case GET_CAMERA_IMAGE_REQUEST:
             return Object.assign({}, state);
         case GET_CAMERA_IMAGE_RECEIVED:
+            return Object.assign({}, state, { list: action.payload });
+        case GET_CAMERA_STATUS_RECEIVED:
             return Object.assign({}, state, { list: action.payload });
         default:
             var exhaustiveCheck = action;
@@ -2375,6 +2399,11 @@ var NavMenu = function (_React$Component) {
                                     'Logout'
                                 )
                             )
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                            __WEBPACK_IMPORTED_MODULE_3_react_bootstrap__["MenuItem"],
+                            { eventKey: 4 },
+                            'Notifications'
                         )
                     )
                 )
@@ -2432,7 +2461,7 @@ var CameraItem = function (_React$Component) {
             }, 1000));
             this.defaultProps.intervals.push(setInterval(function () {
                 checkCameraMotion(model);
-            }, 5000));
+            }, 10000));
         }
     }, {
         key: 'componentWillUnmount',
@@ -2452,7 +2481,7 @@ var CameraItem = function (_React$Component) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
                     'p',
                     { className: 'text-center' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]('img', { src: camera.url, style: { height: '150px', width: '250px' } })
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]('img', { src: camera.url, style: { height: '150px', width: '250px' }, className: camera.isMotionDetected ? 'camera-alert' : 'camera-no-alert' })
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
                     'label',

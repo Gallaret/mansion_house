@@ -70,3 +70,9 @@ Temporary Items
 /infrastructure/Smart.House.Infrastructure/Smart.House.EntityFramework/bin/Debug/netcoreapp2.0
 /infrastructure/Smart.House.Infrastructure/Smart.House.Ftp/bin/Debug/netcoreapp2.0
 /infrastructure/Smart.House.Infrastructure/Smart.House.Ftp/obj
+/application/Smart.House.Application/Smart.House.Commands/bin/Debug/netcoreapp2.0
+/application/Smart.House.Application/Smart.House.Services/bin/Debug/netcoreapp2.0
+/application/Smart.House.Application/Smart.House.Services/obj
+/core/Smart.House.Core/Smart.House.Camera/bin/Debug/netcoreapp2.0
+/core/Smart.House.Core/Smart.House.Camera/obj
+/core/Smart.House.Core/Smart.House.Notification/obj

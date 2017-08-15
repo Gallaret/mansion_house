@@ -33,14 +33,9 @@ export default createServerRenderer(params => {
                 name: 'dupa2',
                 url: 'http://192.168.0.234/image/jpeg.cgi',
                 id: 1,
+                isMotionDetected: false,
                 isActive: false
             });
-            //Cameras.push({
-            //    name: 'dupa3',
-            //    url: 'http://192.168.0.234/image/jpeg.cgi',
-            //    id: 2,
-            //    isActive: false
-            //});
 
             const store = configureStore();
             store.dispatch({ type: INIT_CAMERAS_REQUEST, payload: Cameras });

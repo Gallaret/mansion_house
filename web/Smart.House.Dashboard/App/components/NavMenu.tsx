@@ -44,6 +44,7 @@ class NavMenu extends React.Component<NavMenuProps, ApplicationState> {
                             <MenuItem disabled={!this.props.isAuthenticated} eventKey={2.4}>Logout</MenuItem>
                         </LinkContainer>
                     </NavDropdown>
+                    <MenuItem eventKey={4}>Notifications</MenuItem>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>

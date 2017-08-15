@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\core\Smart.House.Core\Smart.House.Camera\Smart.House.Camera.csproj" />
+    <ProjectReference Include="..\..\..\core\Smart.House.Core\Smart.House.Domain\Smart.House.Domain.csproj" />
+    <ProjectReference Include="..\..\..\core\Smart.House.Core\Smart.House.Notification\Smart.House.Notification.csproj" />
+    <ProjectReference Include="..\Smart.House.Application\Smart.House.Application.csproj" />
+  </ItemGroup>
+
+</Project>
