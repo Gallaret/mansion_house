@@ -1,22 +1,19 @@
 using Microsoft.AspNetCore.Mvc;
-using Smart.House.Application.Services;
-using Smart.House.Application.Services.Devices;
+using Smart.House.Application.Mediator;
 using Smart.House.Application.States;
 using Smart.House.Dashboard.ViewModels;
+using Smart.House.Services.Handlers.Requests.Commands;
 
 namespace Smart.House.Dashboard.Controllers
 {
     [Route("[controller]/[action]")]
     public class CameraController : Controller
     {
-        private readonly ICameraService _cameraService;
-        private readonly INotificationService _notificationService;
+        private readonly IMediator _mediator;
 
-        public CameraController(ICameraService cameraService,
-            INotificationService notificationService)
+        public CameraController(IMediator mediator)
         {
-            _cameraService = cameraService;
-            _notificationService = notificationService;
+            _mediator = mediator;
         }
 
         [HttpGet]
@@ -27,21 +24,16 @@ namespace Smart.House.Dashboard.Controllers
                 Identifier = "camera" + id
             };
 
-            var cameraState = _cameraService.GetNewState(state);
+            var command = new UpdateCameraStatusCommand(id);
+            command.SetCurrentState(state);
 
-            var notificationState = new NotificationState
-            {
-                Identifier = cameraState.Identifier,
-                Upcoming = cameraState.Notifications
-            };
-
-            var newNotificationState = _notificationService
-                .SendNotifications(notificationState); 
+            var newState = _mediator.DispatchRequest<UpdateCameraStatusCommand, CameraState>(command)
+                .Result;
 
             var viewModel = new CameraViewModel
             {
                 Identifier = id,
-                IsMotionDetected = cameraState.IsMotionDetected
+                IsMotionDetected = newState.IsMotionDetected
             };
 
             return new JsonResult(viewModel);

@@ -1,8 +1,9 @@
-﻿using Smart.House.Application.Services.Devices;
+﻿using Smart.House.Application.Factories.Devices.Camera;
+using Smart.House.Application.Services.Devices;
 using Smart.House.Application.States;
 using Smart.House.Camera.Repositories;
 using Smart.House.Notification.Entities;
-using System.Linq;
+using Smart.House.Notification.Repositories;
 
 namespace Smart.House.Services.Devices
 {
@@ -11,38 +12,56 @@ namespace Smart.House.Services.Devices
 
     public class CameraService : ICameraService
     {
-        private readonly ICameraRepository _repository;
-        private readonly DomainService _service;
+        private readonly DomainService _service = new DomainService();
 
-        public CameraService(ICameraRepository repository, DomainService service)
-        {
-            _repository = repository;
-            _service = service;
+        private readonly ICameraRepository _cameraRepository;
+        private readonly ICameraProviderFactory _cameraProviderFactory;
+        private readonly INotificationRepository _notificationRepository;
+
+        public CameraService(ICameraRepository cameraRepository,
+            ICameraProviderFactory cameraProviderFactory,
+            INotificationRepository notificationRepository)
+        {          
+            _cameraRepository = cameraRepository;
+            _cameraProviderFactory = cameraProviderFactory;
+            _notificationRepository = notificationRepository;
         }
 
-        public CameraState GetNewState(CameraState currentState)
-        {
+        public CameraState GetCameraState(CameraState currentState)
+        {        
+            var camera = _cameraRepository.Get(currentState.Identifier);
+
+            CheckMotionState(camera, currentState.CurrentMotionFileName);
+
             var newState = new CameraState();
-            var camera = _repository.Get(currentState.Identifier);
-            
-            if (camera.MotionDetectionEnabled)
-            {
-                camera.SetLastMotionFileName(currentState.CurrentMotionFileName);
-                _service.UpdateMotionStatus(camera);
-            }
             UpdateMotionState(currentState, newState, camera);
 
-            newState.Notifications = camera.Notifications;
             return newState;
+        }
+
+        private void CheckMotionState(Camera camera, string currentFileName)
+        {
+            if (camera.MotionDetectionEnabled)
+            {
+                camera.SetLastMotionFileName(currentFileName);
+
+                var provider = _cameraProviderFactory.Create(camera.Producent);
+                var motionDetected = provider.DetectMotion(camera, out string lastFileName);
+                camera.SetMotionDetection(motionDetected, lastFileName);
+
+                var lastNotification = _notificationRepository.TryGet(
+                    lastFileName, EventType.MotionDetected);
+
+                _service.SendMotionDetectedNotification(camera, lastNotification);
+            }
         }
 
         private void UpdateMotionState(CameraState currentState, CameraState newState, Camera camera)
         {
             newState.Identifier = currentState.Identifier;
-            newState.IsMotionDetected = camera.Notifications.Any(
-                n => n.Type == EventType.MotionDetected);
+            newState.IsMotionDetected = camera.IsMotionDetected;
             newState.CurrentMotionFileName = camera.IsMotionDetected
-                ? camera.Notifications.Single(n => n.Type == EventType.MotionDetected).Value
+                ? camera.GetLastMotionFileName()
                 : currentState.CurrentMotionFileName;
         }
     }

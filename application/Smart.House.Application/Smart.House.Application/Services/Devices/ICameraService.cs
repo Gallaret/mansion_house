@@ -4,6 +4,6 @@ namespace Smart.House.Application.Services.Devices
 {
     public interface ICameraService
     {
-        CameraState GetNewState(CameraState currentState);
+        CameraState GetCameraState(CameraState currentState);
     }
 }

@@ -8,9 +8,43 @@ namespace Smart.House.Domain.Entities
         Camera = 0
     }
 
-    public abstract class Device
+    public interface IAsyncNotification { }
+
+    public abstract class AggregateRoot<T>
     {
-        public string Identifier { get; private set; }
+        public abstract string Identifier { get; }
+
+        private List<IAsyncNotification> _domainEvents;
+
+        public List<IAsyncNotification> DomainEvents => _domainEvents 
+            ?? new List<IAsyncNotification>();
+
+        public void AddDomainEvent(IAsyncNotification eventItem)
+        {
+            _domainEvents = _domainEvents ?? new List<IAsyncNotification>();
+            _domainEvents.Add(eventItem);
+        }
+
+        public void RemoveDomainEvent(IAsyncNotification eventItem)
+        {
+            if (_domainEvents is null) return;
+            _domainEvents.Remove(eventItem);
+        }
+    }
+
+    public abstract class Device : AggregateRoot<string>
+    {
+        private string _identifier;
+
+        public override string Identifier
+        {
+            get
+            {
+                return _identifier;
+            }
+
+        }
+
         public string Producent { get; private set; }
         public bool AmbientNotificationEnabled { get; protected set; }
         public bool SoundNotificationEnabled { get; protected set; }
@@ -22,7 +56,7 @@ namespace Smart.House.Domain.Entities
 
         public Device(int id, string producent, DeviceType type)
         {
-            Identifier = type.ToString().ToLower() + id;
+            _identifier = type.ToString().ToLower() + id;
             Producent = producent;
             Harmonograms = new List<Harmonogram>();
         }

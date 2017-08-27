@@ -1,14 +1,9 @@
 ﻿using Smart.House.Domain.Entities;
-using System.Collections.Generic;
 
 namespace Smart.House.Camera.Entities
 {
-    using Notification = Notification.Entities.Notification;
-
     public class Camera : Device
     {
-        private List<Notification> _notifications = new List<Notification>();
-
         private bool _isMotionDetected;
         private string _lastDetectedMotionFileName;
 
@@ -40,11 +35,6 @@ namespace Smart.House.Camera.Entities
             SoundNotificationEnabled = false;
         }
 
-        public void AddNotification(Notification notification)
-        {
-            _notifications.Add(notification);
-        }
-
         public void ClearMotionDetection()
         {
             _lastDetectedMotionFileName = null;
@@ -63,6 +53,5 @@ namespace Smart.House.Camera.Entities
 
         public bool IsMotionDetected => _isMotionDetected;
         public override bool IsActive => true;
-        public IReadOnlyCollection<Notification> Notifications => _notifications;
     }
 }

@@ -197,6 +197,20 @@
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
       },
+      "Smart.House.Camera/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "dependencies": {
+          "Smart.House.Domain": "1.0.0",
+          "Smart.House.Notification": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Smart.House.Camera.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Smart.House.Camera.dll": {}
+        }
+      },
       "Smart.House.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.0",
@@ -680,6 +694,11 @@
         "netstandard.library.nuspec"
       ]
     },
+    "Smart.House.Camera/1.0.0": {
+      "type": "project",
+      "path": "../../../core/Smart.House.Core/Smart.House.Camera/Smart.House.Camera.csproj",
+      "msbuildProject": "../../../core/Smart.House.Core/Smart.House.Camera/Smart.House.Camera.csproj"
+    },
     "Smart.House.Domain/1.0.0": {
       "type": "project",
       "path": "../../../core/Smart.House.Core/Smart.House.Domain/Smart.House.Domain.csproj",
@@ -694,6 +713,7 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
       "Microsoft.NETCore.App >= 2.0.0",
+      "Smart.House.Camera >= 1.0.0",
       "Smart.House.Domain >= 1.0.0",
       "Smart.House.Notification >= 1.0.0"
     ]
@@ -737,6 +757,9 @@
             },
             "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\core\\Smart.House.Core\\Smart.House.Domain\\Smart.House.Domain.csproj": {
               "projectPath": "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\core\\Smart.House.Core\\Smart.House.Domain\\Smart.House.Domain.csproj"
+            },
+            "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\core\\Smart.House.Core\\Smart.House.Camera\\Smart.House.Camera.csproj": {
+              "projectPath": "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\core\\Smart.House.Core\\Smart.House.Camera\\Smart.House.Camera.csproj"
             }
           }
         }

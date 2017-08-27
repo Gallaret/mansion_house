@@ -29,7 +29,11 @@ namespace Smart.House.EntityFramework.Migrations
 
                     b.Property<bool>("AmbientNotificationEnabled");
 
+                    b.Property<bool>("EmailNotificationEnabled");
+
                     b.Property<string>("Producent");
+
+                    b.Property<bool>("SmsNotificationEnabled");
 
                     b.Property<bool>("SoundNotificationEnabled");
 
@@ -74,7 +78,7 @@ namespace Smart.House.EntityFramework.Migrations
                     b.ToTable("Harmonograms");
                 });
 
-            modelBuilder.Entity("Smart.House.Domain.Entities.Camera.Camera", b =>
+            modelBuilder.Entity("Smart.House.Camera.Entities.Camera", b =>
                 {
                     b.HasBaseType("Smart.House.Domain.Entities.Device");
 

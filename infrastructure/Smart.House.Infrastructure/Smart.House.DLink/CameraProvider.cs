@@ -1,7 +1,7 @@
-﻿using Smart.House.Camera.Providers;
-using System;
+﻿using System;
 using Smart.House.Domain.Infrastructure;
 using System.Linq;
+using Smart.House.Application.Factories.Devices.Camera;
 
 namespace Smart.House.DLink
 {

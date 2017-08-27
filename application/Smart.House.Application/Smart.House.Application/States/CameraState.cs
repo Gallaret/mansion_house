@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Smart.House.Application.States
 {
-    public class CameraState
+    public class CameraState : IDeviceState
     {
         public string Identifier { get; set; }
         public string CurrentMotionFileName { get; set; }

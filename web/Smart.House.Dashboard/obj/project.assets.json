@@ -3834,6 +3834,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.0",
         "dependencies": {
+          "Smart.House.Camera": "1.0.0",
           "Smart.House.Domain": "1.0.0",
           "Smart.House.Notification": "1.0.0"
         },
@@ -3889,6 +3890,7 @@
           "Microsoft.EntityFrameworkCore": "2.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.0.0",
           "Microsoft.EntityFrameworkCore.Tools": "2.0.0",
+          "Smart.House.Application": "1.0.0",
           "Smart.House.Camera": "1.0.0",
           "Smart.House.Domain": "1.0.0"
         },

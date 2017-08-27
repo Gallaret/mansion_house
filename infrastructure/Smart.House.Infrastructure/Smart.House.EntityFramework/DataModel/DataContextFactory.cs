@@ -9,7 +9,7 @@ namespace Smart.House.EntityFramework.DataModel
         {
             var builder = new DbContextOptionsBuilder<DataContext>();
             builder.UseSqlServer(@"Server=localhost\SQLEXPRESS;Database=SmartHouse;Trusted_Connection=True;");
-            return new DataContext(builder.Options);
+            return new DataContext(builder.Options, null);
         }
     }
 }

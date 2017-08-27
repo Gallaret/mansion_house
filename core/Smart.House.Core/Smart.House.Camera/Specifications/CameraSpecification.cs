@@ -3,6 +3,9 @@ using System;
 
 namespace Smart.House.Camera.Specifications
 {
+    using Notification = Notification.Entities.Notification;
+    using EventType = Notification.Entities.EventType;
+
     public class CameraSpecification
     {
         private readonly Entities.Camera _camera;
@@ -12,30 +15,25 @@ namespace Smart.House.Camera.Specifications
             _camera = camera;
         }
 
-        public bool IsNotificable(Notification.Entities.Notification notification)
+        public bool IsNotificable(Notification notification)
         {
             switch (notification.Type)
             {
-                case Notification.Entities.EventType.MotionDetected:
+                case EventType.MotionDetected:
                     {
                         if (_camera.IsMotionDetected)
                         {
                             var same = notification.Value == _camera.GetLastMotionFileName();
 
-                            if (same && !notification.Unchecked)
-                            {
-                                _camera.ClearMotionDetection();
-                            }
-
                             return (_camera.IsMotionDetected && !same)
                                 || (_camera.IsMotionDetected && notification.Unchecked);
                         }
 
-                        break;
+                        return false;
                     }
+                default:
+                    return false;
             }
-
-            return false;
         }
 
         public bool IsInHarmonogram(Harmonogram harmonogram)

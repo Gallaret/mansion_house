@@ -1,55 +1,38 @@
-﻿using Smart.House.Camera.Providers;
-using Smart.House.Camera.Specifications;
+﻿using Smart.House.Camera.Specifications;
 using Smart.House.Domain.Entities;
+using Smart.House.Domain.Events;
+using Smart.House.Notification.Entities;
 using Smart.House.Notification.Factories.Notification;
-using System;
+using System.Linq;
 
 namespace Smart.House.Camera.Services
 {
-    using EventType = Notification.Entities.EventType;
+    using Notification = Notification.Entities.Notification;
 
     public class CameraService
     {
-        private readonly NotificationFactory _notificationFactory = new NotificationFactory();
-        private readonly ICameraProviderFactory _providerFactory;
+        private readonly NotificationFactory _factory = new NotificationFactory();
 
-        public CameraService(ICameraProviderFactory providerFactory)
-        {
-            _providerFactory = providerFactory;
-        }
-
-        public void UpdateMotionStatus(Entities.Camera camera)
+        public void SendMotionDetectedNotification(Entities.Camera camera, 
+            Notification lastMotionNotification)
         {
             if (!camera.MotionDetectionEnabled) return;
 
-            var provider = _providerFactory.Create(camera.Producent);
+            var harmonogram = camera.Harmonograms.Single(
+                h => h.Type == HarmonogramType.MotionDetection);
 
-            var motionDetected = provider.DetectMotion(camera, out string lastFileName);
-            camera.SetMotionDetection(motionDetected, lastFileName);
-
-            var lastNotification = new Notification.Entities.Notification()
-            {
-                Type = EventType.MotionDetected,
-                Unchecked = true,
-                Value = ""
-            };
-
-            Harmonogram harmonogram = new Harmonogram(
-                camera.Identifier, HarmonogramType.MotionDetection);
-            harmonogram.Monday = true;
-            harmonogram.From = DateTime.Now.TimeOfDay;
-            harmonogram.To = DateTime.Now.AddHours(1).TimeOfDay;
+            lastMotionNotification = lastMotionNotification ?? _factory.Create(
+                EventType.MotionDetected, null);
 
             var specification = new CameraSpecification(camera);
 
-            if (!specification.IsInHarmonogram(harmonogram)) return;
+            if (!specification.IsInHarmonogram(harmonogram) 
+                || !specification.IsNotificable(lastMotionNotification)) return;
 
-            if (!specification.IsNotificable(lastNotification)) return;
-
-            var notify = _notificationFactory.Create(EventType.MotionDetected,
-                camera.GetLastMotionFileName());
-
-            camera.AddNotification(notify);
+            camera.AddDomainEvent(new MotionDetectedEvent
+            (
+                camera.Identifier, camera.GetLastMotionFileName()
+            ));
         }
     }
 }
