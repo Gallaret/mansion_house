@@ -26,7 +26,7 @@ namespace Smart.House.Camera.Specifications
                             var same = notification.Value == _camera.GetLastMotionFileName();
 
                             return (_camera.IsMotionDetected && !same)
-                                || (_camera.IsMotionDetected && notification.Unchecked);
+                                || (_camera.IsMotionDetected && !notification.Unchecked);
                         }
 
                         return false;

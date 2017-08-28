@@ -21,7 +21,7 @@ namespace Smart.House.Notification.Specifications
             var sendNotification = IsSentNotification();
 
             return device.EmailNotificationEnabled
-                && (!sendNotification || !_notification.EmailSent);
+                && !sendNotification;
         }
 
         public bool IsReadyForAmbientNotification(Device device)
@@ -29,7 +29,7 @@ namespace Smart.House.Notification.Specifications
             var sendNotification = IsSentNotification();
 
             return device.AmbientNotificationEnabled
-                && (!sendNotification || !_notification.AmbientLightningSent);
+                && !sendNotification;
         }
     }
 }

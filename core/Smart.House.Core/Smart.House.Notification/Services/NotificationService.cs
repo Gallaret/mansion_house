@@ -23,7 +23,7 @@ namespace Smart.House.Notification.Services
         public bool SendNotification(Entities.Notification notification, string identifier)
         {
             var device = _deviceRepository.Get(identifier);
-            var existingNotification = _notificationRepository.TryGet(
+            var existingNotification = _notificationRepository.TryGetLast(
                 notification.Value, notification.Type);
 
             var specification = new NotificationSpecification(existingNotification);
@@ -46,22 +46,22 @@ namespace Smart.House.Notification.Services
         {
             var emailProvider = _notificationProviderFactory.Create("email");
             emailProvider.Send(notification);
-            notification.EmailSent = true; 
+            //notification.EmailSent = true; 
         }
 
         private void SendAmbientNotification(Entities.Notification notification)
         {
             var ambientLightningProvider = _notificationProviderFactory.Create("ambient");
             ambientLightningProvider.Send(notification);
-            notification.AmbientLightningSent = true; 
+            //notification.AmbientLightningSent = true; 
         }
 
         private void UpdateNotification(Entities.Notification existing, Entities.Notification incoming)
         {
-            existing.EmailSent = existing.EmailSent != incoming.EmailSent 
-                ? incoming.EmailSent : existing.EmailSent;
-            existing.AmbientLightningSent = existing.AmbientLightningSent != incoming.AmbientLightningSent
-                ? incoming.AmbientLightningSent : existing.AmbientLightningSent;
+            //existing.EmailSent = existing.EmailSent != incoming.EmailSent 
+            //    ? incoming.EmailSent : existing.EmailSent;
+            //existing.AmbientLightningSent = existing.AmbientLightningSent != incoming.AmbientLightningSent
+            //    ? incoming.AmbientLightningSent : existing.AmbientLightningSent;
         }
     }
 }

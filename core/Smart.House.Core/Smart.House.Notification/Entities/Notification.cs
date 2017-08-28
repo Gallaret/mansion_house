@@ -1,4 +1,6 @@
-﻿namespace Smart.House.Notification.Entities
+﻿using System;
+
+namespace Smart.House.Notification.Entities
 {
     public enum EventType
     {
@@ -11,7 +13,6 @@
         public bool Unchecked { get; set; }
         public EventType Type { get; set; }
         public string Description { get; set; }
-        public bool EmailSent { get; set; }
-        public bool AmbientLightningSent { get; set; }
+        public DateTime CreatedDate { get; set; }
     }
 }

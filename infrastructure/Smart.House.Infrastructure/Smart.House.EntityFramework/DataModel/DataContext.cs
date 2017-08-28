@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Smart.House.Application.Mediator;
 using Smart.House.Application.Transaction;
 using Smart.House.Domain.Entities;
@@ -7,12 +8,15 @@ using System.Threading.Tasks;
 
 namespace Smart.House.EntityFramework.DataModel
 {
+    using Notification = Notification.Entities.Notification;
+
     public class DataContext : DbContext, IUnitOfWork
     {
         private readonly IMediator _mediator;
 
         public DbSet<Device> Devices { get; set; }
         public DbSet<Harmonogram> Harmonograms { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
 
         public DataContext(DbContextOptions<DataContext> options, IMediator mediator)
             : base(options)
@@ -23,6 +27,7 @@ namespace Smart.House.EntityFramework.DataModel
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             BuildCameraModel(modelBuilder);
+            BuildNotificationModel(modelBuilder.Entity<Notification>());
 
             modelBuilder.Entity<Harmonogram>().HasKey(har => new { har.Identifier, har.Type });
             modelBuilder.Entity<Harmonogram>()
@@ -45,6 +50,12 @@ namespace Smart.House.EntityFramework.DataModel
 
             modelBuilder.Entity<Camera.Entities.Camera>().Ignore(cam => cam.IsMotionDetected);
             modelBuilder.Entity<Camera.Entities.Camera>().Ignore(cam => cam.IsActive);
+        }
+
+        private void BuildNotificationModel(EntityTypeBuilder<Notification> notificationConfiguration)
+        {
+            notificationConfiguration.Property<int>("Id").IsRequired().ForSqlServerUseSequenceHiLo();
+            notificationConfiguration.HasKey("Id");
         }
 
         public async Task<int> SaveChangesAsync()

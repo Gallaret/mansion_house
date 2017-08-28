@@ -27,6 +27,7 @@ namespace Smart.House.Dashboard.Resolvers
                     PublishEvent(@event);
                 });
             }
+
         }
 
         public async Task<TState> DispatchRequest<TCommand, TState>(TCommand request)

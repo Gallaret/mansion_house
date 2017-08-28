@@ -4,6 +4,6 @@
     {
         void Add(Entities.Notification notification);
 
-        Entities.Notification TryGet(string value, Entities.EventType type);
+        Entities.Notification TryGetLast(string value, Entities.EventType type);
     }
 }

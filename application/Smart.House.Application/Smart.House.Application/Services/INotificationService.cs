@@ -4,6 +4,6 @@ namespace Smart.House.Application.Services
 {
     public interface INotificationService
     {
-        NotificationState SendNotifications(NotificationState state);
+        NotificationState GetNewState(NotificationState state);
     }
 }

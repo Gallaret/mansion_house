@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.Internal;
 using Microsoft.EntityFrameworkCore.ValueGeneration;
 using Smart.House.Domain.Entities;
 using Smart.House.EntityFramework.DataModel;
+using Smart.House.Notification.Entities;
 using System;
 
 namespace Smart.House.EntityFramework.Migrations
@@ -20,6 +21,7 @@ namespace Smart.House.EntityFramework.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.0.0-rtm-26452")
+                .HasAnnotation("Relational:Sequence:.EntityFrameworkHiLoSequence", "'EntityFrameworkHiLoSequence', '', '1', '10', '', '', 'Int64', 'False'")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Smart.House.Domain.Entities.Device", b =>
@@ -76,6 +78,28 @@ namespace Smart.House.EntityFramework.Migrations
                     b.HasKey("Identifier", "Type");
 
                     b.ToTable("Harmonograms");
+                });
+
+            modelBuilder.Entity("Smart.House.Notification.Entities.Notification", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:HiLoSequenceName", "EntityFrameworkHiLoSequence")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
+
+                    b.Property<DateTime>("CreatedDate");
+
+                    b.Property<string>("Description");
+
+                    b.Property<int>("Type");
+
+                    b.Property<bool>("Unchecked");
+
+                    b.Property<string>("Value");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Notifications");
                 });
 
             modelBuilder.Entity("Smart.House.Camera.Entities.Camera", b =>

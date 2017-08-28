@@ -49,7 +49,7 @@ namespace Smart.House.Services.Devices
                 var motionDetected = provider.DetectMotion(camera, out string lastFileName);
                 camera.SetMotionDetection(motionDetected, lastFileName);
 
-                var lastNotification = _notificationRepository.TryGet(
+                var lastNotification = _notificationRepository.TryGetLast(
                     lastFileName, EventType.MotionDetected);
 
                 _service.SendMotionDetectedNotification(camera, lastNotification);

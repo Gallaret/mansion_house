@@ -22,10 +22,7 @@ namespace Smart.House.Services.Handlers.Events
             var notification = _factory.Create(
                 Notification.Entities.EventType.MotionDetected, @event.Value);
 
-            await Task.Factory.StartNew(() =>
-            {
-                _repository.Add(notification);
-            });
+            _repository.Add(notification);
         }
     }
 }

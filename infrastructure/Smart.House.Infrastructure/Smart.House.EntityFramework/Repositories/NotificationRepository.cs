@@ -2,9 +2,12 @@
 using System;
 using Smart.House.Notification.Entities;
 using Smart.House.EntityFramework.DataModel;
+using System.Linq;
 
 namespace Smart.House.EntityFramework.Repositories
 {
+    using Notification = Notification.Entities.Notification;
+
     public class NotificationRepository : INotificationRepository
     {
         private readonly DataContext _context;
@@ -14,15 +17,15 @@ namespace Smart.House.EntityFramework.Repositories
             _context = context;
         }
 
-        public void Add(Notification.Entities.Notification notification)
+        public void Add(Notification notification)
         {
-            //
+            _context.Notifications.Add(notification);
         }
 
-        public Notification.Entities.Notification TryGet(string value, EventType type)
+        public Notification TryGetLast(string value, EventType type)
         {
-            //throw new NotImplementedException();
-            return null;
+            return _context.Notifications.OrderByDescending(notification => notification.CreatedDate)
+                .FirstOrDefault(notification => notification.Type == type && notification.Value == value);
         }
     }
 }
