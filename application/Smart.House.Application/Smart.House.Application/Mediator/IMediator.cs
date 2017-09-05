@@ -1,6 +1,6 @@
 ﻿using Smart.House.Application.Commands;
-using Smart.House.Application.States;
-using Smart.House.Domain.Entities;
+using Smart.House.Application.Services.States;
+using Smart.House.Domain.Devices.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

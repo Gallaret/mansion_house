@@ -3,12 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Microsoft.EntityFrameworkCore.Storage;
-using Microsoft.EntityFrameworkCore.Storage.Internal;
-using Microsoft.EntityFrameworkCore.ValueGeneration;
-using Smart.House.Domain.Entities;
 using Smart.House.EntityFramework.DataModel;
-using Smart.House.Notification.Entities;
 using System;
 
 namespace Smart.House.EntityFramework.Migrations

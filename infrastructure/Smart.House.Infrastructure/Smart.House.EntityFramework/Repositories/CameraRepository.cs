@@ -1,30 +1,17 @@
-﻿using Smart.House.EntityFramework.DataModel;
-using System.Linq;
-using Smart.House.Camera.Repositories;
-using Microsoft.EntityFrameworkCore;
+﻿using Smart.House.Application.Repositories;
+using Smart.House.Domain.Devices.Entities;
+using Smart.House.EntityFramework.DataModel;
 
 namespace Smart.House.EntityFramework.Repositories
 {
-    public class CameraRepository : ICameraRepository
+    public class CameraRepository : DeviceRepository<Camera>, ICameraRepository
     {
         private readonly DataContext _context;
 
         public CameraRepository(DataContext context)
+            : base(context)
         {
             _context = context;
-        }
-
-        public void Add(Camera.Entities.Camera camera)
-        {
-            _context.Devices.Add(camera);
-        }
-
-        public Camera.Entities.Camera Get(string identifier)
-        {
-            var camera = _context.Devices.Include(device => device.Harmonograms)
-                .SingleOrDefault(c => c.Identifier == identifier);
-         
-            return camera as Camera.Entities.Camera;
         }
     }
 }

@@ -1,11 +1,11 @@
 ﻿using Smart.House.Application.Mediator;
 using System.Collections.Generic;
-using Smart.House.Domain.Entities;
 using SimpleInjector;
 using Smart.House.Application.Events;
 using Smart.House.Application.Commands;
-using Smart.House.Application.States;
 using System.Threading.Tasks;
+using Smart.House.Domain.Devices.Entities;
+using Smart.House.Application.Services.States;
 
 namespace Smart.House.Dashboard.Resolvers
 {

@@ -2,14 +2,14 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Smart.House.Application.Mediator;
 using Smart.House.Application.Transaction;
-using Smart.House.Domain.Entities;
+using Smart.House.Domain.Devices.Entities;
+using Smart.House.Domain.Devices.ValueTypes;
+using Smart.House.Domain.Notifications.ValueTypes;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Smart.House.EntityFramework.DataModel
 {
-    using Notification = Notification.Entities.Notification;
-
     public class DataContext : DbContext, IUnitOfWork
     {
         private readonly IMediator _mediator;
@@ -42,14 +42,14 @@ namespace Smart.House.EntityFramework.DataModel
             modelBuilder.Entity<Device>()
                 .HasDiscriminator<string>("device_type")
                 .HasValue<Device>("device_base")
-                .HasValue<Camera.Entities.Camera>("device_camera");
+                .HasValue<Camera>("device_camera");
             modelBuilder.Entity<Device>()
                 .HasKey(dev => dev.Identifier);
             modelBuilder.Entity<Device>()
                 .Ignore(dev => dev.DomainEvents);
 
-            modelBuilder.Entity<Camera.Entities.Camera>().Ignore(cam => cam.IsMotionDetected);
-            modelBuilder.Entity<Camera.Entities.Camera>().Ignore(cam => cam.IsActive);
+            modelBuilder.Entity<Camera>().Ignore(cam => cam.IsMotionDetected);
+            modelBuilder.Entity<Camera>().Ignore(cam => cam.IsActive);
         }
 
         private void BuildNotificationModel(EntityTypeBuilder<Notification> notificationConfiguration)

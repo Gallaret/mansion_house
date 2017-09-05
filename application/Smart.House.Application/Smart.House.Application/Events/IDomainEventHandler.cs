@@ -1,4 +1,4 @@
-﻿using Smart.House.Domain.Entities;
+﻿using Smart.House.Domain.Devices.Entities;
 using System.Threading.Tasks;
 
 namespace Smart.House.Application.Events

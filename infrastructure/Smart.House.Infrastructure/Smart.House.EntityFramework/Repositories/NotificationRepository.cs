@@ -1,13 +1,10 @@
-﻿using Smart.House.Notification.Repositories;
-using System;
-using Smart.House.Notification.Entities;
-using Smart.House.EntityFramework.DataModel;
+﻿using Smart.House.EntityFramework.DataModel;
 using System.Linq;
+using Smart.House.Application.Repositories;
+using Smart.House.Domain.Notifications.ValueTypes;
 
 namespace Smart.House.EntityFramework.Repositories
 {
-    using Notification = Notification.Entities.Notification;
-
     public class NotificationRepository : INotificationRepository
     {
         private readonly DataContext _context;

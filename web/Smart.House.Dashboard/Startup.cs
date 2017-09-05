@@ -14,19 +14,22 @@ using Smart.House.EntityFramework.Repositories;
 using SimpleInjector.Lifestyles;
 using Smart.House.DLink;
 using Smart.House.Ftp;
-using Smart.House.Application.Services.Devices;
-using Smart.House.Services.Devices;
 using Smart.House.Domain.Infrastructure;
 using Smart.House.Dashboard.Resolvers;
 using Smart.House.Application.Mediator;
 using System.Reflection;
-using Smart.House.Domain.Entities;
 using Smart.House.Application.Events;
 using Smart.House.Application.Commands;
-using Smart.House.Application.Factories.Devices.Camera;
 using Smart.House.Services.Handlers.Events;
 using Smart.House.Application.Decorators;
 using Smart.House.Application.Transaction;
+using Smart.House.Domain.Devices.Entities;
+using Smart.House.Application.Services;
+using Smart.House.Services.State;
+using Smart.House.Application.Providers.Ambilight;
+using Smart.House.Application.Providers.Camera;
+using Smart.House.Application.Factories.Devices;
+using Smart.House.Application.Repositories;
 
 namespace Smart.House.Dashboard
 {
@@ -135,15 +138,26 @@ namespace Smart.House.Dashboard
                 typeof(TransactionRequestDecorator<,>));
 
             container.RegisterSingleton(app.ApplicationServices.GetService<ILoggerFactory>());
-            container.Register<ICameraService, CameraService>();
+            container.Register(typeof(IStateService<>), new[] //register state services
+            {
+                typeof(CameraService).GetTypeInfo().Assembly
+            });
+
+            container.RegisterDecorator(
+               typeof(IStateService<>),
+               typeof(TransactionStateDecorator<>));
+
             container.Register<IFtpClientService, FtpClientService>(Lifestyle.Singleton);
-            container.Register<Camera.Repositories.ICameraRepository, CameraRepository>(Lifestyle.Scoped);
-            container.Register<Notification.Repositories.INotificationRepository, NotificationRepository>(Lifestyle.Scoped);
+            container.Register<ICameraRepository, CameraRepository>(Lifestyle.Scoped);
+            container.Register<INotificationRepository, NotificationRepository>(Lifestyle.Scoped);
             container.RegisterSingleton<ICameraProviderFactory>(new CameraProviderFactory
             {
                 { "dlink", () => container.GetInstance<CameraProvider>()},
             });
-
+            container.RegisterSingleton<IAmbilightProviderFactory>(new AmbilightProviderFactory
+            {
+                { "hyperion", () => container.GetInstance<IAmbilightProvider>() },
+            });
             container.RegisterSingleton<IMediator>(() => mediator);
         }
 

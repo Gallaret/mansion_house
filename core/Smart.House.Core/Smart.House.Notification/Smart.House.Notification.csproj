@@ -8,4 +8,10 @@
     <ProjectReference Include="..\Smart.House.Domain\Smart.House.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Entities\" />
+    <Folder Include="Repositories\" />
+    <Folder Include="Specifications\" />
+  </ItemGroup>
+
 </Project>

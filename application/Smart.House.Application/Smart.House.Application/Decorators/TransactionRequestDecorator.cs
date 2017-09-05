@@ -1,5 +1,5 @@
 ﻿using Smart.House.Application.Commands;
-using Smart.House.Application.States;
+using Smart.House.Application.Services.States;
 using Smart.House.Application.Transaction;
 using System.Threading.Tasks;
 

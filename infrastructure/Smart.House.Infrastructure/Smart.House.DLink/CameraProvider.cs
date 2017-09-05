@@ -1,7 +1,8 @@
 ﻿using System;
 using Smart.House.Domain.Infrastructure;
 using System.Linq;
-using Smart.House.Application.Factories.Devices.Camera;
+using Smart.House.Application.Providers.Camera;
+using Smart.House.Domain.Devices.Entities;
 
 namespace Smart.House.DLink
 {
@@ -13,7 +14,7 @@ namespace Smart.House.DLink
             _ftpClient = ftpClient;
         }
 
-        public bool DetectMotion(Camera.Entities.Camera camera, out string lastMotionFileName)
+        public bool DetectMotion(Camera camera, out string lastMotionFileName)
         {
             var directory = GetMotionDirectory(camera.FtpMotionPath);
             var files =_ftpClient.ScanFiles(directory, new FtpCredentials
