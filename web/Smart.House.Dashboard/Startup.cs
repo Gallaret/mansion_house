@@ -9,8 +9,6 @@ using SimpleInjector;
 using SimpleInjector.Integration.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewComponents;
 using Microsoft.EntityFrameworkCore;
-using Smart.House.EntityFramework.DataModel;
-using Smart.House.EntityFramework.Repositories;
 using SimpleInjector.Lifestyles;
 using Smart.House.DLink;
 using Smart.House.Ftp;
@@ -30,6 +28,8 @@ using Smart.House.Application.Providers.Ambilight;
 using Smart.House.Application.Providers.Camera;
 using Smart.House.Application.Factories.Devices;
 using Smart.House.Application.Repositories;
+using Smart.House.Data.Model;
+using Smart.House.Data.Repositories;
 
 namespace Smart.House.Dashboard
 {
@@ -134,7 +134,7 @@ namespace Smart.House.Dashboard
             container.Register<IUnitOfWork>(() => container.GetInstance<DataContext>(), Lifestyle.Scoped);
 
             container.RegisterDecorator(
-                typeof(IRequestHandler<,>),
+                typeof(IRequestHandler<>),
                 typeof(TransactionRequestDecorator<,>));
 
             container.RegisterSingleton(app.ApplicationServices.GetService<ILoggerFactory>());

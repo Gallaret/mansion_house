@@ -1,12 +1,13 @@
-﻿using Smart.House.Domain.Devices.ValueTypes;
+﻿using Smart.House.Domain.Devices.Entities;
+using Smart.House.Domain.Devices.ValueTypes;
 
 namespace Smart.House.Domain.Devices.Factories
 {
     public class CameraFactory
     {
-        public Entities.Camera Create(int id, string producent)
+        public Camera Create(string identifier, string provider)
         {
-            var camera = new Entities.Camera(id, producent);
+            var camera = new Camera(identifier, provider);
 
             var motionHarmonogram = new Harmonogram(
                 camera.Identifier, HarmonogramType.MotionDetection);

@@ -7,11 +7,11 @@ namespace Smart.House.Application.Services.States
     {
         public string Identifier { get; }
 
-        public NotificationState(List<Notification> notifications)
+        public NotificationState(ICollection<Notification> notifications)
         {
             Notifications = notifications;
         }
 
-        public IReadOnlyCollection<Notification> Notifications { get; set; }
+        public ICollection<Notification> Notifications { get; set; }
     }
 }

@@ -1,9 +1,9 @@
 ﻿using Smart.House.Application.Repositories;
+using Smart.House.Data.Model;
 using Smart.House.Domain.Devices.Entities;
-using Smart.House.EntityFramework.DataModel;
 using System.Threading.Tasks;
 
-namespace Smart.House.EntityFramework.Repositories
+namespace Smart.House.Data.Repositories
 {
     public class DeviceRepository<T> : IDeviceRepository<T>
         where T: Device

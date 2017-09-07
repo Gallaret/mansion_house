@@ -49,7 +49,7 @@
     <ProjectReference Include="..\..\application\Smart.House.Application\Smart.House.Services\Smart.House.Services.csproj" />
     <ProjectReference Include="..\..\core\Smart.House.Core\Smart.House.Domain\Smart.House.Domain.csproj" />
     <ProjectReference Include="..\..\infrastructure\Smart.House.Infrastructure\Smart.House.DLink\Smart.House.DLink.csproj" />
-    <ProjectReference Include="..\..\infrastructure\Smart.House.Infrastructure\Smart.House.EntityFramework\Smart.House.EntityFramework.csproj" />
+    <ProjectReference Include="..\..\infrastructure\Smart.House.Infrastructure\Smart.House.EntityFramework\Smart.House.Data.csproj" />
     <ProjectReference Include="..\..\infrastructure\Smart.House.Infrastructure\Smart.House.Ftp\Smart.House.Ftp.csproj" />
   </ItemGroup>
   <ProjectExtensions><VisualStudio><UserProperties package_1json__JSONSchema="" /></VisualStudio></ProjectExtensions>

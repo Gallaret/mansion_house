@@ -6,7 +6,8 @@ namespace Smart.House.Domain.Devices.Entities
 {
     public enum DeviceType
     {
-        Camera = 0
+        Camera = 0,
+        Ambilight,
     }
 
     public interface IAsyncNotification { }
@@ -46,7 +47,8 @@ namespace Smart.House.Domain.Devices.Entities
 
         }
 
-        public string Producent { get; private set; }
+        public string Provider { get; private set; }
+        public DeviceType DeviceType { get; private set; }
         public bool AmbientNotificationEnabled { get; protected set; }
         public bool SoundNotificationEnabled { get; protected set; }
         public bool EmailNotificationEnabled { get; protected set; }
@@ -55,10 +57,11 @@ namespace Smart.House.Domain.Devices.Entities
 
         public Device() { }
 
-        public Device(int id, string producent, DeviceType type)
-        {
-            _identifier = type.ToString().ToLower() + id;
-            Producent = producent;
+        public Device(string identifier, string provider, DeviceType type)
+        {    
+            Provider = provider;
+            DeviceType = type;
+            _identifier = identifier;
             Harmonograms = new List<Harmonogram>();
         }
 

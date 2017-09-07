@@ -3843,6 +3843,23 @@
           "bin/placeholder/Smart.House.Application.dll": {}
         }
       },
+      "Smart.House.Data/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "2.0.0",
+          "Microsoft.EntityFrameworkCore.SqlServer": "2.0.0",
+          "Microsoft.EntityFrameworkCore.Tools": "2.0.0",
+          "Smart.House.Application": "1.0.0",
+          "Smart.House.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Smart.House.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Smart.House.Data.dll": {}
+        }
+      },
       "Smart.House.DLink/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.0",
@@ -3864,23 +3881,6 @@
         },
         "runtime": {
           "bin/placeholder/Smart.House.Domain.dll": {}
-        }
-      },
-      "Smart.House.EntityFramework/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v2.0",
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore": "2.0.0",
-          "Microsoft.EntityFrameworkCore.SqlServer": "2.0.0",
-          "Microsoft.EntityFrameworkCore.Tools": "2.0.0",
-          "Smart.House.Application": "1.0.0",
-          "Smart.House.Domain": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/Smart.House.EntityFramework.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Smart.House.EntityFramework.dll": {}
         }
       },
       "Smart.House.Ftp/1.0.0": {
@@ -10496,6 +10496,11 @@
       "path": "../../application/Smart.House.Application/Smart.House.Application/Smart.House.Application.csproj",
       "msbuildProject": "../../application/Smart.House.Application/Smart.House.Application/Smart.House.Application.csproj"
     },
+    "Smart.House.Data/1.0.0": {
+      "type": "project",
+      "path": "../../infrastructure/Smart.House.Infrastructure/Smart.House.EntityFramework/Smart.House.Data.csproj",
+      "msbuildProject": "../../infrastructure/Smart.House.Infrastructure/Smart.House.EntityFramework/Smart.House.Data.csproj"
+    },
     "Smart.House.DLink/1.0.0": {
       "type": "project",
       "path": "../../infrastructure/Smart.House.Infrastructure/Smart.House.DLink/Smart.House.DLink.csproj",
@@ -10505,11 +10510,6 @@
       "type": "project",
       "path": "../../core/Smart.House.Core/Smart.House.Domain/Smart.House.Domain.csproj",
       "msbuildProject": "../../core/Smart.House.Core/Smart.House.Domain/Smart.House.Domain.csproj"
-    },
-    "Smart.House.EntityFramework/1.0.0": {
-      "type": "project",
-      "path": "../../infrastructure/Smart.House.Infrastructure/Smart.House.EntityFramework/Smart.House.EntityFramework.csproj",
-      "msbuildProject": "../../infrastructure/Smart.House.Infrastructure/Smart.House.EntityFramework/Smart.House.EntityFramework.csproj"
     },
     "Smart.House.Ftp/1.0.0": {
       "type": "project",
@@ -10542,8 +10542,8 @@
       "SimpleInjector.Integration.AspNetCore.Mvc >= 4.0.10",
       "Smart.House.Application >= 1.0.0",
       "Smart.House.DLink >= 1.0.0",
+      "Smart.House.Data >= 1.0.0",
       "Smart.House.Domain >= 1.0.0",
-      "Smart.House.EntityFramework >= 1.0.0",
       "Smart.House.Ftp >= 1.0.0",
       "Smart.House.Services >= 1.0.0",
       "System.Diagnostics.DiagnosticSource >= 4.4.1",
@@ -10593,11 +10593,11 @@
             "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\application\\Smart.House.Application\\Smart.House.Application\\Smart.House.Application.csproj": {
               "projectPath": "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\application\\Smart.House.Application\\Smart.House.Application\\Smart.House.Application.csproj"
             },
-            "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\infrastructure\\Smart.House.Infrastructure\\Smart.House.EntityFramework\\Smart.House.EntityFramework.csproj": {
-              "projectPath": "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\infrastructure\\Smart.House.Infrastructure\\Smart.House.EntityFramework\\Smart.House.EntityFramework.csproj"
-            },
             "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\application\\Smart.House.Application\\Smart.House.Services\\Smart.House.Services.csproj": {
               "projectPath": "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\application\\Smart.House.Application\\Smart.House.Services\\Smart.House.Services.csproj"
+            },
+            "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\infrastructure\\Smart.House.Infrastructure\\Smart.House.EntityFramework\\Smart.House.Data.csproj": {
+              "projectPath": "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\infrastructure\\Smart.House.Infrastructure\\Smart.House.EntityFramework\\Smart.House.Data.csproj"
             },
             "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\infrastructure\\Smart.House.Infrastructure\\Smart.House.DLink\\Smart.House.DLink.csproj": {
               "projectPath": "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\infrastructure\\Smart.House.Infrastructure\\Smart.House.DLink\\Smart.House.DLink.csproj"

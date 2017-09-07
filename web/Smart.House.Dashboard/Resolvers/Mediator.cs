@@ -5,7 +5,6 @@ using Smart.House.Application.Events;
 using Smart.House.Application.Commands;
 using System.Threading.Tasks;
 using Smart.House.Domain.Devices.Entities;
-using Smart.House.Application.Services.States;
 
 namespace Smart.House.Dashboard.Resolvers
 {
@@ -27,15 +26,13 @@ namespace Smart.House.Dashboard.Resolvers
                     PublishEvent(@event);
                 });
             }
-
         }
 
-        public async Task<TState> DispatchRequest<TCommand, TState>(TCommand request)
+        public async Task DispatchRequest<TCommand>(TCommand request)
             where TCommand : IRequest
-            where TState : IDeviceState
         {
-            var instance = _provider.GetInstance<IRequestHandler<TCommand, TState>>();
-            return await instance.Handle(request);
+            var instance = _provider.GetInstance<IRequestHandler<TCommand>>();
+            await instance.Handle(request);
         }
 
         private async void PublishEvent<TEvent>(TEvent @event)

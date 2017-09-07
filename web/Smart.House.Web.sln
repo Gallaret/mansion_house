@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Dashboard", "Sm
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Domain", "..\core\Smart.House.Core\Smart.House.Domain\Smart.House.Domain.csproj", "{FDD0D7D0-1695-4CAB-B93E-B0185C4CB6D2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.EntityFramework", "..\infrastructure\Smart.House.Infrastructure\Smart.House.EntityFramework\Smart.House.EntityFramework.csproj", "{D6BE9D07-551E-404B-AABF-47FE2B291A41}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Data", "..\infrastructure\Smart.House.Infrastructure\Smart.House.EntityFramework\Smart.House.Data.csproj", "{D6BE9D07-551E-404B-AABF-47FE2B291A41}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Application", "..\application\Smart.House.Application\Smart.House.Application\Smart.House.Application.csproj", "{616BB571-28E3-4B86-A803-A2A31F471B33}"
 EndProject
@@ -16,6 +16,18 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Ftp", "..\infrastructure\Smart.House.Infrastructure\Smart.House.Ftp\Smart.House.Ftp.csproj", "{E4340D14-B0F4-43D7-8DCE-73FF22095F5F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Services", "..\application\Smart.House.Application\Smart.House.Services\Smart.House.Services.csproj", "{C3D330C1-E3C5-46DD-939E-1C16F620537C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApplicationCore", "ApplicationCore", "{C3D3E4D3-47AC-4F5A-92FA-FE149499C628}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{E1A3FA17-BD27-47C7-96D0-93D53C3841C9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{20E7593F-8C32-4727-8C92-40F0A1183772}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{D98AE38A-87B0-4331-BF87-AD85B5E5B232}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccess", "DataAccess", "{E4690E4C-E668-47FD-B8B1-1F07358779E9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Providers", "Providers", "{D13525CF-FE48-4147-8B16-9D99C24F54EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -54,6 +66,18 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FDD0D7D0-1695-4CAB-B93E-B0185C4CB6D2} = {E1A3FA17-BD27-47C7-96D0-93D53C3841C9}
+		{D6BE9D07-551E-404B-AABF-47FE2B291A41} = {E4690E4C-E668-47FD-B8B1-1F07358779E9}
+		{616BB571-28E3-4B86-A803-A2A31F471B33} = {20E7593F-8C32-4727-8C92-40F0A1183772}
+		{AECF6FED-9E9F-4C71-B334-8CA53B746A08} = {D13525CF-FE48-4147-8B16-9D99C24F54EC}
+		{E4340D14-B0F4-43D7-8DCE-73FF22095F5F} = {D13525CF-FE48-4147-8B16-9D99C24F54EC}
+		{C3D330C1-E3C5-46DD-939E-1C16F620537C} = {20E7593F-8C32-4727-8C92-40F0A1183772}
+		{E1A3FA17-BD27-47C7-96D0-93D53C3841C9} = {C3D3E4D3-47AC-4F5A-92FA-FE149499C628}
+		{20E7593F-8C32-4727-8C92-40F0A1183772} = {C3D3E4D3-47AC-4F5A-92FA-FE149499C628}
+		{E4690E4C-E668-47FD-B8B1-1F07358779E9} = {D98AE38A-87B0-4331-BF87-AD85B5E5B232}
+		{D13525CF-FE48-4147-8B16-9D99C24F54EC} = {D98AE38A-87B0-4331-BF87-AD85B5E5B232}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {843FACF0-2921-4A07-8C84-45B13BFCE60C}

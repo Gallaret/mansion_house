@@ -5,7 +5,7 @@ using Smart.House.Application.Services.States;
 using Smart.House.Dashboard.ViewModels;
 using Smart.House.Domain.Notifications.ValueTypes;
 using Smart.House.Services.Handlers.Requests.Commands;
-using System.Collections.Generic;
+using System.Linq;
 
 namespace Smart.House.Dashboard.Controllers
 {
@@ -34,25 +34,16 @@ namespace Smart.House.Dashboard.Controllers
 
             if (cameraState.IsMotionDetected)
             {
-                var notifications = new List<Notification>
-                {
-                    new Notification
-                    {
+                var notifications = Enumerable.Empty<Notification>();
 
-                    }
-                };
-                var notificationState =_notificationService.GetNewState(new NotificationState(notifications)).Result;
-                foreach (var notification in notificationState.Notifications)
-                {
-                    if (notification.AmblightEnabled()) //if not sent
+                var notificationState =_notificationService.GetNewState(
+                    new NotificationState(notifications.ToArray())).Result;
+
+                _mediator.DispatchRequest(
+                    new AmbilightAlarmCommand
                     {
-                        _mediator.DispatchRequest<SendNotificationCommand, NotificationState>(new SendNotificationCommand
-                        {
-                            Notification = notifications[0],
-                            Provider = "ambilight"
-                        });
-                    }
-                }
+                        Identifier = "ambilight_1"
+                    });
             }
 
             var viewModel = new CameraViewModel

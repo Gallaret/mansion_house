@@ -1,9 +1,10 @@
-﻿using Smart.House.EntityFramework.DataModel;
-using System.Linq;
+﻿using System.Linq;
 using Smart.House.Application.Repositories;
 using Smart.House.Domain.Notifications.ValueTypes;
+using System.Collections.Generic;
+using Smart.House.Data.Model;
 
-namespace Smart.House.EntityFramework.Repositories
+namespace Smart.House.Data.Repositories
 {
     public class NotificationRepository : INotificationRepository
     {
@@ -17,6 +18,11 @@ namespace Smart.House.EntityFramework.Repositories
         public void Add(Notification notification)
         {
             _context.Notifications.Add(notification);
+        }
+
+        public IEnumerable<Notification> GetLastNotifications(int count)
+        {
+            return _context.Notifications.OrderByDescending(n => n.CreatedDate).Take(count);
         }
 
         public Notification TryGetLast(string value, EventType type)

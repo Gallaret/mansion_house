@@ -12,8 +12,8 @@
 
         public Camera() { }
 
-        internal Camera(int id, string producent) 
-            : base(id, producent, DeviceType.Camera) {  }
+        internal Camera(string identifier, string provider) 
+            : base(identifier, provider, DeviceType.Camera) {  }
 
         public void SetMotionDetection(bool detection)
         {

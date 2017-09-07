@@ -2,10 +2,10 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Smart.House.EntityFramework.DataModel;
+using Smart.House.Data.Model;
 using System;
 
-namespace Smart.House.EntityFramework.Migrations
+namespace Smart.House.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
     partial class DataContextModelSnapshot : ModelSnapshot

@@ -3,12 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Microsoft.EntityFrameworkCore.Storage;
-using Microsoft.EntityFrameworkCore.Storage.Internal;
-using Smart.House.EntityFramework.DataModel;
-using System;
+using Smart.House.Data.Model;
 
-namespace Smart.House.EntityFramework.Migrations
+namespace Smart.House.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
     [Migration("20170813002541_initialMigration")]

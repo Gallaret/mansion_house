@@ -1,8 +1,8 @@
 ﻿using Smart.House.Application.Repositories;
+using Smart.House.Data.Model;
 using Smart.House.Domain.Devices.Entities;
-using Smart.House.EntityFramework.DataModel;
 
-namespace Smart.House.EntityFramework.Repositories
+namespace Smart.House.Data.Repositories
 {
     public class CameraRepository : DeviceRepository<Camera>, ICameraRepository
     {

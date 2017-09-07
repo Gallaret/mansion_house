@@ -45,7 +45,7 @@ namespace Smart.House.Services.State
             {
                 camera.SetLastMotionFileName(currentFileName);
 
-                var provider = _cameraProviderFactory.Create(camera.Producent);
+                var provider = _cameraProviderFactory.Create(camera.Provider);
                 var motionDetected = provider.DetectMotion(camera, out string lastFileName);
                 camera.SetMotionDetection(motionDetected);
                 camera.SetLastMotionFileName(lastFileName);

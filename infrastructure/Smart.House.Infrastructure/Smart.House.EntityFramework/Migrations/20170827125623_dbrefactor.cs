@@ -1,8 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
-using System;
-using System.Collections.Generic;
 
-namespace Smart.House.EntityFramework.Migrations
+namespace Smart.House.Data.Migrations
 {
     public partial class dbrefactor : Migration
     {
