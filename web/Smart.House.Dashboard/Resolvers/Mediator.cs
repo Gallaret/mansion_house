@@ -35,6 +35,13 @@ namespace Smart.House.Dashboard.Resolvers
             await instance.Handle(request);
         }
 
+        public async Task<TResult> DispatchRequest<TQuery, TResult>(TQuery request) 
+            where TQuery : IRequest
+        {
+            var instance = _provider.GetInstance<IRequestHandler<TQuery, TResult>>();
+            return await instance.Handle(request);
+        }
+
         private async void PublishEvent<TEvent>(TEvent @event)
         {
             var handlerTypes = typeof(IDomainEventHandler<>).MakeGenericType(@event.GetType());

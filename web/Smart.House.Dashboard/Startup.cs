@@ -30,6 +30,9 @@ using Smart.House.Application.Factories.Devices;
 using Smart.House.Application.Repositories;
 using Smart.House.Data.Model;
 using Smart.House.Data.Repositories;
+using Smart.House.Read;
+using System;
+using Smart.House.Read.Connection;
 
 namespace Smart.House.Dashboard
 {
@@ -125,8 +128,12 @@ namespace Smart.House.Dashboard
             container.RegisterMvcControllers(app);
             container.RegisterMvcViewComponents(app);
 
+            var connectionString = @"Server=localhost\SQLEXPRESS;Database=SmartHouse;Trusted_Connection=True;";
+
             var optionsBuilder = new DbContextOptionsBuilder<DataContext>();
-            optionsBuilder.UseSqlServer(@"Server=localhost\SQLEXPRESS;Database=SmartHouse;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer(connectionString);
+
+            container.RegisterSingleton(() => new ReadConnection(connectionString));
 
             RegisterHandlers();
 
@@ -171,6 +178,16 @@ namespace Smart.House.Dashboard
             };
 
             container.RegisterCollection(typeof(IDomainEventHandler<>), assemblies);
+            container.Register(typeof(IRequestHandler<>), assemblies);
+        }
+
+        private void RegisterQueryHandlers()
+        {
+            var assemblies = new[]
+            {
+                typeof(GetNotificationSettingsRequestHandler).GetTypeInfo().Assembly
+            };
+
             container.Register(typeof(IRequestHandler<,>), assemblies);
         }
     }

@@ -76,3 +76,7 @@ Temporary Items
 /core/Smart.House.Core/Smart.House.Camera/bin/Debug/netcoreapp2.0
 /core/Smart.House.Core/Smart.House.Camera/obj
 /core/Smart.House.Core/Smart.House.Notification/obj
+/infrastructure/Smart.House.Infrastructure/Smart.House.Data/bin/Debug
+/infrastructure/Smart.House.Infrastructure/Smart.House.Data/obj
+/infrastructure/Smart.House.Infrastructure/Smart.House.Read/bin/Debug/netcoreapp2.0
+/infrastructure/Smart.House.Infrastructure/Smart.House.Read/obj

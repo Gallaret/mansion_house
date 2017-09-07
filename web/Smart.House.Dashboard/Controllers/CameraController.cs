@@ -3,9 +3,9 @@ using Smart.House.Application.Mediator;
 using Smart.House.Application.Services;
 using Smart.House.Application.Services.States;
 using Smart.House.Dashboard.ViewModels;
-using Smart.House.Domain.Notifications.ValueTypes;
+using Smart.House.Read.Handlers.Queries;
+using Smart.House.Read.Handlers.Results;
 using Smart.House.Services.Handlers.Requests.Commands;
-using System.Linq;
 
 namespace Smart.House.Dashboard.Controllers
 {
@@ -29,21 +29,23 @@ namespace Smart.House.Dashboard.Controllers
         public JsonResult GetCameras(string id)
         {
             var state = new CameraState("camera" + id);
-
             var cameraState = _cameraService.GetNewState(state).Result;
 
             if (cameraState.IsMotionDetected)
             {
-                var notifications = Enumerable.Empty<Notification>();
-
-                var notificationState =_notificationService.GetNewState(
-                    new NotificationState(notifications.ToArray())).Result;
-
-                _mediator.DispatchRequest(
-                    new AmbilightAlarmCommand
+                var result = _mediator.DispatchRequest<NotificationSettingsQuery, NotificationSettingsResult>(
+                    new NotificationSettingsQuery
                     {
-                        Identifier = "ambilight_1"
+                        Identifier = cameraState.Identifier
+                    }).Result;
+
+                if (result.ShouldSendAmbilight)
+                {
+                    _mediator.DispatchRequest(new AmbilightAlarmCommand
+                    {
+                        Identifier = "ambilight"
                     });
+                }
             }
 
             var viewModel = new CameraViewModel

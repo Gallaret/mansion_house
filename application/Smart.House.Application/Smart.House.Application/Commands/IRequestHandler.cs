@@ -1,5 +1,4 @@
-﻿using Smart.House.Application.Services.States;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace Smart.House.Application.Commands
 {
@@ -11,10 +10,9 @@ namespace Smart.House.Application.Commands
         Task Handle(TCommand command);
     }
 
-    public interface IRequestHandler<in TCommand, TState> 
-        where TState : IDeviceState
-        where TCommand : IRequest
+    public interface IRequestHandler<in TQuery, TResult> 
+        where TQuery : IRequest
     {
-        Task<TState> Handle(TCommand command);
+        Task<TResult> Handle(TQuery command);
     }
 }

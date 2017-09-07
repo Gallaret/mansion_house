@@ -11,5 +11,8 @@ namespace Smart.House.Application.Mediator
 
         Task DispatchRequest<TCommand>(TCommand request)
             where TCommand : IRequest;
+
+        Task<TResult> DispatchRequest<TQuery, TResult>(TQuery request)
+            where TQuery : IRequest;
     }
 }

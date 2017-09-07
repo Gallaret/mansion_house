@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.EntityFramework", "Smart.House.EntityFramework\Smart.House.EntityFramework.csproj", "{4EAD27AD-670B-4271-8E1E-39ED58D4B5DD}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Domain", "..\..\core\Smart.House.Core\Smart.House.Domain\Smart.House.Domain.csproj", "{DCC9F93E-6451-427C-8069-A86410BBE7CE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Ftp", "Smart.House.Ftp\Smart.House.Ftp.csproj", "{FDAD7868-24D6-4377-8E57-71A974E4EF1B}"
@@ -17,16 +15,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Camera", "..\..
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Notification", "..\..\core\Smart.House.Core\Smart.House.Notification\Smart.House.Notification.csproj", "{CAA5D862-F93F-4FD3-BE6C-65D43682B251}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Data", "Smart.House.Data\Smart.House.Data.csproj", "{18A0B5C3-CF96-4E5D-BA8F-EEAB943C7301}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smart.House.Read", "Smart.House.Read\Smart.House.Read.csproj", "{D32584E7-02F4-4369-BE0D-B9F72920713D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4EAD27AD-670B-4271-8E1E-39ED58D4B5DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4EAD27AD-670B-4271-8E1E-39ED58D4B5DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4EAD27AD-670B-4271-8E1E-39ED58D4B5DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4EAD27AD-670B-4271-8E1E-39ED58D4B5DD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DCC9F93E-6451-427C-8069-A86410BBE7CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DCC9F93E-6451-427C-8069-A86410BBE7CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DCC9F93E-6451-427C-8069-A86410BBE7CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -51,6 +49,14 @@ Global
 		{CAA5D862-F93F-4FD3-BE6C-65D43682B251}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CAA5D862-F93F-4FD3-BE6C-65D43682B251}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CAA5D862-F93F-4FD3-BE6C-65D43682B251}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18A0B5C3-CF96-4E5D-BA8F-EEAB943C7301}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18A0B5C3-CF96-4E5D-BA8F-EEAB943C7301}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18A0B5C3-CF96-4E5D-BA8F-EEAB943C7301}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18A0B5C3-CF96-4E5D-BA8F-EEAB943C7301}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D32584E7-02F4-4369-BE0D-B9F72920713D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D32584E7-02F4-4369-BE0D-B9F72920713D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D32584E7-02F4-4369-BE0D-B9F72920713D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D32584E7-02F4-4369-BE0D-B9F72920713D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
