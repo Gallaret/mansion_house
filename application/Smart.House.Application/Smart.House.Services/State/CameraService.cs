@@ -41,15 +41,18 @@ namespace Smart.House.Services.State
 
         private void CheckMotionState(Camera camera, string currentFileName)
         {
-            if (camera.MotionDetectionEnabled)
+            if (!camera.MotionDetectionEnabled) return;
+
+            camera.SetLastMotionFileName(currentFileName);
+
+            var provider = _cameraProviderFactory.Create(camera.Provider);
+            var motionDetected = provider.DetectMotion(camera, out string lastFileName);
+
+            camera.SetMotionDetection(motionDetected);
+            camera.SetLastMotionFileName(lastFileName);
+
+            if (camera.IsMotionDetected)
             {
-                camera.SetLastMotionFileName(currentFileName);
-
-                var provider = _cameraProviderFactory.Create(camera.Provider);
-                var motionDetected = provider.DetectMotion(camera, out string lastFileName);
-                camera.SetMotionDetection(motionDetected);
-                camera.SetLastMotionFileName(lastFileName);
-
                 var lastNotification = _notificationRepository.TryGetLast(
                     lastFileName, EventType.MotionDetected);
 
@@ -59,11 +62,10 @@ namespace Smart.House.Services.State
 
         private void UpdateMotionState(CameraState newState, Camera camera)
         {
-            if (camera.IsMotionDetected)
-            {
-                newState.IsMotionDetected = true;
-                newState.CurrentMotionFileName = camera.GetLastMotionFileName();
-            }
+            if (!camera.IsMotionDetected) return;
+
+            newState.IsMotionDetected = true;
+            newState.CurrentMotionFileName = camera.GetLastMotionFileName();
         }
     }
 }

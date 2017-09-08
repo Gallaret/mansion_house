@@ -1,6 +1,5 @@
 ﻿using FluentFTP;
-using Smart.House.Application.Services;
-using Smart.House.Domain.Infrastructure;
+using Smart.House.Application.Providers.Ftp;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;

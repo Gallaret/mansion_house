@@ -1,8 +1,8 @@
 ﻿using System;
-using Smart.House.Domain.Infrastructure;
 using System.Linq;
 using Smart.House.Application.Providers.Camera;
 using Smart.House.Domain.Devices.Entities;
+using Smart.House.Application.Providers.Ftp;
 
 namespace Smart.House.DLink
 {

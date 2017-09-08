@@ -41,10 +41,10 @@ namespace Smart.House.Dashboard.Controllers
 
                 if (result.ShouldSendAmbilight)
                 {
-                    _mediator.DispatchRequest(new AmbilightAlarmCommand
-                    {
-                        Identifier = "ambilight"
-                    });
+                    //_mediator.DispatchRequest(new AmbilightAlarmCommand
+                    //{
+                    //    Identifier = "ambilight"
+                    //});
                 }
             }
 

@@ -11,13 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Application", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.DLink", "Smart.House.DLink\Smart.House.DLink.csproj", "{A82E9827-EB9B-4087-A1FF-386207F18D42}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Camera", "..\..\core\Smart.House.Core\Smart.House.Camera\Smart.House.Camera.csproj", "{7FF6305E-93CB-4819-AF17-236DA1136ADB}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Notification", "..\..\core\Smart.House.Core\Smart.House.Notification\Smart.House.Notification.csproj", "{CAA5D862-F93F-4FD3-BE6C-65D43682B251}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Data", "Smart.House.Data\Smart.House.Data.csproj", "{18A0B5C3-CF96-4E5D-BA8F-EEAB943C7301}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smart.House.Read", "Smart.House.Read\Smart.House.Read.csproj", "{D32584E7-02F4-4369-BE0D-B9F72920713D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Read", "Smart.House.Read\Smart.House.Read.csproj", "{D32584E7-02F4-4369-BE0D-B9F72920713D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,14 +37,6 @@ Global
 		{A82E9827-EB9B-4087-A1FF-386207F18D42}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A82E9827-EB9B-4087-A1FF-386207F18D42}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A82E9827-EB9B-4087-A1FF-386207F18D42}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7FF6305E-93CB-4819-AF17-236DA1136ADB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7FF6305E-93CB-4819-AF17-236DA1136ADB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7FF6305E-93CB-4819-AF17-236DA1136ADB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7FF6305E-93CB-4819-AF17-236DA1136ADB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CAA5D862-F93F-4FD3-BE6C-65D43682B251}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CAA5D862-F93F-4FD3-BE6C-65D43682B251}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CAA5D862-F93F-4FD3-BE6C-65D43682B251}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CAA5D862-F93F-4FD3-BE6C-65D43682B251}.Release|Any CPU.Build.0 = Release|Any CPU
 		{18A0B5C3-CF96-4E5D-BA8F-EEAB943C7301}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{18A0B5C3-CF96-4E5D-BA8F-EEAB943C7301}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18A0B5C3-CF96-4E5D-BA8F-EEAB943C7301}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -49,6 +49,5 @@
         }
 
         public bool IsMotionDetected => _isMotionDetected;
-        public override bool IsActive => true;
     }
 }

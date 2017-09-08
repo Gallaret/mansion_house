@@ -1,4 +1,5 @@
-﻿using Smart.House.Application.Repositories;
+﻿using Microsoft.EntityFrameworkCore;
+using Smart.House.Application.Repositories;
 using Smart.House.Data.Model;
 using Smart.House.Domain.Devices.Entities;
 using System.Threading.Tasks;
@@ -22,7 +23,8 @@ namespace Smart.House.Data.Repositories
 
         public async Task<T> GetAsync(string identifier)
         {
-            return await _context.FindAsync<Device>(identifier) as T;
+            return await _context.Devices.Include(dev => dev.Harmonograms)
+                .SingleOrDefaultAsync(dev => dev.Identifier == identifier) as T;
         }
     }
 }

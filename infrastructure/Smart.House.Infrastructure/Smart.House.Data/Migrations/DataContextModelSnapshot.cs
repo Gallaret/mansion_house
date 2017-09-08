@@ -2,7 +2,14 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.EntityFrameworkCore.Storage.Internal;
+using Microsoft.EntityFrameworkCore.ValueGeneration;
 using Smart.House.Data.Model;
+using Smart.House.Domain.Devices.Entities;
+using Smart.House.Domain.Devices.ValueTypes;
+using Smart.House.Domain.Notifications.ValueTypes;
 using System;
 
 namespace Smart.House.Data.Migrations
@@ -18,16 +25,18 @@ namespace Smart.House.Data.Migrations
                 .HasAnnotation("Relational:Sequence:.EntityFrameworkHiLoSequence", "'EntityFrameworkHiLoSequence', '', '1', '10', '', '', 'Int64', 'False'")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Smart.House.Domain.Entities.Device", b =>
+            modelBuilder.Entity("Smart.House.Domain.Devices.Entities.Device", b =>
                 {
                     b.Property<string>("Identifier")
                         .ValueGeneratedOnAdd();
 
                     b.Property<bool>("AmbientNotificationEnabled");
 
+                    b.Property<int>("DeviceType");
+
                     b.Property<bool>("EmailNotificationEnabled");
 
-                    b.Property<string>("Producent");
+                    b.Property<string>("Provider");
 
                     b.Property<bool>("SmsNotificationEnabled");
 
@@ -43,7 +52,7 @@ namespace Smart.House.Data.Migrations
                     b.HasDiscriminator<string>("device_type").HasValue("device_base");
                 });
 
-            modelBuilder.Entity("Smart.House.Domain.Entities.Harmonogram", b =>
+            modelBuilder.Entity("Smart.House.Domain.Devices.ValueTypes.Harmonogram", b =>
                 {
                     b.Property<string>("Identifier");
 
@@ -74,7 +83,7 @@ namespace Smart.House.Data.Migrations
                     b.ToTable("Harmonograms");
                 });
 
-            modelBuilder.Entity("Smart.House.Notification.Entities.Notification", b =>
+            modelBuilder.Entity("Smart.House.Domain.Notifications.ValueTypes.Notification", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -84,6 +93,8 @@ namespace Smart.House.Data.Migrations
                     b.Property<DateTime>("CreatedDate");
 
                     b.Property<string>("Description");
+
+                    b.Property<bool>("Sent");
 
                     b.Property<int>("Type");
 
@@ -96,9 +107,9 @@ namespace Smart.House.Data.Migrations
                     b.ToTable("Notifications");
                 });
 
-            modelBuilder.Entity("Smart.House.Camera.Entities.Camera", b =>
+            modelBuilder.Entity("Smart.House.Domain.Devices.Entities.Camera", b =>
                 {
-                    b.HasBaseType("Smart.House.Domain.Entities.Device");
+                    b.HasBaseType("Smart.House.Domain.Devices.Entities.Device");
 
                     b.Property<string>("FtpLogin");
 
@@ -113,9 +124,9 @@ namespace Smart.House.Data.Migrations
                     b.HasDiscriminator().HasValue("device_camera");
                 });
 
-            modelBuilder.Entity("Smart.House.Domain.Entities.Harmonogram", b =>
+            modelBuilder.Entity("Smart.House.Domain.Devices.ValueTypes.Harmonogram", b =>
                 {
-                    b.HasOne("Smart.House.Domain.Entities.Device", "Device")
+                    b.HasOne("Smart.House.Domain.Devices.Entities.Device", "Device")
                         .WithMany("Harmonograms")
                         .HasForeignKey("Identifier")
                         .HasConstraintName("ForeignKey_Harmonogram_Device")

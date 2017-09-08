@@ -1,30 +1,26 @@
 ﻿using Smart.House.Application.Commands;
-using Smart.House.Application.Services.States;
 using Smart.House.Application.Transaction;
 using System.Threading.Tasks;
 
 namespace Smart.House.Application.Decorators
 {
-    public class TransactionRequestDecorator<TCommand, TState> : IRequestHandler<TCommand, TState>
-        where TState : IDeviceState
+    public class TransactionRequestDecorator<TCommand> : IRequestHandler<TCommand>
         where TCommand : IRequest
     {
-        private readonly IRequestHandler<TCommand, TState> _request;
+        private readonly IRequestHandler<TCommand> _request;
         private readonly IUnitOfWork _unitOfWork;
 
-        public TransactionRequestDecorator(IRequestHandler<TCommand, TState> request,
+        public TransactionRequestDecorator(IRequestHandler<TCommand> request,
             IUnitOfWork unitOfWork)
         {
             _request = request;
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<TState> Handle(TCommand command)
+        public async Task Handle(TCommand command)
         {
-            var state = await _request.Handle(command);
+            await _request.Handle(command);
             await _unitOfWork.SaveChangesAsync();
-
-            return state;
         }
     }
 }

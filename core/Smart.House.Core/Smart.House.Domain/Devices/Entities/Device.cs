@@ -34,7 +34,7 @@ namespace Smart.House.Domain.Devices.Entities
         }
     }
 
-    public abstract class Device : AggregateRoot<string>
+    public class Device : AggregateRoot<string>
     {
         private string _identifier;
 
@@ -74,7 +74,5 @@ namespace Smart.House.Domain.Devices.Entities
 
             Harmonograms.Add(harmonogram);
         }
-
-        public abstract bool IsActive { get; }
     }
 }

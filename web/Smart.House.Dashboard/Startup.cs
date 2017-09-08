@@ -12,7 +12,6 @@ using Microsoft.EntityFrameworkCore;
 using SimpleInjector.Lifestyles;
 using Smart.House.DLink;
 using Smart.House.Ftp;
-using Smart.House.Domain.Infrastructure;
 using Smart.House.Dashboard.Resolvers;
 using Smart.House.Application.Mediator;
 using System.Reflection;
@@ -31,8 +30,8 @@ using Smart.House.Application.Repositories;
 using Smart.House.Data.Model;
 using Smart.House.Data.Repositories;
 using Smart.House.Read;
-using System;
 using Smart.House.Read.Connection;
+using Smart.House.Application.Providers.Ftp;
 
 namespace Smart.House.Dashboard
 {
@@ -136,13 +135,14 @@ namespace Smart.House.Dashboard
             container.RegisterSingleton(() => new ReadConnection(connectionString));
 
             RegisterHandlers();
+            RegisterQueryHandlers();
 
             container.Register(() => new DataContext(optionsBuilder.Options, mediator), Lifestyle.Scoped);
             container.Register<IUnitOfWork>(() => container.GetInstance<DataContext>(), Lifestyle.Scoped);
 
             container.RegisterDecorator(
                 typeof(IRequestHandler<>),
-                typeof(TransactionRequestDecorator<,>));
+                typeof(TransactionRequestDecorator<>));
 
             container.RegisterSingleton(app.ApplicationServices.GetService<ILoggerFactory>());
             container.Register(typeof(IStateService<>), new[] //register state services
@@ -155,6 +155,7 @@ namespace Smart.House.Dashboard
                typeof(TransactionStateDecorator<>));
 
             container.Register<IFtpClientService, FtpClientService>(Lifestyle.Singleton);
+            container.Register<IDeviceRepository<Device>, DeviceRepository<Device>>(Lifestyle.Scoped); //move repo registration to convention
             container.Register<ICameraRepository, CameraRepository>(Lifestyle.Scoped);
             container.Register<INotificationRepository, NotificationRepository>(Lifestyle.Scoped);
             container.RegisterSingleton<ICameraProviderFactory>(new CameraProviderFactory

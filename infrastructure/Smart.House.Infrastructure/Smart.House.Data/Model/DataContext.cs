@@ -49,7 +49,6 @@ namespace Smart.House.Data.Model
                 .Ignore(dev => dev.DomainEvents);
 
             modelBuilder.Entity<Camera>().Ignore(cam => cam.IsMotionDetected);
-            modelBuilder.Entity<Camera>().Ignore(cam => cam.IsActive);
         }
 
         private void BuildNotificationModel(EntityTypeBuilder<Notification> notificationConfiguration)
