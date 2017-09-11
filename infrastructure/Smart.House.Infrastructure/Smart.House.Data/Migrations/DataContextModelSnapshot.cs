@@ -38,6 +38,14 @@ namespace Smart.House.Data.Migrations
 
                     b.Property<string>("Provider");
 
+                    b.Property<string>("RemoteAddress");
+
+                    b.Property<string>("RemoteLogin");
+
+                    b.Property<string>("RemotePassword");
+
+                    b.Property<string>("RemotePath");
+
                     b.Property<bool>("SmsNotificationEnabled");
 
                     b.Property<bool>("SoundNotificationEnabled");
@@ -110,12 +118,6 @@ namespace Smart.House.Data.Migrations
             modelBuilder.Entity("Smart.House.Domain.Devices.Entities.Camera", b =>
                 {
                     b.HasBaseType("Smart.House.Domain.Devices.Entities.Device");
-
-                    b.Property<string>("FtpLogin");
-
-                    b.Property<string>("FtpMotionPath");
-
-                    b.Property<string>("FtpPassword");
 
                     b.Property<bool>("MotionDetectionEnabled");
 

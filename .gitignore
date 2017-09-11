@@ -80,3 +80,9 @@ Temporary Items
 /infrastructure/Smart.House.Infrastructure/Smart.House.Data/obj
 /infrastructure/Smart.House.Infrastructure/Smart.House.Read/bin/Debug/netcoreapp2.0
 /infrastructure/Smart.House.Infrastructure/Smart.House.Read/obj
+/core/Smart.House.Core/Smart.House.Core/bin
+/core/Smart.House.Core/Smart.House.Core/obj
+/infrastructure/Smart.House.Infrastructure/Smart.House.Hyperion/bin/Debug/netcoreapp2.0
+/infrastructure/Smart.House.Infrastructure/Smart.House.Hyperion/obj
+/infrastructure/Smart.House.Infrastructure/Smart.House.Ssh/bin/Debug/netcoreapp2.0
+/infrastructure/Smart.House.Infrastructure/Smart.House.Ssh/obj

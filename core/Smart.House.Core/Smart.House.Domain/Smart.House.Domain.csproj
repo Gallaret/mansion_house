@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Notifications\Services\" />
+    <ProjectReference Include="..\Smart.House.Core\Smart.House.Core.csproj" />
   </ItemGroup>
 
 </Project>

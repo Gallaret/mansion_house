@@ -3,6 +3,7 @@ using Smart.House.Application.Mediator;
 using Smart.House.Application.Services;
 using Smart.House.Application.Services.States;
 using Smart.House.Dashboard.ViewModels;
+using Smart.House.Domain.Notifications.ValueTypes;
 using Smart.House.Read.Handlers.Queries;
 using Smart.House.Read.Handlers.Results;
 using Smart.House.Services.Handlers.Requests.Commands;
@@ -41,10 +42,12 @@ namespace Smart.House.Dashboard.Controllers
 
                 if (result.ShouldSendAmbilight)
                 {
-                    //_mediator.DispatchRequest(new AmbilightAlarmCommand
-                    //{
-                    //    Identifier = "ambilight"
-                    //});
+                    _mediator.DispatchRequest(new AmbilightAlarmCommand
+                    {
+                        Identifier = "ambilight",
+                        Value = cameraState.CurrentMotionFileName,
+                        EventType = EventType.MotionDetected
+                    });
                 }
             }
 

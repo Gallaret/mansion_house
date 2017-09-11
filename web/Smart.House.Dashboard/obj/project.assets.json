@@ -2280,6 +2280,52 @@
           "lib/netstandard1.6/SimpleInjector.Integration.AspNetCore.Mvc.Core.dll": {}
         }
       },
+      "SSH.NET/2016.1.0-beta2": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CSharp": "4.0.1",
+          "SshNet.Security.Cryptography": "[1.2.0]",
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.Tools": "4.0.1",
+          "System.Diagnostics.TraceSource": "4.0.0",
+          "System.Globalization": "4.0.11",
+          "System.IO": "4.1.0",
+          "System.IO.FileSystem": "4.0.1",
+          "System.IO.FileSystem.Primitives": "4.0.1",
+          "System.Linq": "4.1.0",
+          "System.Net.NameResolution": "4.0.0",
+          "System.Net.Sockets": "4.1.0",
+          "System.Reflection.Extensions": "4.0.1",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Security.Cryptography.Algorithms": "4.2.0",
+          "System.Text.RegularExpressions": "4.1.0",
+          "System.Threading": "4.0.11",
+          "System.Threading.Thread": "4.0.0",
+          "System.Threading.ThreadPool": "4.0.10",
+          "System.Threading.Timer": "4.0.1",
+          "System.Xml.XPath.XmlDocument": "4.0.1",
+          "System.Xml.XmlDocument": "4.0.1"
+        },
+        "compile": {
+          "lib/netstandard1.3/Renci.SshNet.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Renci.SshNet.dll": {}
+        }
+      },
+      "SshNet.Security.Cryptography/1.2.0": {
+        "type": "package",
+        "dependencies": {
+          "System.IO": "4.1.0",
+          "System.Security.Cryptography.Primitives": "4.0.0"
+        },
+        "compile": {
+          "lib/netstandard1.3/SshNet.Security.Cryptography.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/SshNet.Security.Cryptography.dll": {}
+        }
+      },
       "System.AppContext/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -3715,10 +3761,21 @@
           "System.Runtime.Handles": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/_._": {}
+          "ref/netstandard1.3/System.Threading.ThreadPool.dll": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Threading.ThreadPool.dll": {}
+        }
+      },
+      "System.Threading.Timer/4.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.0.1",
+          "Microsoft.NETCore.Targets": "1.0.1",
+          "System.Runtime": "4.1.0"
+        },
+        "compile": {
+          "ref/netstandard1.2/System.Threading.Timer.dll": {}
         }
       },
       "System.ValueTuple/4.3.0": {
@@ -3819,7 +3876,7 @@
           "System.Xml.ReaderWriter": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/_._": {}
+          "ref/netstandard1.3/System.Xml.XPath.dll": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.dll": {}
@@ -3843,6 +3900,27 @@
         },
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
+        }
+      },
+      "System.Xml.XPath.XmlDocument/4.0.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.11",
+          "System.Globalization": "4.0.11",
+          "System.IO": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Threading": "4.0.11",
+          "System.Xml.ReaderWriter": "4.0.11",
+          "System.Xml.XPath": "4.0.1",
+          "System.Xml.XmlDocument": "4.0.1"
+        },
+        "compile": {
+          "ref/netstandard1.3/System.Xml.XPath.XmlDocument.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/System.Xml.XPath.XmlDocument.dll": {}
         }
       },
       "VroomJs/1.2.3": {
@@ -3870,6 +3948,16 @@
         },
         "runtime": {
           "bin/placeholder/Smart.House.Application.dll": {}
+        }
+      },
+      "Smart.House.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "compile": {
+          "bin/placeholder/Smart.House.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Smart.House.Core.dll": {}
         }
       },
       "Smart.House.Data/1.0.0": {
@@ -3905,6 +3993,9 @@
       "Smart.House.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.0",
+        "dependencies": {
+          "Smart.House.Core": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/Smart.House.Domain.dll": {}
         },
@@ -3924,6 +4015,19 @@
         },
         "runtime": {
           "bin/placeholder/Smart.House.Ftp.dll": {}
+        }
+      },
+      "Smart.House.Hyperion/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "dependencies": {
+          "Smart.House.Application": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Smart.House.Hyperion.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Smart.House.Hyperion.dll": {}
         }
       },
       "Smart.House.Read/1.0.0": {
@@ -3952,6 +4056,20 @@
         },
         "runtime": {
           "bin/placeholder/Smart.House.Services.dll": {}
+        }
+      },
+      "Smart.House.Ssh/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "dependencies": {
+          "SSH.NET": "2016.1.0-beta2",
+          "Smart.House.Application": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Smart.House.Ssh.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Smart.House.Ssh.dll": {}
         }
       }
     }
@@ -6297,6 +6415,62 @@
         "lib/netstandard1.6/SimpleInjector.Integration.AspNetCore.Mvc.Core.xml",
         "simpleinjector.integration.aspnetcore.mvc.core.4.0.10.nupkg.sha512",
         "simpleinjector.integration.aspnetcore.mvc.core.nuspec"
+      ]
+    },
+    "SSH.NET/2016.1.0-beta2": {
+      "sha512": "7IaDQ46qqu4n4GoKep5G4lUOrlFFUdy3Hs5A8OB8LcMVNrbToqBnQ0SqQHCZaisAkZ+BD9Vnx2KMD8WahMonWQ==",
+      "type": "package",
+      "path": "ssh.net/2016.1.0-beta2",
+      "files": [
+        "lib/net35/Renci.SshNet.dll",
+        "lib/net35/Renci.SshNet.xml",
+        "lib/net40/Renci.SshNet.dll",
+        "lib/net40/Renci.SshNet.xml",
+        "lib/netstandard1.3/Renci.SshNet.dll",
+        "lib/netstandard1.3/Renci.SshNet.xml",
+        "lib/sl4/Renci.SshNet.dll",
+        "lib/sl4/Renci.SshNet.xml",
+        "lib/sl5/Renci.SshNet.dll",
+        "lib/sl5/Renci.SshNet.xml",
+        "lib/uap10/Renci.SshNet.dll",
+        "lib/uap10/Renci.SshNet.xml",
+        "lib/wp71/Renci.SshNet.dll",
+        "lib/wp71/Renci.SshNet.xml",
+        "lib/wp8/Renci.SshNet.dll",
+        "lib/wp8/Renci.SshNet.xml",
+        "ssh.net.2016.1.0-beta2.nupkg.sha512",
+        "ssh.net.nuspec"
+      ]
+    },
+    "SshNet.Security.Cryptography/1.2.0": {
+      "sha512": "EeFsirrrkIK+cdlYsxukNjBN98cbU7eHfTYZEwxsbOa3dvgR/OhOD06C0sTxvNPhe4UQ6yM0p1sKcT69jqgjTw==",
+      "type": "package",
+      "path": "sshnet.security.cryptography/1.2.0",
+      "files": [
+        "lib/net20/SshNet.Security.Cryptography.dll",
+        "lib/net20/SshNet.Security.Cryptography.xml",
+        "lib/net40/SshNet.Security.Cryptography.dll",
+        "lib/net40/SshNet.Security.Cryptography.xml",
+        "lib/net45/SshNet.Security.Cryptography.dll",
+        "lib/net45/SshNet.Security.Cryptography.xml",
+        "lib/netstandard1.0/SshNet.Security.Cryptography.dll",
+        "lib/netstandard1.0/SshNet.Security.Cryptography.xml",
+        "lib/netstandard1.3/SshNet.Security.Cryptography.dll",
+        "lib/netstandard1.3/SshNet.Security.Cryptography.xml",
+        "lib/portable-net45+win8+wpa81/SshNet.Security.Cryptography.dll",
+        "lib/portable-net45+win8+wpa81/SshNet.Security.Cryptography.xml",
+        "lib/sl4/SshNet.Security.Cryptography.dll",
+        "lib/sl4/SshNet.Security.Cryptography.xml",
+        "lib/sl5/SshNet.Security.Cryptography.dll",
+        "lib/sl5/SshNet.Security.Cryptography.xml",
+        "lib/uap10.0/SshNet.Security.Cryptography.dll",
+        "lib/uap10.0/SshNet.Security.Cryptography.xml",
+        "lib/wp71/SshNet.Security.Cryptography.dll",
+        "lib/wp71/SshNet.Security.Cryptography.xml",
+        "lib/wp8/SshNet.Security.Cryptography.dll",
+        "lib/wp8/SshNet.Security.Cryptography.xml",
+        "sshnet.security.cryptography.1.2.0.nupkg.sha512",
+        "sshnet.security.cryptography.nuspec"
       ]
     },
     "System.AppContext/4.3.0": {
@@ -10274,6 +10448,59 @@
         "system.threading.threadpool.nuspec"
       ]
     },
+    "System.Threading.Timer/4.0.1": {
+      "sha512": "saGfUV8uqVW6LeURiqxcGhZ24PzuRNaUBtbhVeuUAvky1naH395A/1nY0P2bWvrw/BreRtIB/EzTDkGBpqCwEw==",
+      "type": "package",
+      "path": "system.threading.timer/4.0.1",
+      "files": [
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net451/_._",
+        "lib/portable-net451+win81+wpa81/_._",
+        "lib/win81/_._",
+        "lib/wpa81/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net451/_._",
+        "ref/netcore50/System.Threading.Timer.dll",
+        "ref/netcore50/System.Threading.Timer.xml",
+        "ref/netcore50/de/System.Threading.Timer.xml",
+        "ref/netcore50/es/System.Threading.Timer.xml",
+        "ref/netcore50/fr/System.Threading.Timer.xml",
+        "ref/netcore50/it/System.Threading.Timer.xml",
+        "ref/netcore50/ja/System.Threading.Timer.xml",
+        "ref/netcore50/ko/System.Threading.Timer.xml",
+        "ref/netcore50/ru/System.Threading.Timer.xml",
+        "ref/netcore50/zh-hans/System.Threading.Timer.xml",
+        "ref/netcore50/zh-hant/System.Threading.Timer.xml",
+        "ref/netstandard1.2/System.Threading.Timer.dll",
+        "ref/netstandard1.2/System.Threading.Timer.xml",
+        "ref/netstandard1.2/de/System.Threading.Timer.xml",
+        "ref/netstandard1.2/es/System.Threading.Timer.xml",
+        "ref/netstandard1.2/fr/System.Threading.Timer.xml",
+        "ref/netstandard1.2/it/System.Threading.Timer.xml",
+        "ref/netstandard1.2/ja/System.Threading.Timer.xml",
+        "ref/netstandard1.2/ko/System.Threading.Timer.xml",
+        "ref/netstandard1.2/ru/System.Threading.Timer.xml",
+        "ref/netstandard1.2/zh-hans/System.Threading.Timer.xml",
+        "ref/netstandard1.2/zh-hant/System.Threading.Timer.xml",
+        "ref/portable-net451+win81+wpa81/_._",
+        "ref/win81/_._",
+        "ref/wpa81/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.threading.timer.4.0.1.nupkg.sha512",
+        "system.threading.timer.nuspec"
+      ]
+    },
     "System.ValueTuple/4.3.0": {
       "sha512": "iXhNWxL0Tbi16k0axJS6/rjXr/K/BfFMWuzZL4/OGoKSOwq9C1BFcmQ4m6qIPyQ7+Ewj/0ALQ1Z3AIP5SSqWbQ==",
       "type": "package",
@@ -10538,6 +10765,41 @@
         "system.xml.xpath.xdocument.nuspec"
       ]
     },
+    "System.Xml.XPath.XmlDocument/4.0.1": {
+      "sha512": "Zm2BdeanuncYs3NhCj4c9e1x3EXFzFBVv2wPEc/Dj4ZbI9R8ecLSR5frAsx4zJCPBtKQreQ7Q/KxJEohJZbfzA==",
+      "type": "package",
+      "path": "system.xml.xpath.xmldocument/4.0.1",
+      "files": [
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/netstandard1.3/System.Xml.XPath.XmlDocument.dll",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/netstandard1.3/System.Xml.XPath.XmlDocument.dll",
+        "ref/netstandard1.3/System.Xml.XPath.XmlDocument.xml",
+        "ref/netstandard1.3/de/System.Xml.XPath.XmlDocument.xml",
+        "ref/netstandard1.3/es/System.Xml.XPath.XmlDocument.xml",
+        "ref/netstandard1.3/fr/System.Xml.XPath.XmlDocument.xml",
+        "ref/netstandard1.3/it/System.Xml.XPath.XmlDocument.xml",
+        "ref/netstandard1.3/ja/System.Xml.XPath.XmlDocument.xml",
+        "ref/netstandard1.3/ko/System.Xml.XPath.XmlDocument.xml",
+        "ref/netstandard1.3/ru/System.Xml.XPath.XmlDocument.xml",
+        "ref/netstandard1.3/zh-hans/System.Xml.XPath.XmlDocument.xml",
+        "ref/netstandard1.3/zh-hant/System.Xml.XPath.XmlDocument.xml",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.xml.xpath.xmldocument.4.0.1.nupkg.sha512",
+        "system.xml.xpath.xmldocument.nuspec"
+      ]
+    },
     "VroomJs/1.2.3": {
       "sha512": "UeothAnvWK9f2LqPO1Nj5YRkuoOHBqjUnBtLm6yogiE9DNhDMqO/ipsI3qGe7dbeORAcbbCxRrnaqdlTZaT59A==",
       "type": "package",
@@ -10555,6 +10817,11 @@
       "type": "project",
       "path": "../../application/Smart.House.Application/Smart.House.Application/Smart.House.Application.csproj",
       "msbuildProject": "../../application/Smart.House.Application/Smart.House.Application/Smart.House.Application.csproj"
+    },
+    "Smart.House.Core/1.0.0": {
+      "type": "project",
+      "path": "../../core/Smart.House.Core/Smart.House.Core/Smart.House.Core.csproj",
+      "msbuildProject": "../../core/Smart.House.Core/Smart.House.Core/Smart.House.Core.csproj"
     },
     "Smart.House.Data/1.0.0": {
       "type": "project",
@@ -10576,6 +10843,11 @@
       "path": "../../infrastructure/Smart.House.Infrastructure/Smart.House.Ftp/Smart.House.Ftp.csproj",
       "msbuildProject": "../../infrastructure/Smart.House.Infrastructure/Smart.House.Ftp/Smart.House.Ftp.csproj"
     },
+    "Smart.House.Hyperion/1.0.0": {
+      "type": "project",
+      "path": "../../infrastructure/Smart.House.Infrastructure/Smart.House.Hyperion/Smart.House.Hyperion.csproj",
+      "msbuildProject": "../../infrastructure/Smart.House.Infrastructure/Smart.House.Hyperion/Smart.House.Hyperion.csproj"
+    },
     "Smart.House.Read/1.0.0": {
       "type": "project",
       "path": "../../infrastructure/Smart.House.Infrastructure/Smart.House.Read/Smart.House.Read.csproj",
@@ -10585,6 +10857,11 @@
       "type": "project",
       "path": "../../application/Smart.House.Application/Smart.House.Services/Smart.House.Services.csproj",
       "msbuildProject": "../../application/Smart.House.Application/Smart.House.Services/Smart.House.Services.csproj"
+    },
+    "Smart.House.Ssh/1.0.0": {
+      "type": "project",
+      "path": "../../infrastructure/Smart.House.Infrastructure/Smart.House.Ssh/Smart.House.Ssh.csproj",
+      "msbuildProject": "../../infrastructure/Smart.House.Infrastructure/Smart.House.Ssh/Smart.House.Ssh.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -10610,8 +10887,10 @@
       "Smart.House.Data >= 1.0.0",
       "Smart.House.Domain >= 1.0.0",
       "Smart.House.Ftp >= 1.0.0",
+      "Smart.House.Hyperion >= 1.0.0",
       "Smart.House.Read >= 1.0.0",
       "Smart.House.Services >= 1.0.0",
+      "Smart.House.Ssh >= 1.0.0",
       "System.Diagnostics.DiagnosticSource >= 4.4.1",
       "System.Net.Http >= 4.3.2"
     ]
@@ -10652,6 +10931,12 @@
           "projectReferences": {
             "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\infrastructure\\Smart.House.Infrastructure\\Smart.House.Ftp\\Smart.House.Ftp.csproj": {
               "projectPath": "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\infrastructure\\Smart.House.Infrastructure\\Smart.House.Ftp\\Smart.House.Ftp.csproj"
+            },
+            "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\infrastructure\\Smart.House.Infrastructure\\Smart.House.Hyperion\\Smart.House.Hyperion.csproj": {
+              "projectPath": "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\infrastructure\\Smart.House.Infrastructure\\Smart.House.Hyperion\\Smart.House.Hyperion.csproj"
+            },
+            "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\infrastructure\\Smart.House.Infrastructure\\Smart.House.Ssh\\Smart.House.Ssh.csproj": {
+              "projectPath": "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\infrastructure\\Smart.House.Infrastructure\\Smart.House.Ssh\\Smart.House.Ssh.csproj"
             },
             "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\core\\Smart.House.Core\\Smart.House.Domain\\Smart.House.Domain.csproj": {
               "projectPath": "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\core\\Smart.House.Core\\Smart.House.Domain\\Smart.House.Domain.csproj"

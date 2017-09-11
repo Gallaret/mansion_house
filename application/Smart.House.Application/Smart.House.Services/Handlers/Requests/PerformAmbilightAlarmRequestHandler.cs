@@ -1,5 +1,6 @@
 ﻿using Smart.House.Application.Commands;
 using Smart.House.Application.Providers.Ambilight;
+using Smart.House.Application.Providers.Ftp;
 using Smart.House.Application.Repositories;
 using Smart.House.Domain.Devices.Entities;
 using Smart.House.Services.Handlers.Requests.Commands;
@@ -26,7 +27,13 @@ namespace Smart.House.Services.Handlers.Requests
             if (device.AmbientNotificationEnabled)
             {
                 var provider = _factory.Create(device.Provider);
-                await provider.RunAlarm();
+
+                await provider.RunAlarm(new RemoteCredentials
+                {
+                    Address = device.RemoteAddress,
+                    Login = device.RemoteLogin,
+                    Password = device.RemotePassword
+                });
             }
         }
     }

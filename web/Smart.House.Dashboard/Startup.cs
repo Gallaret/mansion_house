@@ -32,6 +32,9 @@ using Smart.House.Data.Repositories;
 using Smart.House.Read;
 using Smart.House.Read.Connection;
 using Smart.House.Application.Providers.Ftp;
+using Smart.House.Hyperion;
+using Smart.House.Application.Providers.Ssh;
+using Smart.House.Ssh;
 
 namespace Smart.House.Dashboard
 {
@@ -154,7 +157,8 @@ namespace Smart.House.Dashboard
                typeof(IStateService<>),
                typeof(TransactionStateDecorator<>));
 
-            container.Register<IFtpClientService, FtpClientService>(Lifestyle.Singleton);
+            container.Register<IFtpProvider, FtpProvider>(Lifestyle.Singleton);
+            container.Register<ISshClientService, SshProvider>(Lifestyle.Scoped);
             container.Register<IDeviceRepository<Device>, DeviceRepository<Device>>(Lifestyle.Scoped); //move repo registration to convention
             container.Register<ICameraRepository, CameraRepository>(Lifestyle.Scoped);
             container.Register<INotificationRepository, NotificationRepository>(Lifestyle.Scoped);
@@ -164,7 +168,7 @@ namespace Smart.House.Dashboard
             });
             container.RegisterSingleton<IAmbilightProviderFactory>(new AmbilightProviderFactory
             {
-                { "hyperion", () => container.GetInstance<IAmbilightProvider>() },
+                { "hyperion", () => container.GetInstance<AmbilightProvider>() },
             });
             container.RegisterSingleton<IMediator>(() => mediator);
         }

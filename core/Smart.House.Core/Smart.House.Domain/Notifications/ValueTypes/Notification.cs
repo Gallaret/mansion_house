@@ -1,5 +1,4 @@
-﻿using Smart.House.Domain.Devices.Entities;
-using System;
+﻿using System;
 
 namespace Smart.House.Domain.Notifications.ValueTypes
 {

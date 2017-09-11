@@ -36,7 +36,7 @@ export default class CameraItem extends React.Component<CameraProps, CameraStore
         this.defaultProps.intervals.push(
             setInterval(function () {
                 checkCameraMotion(model);
-            }, 10000));
+            }, 60000));
     }
 
     componentWillUnmount() {

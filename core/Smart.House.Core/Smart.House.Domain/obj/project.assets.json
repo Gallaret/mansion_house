@@ -196,6 +196,16 @@
         "build": {
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
+      },
+      "Smart.House.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "compile": {
+          "bin/placeholder/Smart.House.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Smart.House.Core.dll": {}
+        }
       }
     }
   },
@@ -656,11 +666,17 @@
         "netstandard.library.2.0.0.nupkg.sha512",
         "netstandard.library.nuspec"
       ]
+    },
+    "Smart.House.Core/1.0.0": {
+      "type": "project",
+      "path": "../Smart.House.Core/Smart.House.Core.csproj",
+      "msbuildProject": "../Smart.House.Core/Smart.House.Core.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
-      "Microsoft.NETCore.App >= 2.0.0"
+      "Microsoft.NETCore.App >= 2.0.0",
+      "Smart.House.Core >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -696,7 +712,11 @@
       },
       "frameworks": {
         "netcoreapp2.0": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\core\\Smart.House.Core\\Smart.House.Core\\Smart.House.Core.csproj": {
+              "projectPath": "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\core\\Smart.House.Core\\Smart.House.Core\\Smart.House.Core.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

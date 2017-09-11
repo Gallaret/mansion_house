@@ -21,16 +21,16 @@ namespace Smart.House.Domain.Notifications.Specifications
         {
             var sendNotification = IsSentNotification();
 
-            return device.EmailNotificationEnabled
-                && !sendNotification;
+            return !sendNotification
+                && device.EmailNotificationEnabled;
         }
 
         public bool IsReadyForAmbientNotification(Device device)
         {
             var sendNotification = IsSentNotification();
 
-            return device.AmbientNotificationEnabled
-                && !sendNotification;
+            return !sendNotification
+                && device.AmbientNotificationEnabled;
         }
     }
 }

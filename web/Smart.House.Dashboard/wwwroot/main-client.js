@@ -2461,7 +2461,7 @@ var CameraItem = function (_React$Component) {
             }, 1000));
             this.defaultProps.intervals.push(setInterval(function () {
                 checkCameraMotion(model);
-            }, 10000));
+            }, 60000));
         }
     }, {
         key: 'componentWillUnmount',

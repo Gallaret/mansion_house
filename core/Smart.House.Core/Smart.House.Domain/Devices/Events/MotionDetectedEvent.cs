@@ -1,8 +1,8 @@
-﻿using Smart.House.Domain.Devices.Entities;
+﻿using Smart.House.Core;
 
 namespace Smart.House.Domain.Devices.Events
 {
-    public class MotionDetectedEvent : IAsyncNotification
+    public class MotionDetectedEvent : IAsyncEvent<string>
     {
         public MotionDetectedEvent(string identifier, string value)
         {

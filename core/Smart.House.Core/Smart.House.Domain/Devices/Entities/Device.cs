@@ -1,4 +1,5 @@
-﻿using Smart.House.Domain.Devices.ValueTypes;
+﻿using Smart.House.Core;
+using Smart.House.Domain.Devices.ValueTypes;
 using System;
 using System.Collections.Generic;
 
@@ -8,30 +9,6 @@ namespace Smart.House.Domain.Devices.Entities
     {
         Camera = 0,
         Ambilight,
-    }
-
-    public interface IAsyncNotification { }
-
-    public abstract class AggregateRoot<T> //Move To Core?
-    {
-        public abstract string Identifier { get; }
-
-        private List<IAsyncNotification> _domainEvents;
-
-        public List<IAsyncNotification> DomainEvents => _domainEvents 
-            ?? new List<IAsyncNotification>();
-
-        public void AddDomainEvent(IAsyncNotification eventItem)
-        {
-            _domainEvents = _domainEvents ?? new List<IAsyncNotification>();
-            _domainEvents.Add(eventItem);
-        }
-
-        public void RemoveDomainEvent(IAsyncNotification eventItem)
-        {
-            if (_domainEvents is null) return;
-            _domainEvents.Remove(eventItem);
-        }
     }
 
     public class Device : AggregateRoot<string>
@@ -49,6 +26,10 @@ namespace Smart.House.Domain.Devices.Entities
 
         public string Provider { get; private set; }
         public DeviceType DeviceType { get; private set; }
+        public string RemoteLogin { get; private set; }
+        public string RemotePassword { get; private set; }
+        public string RemoteAddress { get; private set; }
+        public string RemotePath { get; private set; }
         public bool AmbientNotificationEnabled { get; protected set; }
         public bool SoundNotificationEnabled { get; protected set; }
         public bool EmailNotificationEnabled { get; protected set; }

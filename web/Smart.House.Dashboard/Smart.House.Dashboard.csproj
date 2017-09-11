@@ -51,7 +51,9 @@
     <ProjectReference Include="..\..\infrastructure\Smart.House.Infrastructure\Smart.House.Data\Smart.House.Data.csproj" />
     <ProjectReference Include="..\..\infrastructure\Smart.House.Infrastructure\Smart.House.DLink\Smart.House.DLink.csproj" />
     <ProjectReference Include="..\..\infrastructure\Smart.House.Infrastructure\Smart.House.Ftp\Smart.House.Ftp.csproj" />
+    <ProjectReference Include="..\..\infrastructure\Smart.House.Infrastructure\Smart.House.Hyperion\Smart.House.Hyperion.csproj" />
     <ProjectReference Include="..\..\infrastructure\Smart.House.Infrastructure\Smart.House.Read\Smart.House.Read.csproj" />
+    <ProjectReference Include="..\..\infrastructure\Smart.House.Infrastructure\Smart.House.Ssh\Smart.House.Ssh.csproj" />
   </ItemGroup>
   <ProjectExtensions><VisualStudio><UserProperties package_1json__JSONSchema="" /></VisualStudio></ProjectExtensions>
 

@@ -5,10 +5,7 @@
         private bool _isMotionDetected;
         private string _lastDetectedMotionFileName;
 
-        public string FtpMotionPath { get; private set; }
         public bool MotionDetectionEnabled { get; private set; }
-        public string FtpLogin { get; private set; }
-        public string FtpPassword { get; private set; }
 
         public Camera() { }
 

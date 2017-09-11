@@ -5,9 +5,7 @@ VisualStudioVersion = 15.0.26730.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Domain", "Smart.House.Domain\Smart.House.Domain.csproj", "{A6CD8805-FADC-43AB-9083-69F050E30809}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smart.House.Camera", "Smart.House.Camera\Smart.House.Camera.csproj", "{9137DA03-BAEC-41C1-8AEE-28A239B56D20}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smart.House.Notification", "Smart.House.Notification\Smart.House.Notification.csproj", "{F9D6F264-ADE6-447F-AD8A-A1BC5338FDBC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smart.House.Core", "Smart.House.Core\Smart.House.Core.csproj", "{CC334004-DCF0-48CB-9142-5B93D75B3877}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +17,10 @@ Global
 		{A6CD8805-FADC-43AB-9083-69F050E30809}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6CD8805-FADC-43AB-9083-69F050E30809}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6CD8805-FADC-43AB-9083-69F050E30809}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9137DA03-BAEC-41C1-8AEE-28A239B56D20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9137DA03-BAEC-41C1-8AEE-28A239B56D20}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9137DA03-BAEC-41C1-8AEE-28A239B56D20}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9137DA03-BAEC-41C1-8AEE-28A239B56D20}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F9D6F264-ADE6-447F-AD8A-A1BC5338FDBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F9D6F264-ADE6-447F-AD8A-A1BC5338FDBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F9D6F264-ADE6-447F-AD8A-A1BC5338FDBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F9D6F264-ADE6-447F-AD8A-A1BC5338FDBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC334004-DCF0-48CB-9142-5B93D75B3877}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC334004-DCF0-48CB-9142-5B93D75B3877}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC334004-DCF0-48CB-9142-5B93D75B3877}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC334004-DCF0-48CB-9142-5B93D75B3877}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
