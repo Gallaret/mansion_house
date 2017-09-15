@@ -49,9 +49,9 @@
     <ProjectReference Include="..\..\application\Smart.House.Application\Smart.House.Services\Smart.House.Services.csproj" />
     <ProjectReference Include="..\..\core\Smart.House.Core\Smart.House.Domain\Smart.House.Domain.csproj" />
     <ProjectReference Include="..\..\infrastructure\Smart.House.Infrastructure\Smart.House.Data\Smart.House.Data.csproj" />
-    <ProjectReference Include="..\..\infrastructure\Smart.House.Infrastructure\Smart.House.DLink\Smart.House.DLink.csproj" />
+    <ProjectReference Include="..\..\infrastructure\Smart.House.Infrastructure\Smart.House.DLink\Smart.House.Camera.csproj" />
     <ProjectReference Include="..\..\infrastructure\Smart.House.Infrastructure\Smart.House.Ftp\Smart.House.Ftp.csproj" />
-    <ProjectReference Include="..\..\infrastructure\Smart.House.Infrastructure\Smart.House.Hyperion\Smart.House.Hyperion.csproj" />
+    <ProjectReference Include="..\..\infrastructure\Smart.House.Infrastructure\Smart.House.Hyperion\Smart.House.Ambilight.csproj" />
     <ProjectReference Include="..\..\infrastructure\Smart.House.Infrastructure\Smart.House.Read\Smart.House.Read.csproj" />
     <ProjectReference Include="..\..\infrastructure\Smart.House.Infrastructure\Smart.House.Ssh\Smart.House.Ssh.csproj" />
   </ItemGroup>

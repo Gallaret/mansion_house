@@ -1,5 +1,5 @@
 ﻿using FluentFTP;
-using Smart.House.Application.Providers.Ftp;
+using Smart.House.Application.Providers.Communication.Ftp;
 using System;
 using System.Collections.Generic;
 using System.IO;

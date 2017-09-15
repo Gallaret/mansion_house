@@ -9,6 +9,7 @@ namespace Smart.House.Domain.Devices.Entities
     {
         Camera = 0,
         Ambilight,
+        Notificator,
     }
 
     public class Device : AggregateRoot<string>

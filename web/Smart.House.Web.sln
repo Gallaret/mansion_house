@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Domain", "..\co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Application", "..\application\Smart.House.Application\Smart.House.Application\Smart.House.Application.csproj", "{616BB571-28E3-4B86-A803-A2A31F471B33}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.DLink", "..\infrastructure\Smart.House.Infrastructure\Smart.House.DLink\Smart.House.DLink.csproj", "{AECF6FED-9E9F-4C71-B334-8CA53B746A08}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Camera", "..\infrastructure\Smart.House.Infrastructure\Smart.House.DLink\Smart.House.Camera.csproj", "{AECF6FED-9E9F-4C71-B334-8CA53B746A08}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Ftp", "..\infrastructure\Smart.House.Infrastructure\Smart.House.Ftp\Smart.House.Ftp.csproj", "{E4340D14-B0F4-43D7-8DCE-73FF22095F5F}"
 EndProject
@@ -33,7 +33,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Read", "..\infr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ambilight", "Ambilight", "{4B601DDA-F7AE-41D8-A456-EEEB064ED9AA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Hyperion", "..\infrastructure\Smart.House.Infrastructure\Smart.House.Hyperion\Smart.House.Hyperion.csproj", "{C20BBED6-0010-47F4-9879-256B6C06DFB6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Ambilight", "..\infrastructure\Smart.House.Infrastructure\Smart.House.Hyperion\Smart.House.Ambilight.csproj", "{C20BBED6-0010-47F4-9879-256B6C06DFB6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ssh", "Ssh", "{E00B539D-22E0-4289-8127-890214F45735}"
 EndProject

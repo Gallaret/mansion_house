@@ -1,9 +1,13 @@
-﻿namespace Smart.House.Application.Providers.Camera
+﻿using System.IO;
+
+namespace Smart.House.Application.Providers.Camera
 {
-    using Domain.Devices.Entities;
+    using Camera = Domain.Devices.Entities.Camera;
 
     public interface ICameraProvider
-    {
-        bool DetectMotion(Camera camera, out string lastMotionFileName);
+    { 
+        string MotionDirectory { get; }
+        bool DetectMotion(Camera camera, FileInfo[] files, out string lastMotionFileName);
+        string GetMotionFilePath();
     }
 }

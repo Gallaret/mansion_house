@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\core\Smart.House.Core\Smart.House.Domain\Smart.House.Domain.csproj" />
+    <ProjectReference Include="..\..\..\infrastructure\Smart.House.Infrastructure\Smart.House.Ssh\Smart.House.Ssh.csproj" />
     <ProjectReference Include="..\Smart.House.Application\Smart.House.Application.csproj" />
   </ItemGroup>
 

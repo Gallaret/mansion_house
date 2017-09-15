@@ -86,3 +86,5 @@ Temporary Items
 /infrastructure/Smart.House.Infrastructure/Smart.House.Hyperion/obj
 /infrastructure/Smart.House.Infrastructure/Smart.House.Ssh/bin/Debug/netcoreapp2.0
 /infrastructure/Smart.House.Infrastructure/Smart.House.Ssh/obj
+/infrastructure/Smart.House.Infrastructure/Smart.House.Email/bin/Debug/netcoreapp2.0
+/infrastructure/Smart.House.Infrastructure/Smart.House.Email/obj

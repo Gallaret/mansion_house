@@ -17,6 +17,8 @@ namespace Smart.House.Dashboard.Controllers
         private readonly IStateService<CameraState> _cameraService;
         private readonly IStateService<NotificationState> _notificationService;
 
+        private static string lastDetectedFile;
+
         public CameraController(IStateService<CameraState> cameraService, 
             IStateService<NotificationState> notificationService,
             IMediator mediator)
@@ -32,15 +34,20 @@ namespace Smart.House.Dashboard.Controllers
             var state = new CameraState("camera" + id);
             var cameraState = _cameraService.GetNewState(state).Result;
 
-            if (cameraState.IsMotionDetected)
+            var fileChanged = lastDetectedFile != cameraState.CurrentMotionFileName;
+            var motionDetected = cameraState.IsMotionDetected && fileChanged;
+
+            if (motionDetected)
             {
+                lastDetectedFile = cameraState.CurrentMotionFileName;
+
                 var result = _mediator.DispatchRequest<NotificationSettingsQuery, NotificationSettingsResult>(
                     new NotificationSettingsQuery
                     {
                         Identifier = cameraState.Identifier
                     }).Result;
 
-                if (result.ShouldSendAmbilight)
+                if (result.Device.AmbientNotificationEnabled)
                 {
                     _mediator.DispatchRequest(new AmbilightAlarmCommand
                     {
@@ -54,7 +61,7 @@ namespace Smart.House.Dashboard.Controllers
             var viewModel = new CameraViewModel
             {
                 Identifier = id,
-                IsMotionDetected = cameraState.IsMotionDetected
+                IsMotionDetected = motionDetected
             };
 
             return new JsonResult(viewModel);

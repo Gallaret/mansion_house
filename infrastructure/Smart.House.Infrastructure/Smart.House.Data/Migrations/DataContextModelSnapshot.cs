@@ -115,6 +115,20 @@ namespace Smart.House.Data.Migrations
                     b.ToTable("Notifications");
                 });
 
+            modelBuilder.Entity("Smart.House.Domain.Users.Entities.User", b =>
+                {
+                    b.Property<string>("Identifier")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Email");
+
+                    b.Property<string>("Mobile");
+
+                    b.HasKey("Identifier");
+
+                    b.ToTable("Users");
+                });
+
             modelBuilder.Entity("Smart.House.Domain.Devices.Entities.Camera", b =>
                 {
                     b.HasBaseType("Smart.House.Domain.Devices.Entities.Device");
@@ -124,6 +138,21 @@ namespace Smart.House.Data.Migrations
                     b.ToTable("Camera");
 
                     b.HasDiscriminator().HasValue("device_camera");
+                });
+
+            modelBuilder.Entity("Smart.House.Domain.Devices.Entities.Notificator", b =>
+                {
+                    b.HasBaseType("Smart.House.Domain.Devices.Entities.Device");
+
+                    b.Property<int>("Limit");
+
+                    b.Property<string>("MobileProvider");
+
+                    b.Property<string>("Receiver");
+
+                    b.ToTable("Notificator");
+
+                    b.HasDiscriminator().HasValue("device_notificator");
                 });
 
             modelBuilder.Entity("Smart.House.Domain.Devices.ValueTypes.Harmonogram", b =>

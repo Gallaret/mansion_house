@@ -10,7 +10,6 @@ using SimpleInjector.Integration.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewComponents;
 using Microsoft.EntityFrameworkCore;
 using SimpleInjector.Lifestyles;
-using Smart.House.DLink;
 using Smart.House.Ftp;
 using Smart.House.Dashboard.Resolvers;
 using Smart.House.Application.Mediator;
@@ -25,16 +24,16 @@ using Smart.House.Application.Services;
 using Smart.House.Services.State;
 using Smart.House.Application.Providers.Ambilight;
 using Smart.House.Application.Providers.Camera;
-using Smart.House.Application.Factories.Devices;
 using Smart.House.Application.Repositories;
 using Smart.House.Data.Model;
 using Smart.House.Data.Repositories;
 using Smart.House.Read;
 using Smart.House.Read.Connection;
-using Smart.House.Application.Providers.Ftp;
-using Smart.House.Hyperion;
 using Smart.House.Application.Providers.Ssh;
 using Smart.House.Ssh;
+using Smart.House.Application.Providers.Communication.Ftp;
+using Smart.House.Ambilight;
+using Smart.House.Camera;
 
 namespace Smart.House.Dashboard
 {
@@ -158,17 +157,17 @@ namespace Smart.House.Dashboard
                typeof(TransactionStateDecorator<>));
 
             container.Register<IFtpProvider, FtpProvider>(Lifestyle.Singleton);
-            container.Register<ISshClientService, SshProvider>(Lifestyle.Scoped);
+            container.Register<ISshProvider, SshProvider>(Lifestyle.Scoped);
             container.Register<IDeviceRepository<Device>, DeviceRepository<Device>>(Lifestyle.Scoped); //move repo registration to convention
             container.Register<ICameraRepository, CameraRepository>(Lifestyle.Scoped);
             container.Register<INotificationRepository, NotificationRepository>(Lifestyle.Scoped);
             container.RegisterSingleton<ICameraProviderFactory>(new CameraProviderFactory
             {
-                { "dlink", () => container.GetInstance<CameraProvider>()},
+                { "dlink", () => container.GetInstance<DlinkProvider>()},
             });
             container.RegisterSingleton<IAmbilightProviderFactory>(new AmbilightProviderFactory
             {
-                { "hyperion", () => container.GetInstance<AmbilightProvider>() },
+                { "hyperion", () => container.GetInstance<HyperionProvider>() },
             });
             container.RegisterSingleton<IMediator>(() => mediator);
         }

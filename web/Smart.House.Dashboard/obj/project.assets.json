@@ -3937,6 +3937,19 @@
           "lib/netstandard1.6/VroomJs.dll": {}
         }
       },
+      "Smart.House.Ambilight/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "dependencies": {
+          "Smart.House.Application": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Smart.House.Ambilight.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Smart.House.Ambilight.dll": {}
+        }
+      },
       "Smart.House.Application/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.0",
@@ -3948,6 +3961,19 @@
         },
         "runtime": {
           "bin/placeholder/Smart.House.Application.dll": {}
+        }
+      },
+      "Smart.House.Camera/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "dependencies": {
+          "Smart.House.Application": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Smart.House.Camera.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Smart.House.Camera.dll": {}
         }
       },
       "Smart.House.Core/1.0.0": {
@@ -3977,19 +4003,6 @@
           "bin/placeholder/Smart.House.Data.dll": {}
         }
       },
-      "Smart.House.DLink/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v2.0",
-        "dependencies": {
-          "Smart.House.Application": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/Smart.House.DLink.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Smart.House.DLink.dll": {}
-        }
-      },
       "Smart.House.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.0",
@@ -4017,19 +4030,6 @@
           "bin/placeholder/Smart.House.Ftp.dll": {}
         }
       },
-      "Smart.House.Hyperion/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v2.0",
-        "dependencies": {
-          "Smart.House.Application": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/Smart.House.Hyperion.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Smart.House.Hyperion.dll": {}
-        }
-      },
       "Smart.House.Read/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.0",
@@ -4049,7 +4049,8 @@
         "framework": ".NETCoreApp,Version=v2.0",
         "dependencies": {
           "Smart.House.Application": "1.0.0",
-          "Smart.House.Domain": "1.0.0"
+          "Smart.House.Domain": "1.0.0",
+          "Smart.House.Ssh": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Smart.House.Services.dll": {}
@@ -10813,10 +10814,20 @@
         "vroomjs.nuspec"
       ]
     },
+    "Smart.House.Ambilight/1.0.0": {
+      "type": "project",
+      "path": "../../infrastructure/Smart.House.Infrastructure/Smart.House.Hyperion/Smart.House.Ambilight.csproj",
+      "msbuildProject": "../../infrastructure/Smart.House.Infrastructure/Smart.House.Hyperion/Smart.House.Ambilight.csproj"
+    },
     "Smart.House.Application/1.0.0": {
       "type": "project",
       "path": "../../application/Smart.House.Application/Smart.House.Application/Smart.House.Application.csproj",
       "msbuildProject": "../../application/Smart.House.Application/Smart.House.Application/Smart.House.Application.csproj"
+    },
+    "Smart.House.Camera/1.0.0": {
+      "type": "project",
+      "path": "../../infrastructure/Smart.House.Infrastructure/Smart.House.DLink/Smart.House.Camera.csproj",
+      "msbuildProject": "../../infrastructure/Smart.House.Infrastructure/Smart.House.DLink/Smart.House.Camera.csproj"
     },
     "Smart.House.Core/1.0.0": {
       "type": "project",
@@ -10828,11 +10839,6 @@
       "path": "../../infrastructure/Smart.House.Infrastructure/Smart.House.Data/Smart.House.Data.csproj",
       "msbuildProject": "../../infrastructure/Smart.House.Infrastructure/Smart.House.Data/Smart.House.Data.csproj"
     },
-    "Smart.House.DLink/1.0.0": {
-      "type": "project",
-      "path": "../../infrastructure/Smart.House.Infrastructure/Smart.House.DLink/Smart.House.DLink.csproj",
-      "msbuildProject": "../../infrastructure/Smart.House.Infrastructure/Smart.House.DLink/Smart.House.DLink.csproj"
-    },
     "Smart.House.Domain/1.0.0": {
       "type": "project",
       "path": "../../core/Smart.House.Core/Smart.House.Domain/Smart.House.Domain.csproj",
@@ -10842,11 +10848,6 @@
       "type": "project",
       "path": "../../infrastructure/Smart.House.Infrastructure/Smart.House.Ftp/Smart.House.Ftp.csproj",
       "msbuildProject": "../../infrastructure/Smart.House.Infrastructure/Smart.House.Ftp/Smart.House.Ftp.csproj"
-    },
-    "Smart.House.Hyperion/1.0.0": {
-      "type": "project",
-      "path": "../../infrastructure/Smart.House.Infrastructure/Smart.House.Hyperion/Smart.House.Hyperion.csproj",
-      "msbuildProject": "../../infrastructure/Smart.House.Infrastructure/Smart.House.Hyperion/Smart.House.Hyperion.csproj"
     },
     "Smart.House.Read/1.0.0": {
       "type": "project",
@@ -10882,12 +10883,12 @@
       "React.AspNet >= 3.1.0",
       "SimpleInjector.Integration.AspNetCore >= 4.0.10",
       "SimpleInjector.Integration.AspNetCore.Mvc >= 4.0.10",
+      "Smart.House.Ambilight >= 1.0.0",
       "Smart.House.Application >= 1.0.0",
-      "Smart.House.DLink >= 1.0.0",
+      "Smart.House.Camera >= 1.0.0",
       "Smart.House.Data >= 1.0.0",
       "Smart.House.Domain >= 1.0.0",
       "Smart.House.Ftp >= 1.0.0",
-      "Smart.House.Hyperion >= 1.0.0",
       "Smart.House.Read >= 1.0.0",
       "Smart.House.Services >= 1.0.0",
       "Smart.House.Ssh >= 1.0.0",
@@ -10932,14 +10933,14 @@
             "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\infrastructure\\Smart.House.Infrastructure\\Smart.House.Ftp\\Smart.House.Ftp.csproj": {
               "projectPath": "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\infrastructure\\Smart.House.Infrastructure\\Smart.House.Ftp\\Smart.House.Ftp.csproj"
             },
-            "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\infrastructure\\Smart.House.Infrastructure\\Smart.House.Hyperion\\Smart.House.Hyperion.csproj": {
-              "projectPath": "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\infrastructure\\Smart.House.Infrastructure\\Smart.House.Hyperion\\Smart.House.Hyperion.csproj"
-            },
             "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\infrastructure\\Smart.House.Infrastructure\\Smart.House.Ssh\\Smart.House.Ssh.csproj": {
               "projectPath": "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\infrastructure\\Smart.House.Infrastructure\\Smart.House.Ssh\\Smart.House.Ssh.csproj"
             },
             "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\core\\Smart.House.Core\\Smart.House.Domain\\Smart.House.Domain.csproj": {
               "projectPath": "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\core\\Smart.House.Core\\Smart.House.Domain\\Smart.House.Domain.csproj"
+            },
+            "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\infrastructure\\Smart.House.Infrastructure\\Smart.House.Hyperion\\Smart.House.Ambilight.csproj": {
+              "projectPath": "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\infrastructure\\Smart.House.Infrastructure\\Smart.House.Hyperion\\Smart.House.Ambilight.csproj"
             },
             "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\application\\Smart.House.Application\\Smart.House.Application\\Smart.House.Application.csproj": {
               "projectPath": "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\application\\Smart.House.Application\\Smart.House.Application\\Smart.House.Application.csproj"
@@ -10950,11 +10951,11 @@
             "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\infrastructure\\Smart.House.Infrastructure\\Smart.House.Data\\Smart.House.Data.csproj": {
               "projectPath": "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\infrastructure\\Smart.House.Infrastructure\\Smart.House.Data\\Smart.House.Data.csproj"
             },
+            "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\infrastructure\\Smart.House.Infrastructure\\Smart.House.DLink\\Smart.House.Camera.csproj": {
+              "projectPath": "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\infrastructure\\Smart.House.Infrastructure\\Smart.House.DLink\\Smart.House.Camera.csproj"
+            },
             "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\application\\Smart.House.Application\\Smart.House.Services\\Smart.House.Services.csproj": {
               "projectPath": "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\application\\Smart.House.Application\\Smart.House.Services\\Smart.House.Services.csproj"
-            },
-            "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\infrastructure\\Smart.House.Infrastructure\\Smart.House.DLink\\Smart.House.DLink.csproj": {
-              "projectPath": "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\infrastructure\\Smart.House.Infrastructure\\Smart.House.DLink\\Smart.House.DLink.csproj"
             }
           }
         }

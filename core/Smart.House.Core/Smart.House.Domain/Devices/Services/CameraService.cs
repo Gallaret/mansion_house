@@ -2,15 +2,13 @@
 using Smart.House.Domain.Devices.Events;
 using Smart.House.Domain.Devices.Specifications;
 using Smart.House.Domain.Devices.ValueTypes;
-using Smart.House.Domain.Notifications.ValueTypes;
 using System.Linq;
 
 namespace Smart.House.Domain.Devices.Services
 {
     public class CameraService
     {
-        public void SendMotionDetectedNotification(Camera camera, 
-            Notification lastMotionNotification)
+        public void SendMotionDetectedNotification(Camera camera)
         {
             if (!camera.MotionDetectionEnabled) return;
 
@@ -21,13 +19,9 @@ namespace Smart.House.Domain.Devices.Services
 
             if (!specification.IsInHarmonogram(harmonogram)) return;
 
-            if (lastMotionNotification == null
-                || specification.IsNotificable(lastMotionNotification))
-            {
-                camera.AddDomainEvent(new MotionDetectedEvent(
-                    camera.Identifier, camera.GetLastMotionFileName()
-                ));
-            }      
+            camera.AddDomainEvent(new MotionDetectedEvent (
+                camera.Identifier, camera.GetLastMotionFileName()
+            ));
         }
     }
 }

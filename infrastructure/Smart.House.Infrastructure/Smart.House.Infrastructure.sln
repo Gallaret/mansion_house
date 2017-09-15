@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Hyperion", "Sma
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Core", "..\..\core\Smart.House.Core\Smart.House.Core\Smart.House.Core.csproj", "{2033D844-017F-4E78-B83B-D69647790F9F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smart.House.Email", "Smart.House.Email\Smart.House.Email.csproj", "{2CFBD5CE-DB91-4319-8AB9-A2BDC478ED2A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{2033D844-017F-4E78-B83B-D69647790F9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2033D844-017F-4E78-B83B-D69647790F9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2033D844-017F-4E78-B83B-D69647790F9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CFBD5CE-DB91-4319-8AB9-A2BDC478ED2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CFBD5CE-DB91-4319-8AB9-A2BDC478ED2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CFBD5CE-DB91-4319-8AB9-A2BDC478ED2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CFBD5CE-DB91-4319-8AB9-A2BDC478ED2A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
