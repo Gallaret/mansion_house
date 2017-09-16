@@ -10,6 +10,7 @@ namespace Smart.House.Read.Handlers.Results
     public class DeviceResult
     {
         public bool AmbientNotificationEnabled { get; set; }
+        public bool EmailNotificationEnabled { get; set; }
     }
 
     public class NotificationSettingsResult

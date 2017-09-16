@@ -10,6 +10,8 @@ namespace Smart.House.Domain.Users.Entities
         public string Email { get; private set; } //Consider to use value type
         public string Mobile { get; private set; } //Consider to use Value type
 
+        public User() { }
+
         public User(string login)
         {
             _identifier = login;

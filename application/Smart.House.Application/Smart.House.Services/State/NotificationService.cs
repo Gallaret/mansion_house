@@ -10,13 +10,10 @@ namespace Smart.House.Services.State
     public class NotificationService : IStateService<NotificationState>
     {
         private readonly INotificationRepository _notificationRepository;
-        private readonly IDeviceRepository<Device> _deviceRepository;
 
-        public NotificationService(INotificationRepository notificationRepository, 
-            IDeviceRepository<Device> deviceRepository)
+        public NotificationService(INotificationRepository notificationRepository)
         {
             _notificationRepository = notificationRepository;
-            _deviceRepository = deviceRepository;
         }
 
         public async Task<NotificationState> GetNewState(NotificationState state)

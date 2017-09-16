@@ -3,7 +3,7 @@
     public class Camera : Device
     {
         private bool _isMotionDetected;
-        private string _lastDetectedMotionFileName;
+        private string _currentMotionFileName;
 
         public bool MotionDetectionEnabled { get; private set; }
 
@@ -31,18 +31,18 @@
 
         public void ClearMotionDetection()
         {
-            _lastDetectedMotionFileName = null;
+            _currentMotionFileName = null;
             _isMotionDetected = false;
         }
 
-        public string GetLastMotionFileName()
+        public string GetCurrentMotionFileName()
         {
-            return _lastDetectedMotionFileName;
+            return _currentMotionFileName;
         }
 
-        public void SetLastMotionFileName(string fileName)
+        public void SetCurrentMotionFileName(string fileName)
         {
-            _lastDetectedMotionFileName = fileName;
+            _currentMotionFileName = fileName;
         }
 
         public bool IsMotionDetected => _isMotionDetected;

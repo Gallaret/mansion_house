@@ -5,10 +5,12 @@ using Smart.House.Application.Events;
 using Smart.House.Application.Commands;
 using System.Threading.Tasks;
 using Smart.House.Domain.Devices.Entities;
+using System;
 
 namespace Smart.House.Dashboard.Resolvers
 {
-    public class Mediator : IMediator
+
+    public class Mediator : IMediator, IDisposable
     {
         private Container _provider;
 
@@ -51,6 +53,11 @@ namespace Smart.House.Dashboard.Resolvers
             {
                 await instance.PublishAsync((dynamic)@event);
             }
+        }
+
+        public void Dispose()
+        {
+            
         }
     }
 }

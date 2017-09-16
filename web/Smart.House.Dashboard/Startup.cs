@@ -9,7 +9,6 @@ using SimpleInjector;
 using SimpleInjector.Integration.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewComponents;
 using Microsoft.EntityFrameworkCore;
-using SimpleInjector.Lifestyles;
 using Smart.House.Ftp;
 using Smart.House.Dashboard.Resolvers;
 using Smart.House.Application.Mediator;
@@ -34,9 +33,32 @@ using Smart.House.Ssh;
 using Smart.House.Application.Providers.Communication.Ftp;
 using Smart.House.Ambilight;
 using Smart.House.Camera;
+using Smart.House.Application.Providers.Communication.Mail;
+using Smart.House.Email;
+using Smart.House.Email.Providers;
+using Smart.House.Application.Repositories.Users;
+using SimpleInjector.Lifestyles;
 
 namespace Smart.House.Dashboard
 {
+    public class MyContainer : Container
+    {
+        public MyContainer() : base()
+        {
+        }
+
+        public new void Dispose()
+        {
+            Dispose(false);
+        }
+
+        public new void Dispose(bool dispose)
+        {
+            if (dispose)
+                base.Dispose();
+        }
+    }
+
     public class Startup
     {
         private Container container = new Container();
@@ -123,9 +145,9 @@ namespace Smart.House.Dashboard
         }
 
         private void InitializeContainer(IApplicationBuilder app)
-        {
+        {    
             var mediator = new Mediator(container);
-
+            //container.Register(() => container, Lifestyle.Singleton);
             container.RegisterMvcControllers(app);
             container.RegisterMvcViewComponents(app);
 
@@ -157,18 +179,23 @@ namespace Smart.House.Dashboard
                typeof(TransactionStateDecorator<>));
 
             container.Register<IFtpProvider, FtpProvider>(Lifestyle.Singleton);
-            container.Register<ISshProvider, SshProvider>(Lifestyle.Scoped);
-            container.Register<IDeviceRepository<Device>, DeviceRepository<Device>>(Lifestyle.Scoped); //move repo registration to convention
-            container.Register<ICameraRepository, CameraRepository>(Lifestyle.Scoped);
-            container.Register<INotificationRepository, NotificationRepository>(Lifestyle.Scoped);
+            container.Register<ISshProvider, SshProvider>(Lifestyle.Singleton);
+
+            RegisterRepositories();
+
             container.RegisterSingleton<ICameraProviderFactory>(new CameraProviderFactory
             {
-                { "dlink", () => container.GetInstance<DlinkProvider>()},
+                { "dlink", () => container.GetInstance<DlinkProvider>()}
             });
             container.RegisterSingleton<IAmbilightProviderFactory>(new AmbilightProviderFactory
             {
-                { "hyperion", () => container.GetInstance<HyperionProvider>() },
+                { "hyperion", () => container.GetInstance<HyperionProvider>() }
             });
+            container.RegisterSingleton<IEmailProviderFactory>(new EmailProviderFactory
+            {
+                { "gmail", () => container.GetInstance<GmailProvider>() }
+            });
+
             container.RegisterSingleton<IMediator>(() => mediator);
         }
 
@@ -193,6 +220,14 @@ namespace Smart.House.Dashboard
             };
 
             container.Register(typeof(IRequestHandler<,>), assemblies);
+        }
+
+        private void RegisterRepositories()
+        {
+            container.Register(typeof(IDeviceRepository<>), typeof(DeviceRepository<>), Lifestyle.Scoped);
+            container.Register<ICameraRepository, CameraRepository>(Lifestyle.Scoped);
+            container.Register<IUserRepository, UserRepository>(Lifestyle.Scoped);
+            container.Register<INotificationRepository, NotificationRepository>(Lifestyle.Scoped);
         }
     }
 }

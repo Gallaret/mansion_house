@@ -2,6 +2,7 @@
 using System.Linq;
 using Smart.House.Application.Providers.Camera;
 using System.IO;
+using Smart.House.Application.Providers.Communication.Ftp;
 
 namespace Smart.House.Camera
 {
@@ -11,28 +12,34 @@ namespace Smart.House.Camera
     {
         private const string MOTION_DIRECTORY = "/Motion";
 
-        public string MotionDirectory => MOTION_DIRECTORY;
+        private readonly IFtpProvider _ftpProvider;
 
-        public bool DetectMotion(Camera camera, FileInfo [] files, out string lastMotionFileName)
+        public DlinkProvider(IFtpProvider ftpProvider)
         {
+            _ftpProvider = ftpProvider;
+        }
+
+        public bool DetectMotion(Camera camera, out string lastMotionFileName)
+        {
+            var files = GetFiles(camera);
             var lastFile = files.OrderByDescending(file => file.CreationTime).FirstOrDefault();
 
             if (lastFile != null)
             {
-                if (!lastFile.Name.Equals(camera.GetLastMotionFileName()))
+                if (!lastFile.Name.Equals(camera.GetCurrentMotionFileName()))
                 {
                     lastMotionFileName = lastFile.Name;
                 }
                 else
                 {
-                    lastMotionFileName = camera.GetLastMotionFileName();
+                    lastMotionFileName = camera.GetCurrentMotionFileName();
                 }
 
                 return true;
             }
-            else if (!string.IsNullOrEmpty(camera.GetLastMotionFileName()))
+            else if (!string.IsNullOrEmpty(camera.GetCurrentMotionFileName()))
             {
-                lastMotionFileName = camera.GetLastMotionFileName();
+                lastMotionFileName = camera.GetCurrentMotionFileName();
                 return true;
             }
             else
@@ -42,14 +49,34 @@ namespace Smart.House.Camera
             }
         }
 
-        public string GetMotionFilePath()
+        private FileInfo[] GetFiles(Camera camera)
+        {
+            var credentials = new RemoteCredentials
+            {
+                Address = camera.RemoteAddress,
+                Login = camera.RemoteLogin,
+                Password = camera.RemotePassword
+            };
+
+            using (var connection = _ftpProvider.Connect(credentials))
+            {
+                if (!connection.DirectoryExists(MOTION_DIRECTORY))
+                    throw new DirectoryNotFoundException(camera.RemotePath);
+
+                var motionPath = CreateMotionFilePath(MOTION_DIRECTORY);
+
+                return connection.ScanFiles(motionPath);
+            }
+        }
+
+        private static string CreateMotionFilePath(string motionPath)
         {
             var now = DateTime.Now;
             var catalog = now.ToString("yyyyMMdd");
             var subcatalog = new TimeSpan(now.Hour, now.Minute,
                 now.Second).ToString("hh");
 
-            return $"{MOTION_DIRECTORY}/{catalog}/{subcatalog}";
+            return $"{motionPath}/{catalog}/{subcatalog}";
         }
     }
 }

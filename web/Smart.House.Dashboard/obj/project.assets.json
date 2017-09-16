@@ -4016,6 +4016,20 @@
           "bin/placeholder/Smart.House.Domain.dll": {}
         }
       },
+      "Smart.House.Email/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "dependencies": {
+          "Smart.House.Application": "1.0.0",
+          "Smart.House.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Smart.House.Email.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Smart.House.Email.dll": {}
+        }
+      },
       "Smart.House.Ftp/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.0",
@@ -10844,6 +10858,11 @@
       "path": "../../core/Smart.House.Core/Smart.House.Domain/Smart.House.Domain.csproj",
       "msbuildProject": "../../core/Smart.House.Core/Smart.House.Domain/Smart.House.Domain.csproj"
     },
+    "Smart.House.Email/1.0.0": {
+      "type": "project",
+      "path": "../../infrastructure/Smart.House.Infrastructure/Smart.House.Email/Smart.House.Email.csproj",
+      "msbuildProject": "../../infrastructure/Smart.House.Infrastructure/Smart.House.Email/Smart.House.Email.csproj"
+    },
     "Smart.House.Ftp/1.0.0": {
       "type": "project",
       "path": "../../infrastructure/Smart.House.Infrastructure/Smart.House.Ftp/Smart.House.Ftp.csproj",
@@ -10883,11 +10902,13 @@
       "React.AspNet >= 3.1.0",
       "SimpleInjector.Integration.AspNetCore >= 4.0.10",
       "SimpleInjector.Integration.AspNetCore.Mvc >= 4.0.10",
+      "SimpleInjector.Integration.AspNetCore.Mvc.Core >= 4.0.10",
       "Smart.House.Ambilight >= 1.0.0",
       "Smart.House.Application >= 1.0.0",
       "Smart.House.Camera >= 1.0.0",
       "Smart.House.Data >= 1.0.0",
       "Smart.House.Domain >= 1.0.0",
+      "Smart.House.Email >= 1.0.0",
       "Smart.House.Ftp >= 1.0.0",
       "Smart.House.Read >= 1.0.0",
       "Smart.House.Services >= 1.0.0",
@@ -10932,6 +10953,9 @@
           "projectReferences": {
             "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\infrastructure\\Smart.House.Infrastructure\\Smart.House.Ftp\\Smart.House.Ftp.csproj": {
               "projectPath": "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\infrastructure\\Smart.House.Infrastructure\\Smart.House.Ftp\\Smart.House.Ftp.csproj"
+            },
+            "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\infrastructure\\Smart.House.Infrastructure\\Smart.House.Email\\Smart.House.Email.csproj": {
+              "projectPath": "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\infrastructure\\Smart.House.Infrastructure\\Smart.House.Email\\Smart.House.Email.csproj"
             },
             "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\infrastructure\\Smart.House.Infrastructure\\Smart.House.Ssh\\Smart.House.Ssh.csproj": {
               "projectPath": "C:\\Users\\Robert Wojda\\Source\\Repos\\mansion_house\\infrastructure\\Smart.House.Infrastructure\\Smart.House.Ssh\\Smart.House.Ssh.csproj"
@@ -10988,6 +11012,10 @@
           "Microsoft.EntityFrameworkCore.Tools": {
             "target": "Package",
             "version": "2.0.0"
+          },
+          "SimpleInjector.Integration.AspNetCore.Mvc.Core": {
+            "target": "Package",
+            "version": "4.0.10"
           },
           "System.Diagnostics.DiagnosticSource": {
             "target": "Package",

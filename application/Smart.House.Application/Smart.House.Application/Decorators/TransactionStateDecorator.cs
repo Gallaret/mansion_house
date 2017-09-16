@@ -22,7 +22,7 @@ namespace Smart.House.Application.Decorators
         {
             var newState = await _service.GetNewState(state);
 
-            await _unitOfWork.SaveChangesAsync();
+            _unitOfWork.SaveChanges();
 
             return newState;
         }

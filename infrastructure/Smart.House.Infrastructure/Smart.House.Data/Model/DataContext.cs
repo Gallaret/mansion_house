@@ -45,7 +45,8 @@ namespace Smart.House.Data.Model
                 .HasDiscriminator<string>("device_type")
                 .HasValue<Device>("device_base")
                 .HasValue<Camera>("device_camera")
-                .HasValue<Notificator>("device_notificator");
+                .HasValue<Notificator>("device_notificator")
+                .HasValue<Ambilight>("device_ambilight");
             modelBuilder.Entity<Device>()
                 .HasKey(dev => dev.Identifier);
             modelBuilder.Entity<Device>()
@@ -67,7 +68,7 @@ namespace Smart.House.Data.Model
             notificationConfiguration.HasKey("Id");
         }
 
-        public async Task<int> SaveChangesAsync()
+        public new int SaveChanges()
         {
             var domainEventEntities = ChangeTracker.Entries<Device>()
                 .Select(po => po.Entity)
@@ -77,7 +78,12 @@ namespace Smart.House.Data.Model
             if(_mediator != null)
                 _mediator.DispatchDomainEvents(domainEventEntities);
 
-            return await base.SaveChangesAsync();
+            return base.SaveChanges();
+        }
+
+        public override void Dispose()
+        {
+            base.Dispose();
         }
     }
 }

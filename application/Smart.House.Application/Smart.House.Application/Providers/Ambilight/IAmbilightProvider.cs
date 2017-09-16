@@ -1,9 +1,10 @@
-﻿namespace Smart.House.Application.Providers.Ambilight
+﻿using Smart.House.Domain.Devices.Entities;
+using System.Threading.Tasks;
+
+namespace Smart.House.Application.Providers.Ambilight
 {
     public interface IAmbilightProvider
     {
-        string StartAlarmCommand { get; }
-        string StopAlarmCommand { get; }
-
+        Task RunAlarm(Device device);
     }
 }

@@ -16,15 +16,12 @@ namespace Smart.House.Services.State
 
         private readonly ICameraRepository _cameraRepository;
         private readonly ICameraProviderFactory _cameraProviderFactory;
-        private readonly IFtpProvider _ftpProvider;
 
         public CameraService(ICameraRepository cameraRepository,
-            ICameraProviderFactory cameraProviderFactory,
-            IFtpProvider ftpProvider)
+            ICameraProviderFactory cameraProviderFactory)
         {          
             _cameraRepository = cameraRepository;
             _cameraProviderFactory = cameraProviderFactory;
-            _ftpProvider = ftpProvider;
         }
 
         public async Task<CameraState> GetNewState(CameraState state)
@@ -43,7 +40,7 @@ namespace Smart.House.Services.State
         {
             if (!camera.MotionDetectionEnabled) return;
 
-            camera.SetLastMotionFileName(currentFileName);
+            camera.SetCurrentMotionFileName(currentFileName);
 
             DetectMotion(camera);
 
@@ -58,33 +55,16 @@ namespace Smart.House.Services.State
             if (!camera.IsMotionDetected) return;
 
             newState.IsMotionDetected = true;
-            newState.CurrentMotionFileName = camera.GetLastMotionFileName();
+            newState.CurrentMotionFileName = camera.GetCurrentMotionFileName();
         }
 
         private void DetectMotion(Camera camera)
         {
-            var credentials = new RemoteCredentials
-            {
-                Address = camera.RemoteAddress,
-                Login = camera.RemoteLogin,
-                Password = camera.RemotePassword
-            };
+            var provider = _cameraProviderFactory.Create(camera.Provider);
+            var result = provider.DetectMotion(camera, out string currentFileName);
 
-            using (var connection = _ftpProvider.Connect(credentials))
-            {
-                var provider = _cameraProviderFactory.Create(camera.Provider);
-
-                if (connection.DirectoryExists(provider.MotionDirectory))
-                {
-                    var motionPath = provider.GetMotionFilePath();
-                    var files = connection.ScanFiles(motionPath);
-
-                    var result = provider.DetectMotion(camera, files, out string lastFileName);
-
-                    camera.SetMotionDetection(result);
-                    camera.SetLastMotionFileName(lastFileName);
-                }
-            }
+            camera.SetMotionDetection(result);
+            camera.SetCurrentMotionFileName(currentFileName);
         }
     }
 }

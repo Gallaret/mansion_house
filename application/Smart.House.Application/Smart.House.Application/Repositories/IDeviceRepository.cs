@@ -6,6 +6,11 @@ namespace Smart.House.Application.Repositories
     public interface IDeviceRepository<T> where T: Device
     {
         Task<T> GetAsync(string identifier);
+
+        T Find(string key);
+
+        Task<T> FindAsync(string key);
+
         void Add(T device);
     }
 }

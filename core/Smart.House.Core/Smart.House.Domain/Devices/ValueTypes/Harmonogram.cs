@@ -3,7 +3,6 @@ using System;
 
 namespace Smart.House.Domain.Devices.ValueTypes
 {
-
     public enum HarmonogramType
     {
         MotionDetection = 0,

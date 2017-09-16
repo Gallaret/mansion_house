@@ -6,8 +6,6 @@ namespace Smart.House.Application.Providers.Camera
 
     public interface ICameraProvider
     { 
-        string MotionDirectory { get; }
-        bool DetectMotion(Camera camera, FileInfo[] files, out string lastMotionFileName);
-        string GetMotionFilePath();
+        bool DetectMotion(Camera camera, out string lastMotionFileName);
     }
 }

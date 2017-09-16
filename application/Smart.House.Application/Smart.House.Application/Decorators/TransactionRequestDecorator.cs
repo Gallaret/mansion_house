@@ -20,7 +20,8 @@ namespace Smart.House.Application.Decorators
         public async Task Handle(TCommand command)
         {
             await _request.Handle(command);
-            await _unitOfWork.SaveChangesAsync();
+
+            _unitOfWork.SaveChanges();
         }
     }
 }

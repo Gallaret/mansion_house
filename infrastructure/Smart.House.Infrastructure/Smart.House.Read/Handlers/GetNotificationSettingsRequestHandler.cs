@@ -1,6 +1,5 @@
 ﻿using Dapper;
 using Smart.House.Application.Commands;
-using Smart.House.Domain.Devices.Entities;
 using Smart.House.Read.Connection;
 using Smart.House.Read.Handlers.Queries;
 using Smart.House.Read.Handlers.Results;
@@ -24,7 +23,7 @@ namespace Smart.House.Read
         {
             var now = DateTime.Now;
 
-            string deviceQuery = "SELECT AmbientNotificationEnabled FROM Devices WHERE Identifier = @Identifier;";
+            string deviceQuery = "SELECT AmbientNotificationEnabled, EmailNotificationEnabled FROM Devices WHERE Identifier = @Identifier;";
 
             string notificatorQuery = $"SELECT d.Identifier FROM Devices d " +
                 $"INNER JOIN Harmonograms h ON h.Identifier = d.Identifier AND h.Type = @Type " +

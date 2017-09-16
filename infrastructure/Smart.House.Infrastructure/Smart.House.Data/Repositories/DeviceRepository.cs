@@ -2,6 +2,7 @@
 using Smart.House.Application.Repositories;
 using Smart.House.Data.Model;
 using Smart.House.Domain.Devices.Entities;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Smart.House.Data.Repositories
@@ -19,6 +20,18 @@ namespace Smart.House.Data.Repositories
         public async void Add(T device)
         {
             await _context.AddAsync<Device>(device);
+        }
+
+        public T Find(string key)
+        {
+            var device = _context.Devices
+                .SingleOrDefault(k => k.Identifier == key);
+            return device as T;
+        }
+
+        public async Task<T> FindAsync(string key)
+        {
+            return await _context.Devices.FindAsync(key) as T;
         }
 
         public async Task<T> GetAsync(string identifier)

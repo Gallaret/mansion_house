@@ -1,11 +1,10 @@
 ﻿using Smart.House.Domain.Devices.ValueTypes;
 using Smart.House.Domain.Notifications.ValueTypes;
+using Smart.House.Domain.Devices.Entities;
 using System;
 
 namespace Smart.House.Domain.Devices.Specifications
 {
-    using Smart.House.Domain.Devices.Entities;
-
     public class CameraSpecification
     {
         private readonly Camera _camera;
@@ -23,7 +22,7 @@ namespace Smart.House.Domain.Devices.Specifications
                     {
                         if (_camera.IsMotionDetected)
                         {
-                            var same = notification.Value == _camera.GetLastMotionFileName();
+                            var same = notification.Value == _camera.GetCurrentMotionFileName();
 
                             return !same || !notification.Unchecked;
                         }

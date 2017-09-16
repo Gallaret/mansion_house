@@ -129,6 +129,16 @@ namespace Smart.House.Data.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("Smart.House.Domain.Devices.Entities.Ambilight", b =>
+                {
+                    b.HasBaseType("Smart.House.Domain.Devices.Entities.Device");
+
+
+                    b.ToTable("Ambilight");
+
+                    b.HasDiscriminator().HasValue("device_ambilight");
+                });
+
             modelBuilder.Entity("Smart.House.Domain.Devices.Entities.Camera", b =>
                 {
                     b.HasBaseType("Smart.House.Domain.Devices.Entities.Device");

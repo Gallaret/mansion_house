@@ -20,7 +20,7 @@ namespace Smart.House.Domain.Devices.Services
             if (!specification.IsInHarmonogram(harmonogram)) return;
 
             camera.AddDomainEvent(new MotionDetectedEvent (
-                camera.Identifier, camera.GetLastMotionFileName()
+                camera.Identifier, camera.GetCurrentMotionFileName()
             ));
         }
     }
