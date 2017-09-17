@@ -29,6 +29,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="2.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Orleans.Client" Version="2.0.0-preview3-20170913" />
     <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.0.0" />
     <PackageReference Include="React.AspNet" Version="3.1.0" />
     <PackageReference Include="SimpleInjector.Integration.AspNetCore" Version="4.0.10" />
@@ -46,16 +47,7 @@
     <Folder Include="App\dist\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\application\Smart.House.Application\Smart.House.Application\Smart.House.Application.csproj" />
-    <ProjectReference Include="..\..\application\Smart.House.Application\Smart.House.Services\Smart.House.Services.csproj" />
-    <ProjectReference Include="..\..\core\Smart.House.Core\Smart.House.Domain\Smart.House.Domain.csproj" />
-    <ProjectReference Include="..\..\infrastructure\Smart.House.Infrastructure\Smart.House.Data\Smart.House.Data.csproj" />
-    <ProjectReference Include="..\..\infrastructure\Smart.House.Infrastructure\Smart.House.DLink\Smart.House.Camera.csproj" />
-    <ProjectReference Include="..\..\infrastructure\Smart.House.Infrastructure\Smart.House.Email\Smart.House.Email.csproj" />
-    <ProjectReference Include="..\..\infrastructure\Smart.House.Infrastructure\Smart.House.Ftp\Smart.House.Ftp.csproj" />
-    <ProjectReference Include="..\..\infrastructure\Smart.House.Infrastructure\Smart.House.Hyperion\Smart.House.Ambilight.csproj" />
-    <ProjectReference Include="..\..\infrastructure\Smart.House.Infrastructure\Smart.House.Read\Smart.House.Read.csproj" />
-    <ProjectReference Include="..\..\infrastructure\Smart.House.Infrastructure\Smart.House.Ssh\Smart.House.Ssh.csproj" />
+    <ProjectReference Include="..\..\orleans\Smart.House.Orleans\Smart.House.Interface\Smart.House.Interface.csproj" />
   </ItemGroup>
   <ProjectExtensions><VisualStudio><UserProperties package_1json__JSONSchema="" /></VisualStudio></ProjectExtensions>
 

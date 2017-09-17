@@ -13,5 +13,7 @@ namespace Smart.House.Data.Repositories
         {
             _context = context;
         }
+
+        //... Tutaj wszystkie inne metody typu GetBy...
     }
 }

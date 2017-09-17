@@ -24,7 +24,7 @@ namespace Smart.House.Services.Handlers.Requests
 
         public async Task Handle(EmailNotificationCommand command)
         {
-            var notificator = await _notificatorRepository.FindAsync(command.Identifier);
+            var notificator = _notificatorRepository.Find(command.Identifier);
             var receiver = _userRepository.Find(notificator.Receiver);
 
             if (receiver != null)

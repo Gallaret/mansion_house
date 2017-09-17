@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\application\Smart.House.Application\Smart.House.Application\Smart.House.Application.csproj" />
+    <ProjectReference Include="..\..\..\core\Smart.House.Core\Smart.House.Domain\Smart.House.Domain.csproj" />
+    <ProjectReference Include="..\Smart.House.Interface\Smart.House.Interface.csproj" />
+  </ItemGroup>
+
+</Project>

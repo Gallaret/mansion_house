@@ -1,8 +1,8 @@
-﻿namespace Smart.House.Application.Repositories
-{
-    using Domain.Notifications.ValueTypes;
-    using System.Collections.Generic;
+﻿using Smart.House.Domain.Notifications.ValueTypes;
+using System.Collections.Generic;
 
+namespace Smart.House.Application.Repositories
+{
     public interface INotificationRepository
     {
         void Add(Notification notification);

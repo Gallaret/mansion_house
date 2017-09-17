@@ -12,9 +12,5 @@
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\application\Smart.House.Application\Smart.House.Application\Smart.House.Application.csproj" />
-    <ProjectReference Include="..\..\..\core\Smart.House.Core\Smart.House.Domain\Smart.House.Domain.csproj" />
-  </ItemGroup>
 
 </Project>

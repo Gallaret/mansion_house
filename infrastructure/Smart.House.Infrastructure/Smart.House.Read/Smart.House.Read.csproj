@@ -8,8 +8,4 @@
     <PackageReference Include="Dapper" Version="1.50.2" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\application\Smart.House.Application\Smart.House.Application\Smart.House.Application.csproj" />
-  </ItemGroup>
-
 </Project>

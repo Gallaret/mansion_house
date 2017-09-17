@@ -8,8 +8,4 @@
     <PackageReference Include="SSH.NET" Version="2016.1.0-beta2" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\application\Smart.House.Application\Smart.House.Application\Smart.House.Application.csproj" />
-  </ItemGroup>
-
 </Project>

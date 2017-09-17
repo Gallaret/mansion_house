@@ -8,57 +8,15 @@ using Microsoft.AspNetCore.Mvc.Controllers;
 using SimpleInjector;
 using SimpleInjector.Integration.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewComponents;
-using Microsoft.EntityFrameworkCore;
-using Smart.House.Ftp;
-using Smart.House.Dashboard.Resolvers;
-using Smart.House.Application.Mediator;
-using System.Reflection;
-using Smart.House.Application.Events;
-using Smart.House.Application.Commands;
-using Smart.House.Services.Handlers.Events;
-using Smart.House.Application.Decorators;
-using Smart.House.Application.Transaction;
-using Smart.House.Domain.Devices.Entities;
-using Smart.House.Application.Services;
-using Smart.House.Services.State;
-using Smart.House.Application.Providers.Ambilight;
-using Smart.House.Application.Providers.Camera;
-using Smart.House.Application.Repositories;
-using Smart.House.Data.Model;
-using Smart.House.Data.Repositories;
-using Smart.House.Read;
-using Smart.House.Read.Connection;
-using Smart.House.Application.Providers.Ssh;
-using Smart.House.Ssh;
-using Smart.House.Application.Providers.Communication.Ftp;
-using Smart.House.Ambilight;
-using Smart.House.Camera;
-using Smart.House.Application.Providers.Communication.Mail;
-using Smart.House.Email;
-using Smart.House.Email.Providers;
-using Smart.House.Application.Repositories.Users;
 using SimpleInjector.Lifestyles;
+using Orleans.Runtime.Configuration;
+using Orleans.Runtime;
+using Orleans;
+using System;
+using System.Threading;
 
 namespace Smart.House.Dashboard
 {
-    public class MyContainer : Container
-    {
-        public MyContainer() : base()
-        {
-        }
-
-        public new void Dispose()
-        {
-            Dispose(false);
-        }
-
-        public new void Dispose(bool dispose)
-        {
-            if (dispose)
-                base.Dispose();
-        }
-    }
-
     public class Startup
     {
         private Container container = new Container();
@@ -78,6 +36,26 @@ namespace Smart.House.Dashboard
 
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
+
+            var orleansClientConfig = ClientConfiguration.LocalhostSilo();
+            orleansClientConfig.DeploymentId = Configuration["DeploymentId"];
+            orleansClientConfig.DataConnectionString = Configuration.GetConnectionString("DataConnectionString");
+            orleansClientConfig.AddSimpleMessageStreamProvider("Default");
+            orleansClientConfig.DefaultTraceLevel = Severity.Warning;
+            orleansClientConfig.TraceFileName = "";
+            do
+            {
+                try
+                {
+                    GrainClient.Initialize(orleansClientConfig);
+                }
+                catch (Exception ex) when (ex is OrleansException || ex is SiloUnavailableException)
+                {
+                    // Wait for the Host to start
+                    Thread.Sleep(3000);
+                }
+            }
+            while (!GrainClient.IsInitialized);
         }
 
         public IConfigurationRoot Configuration { get; }
@@ -146,88 +124,83 @@ namespace Smart.House.Dashboard
 
         private void InitializeContainer(IApplicationBuilder app)
         {    
-            var mediator = new Mediator(container);
-            //container.Register(() => container, Lifestyle.Singleton);
-            container.RegisterMvcControllers(app);
-            container.RegisterMvcViewComponents(app);
+            //var mediator = new Mediator(container);
+            ////container.Register(() => container, Lifestyle.Singleton);
+            //container.RegisterMvcControllers(app);
+            //container.RegisterMvcViewComponents(app);
 
-            var connectionString = @"Server=localhost\SQLEXPRESS;Database=SmartHouse;Trusted_Connection=True;";
+            //var connectionString = @"Server=localhost\SQLEXPRESS;Database=SmartHouse;Trusted_Connection=True;";
 
-            var optionsBuilder = new DbContextOptionsBuilder<DataContext>();
-            optionsBuilder.UseSqlServer(connectionString);
+            //var optionsBuilder = new DbContextOptionsBuilder<DataContext>();
+            //optionsBuilder.UseSqlServer(connectionString);
 
-            container.RegisterSingleton(() => new ReadConnection(connectionString));
+            //container.RegisterSingleton(() => new ReadConnection(connectionString));
 
-            RegisterHandlers();
-            RegisterQueryHandlers();
+            //RegisterHandlers();
+            //RegisterQueryHandlers();
 
-            container.Register(() => new DataContext(optionsBuilder.Options, mediator), Lifestyle.Scoped);
-            container.Register<IUnitOfWork>(() => container.GetInstance<DataContext>(), Lifestyle.Scoped);
+            //container.Register(() => new DataContext(optionsBuilder.Options, mediator), Lifestyle.Scoped);
+            //container.Register<IUnitOfWork>(() => container.GetInstance<DataContext>(), Lifestyle.Scoped);
 
-            container.RegisterDecorator(
-                typeof(IRequestHandler<>),
-                typeof(TransactionRequestDecorator<>));
+            ////container.RegisterDecorator(
+            ////    typeof(IRequestHandler<>),
+            ////    typeof(TransactionRequestDecorator<>));
 
-            container.RegisterSingleton(app.ApplicationServices.GetService<ILoggerFactory>());
-            container.Register(typeof(IStateService<>), new[] //register state services
-            {
-                typeof(CameraService).GetTypeInfo().Assembly
-            });
+            //container.RegisterSingleton(app.ApplicationServices.GetService<ILoggerFactory>());
+            //container.Register(typeof(IStateService<>), new[] //register state services
+            //{
+            //    typeof(CameraService).GetTypeInfo().Assembly
+            //});
 
-            container.RegisterDecorator(
-               typeof(IStateService<>),
-               typeof(TransactionStateDecorator<>));
+            //container.Register<IFtpProvider, FtpProvider>(Lifestyle.Singleton);
+            //container.Register<ISshProvider, SshProvider>(Lifestyle.Singleton);
 
-            container.Register<IFtpProvider, FtpProvider>(Lifestyle.Singleton);
-            container.Register<ISshProvider, SshProvider>(Lifestyle.Singleton);
+            //RegisterRepositories();
 
-            RegisterRepositories();
+            //container.RegisterSingleton<ICameraProviderFactory>(new CameraProviderFactory
+            //{
+            //    { "dlink", () => container.GetInstance<DlinkProvider>()}
+            //});
+            //container.RegisterSingleton<IAmbilightProviderFactory>(new AmbilightProviderFactory
+            //{
+            //    { "hyperion", () => container.GetInstance<HyperionProvider>() }
+            //});
+            //container.RegisterSingleton<IEmailProviderFactory>(new EmailProviderFactory
+            //{
+            //    { "gmail", () => container.GetInstance<GmailProvider>() }
+            //});
 
-            container.RegisterSingleton<ICameraProviderFactory>(new CameraProviderFactory
-            {
-                { "dlink", () => container.GetInstance<DlinkProvider>()}
-            });
-            container.RegisterSingleton<IAmbilightProviderFactory>(new AmbilightProviderFactory
-            {
-                { "hyperion", () => container.GetInstance<HyperionProvider>() }
-            });
-            container.RegisterSingleton<IEmailProviderFactory>(new EmailProviderFactory
-            {
-                { "gmail", () => container.GetInstance<GmailProvider>() }
-            });
-
-            container.RegisterSingleton<IMediator>(() => mediator);
         }
 
 
-        private void RegisterHandlers()
-        {
-            var assemblies = new [] 
-            {
-                typeof(Device).GetTypeInfo().Assembly,
-                typeof(MotionDetectedEventHandler).GetTypeInfo().Assembly
-            };
+        //private void RegisterHandlers()
+        //{
+        //    var assemblies = new [] 
+        //    {
+        //        typeof(Device).GetTypeInfo().Assembly,
+        //        typeof(MotionDetectedEventHandler).GetTypeInfo().Assembly
+        //    };
 
-            container.RegisterCollection(typeof(IDomainEventHandler<>), assemblies);
-            container.Register(typeof(IRequestHandler<>), assemblies);
-        }
+        //    container.RegisterCollection(typeof(IDomainEventHandler<>), assemblies);
+        //    container.Register(typeof(IRequestHandler<>), assemblies);
+        //}
 
-        private void RegisterQueryHandlers()
-        {
-            var assemblies = new[]
-            {
-                typeof(GetNotificationSettingsRequestHandler).GetTypeInfo().Assembly
-            };
+        //private void RegisterQueryHandlers()
+        //{
+        //    var assemblies = new[]
+        //    {
+        //        typeof(GetNotificationSettingsRequestHandler).GetTypeInfo().Assembly
+        //    };
 
-            container.Register(typeof(IRequestHandler<,>), assemblies);
-        }
+        //    container.Register(typeof(IRequestHandler<,>), assemblies);
+        //}
 
-        private void RegisterRepositories()
-        {
-            container.Register(typeof(IDeviceRepository<>), typeof(DeviceRepository<>), Lifestyle.Scoped);
-            container.Register<ICameraRepository, CameraRepository>(Lifestyle.Scoped);
-            container.Register<IUserRepository, UserRepository>(Lifestyle.Scoped);
-            container.Register<INotificationRepository, NotificationRepository>(Lifestyle.Scoped);
-        }
+        //private void RegisterRepositories()
+        //{
+        //    container.Register(typeof(IDeviceRepository<>), typeof(DeviceRepository<>), Lifestyle.Scoped);
+        //    container.Register<ICameraRepository, CameraRepository>(Lifestyle.Scoped);
+        //    container.Register<IUserRepository, UserRepository>(Lifestyle.Scoped);
+        //    container.Register<INotificationRepository, NotificationRepository>(Lifestyle.Scoped);
+        //}
     }
 }

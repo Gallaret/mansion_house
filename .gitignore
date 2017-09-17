@@ -88,3 +88,13 @@ Temporary Items
 /infrastructure/Smart.House.Infrastructure/Smart.House.Ssh/obj
 /infrastructure/Smart.House.Infrastructure/Smart.House.Email/bin/Debug/netcoreapp2.0
 /infrastructure/Smart.House.Infrastructure/Smart.House.Email/obj
+/application/Smart.House.Application/Smart.House.Application/bin/Debug/netstandard2.0
+/application/Smart.House.Application/Smart.House.Services/bin/Debug/netstandard2.0
+/orleans/Smart.House.Orleans/Smart.House.Grains/bin/Debug
+/orleans/Smart.House.Orleans/Smart.House.Grains/obj
+/orleans/Smart.House.Orleans/Smart.House.Host/bin/Debug/netcoreapp2.0
+/orleans/Smart.House.Orleans/Smart.House.Host/obj
+/orleans/Smart.House.Orleans/Smart.House.Interface/bin/Debug
+/orleans/Smart.House.Orleans/Smart.House.Interface/obj
+/orleans/Smart.House.Orleans/Smart.House.States/bin/Debug/netstandard2.0
+/orleans/Smart.House.Orleans/Smart.House.States/obj

@@ -1,9 +1,0 @@
-C:\Users\Robert Wojda\Source\Repos\mansion_house\core\Smart.House.Core\Smart.House.Domain\bin\Debug\netcoreapp1.1\Smart.House.Domain.deps.json
-C:\Users\Robert Wojda\Source\Repos\mansion_house\core\Smart.House.Core\Smart.House.Domain\bin\Debug\netcoreapp1.1\Smart.House.Domain.dll
-C:\Users\Robert Wojda\Source\Repos\mansion_house\core\Smart.House.Core\Smart.House.Domain\bin\Debug\netcoreapp1.1\Smart.House.Domain.pdb
-C:\Users\Robert Wojda\Source\Repos\mansion_house\core\Smart.House.Core\Smart.House.Domain\obj\Debug\netcoreapp1.1\Smart.House.Domain.AssemblyInfo.cs
-C:\Users\Robert Wojda\Source\Repos\mansion_house\core\Smart.House.Core\Smart.House.Domain\obj\Debug\netcoreapp1.1\Smart.House.Domain.dll
-C:\Users\Robert Wojda\Source\Repos\mansion_house\core\Smart.House.Core\Smart.House.Domain\obj\Debug\netcoreapp1.1\Smart.House.Domain.pdb
-C:\Users\Robert Wojda\Source\Repos\mansion_house\core\Smart.House.Core\Smart.House.Domain\obj\Debug\netcoreapp1.1\Smart.House.Domain.csprojResolveAssemblyReference.cache
-C:\Users\Robert Wojda\Source\Repos\mansion_house\core\Smart.House.Core\Smart.House.Domain\obj\Debug\netcoreapp1.1\Smart.House.Domain.csproj.CoreCompileInputs.cache
-C:\Users\Robert Wojda\Source\Repos\mansion_house\core\Smart.House.Core\Smart.House.Domain\obj\Debug\netcoreapp1.1\Smart.House.Domain.AssemblyInfoInputs.cache
