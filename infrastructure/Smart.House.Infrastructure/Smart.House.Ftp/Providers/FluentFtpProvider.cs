@@ -5,29 +5,29 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 
-namespace Smart.House.Ftp
+namespace Smart.House.Ftp.Providers
 {
-    public class FtpProvider : IFtpProvider
+    public class FluentFtpProvider : IFtpProvider
     {
         private FtpClient _ftpClient;
-        private FtpProvider(FtpClient ftpClient)
+        private FluentFtpProvider(FtpClient ftpClient)
         {
             _ftpClient = ftpClient;
         }
 
-        public FtpProvider() { }
+        public FluentFtpProvider() { }
 
         public IFtpProvider Connect(RemoteCredentials credentials)
         {
             var client = new FtpClient(credentials.Address)
             {
-                Credentials = new NetworkCredential (
+                Credentials = new NetworkCredential(
                     credentials.Login, credentials.Password)
             };
 
             client.Connect();
 
-            return new FtpProvider(client);
+            return new FluentFtpProvider(client);
         }
 
         public bool DirectoryExists(string directory)

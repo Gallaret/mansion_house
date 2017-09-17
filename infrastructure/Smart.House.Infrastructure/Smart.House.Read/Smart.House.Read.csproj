@@ -1,11 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Dapper" Version="1.50.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\application\Smart.House.Application\Smart.House.Application\Smart.House.Application.csproj" />
+    <ProjectReference Include="..\..\..\core\Smart.House.Core\Smart.House.Domain\Smart.House.Domain.csproj" />
   </ItemGroup>
 
 </Project>

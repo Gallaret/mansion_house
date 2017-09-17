@@ -1,11 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentFTP" Version="18.0.0" />
+    <PackageReference Include="FluentFTP" Version="18.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\application\Smart.House.Application\Smart.House.Application\Smart.House.Application.csproj" />
   </ItemGroup>
 
 </Project>

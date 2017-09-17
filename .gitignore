@@ -98,3 +98,6 @@ Temporary Items
 /orleans/Smart.House.Orleans/Smart.House.Interface/obj
 /orleans/Smart.House.Orleans/Smart.House.States/bin/Debug/netstandard2.0
 /orleans/Smart.House.Orleans/Smart.House.States/obj
+/infrastructure/Smart.House.Infrastructure/Smart.House.Ambilight/obj
+/infrastructure/Smart.House.Infrastructure/Smart.House.Camera/obj
+/infrastructure/Smart.House.Infrastructure/Smart.House.Ssh/bin/Debug/netstandard2.0
