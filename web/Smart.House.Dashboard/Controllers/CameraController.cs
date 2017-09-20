@@ -69,7 +69,7 @@ namespace Smart.House.Dashboard.Controllers
             //    }
             //}
 
-            var state = camera.GetCameraState().Result;
+            var state = await camera.GetState();
 
             var viewModel = new CameraViewModel
             {

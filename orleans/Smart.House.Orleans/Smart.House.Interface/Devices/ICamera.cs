@@ -1,11 +1,12 @@
 ﻿using Orleans;
-using Smart.House.Interface.Services.States;
+using Smart.House.Interface.Devices.States;
 using System.Threading.Tasks;
 
 namespace Smart.House.Interface
 {
     public interface ICamera : IGrainWithStringKey
     {
-        Task<CameraState> GetCameraState();
+        Task<CameraState> GetState();
+        Task Initialize(string identifier);
     }
 }

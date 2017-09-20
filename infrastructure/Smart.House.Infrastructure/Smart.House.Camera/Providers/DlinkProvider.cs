@@ -19,33 +19,22 @@ namespace Smart.House.Camera
             _ftpProvider = ftpProvider;
         }
 
-        public bool DetectMotion(Camera camera, out string lastMotionFileName)
+        public void DetectMotion(Camera camera)
         {
             var files = GetFiles(camera);
-            var lastFile = files.OrderByDescending(file => file.CreationTime).FirstOrDefault();
+            var lastFile = files.OrderByDescending(file => file.CreationTime)
+                .FirstOrDefault();
 
-            if (lastFile != null)
-            {
-                if (!lastFile.Name.Equals(camera.GetCurrentMotionFileName()))
-                {
-                    lastMotionFileName = lastFile.Name;
-                }
-                else
-                {
-                    lastMotionFileName = camera.GetCurrentMotionFileName();
-                }
+            if (lastFile == null) return;
 
-                return true;
-            }
-            else if (!string.IsNullOrEmpty(camera.GetCurrentMotionFileName()))
+            if (!lastFile.Name.Equals(camera.GetCurrentMotionFileName()))
             {
-                lastMotionFileName = camera.GetCurrentMotionFileName();
-                return true;
+                camera.SetCurrentMotionFileName(lastFile.Name);
+                camera.SetMotionDetection(true);
             }
             else
             {
-                lastMotionFileName = null;
-                return false;
+                camera.SetMotionDetection(false);
             }
         }
 

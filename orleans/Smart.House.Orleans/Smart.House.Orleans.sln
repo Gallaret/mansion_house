@@ -23,7 +23,27 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Core", "..\..\c
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Domain", "..\..\core\Smart.House.Core\Smart.House.Domain\Smart.House.Domain.csproj", "{F3DF9FC9-C294-4C9D-BE6C-90AF734C8FC2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smart.House.States", "Smart.House.States\Smart.House.States.csproj", "{85936C23-0A74-460D-8E00-216F06BC4920}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Dispatchers", "Smart.House.States\Smart.House.Dispatchers.csproj", "{85936C23-0A74-460D-8E00-216F06BC4920}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{7A954E1D-C94E-4F31-AA3C-48D12DFFF8BC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{228E7294-C8FE-4780-90F3-4451C55BD3CD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Providers", "Providers", "{B66A2915-F618-495F-84D0-42D35E8A8BD0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Data", "..\..\infrastructure\Smart.House.Infrastructure\Smart.House.Data\Smart.House.Data.csproj", "{B45CE4BB-78B7-44D5-AD7E-D660E7F01D65}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Read", "..\..\infrastructure\Smart.House.Infrastructure\Smart.House.Read\Smart.House.Read.csproj", "{160BFCBA-F65E-485C-8483-D9DC53A67A17}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Ambilight", "..\..\infrastructure\Smart.House.Infrastructure\Smart.House.Ambilight\Smart.House.Ambilight.csproj", "{77D0DEC4-8051-4ACB-93CF-93A915BBCADC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Camera", "..\..\infrastructure\Smart.House.Infrastructure\Smart.House.Camera\Smart.House.Camera.csproj", "{F7E13958-96F8-4652-90D7-CC98EDDC9F81}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Email", "..\..\infrastructure\Smart.House.Infrastructure\Smart.House.Email\Smart.House.Email.csproj", "{AD7532A1-590F-4CDF-AFA3-65BF08ADA47D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Ftp", "..\..\infrastructure\Smart.House.Infrastructure\Smart.House.Ftp\Smart.House.Ftp.csproj", "{FFB5353B-5223-40BF-8671-5A852AF7D54B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Ssh", "..\..\infrastructure\Smart.House.Infrastructure\Smart.House.Ssh\Smart.House.Ssh.csproj", "{0A64EB89-8742-4101-85D5-5A0D48C61BAF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +83,34 @@ Global
 		{85936C23-0A74-460D-8E00-216F06BC4920}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{85936C23-0A74-460D-8E00-216F06BC4920}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{85936C23-0A74-460D-8E00-216F06BC4920}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B45CE4BB-78B7-44D5-AD7E-D660E7F01D65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B45CE4BB-78B7-44D5-AD7E-D660E7F01D65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B45CE4BB-78B7-44D5-AD7E-D660E7F01D65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B45CE4BB-78B7-44D5-AD7E-D660E7F01D65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{160BFCBA-F65E-485C-8483-D9DC53A67A17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{160BFCBA-F65E-485C-8483-D9DC53A67A17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{160BFCBA-F65E-485C-8483-D9DC53A67A17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{160BFCBA-F65E-485C-8483-D9DC53A67A17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77D0DEC4-8051-4ACB-93CF-93A915BBCADC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77D0DEC4-8051-4ACB-93CF-93A915BBCADC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77D0DEC4-8051-4ACB-93CF-93A915BBCADC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77D0DEC4-8051-4ACB-93CF-93A915BBCADC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7E13958-96F8-4652-90D7-CC98EDDC9F81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7E13958-96F8-4652-90D7-CC98EDDC9F81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7E13958-96F8-4652-90D7-CC98EDDC9F81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7E13958-96F8-4652-90D7-CC98EDDC9F81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD7532A1-590F-4CDF-AFA3-65BF08ADA47D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD7532A1-590F-4CDF-AFA3-65BF08ADA47D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD7532A1-590F-4CDF-AFA3-65BF08ADA47D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD7532A1-590F-4CDF-AFA3-65BF08ADA47D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFB5353B-5223-40BF-8671-5A852AF7D54B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFB5353B-5223-40BF-8671-5A852AF7D54B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFB5353B-5223-40BF-8671-5A852AF7D54B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFB5353B-5223-40BF-8671-5A852AF7D54B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A64EB89-8742-4101-85D5-5A0D48C61BAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A64EB89-8742-4101-85D5-5A0D48C61BAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A64EB89-8742-4101-85D5-5A0D48C61BAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A64EB89-8742-4101-85D5-5A0D48C61BAF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -74,6 +122,15 @@ Global
 		{602D9F4E-E5D2-4F94-8189-DB43869600B2} = {CD44815A-0298-45D1-9F19-BA3795A1BFB6}
 		{878B1529-3827-42BC-BE81-AB052ED4653A} = {76C3FC69-CFE4-44AD-8EE6-84B871A4F746}
 		{F3DF9FC9-C294-4C9D-BE6C-90AF734C8FC2} = {76C3FC69-CFE4-44AD-8EE6-84B871A4F746}
+		{228E7294-C8FE-4780-90F3-4451C55BD3CD} = {7A954E1D-C94E-4F31-AA3C-48D12DFFF8BC}
+		{B66A2915-F618-495F-84D0-42D35E8A8BD0} = {7A954E1D-C94E-4F31-AA3C-48D12DFFF8BC}
+		{B45CE4BB-78B7-44D5-AD7E-D660E7F01D65} = {228E7294-C8FE-4780-90F3-4451C55BD3CD}
+		{160BFCBA-F65E-485C-8483-D9DC53A67A17} = {228E7294-C8FE-4780-90F3-4451C55BD3CD}
+		{77D0DEC4-8051-4ACB-93CF-93A915BBCADC} = {B66A2915-F618-495F-84D0-42D35E8A8BD0}
+		{F7E13958-96F8-4652-90D7-CC98EDDC9F81} = {B66A2915-F618-495F-84D0-42D35E8A8BD0}
+		{AD7532A1-590F-4CDF-AFA3-65BF08ADA47D} = {B66A2915-F618-495F-84D0-42D35E8A8BD0}
+		{FFB5353B-5223-40BF-8671-5A852AF7D54B} = {B66A2915-F618-495F-84D0-42D35E8A8BD0}
+		{0A64EB89-8742-4101-85D5-5A0D48C61BAF} = {B66A2915-F618-495F-84D0-42D35E8A8BD0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E2603C2B-FD82-4EAD-880E-ABC699834AB6}

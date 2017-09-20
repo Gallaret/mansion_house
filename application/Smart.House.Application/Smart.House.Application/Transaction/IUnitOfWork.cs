@@ -1,7 +1,9 @@
-﻿namespace Smart.House.Application.Transaction
+﻿using System.Threading.Tasks;
+
+namespace Smart.House.Application.Transaction
 {
     public interface IUnitOfWork
     {
-        int SaveChanges();
+        Task<int> SaveChangesAsync();
     }
 }

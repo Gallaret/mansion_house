@@ -2,9 +2,13 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
+using Orleans;
+using Orleans.Runtime.Configuration;
+using Smart.House.Grains.Resolvers;
 using System;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Smart.House.Grains
 {
@@ -39,13 +43,21 @@ namespace Smart.House.Grains
             services.TryAdd(ServiceDescriptor.Singleton(typeof(ILogger<>), typeof(Logger<>)));
 
             services.AddOptions();
-            //services.Configure<ConnectionStrings>(Configuration.GetSection("ConnectionStrings"));
-            //// services.Configure<AcmeSettings>(Configuration.GetSection("AcmeSettings"));
 
-            //string reduxConnectionString = Configuration.GetConnectionString("ReduxConnectionString");
-            //services.AddSingleton(new ReduxTableStorage<CertState>(reduxConnectionString));
-            //services.AddSingleton(new ReduxTableStorage<UserState>(reduxConnectionString));
-            //services.AddSingleton(new ReduxTableStorage<CounterState>(reduxConnectionString));
+            var container = Dependency.Build();
+
+            services.AddSingleton((mediator) => new Mediator(container));
+            services.AddSingleton((client) =>
+            {
+                return new Func<Task<IClusterClient>>(async () =>
+                {
+                    var config = ClientConfiguration.LocalhostSilo();
+                    var clusterClient = new ClientBuilder().UseConfiguration(config).Build();
+                    await clusterClient.Connect();
+
+                    return clusterClient;
+                });
+            });
 
             return services.BuildServiceProvider();
         }

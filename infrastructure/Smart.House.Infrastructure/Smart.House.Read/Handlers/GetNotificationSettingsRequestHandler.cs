@@ -23,6 +23,8 @@ namespace Smart.House.Read
         {
             var now = DateTime.Now;
 
+            string notificationQuery = "SELECT 1 FROM Notifications n WHERE n.Value = @Value AND n.Sent = 0";
+
             string deviceQuery = "SELECT AmbientNotificationEnabled, EmailNotificationEnabled FROM Devices WHERE Identifier = @Identifier;";
 
             string notificatorQuery = $"SELECT d.Identifier FROM Devices d " +
@@ -34,19 +36,21 @@ namespace Smart.House.Read
             {
                 connection.Open();
 
-                var notificators = await connection.QueryAsync<NotificatorResult>(notificatorQuery,
-                    new { Type = command.HarmonogramType, Current = now.TimeOfDay });
-
-                var device = await connection.QuerySingleAsync<DeviceResult>(deviceQuery, 
-                    new { Identifier = command.Identifier });
-
                 var result = new NotificationSettingsResult
                 {
-                    Noticators = notificators,
-                    Device = device
+                    ShouldSend = await connection.QuerySingleAsync<bool>(notificationQuery,
+                        new { Value = command.NotificationValue })
                 };
 
-                return await Task.FromResult(result);
+                if (!result.ShouldSend) return result;
+
+                result.Noticators = await connection.QueryAsync<NotificatorResult>(notificatorQuery,
+                    new { Type = command.HarmonogramType, Current = now.TimeOfDay });
+
+                result.Device = await connection.QuerySingleAsync<DeviceResult>(deviceQuery, 
+                    new { Identifier = command.Identifier });
+
+                return result;
             }
         }
     }

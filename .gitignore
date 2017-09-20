@@ -101,3 +101,8 @@ Temporary Items
 /infrastructure/Smart.House.Infrastructure/Smart.House.Ambilight/obj
 /infrastructure/Smart.House.Infrastructure/Smart.House.Camera/obj
 /infrastructure/Smart.House.Infrastructure/Smart.House.Ssh/bin/Debug/netstandard2.0
+/infrastructure/Smart.House.Infrastructure/Smart.House.Ambilight/bin/Debug/netstandard2.0
+/infrastructure/Smart.House.Infrastructure/Smart.House.Camera/bin/Debug/netstandard2.0
+/infrastructure/Smart.House.Infrastructure/Smart.House.Email/bin/Debug/netstandard2.0
+/infrastructure/Smart.House.Infrastructure/Smart.House.Read/bin/Debug/netstandard2.0
+/infrastructure/Smart.House.Infrastructure/Smart.House.Ftp/bin/Debug/netstandard2.0

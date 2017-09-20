@@ -15,6 +15,7 @@ namespace Smart.House.Read.Handlers.Results
 
     public class NotificationSettingsResult
     {
+        public bool ShouldSend { get; set; }
         public IEnumerable<NotificatorResult> Noticators { get; set; }
         public DeviceResult Device { get; set; }
     }

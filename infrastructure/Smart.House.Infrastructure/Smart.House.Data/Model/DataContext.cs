@@ -68,7 +68,7 @@ namespace Smart.House.Data.Model
             notificationConfiguration.HasKey("Id");
         }
 
-        public new int SaveChanges()
+        public async Task<int> SaveChangesAsync()
         {
             var domainEventEntities = ChangeTracker.Entries<Device>()
                 .Select(po => po.Entity)
@@ -76,9 +76,9 @@ namespace Smart.House.Data.Model
                 .ToArray();
 
             if(_mediator != null)
-                _mediator.DispatchDomainEvents(domainEventEntities);
+                await _mediator.DispatchDomainEvents(domainEventEntities);
 
-            return base.SaveChanges();
+            return await base.SaveChangesAsync();
         }
 
         public override void Dispose()

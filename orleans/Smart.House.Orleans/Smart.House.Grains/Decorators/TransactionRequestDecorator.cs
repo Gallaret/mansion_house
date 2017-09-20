@@ -21,7 +21,7 @@ namespace Smart.House.Grains.Decorators
         {
             await _request.Handle(command);
 
-            _unitOfWork.SaveChanges();
+            await _unitOfWork.SaveChangesAsync();
         }
     }
 }

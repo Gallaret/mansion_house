@@ -7,7 +7,7 @@ namespace Smart.House.Application.Mediator
 {
     public interface IMediator
     {
-        void DispatchDomainEvents(IEnumerable<Device> domainEntities);
+        Task DispatchDomainEvents(IEnumerable<Device> domainEntities);
 
         Task DispatchRequest<TCommand>(TCommand request)
             where TCommand : IRequest;

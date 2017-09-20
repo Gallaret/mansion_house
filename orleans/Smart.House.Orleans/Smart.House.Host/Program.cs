@@ -1,11 +1,14 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Orleans;
 using Orleans.Runtime.Configuration;
 using Orleans.Runtime.Host;
 using Smart.House.Grains;
+using Smart.House.Interface;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace Smart.House.Host
 {
@@ -63,6 +66,18 @@ namespace Smart.House.Host
                     logger.LogError(string.Format($"Failed to start Orleans silo '{siloHost.Name}' as a {siloHost.Type} node."));
                     return 1;
                 }
+
+
+                Task.Run(async () =>
+                {
+                    var clientConfig = ClientConfiguration.LocalhostSilo();
+                    var client = new ClientBuilder().UseConfiguration(clientConfig).Build();
+
+                    await client.Connect();
+                    var camera = client.GetGrain<ICamera>("camera1");
+
+                    await camera.Initialize("camera1");
+                });
             }
             catch (Exception exc)
             {
