@@ -2,8 +2,8 @@
 
 namespace Smart.House.Interface
 {
-    public interface IDispatcher<T>
+    public interface IDispatcher<TState>
     {
-        Task<T> Dispatch(T state);
+        Task<TState> Dispatch(TState state);
     }
 }

@@ -4,7 +4,7 @@ using Orleans;
 using Orleans.Runtime.Configuration;
 using Orleans.Runtime.Host;
 using Smart.House.Grains;
-using Smart.House.Interface;
+using Smart.House.Interface.Devices;
 using System;
 using System.Collections.Generic;
 using System.IO;

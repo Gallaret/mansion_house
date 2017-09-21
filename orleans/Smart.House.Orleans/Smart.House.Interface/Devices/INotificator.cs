@@ -1,4 +1,5 @@
 ﻿using Orleans;
+using Smart.House.Interface.Notifications;
 using System.Threading.Tasks;
 
 namespace Smart.House.Interface.Devices

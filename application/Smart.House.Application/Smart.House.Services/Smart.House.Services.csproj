@@ -9,4 +9,8 @@
     <ProjectReference Include="..\Smart.House.Application\Smart.House.Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Devices\Camera\Handlers\Commands\" />
+  </ItemGroup>
+
 </Project>

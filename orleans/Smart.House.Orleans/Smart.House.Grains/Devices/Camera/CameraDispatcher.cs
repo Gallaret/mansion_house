@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
-using Smart.House.Interface.Devices.States;
 using Smart.House.Application.Services.Devices;
 using Smart.House.Interface;
+using Smart.House.Interface.Devices;
 
-namespace Smart.House.Dispatchers.Devices
+namespace Smart.House.Grains.Devices.Camera
 {
     public class CameraDispatcher : IDispatcher<CameraState>
     {
@@ -19,9 +19,8 @@ namespace Smart.House.Dispatchers.Devices
             var motion = await _cameraService.MotionDetection(state.Identifier,
                 state.CurrentMotionFileName);
 
-            return new CameraState
+            return new CameraState(state.Identifier)
             {
-                Identifier = state.Identifier,
                 CurrentMotionFileName = motion.FileName,
                 IsMotionDetected = motion.IsDetected
             };

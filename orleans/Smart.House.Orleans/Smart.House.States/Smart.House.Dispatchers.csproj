@@ -10,4 +10,8 @@
     <ProjectReference Include="..\Smart.House.Interface\Smart.House.Interface.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Devices\" />
+  </ItemGroup>
+
 </Project>

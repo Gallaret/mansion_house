@@ -16,12 +16,12 @@ using Smart.House.Application.Transaction;
 using Smart.House.Camera;
 using Smart.House.Data.Model;
 using Smart.House.Data.Repositories;
-using Smart.House.Dispatchers.Devices;
 using Smart.House.Domain.Devices.Entities;
 using Smart.House.Email;
 using Smart.House.Email.Providers;
 using Smart.House.Ftp.Providers;
 using Smart.House.Grains.Decorators;
+using Smart.House.Grains.Devices.Camera;
 using Smart.House.Interface;
 using Smart.House.Read;
 using Smart.House.Read.Connection;
@@ -58,7 +58,7 @@ namespace Smart.House.Grains.Resolvers
                 typeof(IDispatcher<>),
                 typeof(DispatcherTransaction<>));
 
-            container.Register(typeof(IDispatcher<>), new[] //register state services
+            container.Register(typeof(IDispatcher<>), new[]
             {
                 typeof(CameraDispatcher).GetTypeInfo().Assembly
             });
@@ -84,7 +84,6 @@ namespace Smart.House.Grains.Resolvers
 
             return container;
         }
-
 
         private static void RegisterHandlers(Container container)
         {

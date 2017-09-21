@@ -4,9 +4,10 @@ using Smart.House.Domain.Devices.ValueTypes;
 using Smart.House.Domain.Notifications.ValueTypes;
 using Smart.House.Grains.Resolvers;
 using Smart.House.Interface.Devices;
+using Smart.House.Interface.Notifications;
 using Smart.House.Read.Handlers.Queries;
 using Smart.House.Read.Handlers.Results;
-using Smart.House.Services.Devices.Camera.Handlers.Commands;
+using Smart.House.Services.Devices.Ambilight.Handlers.Commands;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -63,7 +64,7 @@ namespace Smart.House.Grains.Notifications
                         {
                             Identifier = "ambilight",
                             Value = value,
-                            EventType = EventType.MotionDetected //consider use not domain object
+                            EventType = EventType.MotionDetected
                         });
                         break;
                 }

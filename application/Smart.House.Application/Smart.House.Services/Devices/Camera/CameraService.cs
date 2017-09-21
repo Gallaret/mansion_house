@@ -11,7 +11,7 @@ namespace Smart.House.Services.Devices.Camera
 
     public class CameraService : ICameraService
     {
-        private readonly DomainService _service = new DomainService();
+        private readonly DomainService _domainService = new DomainService();
 
         private readonly ICameraRepository _cameraRepository;
         private readonly ICameraProviderFactory _cameraProviderFactory;
@@ -30,7 +30,7 @@ namespace Smart.House.Services.Devices.Camera
             DetectMotion(camera, lastDetectedFileName);
 
             var motionDetected = camera.IsMotionDetected
-                && _service.SendMotionDetectedNotification(camera);
+                && _domainService.SendMotionDetectedNotification(camera);
             var fileName = camera.GetCurrentMotionFileName();
 
             return new Motion(motionDetected, fileName);

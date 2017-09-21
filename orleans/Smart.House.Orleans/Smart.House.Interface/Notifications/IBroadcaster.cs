@@ -1,7 +1,7 @@
 ﻿using Orleans;
 using System.Threading.Tasks;
 
-namespace Smart.House.Interface.Devices
+namespace Smart.House.Interface.Notifications
 {
     public enum Event
     {

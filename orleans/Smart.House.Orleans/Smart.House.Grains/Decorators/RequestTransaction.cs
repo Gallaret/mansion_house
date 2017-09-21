@@ -4,13 +4,13 @@ using System.Threading.Tasks;
 
 namespace Smart.House.Grains.Decorators
 {
-    public class TransactionRequestDecorator<TCommand> : IRequestHandler<TCommand>
+    public class RequestTransaction<TCommand> : IRequestHandler<TCommand>
         where TCommand : IRequest
     {
         private readonly IRequestHandler<TCommand> _request;
         private readonly IUnitOfWork _unitOfWork;
 
-        public TransactionRequestDecorator(IRequestHandler<TCommand> request,
+        public RequestTransaction(IRequestHandler<TCommand> request,
             IUnitOfWork unitOfWork)
         {
             _request = request;

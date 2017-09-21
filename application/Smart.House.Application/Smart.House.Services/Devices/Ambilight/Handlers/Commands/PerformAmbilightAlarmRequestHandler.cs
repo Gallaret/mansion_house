@@ -1,12 +1,13 @@
 ﻿using Smart.House.Application.Commands;
 using Smart.House.Application.Providers.Ambilight;
 using Smart.House.Application.Repositories;
-using Smart.House.Domain.Devices.Entities;
 using Smart.House.Domain.Notifications.ValueTypes;
 using System.Threading.Tasks;
 
-namespace Smart.House.Services.Devices.Camera.Handlers.Commands
+namespace Smart.House.Services.Devices.Ambilight.Handlers.Commands
 {
+    using Ambilight = Domain.Devices.Entities.Ambilight;
+
     public class AmbilightAlarmCommand : IRequest
     {
         public string Identifier { get; set; }

@@ -2,12 +2,13 @@
 using Smart.House.Application.Providers.Communication.Mail;
 using Smart.House.Application.Repositories;
 using Smart.House.Application.Repositories.Users;
-using Smart.House.Domain.Devices.Entities;
 using Smart.House.Domain.Notifications.ValueTypes;
 using System.Threading.Tasks;
 
-namespace Smart.House.Services.Devices.Camera.Handlers.Commands
+namespace Smart.House.Services.Devices.Notificator.Handlers.Commands
 {
+    using Notificator = Domain.Devices.Entities.Notificator;
+
     public class EmailNotificationCommand : IRequest
     {
         public string Identifier { get; set; }

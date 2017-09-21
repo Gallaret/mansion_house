@@ -1,12 +1,31 @@
 ﻿using Orleans;
-using Smart.House.Interface.Devices.States;
 using System.Threading.Tasks;
 
-namespace Smart.House.Interface
+namespace Smart.House.Interface.Devices
 {
+    public class CameraState
+    {
+        public string Identifier { get; private set; }
+        public string CurrentMotionFileName { get; set; }
+        public bool IsMotionDetected { get; set; }
+
+        public CameraState() { }
+
+        public CameraState(string identifier)
+        {
+            Identifier = identifier;
+        } 
+
+        public CameraState(CameraState previousState)
+        {
+            Identifier = previousState.Identifier;
+            CurrentMotionFileName = previousState.CurrentMotionFileName;
+        }
+    }
+
     public interface ICamera : IGrainWithStringKey
     {
         Task<CameraState> GetState();
-        Task Initialize(string identifier);
+        Task<bool> Initialize(string identifier);
     }
 }

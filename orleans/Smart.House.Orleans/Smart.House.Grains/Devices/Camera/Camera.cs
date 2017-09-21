@@ -1,13 +1,12 @@
 ﻿using Orleans;
-using Smart.House.Interface;
 using System.Threading.Tasks;
 using Smart.House.Grains.Resolvers;
 using Smart.House.Interface.Devices;
 using System;
 using Orleans.Runtime.Configuration;
-using Smart.House.Interface.Devices.States;
+using Smart.House.Interface.Notifications;
 
-namespace Smart.House.Grains
+namespace Smart.House.Grains.Devices.Camera
 {
     public class Camera : Grain<CameraState>, ICamera
     {
@@ -20,12 +19,19 @@ namespace Smart.House.Grains
             _mediator = mediator;
         }
 
-        public async Task Initialize(string identifier)
+        public async Task<bool> Initialize(string identifier)
         {
-            State.Identifier = identifier;
+            State = new CameraState(identifier);
 
-            stateWorker = RegisterTimer((state) => UpdateState(),
-                State, TimeSpan.FromSeconds(5), TimeSpan.FromSeconds(5));
+            stateWorker = RegisterTimer(async (state) =>
+            {
+                State = await _mediator.Dispatch(State);
+
+                await MotionDetection();
+
+            }, State, TimeSpan.FromSeconds(5), TimeSpan.FromSeconds(5));
+
+            return await Task.FromResult(true);
         }
 
         public async Task<CameraState> GetState()
@@ -33,15 +39,7 @@ namespace Smart.House.Grains
             return await Task.FromResult(State);
         }
 
-        private async Task UpdateState()
-        {
-            var oldState = new CameraState(State);
-            State = await _mediator.Dispatch(State);
-
-            await MotionDetection(oldState);
-        }
-
-        private async Task MotionDetection(CameraState state)
+        private async Task MotionDetection()
         {
             if (State.IsMotionDetected)
             {

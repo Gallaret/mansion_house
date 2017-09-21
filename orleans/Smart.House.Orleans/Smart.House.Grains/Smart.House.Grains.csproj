@@ -36,7 +36,6 @@
     <ProjectReference Include="..\..\..\infrastructure\Smart.House.Infrastructure\Smart.House.Read\Smart.House.Read.csproj" />
     <ProjectReference Include="..\..\..\infrastructure\Smart.House.Infrastructure\Smart.House.Ssh\Smart.House.Ssh.csproj" />
     <ProjectReference Include="..\Smart.House.Interface\Smart.House.Interface.csproj" />
-    <ProjectReference Include="..\Smart.House.States\Smart.House.Dispatchers.csproj" />
   </ItemGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">

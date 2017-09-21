@@ -2,10 +2,11 @@
 using Smart.House.Domain.Notifications.ValueTypes;
 using Smart.House.Grains.Resolvers;
 using Smart.House.Interface.Devices;
-using Smart.House.Services.Devices.Camera.Handlers.Commands;
+using Smart.House.Interface.Notifications;
+using Smart.House.Services.Devices.Notificator.Handlers.Commands;
 using System.Threading.Tasks;
 
-namespace Smart.House.Grains.Devices
+namespace Smart.House.Grains.Devices.Notificator
 {
     public class Notificator : Grain, INotificator
     {
