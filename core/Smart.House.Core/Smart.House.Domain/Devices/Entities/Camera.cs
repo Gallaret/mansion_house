@@ -12,9 +12,10 @@
         internal Camera(string identifier, string provider) 
             : base(identifier, provider, DeviceType.Camera) {  }
 
-        public void SetMotionDetection(bool detection)
+        public void SetMotionStatus(bool detection, string detectedFileName)
         {
             _isMotionDetected = detection;
+            _currentMotionFileName = detectedFileName;
         }
 
         public void EnableMotionDetection()
@@ -38,11 +39,6 @@
         public string GetCurrentMotionFileName()
         {
             return _currentMotionFileName;
-        }
-
-        public void SetCurrentMotionFileName(string fileName)
-        {
-            _currentMotionFileName = fileName;
         }
 
         public bool IsMotionDetected => _isMotionDetected;

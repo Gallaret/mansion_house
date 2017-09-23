@@ -27,7 +27,10 @@ namespace Smart.House.Services.Devices.Camera
         {
             var camera = await _cameraRepository.GetAsync(identifier);
 
-            DetectMotion(camera, lastDetectedFileName);
+            if (!camera.MotionDetectionEnabled)
+                return new Motion(false, lastDetectedFileName);
+
+            await DetectMotion(camera, lastDetectedFileName);
 
             var motionDetected = camera.IsMotionDetected
                 && _domainService.SendMotionDetectedNotification(camera);
@@ -36,15 +39,14 @@ namespace Smart.House.Services.Devices.Camera
             return new Motion(motionDetected, fileName);
         }
 
-        private void DetectMotion(Camera camera, string currentFileName)
+        private async Task DetectMotion(Camera camera, string fileName)
         {
-            if (!camera.MotionDetectionEnabled) return;
-
-            camera.SetCurrentMotionFileName(currentFileName);
+            var settings = new MotionSettings(camera, fileName);
 
             var provider = _cameraProviderFactory.Create(camera.Provider);
+            var result = await provider.DetectMotion(settings);
 
-            provider.DetectMotion(camera);
+            camera.SetMotionStatus(result.IsDetected, result.FileName);
         }
     }
 }

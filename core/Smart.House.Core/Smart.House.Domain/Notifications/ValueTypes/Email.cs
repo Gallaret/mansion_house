@@ -3,7 +3,7 @@ using System.IO;
 
 namespace Smart.House.Domain.Notifications.ValueTypes
 {
-    public class Email
+    public class Email //Consider move to DTO's
     {
         public string Title { get; }
         public string Sender { get; }

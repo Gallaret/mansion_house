@@ -3,11 +3,11 @@ using System.Linq;
 using Smart.House.Application.Providers.Camera;
 using System.IO;
 using Smart.House.Application.Providers.Communication.Ftp;
+using Smart.House.Application.Dtos.Camera;
+using System.Threading.Tasks;
 
 namespace Smart.House.Camera
 {
-    using Camera = Domain.Devices.Entities.Camera;
-
     public class DlinkProvider : ICameraProvider
     {
         private const string MOTION_DIRECTORY = "/Motion";
@@ -19,38 +19,32 @@ namespace Smart.House.Camera
             _ftpProvider = ftpProvider;
         }
 
-        public void DetectMotion(Camera camera)
+        public async Task<Motion> DetectMotion(MotionSettings settings)
         {
-            var files = GetFiles(camera);
+            var files = GetFiles(settings);
             var lastFile = files.OrderByDescending(file => file.CreationTime)
                 .FirstOrDefault();
 
-            if (lastFile == null) return;
+            var fileName = settings.FileName;
 
-            if (!lastFile.Name.Equals(camera.GetCurrentMotionFileName()))
+            if (lastFile != null && !lastFile.Name.Equals(fileName))
             {
-                camera.SetCurrentMotionFileName(lastFile.Name);
-                camera.SetMotionDetection(true);
+                return await Task.FromResult(
+                    new Motion(true, lastFile.Name));
             }
-            else
-            {
-                camera.SetMotionDetection(false);
-            }
+
+            return await Task.FromResult(
+                    new Motion(false, fileName));
         }
 
-        private FileInfo[] GetFiles(Camera camera)
+        private FileInfo[] GetFiles(MotionSettings settings)
         {
-            var credentials = new RemoteCredentials
-            {
-                Address = camera.RemoteAddress,
-                Login = camera.RemoteLogin,
-                Password = camera.RemotePassword
-            };
+            var credentials = Create(settings);
 
             using (var connection = _ftpProvider.Connect(credentials))
             {
                 if (!connection.DirectoryExists(MOTION_DIRECTORY))
-                    throw new DirectoryNotFoundException(camera.RemotePath);
+                    throw new DirectoryNotFoundException(settings.Path);
 
                 var motionPath = CreateMotionFilePath(MOTION_DIRECTORY);
 
@@ -66,6 +60,16 @@ namespace Smart.House.Camera
                 now.Second).ToString("hh");
 
             return $"{motionPath}/{catalog}/{subcatalog}";
+        }
+
+        private static RemoteCredentials Create(MotionSettings settings)
+        {
+            return new RemoteCredentials
+            {
+                Address = settings.Address,
+                Login = settings.Login,
+                Password = settings.Password
+            };
         }
     }
 }

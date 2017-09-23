@@ -7,7 +7,7 @@ using Smart.House.Application.Events;
 using Smart.House.Application.Providers.Ambilight;
 using Smart.House.Application.Providers.Camera;
 using Smart.House.Application.Providers.Communication.Ftp;
-using Smart.House.Application.Providers.Communication.Mail;
+using Smart.House.Application.Providers.Notificator;
 using Smart.House.Application.Providers.Ssh;
 using Smart.House.Application.Repositories;
 using Smart.House.Application.Repositories.Users;
@@ -17,12 +17,13 @@ using Smart.House.Camera;
 using Smart.House.Data.Model;
 using Smart.House.Data.Repositories;
 using Smart.House.Domain.Devices.Entities;
-using Smart.House.Email;
-using Smart.House.Email.Providers;
 using Smart.House.Ftp.Providers;
 using Smart.House.Grains.Decorators;
 using Smart.House.Grains.Devices.Camera;
 using Smart.House.Interface;
+using Smart.House.Messager;
+using Smart.House.Messager.Providers.Email;
+using Smart.House.Messager.Providers.Text;
 using Smart.House.Read;
 using Smart.House.Read.Connection;
 using Smart.House.Services.Devices.Camera;
@@ -77,9 +78,10 @@ namespace Smart.House.Grains.Resolvers
             {
                 { "hyperion", () => container.GetInstance<HyperionProvider>() }
             });
-            container.RegisterSingleton<IEmailProviderFactory>(new EmailProviderFactory
+            container.RegisterSingleton<IMessageProviderFactory>(new MessageProviderFactory
             {
-                { "gmail", () => container.GetInstance<GmailProvider>() }
+                { "gmail", () => container.GetInstance<GmailProvider>() },
+                { "plusgsm", () => container.GetInstance<PlusGSM>() }
             });
 
             return container;
@@ -90,7 +92,7 @@ namespace Smart.House.Grains.Resolvers
             var assemblies = new[]
             {
                 typeof(Device).GetTypeInfo().Assembly,
-                typeof(MotionDetectedEventHandler).GetTypeInfo().Assembly
+                typeof(MotionDetected).GetTypeInfo().Assembly
             };
 
             container.RegisterCollection(typeof(IDomainEventHandler<>), assemblies);
@@ -101,7 +103,7 @@ namespace Smart.House.Grains.Resolvers
         {
             var assemblies = new[]
             {
-                typeof(GetNotificationSettingsRequestHandler).GetTypeInfo().Assembly
+                typeof(GetNotificationSettings).GetTypeInfo().Assembly
             };
 
             container.Register(typeof(IRequestHandler<,>), assemblies);

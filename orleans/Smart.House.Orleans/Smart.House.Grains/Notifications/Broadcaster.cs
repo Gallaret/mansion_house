@@ -50,6 +50,9 @@ namespace Smart.House.Grains.Notifications
 
                 if(notificationSettings.Device.EmailNotificationEnabled)
                     await notificator.SendEmail(result.Identifier, @event, value);
+
+                if (notificationSettings.Device.SmsNotificationEnabled)
+                    await notificator.SendTextMessage(result.Identifier, @event, value);
             });
         }
 

@@ -37,11 +37,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Ambilight", "..
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Camera", "..\..\infrastructure\Smart.House.Infrastructure\Smart.House.Camera\Smart.House.Camera.csproj", "{F7E13958-96F8-4652-90D7-CC98EDDC9F81}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Email", "..\..\infrastructure\Smart.House.Infrastructure\Smart.House.Email\Smart.House.Email.csproj", "{AD7532A1-590F-4CDF-AFA3-65BF08ADA47D}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Ftp", "..\..\infrastructure\Smart.House.Infrastructure\Smart.House.Ftp\Smart.House.Ftp.csproj", "{FFB5353B-5223-40BF-8671-5A852AF7D54B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Ssh", "..\..\infrastructure\Smart.House.Infrastructure\Smart.House.Ssh\Smart.House.Ssh.csproj", "{0A64EB89-8742-4101-85D5-5A0D48C61BAF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Messager", "..\..\infrastructure\Smart.House.Infrastructure\Smart.House.Message\Smart.House.Messager.csproj", "{711572C8-EA5C-423C-A781-D4FFD3B60E94}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -93,10 +93,6 @@ Global
 		{F7E13958-96F8-4652-90D7-CC98EDDC9F81}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7E13958-96F8-4652-90D7-CC98EDDC9F81}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7E13958-96F8-4652-90D7-CC98EDDC9F81}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AD7532A1-590F-4CDF-AFA3-65BF08ADA47D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AD7532A1-590F-4CDF-AFA3-65BF08ADA47D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AD7532A1-590F-4CDF-AFA3-65BF08ADA47D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AD7532A1-590F-4CDF-AFA3-65BF08ADA47D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FFB5353B-5223-40BF-8671-5A852AF7D54B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FFB5353B-5223-40BF-8671-5A852AF7D54B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFB5353B-5223-40BF-8671-5A852AF7D54B}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -105,6 +101,10 @@ Global
 		{0A64EB89-8742-4101-85D5-5A0D48C61BAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A64EB89-8742-4101-85D5-5A0D48C61BAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A64EB89-8742-4101-85D5-5A0D48C61BAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{711572C8-EA5C-423C-A781-D4FFD3B60E94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{711572C8-EA5C-423C-A781-D4FFD3B60E94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{711572C8-EA5C-423C-A781-D4FFD3B60E94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{711572C8-EA5C-423C-A781-D4FFD3B60E94}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -122,9 +122,9 @@ Global
 		{160BFCBA-F65E-485C-8483-D9DC53A67A17} = {228E7294-C8FE-4780-90F3-4451C55BD3CD}
 		{77D0DEC4-8051-4ACB-93CF-93A915BBCADC} = {B66A2915-F618-495F-84D0-42D35E8A8BD0}
 		{F7E13958-96F8-4652-90D7-CC98EDDC9F81} = {B66A2915-F618-495F-84D0-42D35E8A8BD0}
-		{AD7532A1-590F-4CDF-AFA3-65BF08ADA47D} = {B66A2915-F618-495F-84D0-42D35E8A8BD0}
 		{FFB5353B-5223-40BF-8671-5A852AF7D54B} = {B66A2915-F618-495F-84D0-42D35E8A8BD0}
 		{0A64EB89-8742-4101-85D5-5A0D48C61BAF} = {B66A2915-F618-495F-84D0-42D35E8A8BD0}
+		{711572C8-EA5C-423C-A781-D4FFD3B60E94} = {B66A2915-F618-495F-84D0-42D35E8A8BD0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E2603C2B-FD82-4EAD-880E-ABC699834AB6}

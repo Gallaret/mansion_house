@@ -9,19 +9,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Application", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Core", "..\..\core\Smart.House.Core\Smart.House.Core\Smart.House.Core.csproj", "{2033D844-017F-4E78-B83B-D69647790F9F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smart.House.Data", "Smart.House.Data\Smart.House.Data.csproj", "{764820F8-1219-41EE-91D1-CD32834FB5D3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Data", "Smart.House.Data\Smart.House.Data.csproj", "{764820F8-1219-41EE-91D1-CD32834FB5D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smart.House.Read", "Smart.House.Read\Smart.House.Read.csproj", "{87197FE0-9EB0-479B-AAAC-6F2ECD6BD6F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Read", "Smart.House.Read\Smart.House.Read.csproj", "{87197FE0-9EB0-479B-AAAC-6F2ECD6BD6F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smart.House.Ssh", "Smart.House.Ssh\Smart.House.Ssh.csproj", "{6D2445AC-30C1-4A2C-A872-4F5E6C580034}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Ssh", "Smart.House.Ssh\Smart.House.Ssh.csproj", "{6D2445AC-30C1-4A2C-A872-4F5E6C580034}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smart.House.Ftp", "Smart.House.Ftp\Smart.House.Ftp.csproj", "{754CCD9D-98F5-4F13-B23A-9E2A880BC87E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Ftp", "Smart.House.Ftp\Smart.House.Ftp.csproj", "{754CCD9D-98F5-4F13-B23A-9E2A880BC87E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smart.House.Email", "Smart.House.Email\Smart.House.Email.csproj", "{8E60288C-5430-4133-B001-4A9CCBD4CA56}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Email", "Smart.House.Email\Smart.House.Email.csproj", "{8E60288C-5430-4133-B001-4A9CCBD4CA56}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smart.House.Ambilight", "Smart.House.Ambilight\Smart.House.Ambilight.csproj", "{5D91F56E-88C7-4A23-AE4C-2F5257190AC7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Ambilight", "Smart.House.Ambilight\Smart.House.Ambilight.csproj", "{5D91F56E-88C7-4A23-AE4C-2F5257190AC7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smart.House.Camera", "Smart.House.Camera\Smart.House.Camera.csproj", "{C5778BDE-37EC-4077-9CB2-76742E9632DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Camera", "Smart.House.Camera\Smart.House.Camera.csproj", "{C5778BDE-37EC-4077-9CB2-76742E9632DE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Messager", "Smart.House.Message\Smart.House.Messager.csproj", "{F52C282E-C874-400C-B733-44D00C991A52}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{C5778BDE-37EC-4077-9CB2-76742E9632DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5778BDE-37EC-4077-9CB2-76742E9632DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5778BDE-37EC-4077-9CB2-76742E9632DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F52C282E-C874-400C-B733-44D00C991A52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F52C282E-C874-400C-B733-44D00C991A52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F52C282E-C874-400C-B733-44D00C991A52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F52C282E-C874-400C-B733-44D00C991A52}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

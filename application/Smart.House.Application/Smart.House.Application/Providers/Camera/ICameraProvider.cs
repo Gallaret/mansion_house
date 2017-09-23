@@ -1,11 +1,10 @@
-﻿using System.IO;
+﻿using Smart.House.Application.Dtos.Camera;
+using System.Threading.Tasks;
 
 namespace Smart.House.Application.Providers.Camera
 {
-    using Camera = Domain.Devices.Entities.Camera;
-
     public interface ICameraProvider
     {
-        void DetectMotion(Camera camera);
+        Task<Motion> DetectMotion(MotionSettings camera);
     }
 }
