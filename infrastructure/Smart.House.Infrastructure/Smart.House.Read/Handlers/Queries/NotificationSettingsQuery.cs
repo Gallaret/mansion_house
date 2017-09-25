@@ -1,5 +1,4 @@
 ﻿using Smart.House.Application.Commands;
-using Smart.House.Domain.Devices.ValueTypes;
 
 namespace Smart.House.Read.Handlers.Queries
 {
@@ -7,6 +6,5 @@ namespace Smart.House.Read.Handlers.Queries
     {
         public string Identifier { get; set; }
         public string NotificationValue { get; set; }
-        public HarmonogramType HarmonogramType { get; set; }
     }
 }

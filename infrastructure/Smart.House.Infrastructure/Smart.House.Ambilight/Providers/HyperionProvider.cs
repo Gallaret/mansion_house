@@ -1,7 +1,6 @@
-﻿using Smart.House.Application.Providers.Ambilight;
-using Smart.House.Application.Providers.Communication.Ftp;
+﻿using Smart.House.Application.Dtos.Connection;
+using Smart.House.Application.Providers.Ambilight;
 using Smart.House.Application.Providers.Ssh;
-using Smart.House.Domain.Devices.Entities;
 using System.Threading.Tasks;
 
 namespace Smart.House.Ambilight
@@ -18,16 +17,9 @@ namespace Smart.House.Ambilight
             _sshProvider = sshProvider;
         }      
 
-        public Task RunAlarm(Device device)
+        public Task RunAlarm(Credential credential)
         {
-            var credentials = new RemoteCredentials
-            {
-                Address = device.RemoteAddress,
-                Login = device.RemoteLogin,
-                Password = device.RemotePassword
-            };
-
-            using (var client = _sshProvider.Connect(credentials))
+            using (var client = _sshProvider.Connect(credential))
             {
                 return Task.Run(async () =>
                 {

@@ -1,6 +1,4 @@
-﻿using Smart.House.Domain.Notifications.ValueTypes;
-
-namespace Smart.House.Domain.Devices.Entities
+﻿namespace Smart.House.Domain.Devices.Entities
 {
     public class Notificator : Device
     {
@@ -12,10 +10,5 @@ namespace Smart.House.Domain.Devices.Entities
         public int Limit { get; private set; }
         public string Receiver { get; private set; }
         public string MobileProvider { get; private set; }
-
-        public Email GetEmail(string title, string receiverAddress)
-        {
-            return new Email(this, RemoteAddress, receiverAddress);
-        }
     }
 }

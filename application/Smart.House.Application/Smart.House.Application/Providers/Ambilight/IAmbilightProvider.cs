@@ -1,10 +1,10 @@
-﻿using Smart.House.Domain.Devices.Entities;
+﻿using Smart.House.Application.Dtos.Connection;
 using System.Threading.Tasks;
 
 namespace Smart.House.Application.Providers.Ambilight
 {
     public interface IAmbilightProvider
     {
-        Task RunAlarm(Device device);
+        Task RunAlarm(Credential crendential);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Smart.House.Application.Dtos.Camera;
+using Smart.House.Application.Dtos.Connection;
 using Smart.House.Application.Providers.Camera;
 using Smart.House.Application.Repositories;
 using Smart.House.Application.Services.Devices;
@@ -23,30 +24,29 @@ namespace Smart.House.Services.Devices.Camera
             _cameraProviderFactory = cameraProviderFactory;
         }
 
-        public async Task<Motion> MotionDetection(string identifier, string lastDetectedFileName)
+        public async Task<Motion> MotionDetection(string identifier, string lastFileName)
         {
             var camera = await _cameraRepository.GetAsync(identifier);
 
             if (!camera.MotionDetectionEnabled)
-                return new Motion(false, lastDetectedFileName);
+                return new Motion(false, lastFileName);
 
-            await DetectMotion(camera, lastDetectedFileName);
+            var result = await DetectMotion(camera, lastFileName);
+            camera.SetMotionStatus(result.IsDetected);
 
             var motionDetected = camera.IsMotionDetected
-                && _domainService.SendMotionDetectedNotification(camera);
-            var fileName = camera.GetCurrentMotionFileName();
+                && _domainService.SendMotionDetectedNotification(camera, result.FileName);
 
-            return new Motion(motionDetected, fileName);
+            return new Motion(motionDetected, result.FileName);
         }
 
-        private async Task DetectMotion(Camera camera, string fileName)
+        private async Task<Motion> DetectMotion(Camera camera, string fileName)
         {
-            var settings = new MotionSettings(camera, fileName);
+            var settings = new MotionSettings(camera.RemotePath, fileName);
+            var credential = new Credential(camera);
 
             var provider = _cameraProviderFactory.Create(camera.Provider);
-            var result = await provider.DetectMotion(settings);
-
-            camera.SetMotionStatus(result.IsDetected, result.FileName);
+            return await provider.DetectMotion(settings, credential);
         }
     }
 }

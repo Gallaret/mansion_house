@@ -18,13 +18,11 @@ namespace Smart.House.Domain.Devices.Specifications
         {
             switch (notification.Type)
             {
-                case EventType.MotionDetected:
+                case EventType.MotionDetection:
                     {
                         if (_camera.IsMotionDetected)
                         {
-                            var same = notification.Value == _camera.GetCurrentMotionFileName();
-
-                            return !same || !notification.Unchecked;
+                            return !notification.Unchecked;
                         }
 
                         return false;
@@ -38,7 +36,7 @@ namespace Smart.House.Domain.Devices.Specifications
         {
             switch (harmonogram.Type)
             {
-                case HarmonogramType.MotionDetection:
+                case EventType.MotionDetection:
                     {
                         var now = DateTime.Now;
                         var activeDay = CompareDayFromHarmonogram(now.DayOfWeek, harmonogram);

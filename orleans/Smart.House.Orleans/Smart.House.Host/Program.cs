@@ -8,6 +8,7 @@ using Smart.House.Interface.Devices;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Security.Principal;
 using System.Threading.Tasks;
 
 namespace Smart.House.Host
@@ -66,7 +67,6 @@ namespace Smart.House.Host
                     logger.LogError(string.Format($"Failed to start Orleans silo '{siloHost.Name}' as a {siloHost.Type} node."));
                     return 1;
                 }
-
 
                 Task.Run(async () =>
                 {

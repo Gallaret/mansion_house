@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using Smart.House.Application.Commands;
+using Smart.House.Domain.Notifications.ValueTypes;
 using Smart.House.Read.Connection;
 using Smart.House.Read.Handlers.Queries;
 using Smart.House.Read.Handlers.Results;
@@ -22,8 +23,8 @@ namespace Smart.House.Read
         {
             var now = DateTime.Now;
 
-            string notificationQuery = "SELECT 1 FROM Notifications n " +
-                                       "WHERE n.Value = @Value AND n.Sent = 0";
+            string notificationQuery = "SELECT TOP(1) n.Type FROM Notifications n " +
+                                       "WHERE n.Value = @Value ORDER BY n.CreatedDate DESC";
 
             string deviceQuery = "SELECT AmbientNotificationEnabled, EmailNotificationEnabled, SmsNotificationEnabled " +
                                  "FROM Devices WHERE Identifier = @Identifier;";
@@ -37,16 +38,18 @@ namespace Smart.House.Read
             {
                 connection.Open();
 
+                var eventType = await connection.QuerySingleAsync<EventType>(notificationQuery,
+                        new { Value = command.NotificationValue });
+
                 var result = new NotificationSettingsResult
                 {
-                    ShouldSend = await connection.QuerySingleAsync<bool>(notificationQuery,
-                        new { Value = command.NotificationValue })
+                    ShouldSend = eventType != EventType.None
                 };
 
                 if (!result.ShouldSend) return result;
 
-                result.Noticators = await connection.QueryAsync<NotificatorResult>(notificatorQuery,
-                    new { Type = command.HarmonogramType, Current = now.TimeOfDay });
+                result.Notificators = await connection.QueryAsync<NotificatorResult>(notificatorQuery,
+                    new { Type = eventType, Current = now.TimeOfDay });
 
                 result.Device = await connection.QuerySingleAsync<DeviceResult>(deviceQuery, 
                     new { Identifier = command.Identifier });

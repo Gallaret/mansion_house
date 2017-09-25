@@ -4,8 +4,9 @@ namespace Smart.House.Domain.Notifications.ValueTypes
 {
     public enum EventType
     {
-        Unchanged = 0,
-        MotionDetected = 1,
+        None = 0,
+        MotionDetection = 1,
+        Recording = 2
     }
 
     public class Notification

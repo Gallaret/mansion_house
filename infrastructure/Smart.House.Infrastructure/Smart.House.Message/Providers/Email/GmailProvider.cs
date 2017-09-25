@@ -6,8 +6,6 @@ using System.Threading.Tasks;
 
 namespace Smart.House.Messager.Providers.Email
 {
-    using Message = Application.Dtos.Notificator.Message;
-
     public class GmailProvider : IMessageProvider
     {
         public async Task Send(Message message)
@@ -25,8 +23,11 @@ namespace Smart.House.Messager.Providers.Email
                     EnableSsl = true,
                     DeliveryMethod = SmtpDeliveryMethod.Network,
                     Credentials = new NetworkCredential(email.Login, email.Password),
-                    Timeout = 5000
+                    Timeout = 5000,
                 };
+
+                foreach (var attachment in email.Attachments)
+                    emailMessage.Attachments.Add(attachment);
 
                 await Task.Factory.StartNew(() => client.Send(emailMessage));
             }

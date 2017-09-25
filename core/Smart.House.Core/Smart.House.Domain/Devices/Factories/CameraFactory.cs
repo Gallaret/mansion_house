@@ -1,5 +1,6 @@
 ﻿using Smart.House.Domain.Devices.Entities;
 using Smart.House.Domain.Devices.ValueTypes;
+using Smart.House.Domain.Notifications.ValueTypes;
 
 namespace Smart.House.Domain.Devices.Factories
 {
@@ -10,9 +11,9 @@ namespace Smart.House.Domain.Devices.Factories
             var camera = new Camera(identifier, provider);
 
             var motionHarmonogram = new Harmonogram(
-                camera.Identifier, HarmonogramType.MotionDetection);
+                camera.Identifier, EventType.MotionDetection);
             var recordingHarmonogram = new Harmonogram(
-                camera.Identifier, HarmonogramType.Recording);
+                camera.Identifier, EventType.Recording);
 
             camera.AddHarmonogram(motionHarmonogram);
             camera.AddHarmonogram(recordingHarmonogram);

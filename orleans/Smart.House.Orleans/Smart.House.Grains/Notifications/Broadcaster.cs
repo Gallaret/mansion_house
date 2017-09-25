@@ -1,7 +1,5 @@
 ﻿using Orleans;
 using Orleans.Runtime.Configuration;
-using Smart.House.Domain.Devices.ValueTypes;
-using Smart.House.Domain.Notifications.ValueTypes;
 using Smart.House.Grains.Resolvers;
 using Smart.House.Interface.Devices;
 using Smart.House.Interface.Notifications;
@@ -22,66 +20,53 @@ namespace Smart.House.Grains.Notifications
             _mediator = mediator;
         }
 
-        public async Task Broadcast(string identifier, Event @event, string value)
+        public async Task Broadcast(Notify notify)
         {
             var result = await _mediator.DispatchRequest<NotificationSettingsQuery, NotificationSettingsResult>(
                 new NotificationSettingsQuery
                 {
-                    Identifier = identifier,
-                    HarmonogramType = GetTypeByEvent(@event),
-                    NotificationValue = value
+                    Identifier = notify.Identifier,
+                    NotificationValue = notify.Value
                 });
 
             if (result.ShouldSend)
             {
-                await UseNotificators(value, @event, result);
-                await UseAmbilight(value, @event, result);
+                await UseNotificators(notify, result);
+                await UseAmbilight(notify, result);
             }
         }
 
-        private async Task UseNotificators(string value, Event @event,
+        private async Task UseNotificators(Notify notify,
             NotificationSettingsResult notificationSettings)
         {
             var client = await GetClient();
 
-            notificationSettings.Noticators.ToList().ForEach(async result =>
+            notificationSettings.Notificators.ToList().ForEach(async result =>
             {
                 var notificator = client.GetGrain<INotificator>(result.Identifier);
+                await notificator.Start(result.Identifier);
 
-                if(notificationSettings.Device.EmailNotificationEnabled)
-                    await notificator.SendEmail(result.Identifier, @event, value);
-
+                if (notificationSettings.Device.EmailNotificationEnabled)
+                    await notificator.SendEmail(notify);
                 if (notificationSettings.Device.SmsNotificationEnabled)
-                    await notificator.SendTextMessage(result.Identifier, @event, value);
+                    await notificator.SendTextMessage(notify);
             });
         }
 
-        private async Task UseAmbilight(string value, Event @event, 
+        private async Task UseAmbilight(Notify notify, 
             NotificationSettingsResult notificationSettings)
         {
             if (notificationSettings.Device.AmbientNotificationEnabled)
-                switch (@event)
+                switch (notify.Event)
                 {
                     case Event.Motion:          
                         await _mediator.DispatchRequest(new AmbilightAlarmCommand
                         {
                             Identifier = "ambilight",
-                            Value = value,
-                            EventType = EventType.MotionDetected
+                            Value = notify.Value
                         });
                         break;
                 }
-        }
-
-        private HarmonogramType GetTypeByEvent(Event type)
-        {
-            switch (type)
-            {
-                case Event.Motion:
-                    return HarmonogramType.MotionDetection;
-                default:
-                    return HarmonogramType.MotionDetection;
-            }
         }
 
         private async Task<IClusterClient> GetClient()

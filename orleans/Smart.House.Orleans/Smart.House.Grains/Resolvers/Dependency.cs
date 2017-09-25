@@ -28,6 +28,7 @@ using Smart.House.Read;
 using Smart.House.Read.Connection;
 using Smart.House.Services.Devices.Camera;
 using Smart.House.Services.Devices.Camera.Handlers.Events;
+using Smart.House.Services.Devices.Notificator;
 using Smart.House.Ssh.Providers;
 using System.Reflection;
 
@@ -65,6 +66,7 @@ namespace Smart.House.Grains.Resolvers
             });
 
             container.Register<ICameraService, CameraService>(Lifestyle.Scoped);
+            container.Register<INotificatorService, NotificatorService>(Lifestyle.Scoped);
             container.Register<IFtpProvider, FluentFtpProvider>(Lifestyle.Singleton);
             container.Register<ISshProvider, SshNetProvider>(Lifestyle.Singleton);
 
@@ -72,7 +74,7 @@ namespace Smart.House.Grains.Resolvers
 
             container.RegisterSingleton<ICameraProviderFactory>(new CameraProviderFactory
             {
-                { "dlink", () => container.GetInstance<DlinkProvider>()}
+                { "dlink", () => container.GetInstance<DLink>()}
             });
             container.RegisterSingleton<IAmbilightProviderFactory>(new AmbilightProviderFactory
             {

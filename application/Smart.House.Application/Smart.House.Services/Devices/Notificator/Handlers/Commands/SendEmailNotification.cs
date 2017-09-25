@@ -2,7 +2,8 @@
 using Smart.House.Application.Dtos.Notificator;
 using Smart.House.Application.Providers.Notificator;
 using Smart.House.Application.Repositories;
-using Smart.House.Domain.Notifications.ValueTypes;
+using System.Collections.Generic;
+using System.Net.Mail;
 using System.Threading.Tasks;
 
 namespace Smart.House.Services.Devices.Notificator.Handlers.Commands
@@ -13,8 +14,9 @@ namespace Smart.House.Services.Devices.Notificator.Handlers.Commands
     {
         public string Identifier { get; set; }
         public string Email { get; set; }
-        public EventType Type { get; set; }
+        public string Title { get; set; }
         public string Value { get; set; }
+        public List<Attachment> Attachments { get; set; }
     }
 
     public class SendEmailNotification : IRequestHandler<EmailNotificationCommand>
@@ -37,10 +39,11 @@ namespace Smart.House.Services.Devices.Notificator.Handlers.Commands
             {
                 var provider = _messageProviderFactory.Create(notificator.Provider);
 
-                var email = new EmailMessage(notificator, command.Type.ToString())
+                var email = new EmailMessage(notificator, command.Title)
                 {
                     Receiver = command.Email,
-                    Content = "Test Message"
+                    Content = "Test Message",
+                    Attachments = command.Attachments
                 };
 
                 await provider.Send(email);

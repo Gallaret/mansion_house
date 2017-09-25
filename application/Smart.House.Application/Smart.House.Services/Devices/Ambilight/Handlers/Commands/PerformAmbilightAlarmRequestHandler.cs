@@ -1,7 +1,7 @@
 ﻿using Smart.House.Application.Commands;
+using Smart.House.Application.Dtos.Connection;
 using Smart.House.Application.Providers.Ambilight;
 using Smart.House.Application.Repositories;
-using Smart.House.Domain.Notifications.ValueTypes;
 using System.Threading.Tasks;
 
 namespace Smart.House.Services.Devices.Ambilight.Handlers.Commands
@@ -11,7 +11,6 @@ namespace Smart.House.Services.Devices.Ambilight.Handlers.Commands
     public class AmbilightAlarmCommand : IRequest
     {
         public string Identifier { get; set; }
-        public EventType EventType { get; set; }
         public string Value { get; set; }
     }
 
@@ -29,12 +28,15 @@ namespace Smart.House.Services.Devices.Ambilight.Handlers.Commands
 
         public async Task Handle(AmbilightAlarmCommand command)
         {
-            var device = _ambilightRepository.Find(command.Identifier);
+            var device = await _ambilightRepository.FindAsync(command.Identifier);
 
             if (device.AmbientNotificationEnabled)
             {
                 var provider = _factory.Create(device.Provider);
-                await provider.RunAlarm(device);
+
+                var credential = new Credential(device);
+
+                await provider.RunAlarm(credential);
             }
         }
     }

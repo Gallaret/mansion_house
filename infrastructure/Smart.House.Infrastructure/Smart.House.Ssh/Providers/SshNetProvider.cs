@@ -1,5 +1,5 @@
 ﻿using Renci.SshNet;
-using Smart.House.Application.Providers.Communication.Ftp;
+using Smart.House.Application.Dtos.Connection;
 using Smart.House.Application.Providers.Ssh;
 
 namespace Smart.House.Ssh.Providers
@@ -21,10 +21,10 @@ namespace Smart.House.Ssh.Providers
                 _sshClient.Disconnect();
         }
 
-        public ISshProvider Connect(RemoteCredentials credentials)
+        public ISshProvider Connect(Credential credential)
         {
-            _sshClient = new SshClient(credentials.Address,
-                credentials.Login, credentials.Password);
+            _sshClient = new SshClient(credential.Address,
+                credential.Login, credential.Password);
 
             return new SshNetProvider(_sshClient);
         }

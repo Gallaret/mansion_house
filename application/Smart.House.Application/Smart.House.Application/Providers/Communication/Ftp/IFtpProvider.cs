@@ -1,19 +1,15 @@
-﻿using System;
+﻿using Smart.House.Application.Dtos.Connection;
+using Smart.House.Application.Dtos.Storage;
+using System;
 using System.IO;
 
 namespace Smart.House.Application.Providers.Communication.Ftp
 {
-    public struct RemoteCredentials
-    {
-        public string Address { get; set; }
-        public string Login { get; set; }
-        public string Password { get; set; }
-    }
-
     public interface IFtpProvider: IDisposable
     {
-        IFtpProvider Connect(RemoteCredentials credentials);
-        FileInfo[] ScanFiles(string path);
+        IFtpProvider Connect(Credential credential);
+        RemoteFile [] ScanFiles(string path);
         bool DirectoryExists(string directory);
+        FileInfo DownloadFile(string path, string localPath);
     }
 }

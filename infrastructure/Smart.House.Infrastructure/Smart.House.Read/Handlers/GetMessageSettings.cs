@@ -19,7 +19,7 @@ namespace Smart.House.Read.Handlers
 
         public async Task<MessageSettingsResult> Handle(MessageSettingsQuery command)
         {
-            var query = "SELECT u.Email, u.Mobile FROM Users u" +
+            var query = "SELECT u.Email, u.Mobile, d.Limit FROM Users u" +
                 " INNER JOIN Devices d ON u.Identifier = d.Receiver WHERE d.Identifier = @Identifier";
 
             using (var connection = new SqlConnection(_connection.ConnectionString))

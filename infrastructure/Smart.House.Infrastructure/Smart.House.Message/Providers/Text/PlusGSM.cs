@@ -7,6 +7,7 @@ namespace Smart.House.Messager.Providers.Text
     public class PlusGSM : IMessageProvider
     {
         private readonly IMessageProviderFactory _messageProviderFactory;
+
         const string provider = "text.plusgsm.pl";
 
         public PlusGSM(IMessageProviderFactory messageProviderFactory)

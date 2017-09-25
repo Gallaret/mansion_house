@@ -6,6 +6,7 @@
     <GenerateFullPaths>true</GenerateFullPaths>
     <OutputType>Exe</OutputType>
     <UserSecretsId>Rodos-Secrets</UserSecretsId>
+    <ApplicationManifest>orleans.manifest</ApplicationManifest>
   </PropertyGroup>
 
   <ItemGroup>

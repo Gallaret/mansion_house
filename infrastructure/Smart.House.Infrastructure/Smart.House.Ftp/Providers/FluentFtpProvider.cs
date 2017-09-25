@@ -1,8 +1,11 @@
 ﻿using FluentFTP;
+using Smart.House.Application.Dtos.Connection;
+using Smart.House.Application.Dtos.Storage;
 using Smart.House.Application.Providers.Communication.Ftp;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
 
 namespace Smart.House.Ftp.Providers
@@ -17,12 +20,12 @@ namespace Smart.House.Ftp.Providers
 
         public FluentFtpProvider() { }
 
-        public IFtpProvider Connect(RemoteCredentials credentials)
+        public IFtpProvider Connect(Credential credential)
         {
-            var client = new FtpClient(credentials.Address)
+            var client = new FtpClient(credential.Address)
             {
                 Credentials = new NetworkCredential(
-                    credentials.Login, credentials.Password)
+                    credential.Login, credential.Password)
             };
 
             client.Connect();
@@ -44,25 +47,39 @@ namespace Smart.House.Ftp.Providers
             if (_ftpClient != null) _ftpClient.Disconnect();
         }
 
-        public FileInfo[] ScanFiles(string path)
+        public RemoteFile [] ScanFiles(string path)
         {
             if (!_ftpClient.IsConnected)
                 throw new ArgumentException("FTP not connected");
 
-            var files = new List<FileInfo>();
+            var files = new List<RemoteFile>();
 
-            if (!_ftpClient.DirectoryExists(path)) return files.ToArray();
+            if (!_ftpClient.DirectoryExists(path)) return Enumerable.Empty<RemoteFile>().ToArray();
 
             foreach (FtpListItem item in _ftpClient.GetListing(path))
             {
                 if (item.Type == FtpFileSystemObjectType.File)
                 {
-                    var file = new FileInfo(@"C:\Serwer\FTP-Camera" + item.FullName); //To Do :)
-                    files.Add(file);
+                    files.Add(new RemoteFile(item.FullName, item.Created));
                 }
             }
 
             return files.ToArray();
+        }
+
+        public FileInfo DownloadFile(string path, string localPath)
+        {
+            if (!_ftpClient.IsConnected)
+                throw new ArgumentException("FTP not connected");
+
+            if (!Directory.Exists(localPath)) Directory.CreateDirectory(localPath);
+
+            var filePath = Path.Combine(localPath, Path.GetFileName(path));
+            _ftpClient.DownloadFile(filePath, path);
+
+            var fileName = Path.GetFileName(path);
+
+            return new FileInfo(filePath);
         }
     }
 }

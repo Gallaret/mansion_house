@@ -26,11 +26,11 @@ namespace Smart.House.Services.Devices.Camera.Handlers.Events
             var camera = await _cameraRepository.GetAsync(@event.Identifier);
             var specification = new CameraSpecification(camera);
 
-            var last = _repository.TryGetLast(@event.Value, EventType.MotionDetected);
+            var last = _repository.TryGetLast(@event.Value, EventType.MotionDetection);
             if (last == null || specification.IsNotificable(last))
             {
                 var notification = _factory.Create(
-                    EventType.MotionDetected, @event.Value);
+                    EventType.MotionDetection, @event.Value);
 
                 _repository.Add(notification);
             }    

@@ -1,21 +1,14 @@
 ﻿using Smart.House.Domain.Devices.Entities;
+using Smart.House.Domain.Notifications.ValueTypes;
 using System;
 
 namespace Smart.House.Domain.Devices.ValueTypes
 {
-    public enum HarmonogramType
-    {
-        MotionDetection = 0,
-        Reminder = 1,
-        Recording
-    }
-
-    //Is a value type?
     public class Harmonogram
     {
         public string Identifier { get; set; }
         public Device Device { get; set; }
-        public HarmonogramType Type { get; set; }
+        public EventType Type { get; set; }
         public bool Monday { get; set; }
         public bool Tuesday { get; set; }
         public bool Wednesday { get; set; }
@@ -29,7 +22,7 @@ namespace Smart.House.Domain.Devices.ValueTypes
 
         public Harmonogram() { }
 
-        public Harmonogram(string identifier, HarmonogramType type)
+        public Harmonogram(string identifier, EventType type)
         {
             Type = type;
             Identifier = identifier;      

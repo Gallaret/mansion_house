@@ -17,8 +17,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Ssh", "Smart.Ho
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Ftp", "Smart.House.Ftp\Smart.House.Ftp.csproj", "{754CCD9D-98F5-4F13-B23A-9E2A880BC87E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Email", "Smart.House.Email\Smart.House.Email.csproj", "{8E60288C-5430-4133-B001-4A9CCBD4CA56}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Ambilight", "Smart.House.Ambilight\Smart.House.Ambilight.csproj", "{5D91F56E-88C7-4A23-AE4C-2F5257190AC7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Camera", "Smart.House.Camera\Smart.House.Camera.csproj", "{C5778BDE-37EC-4077-9CB2-76742E9632DE}"
@@ -59,10 +57,6 @@ Global
 		{754CCD9D-98F5-4F13-B23A-9E2A880BC87E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{754CCD9D-98F5-4F13-B23A-9E2A880BC87E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{754CCD9D-98F5-4F13-B23A-9E2A880BC87E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8E60288C-5430-4133-B001-4A9CCBD4CA56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8E60288C-5430-4133-B001-4A9CCBD4CA56}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8E60288C-5430-4133-B001-4A9CCBD4CA56}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8E60288C-5430-4133-B001-4A9CCBD4CA56}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5D91F56E-88C7-4A23-AE4C-2F5257190AC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5D91F56E-88C7-4A23-AE4C-2F5257190AC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D91F56E-88C7-4A23-AE4C-2F5257190AC7}.Release|Any CPU.ActiveCfg = Release|Any CPU

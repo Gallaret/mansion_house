@@ -23,7 +23,7 @@ namespace Smart.House.Domain.Notifications.Factories
         {
             switch (type)
             {
-                case EventType.MotionDetected:
+                case EventType.MotionDetection:
                     {
                         return $"Motion detected is occured at: {now}, file: {value}";
                     }

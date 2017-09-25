@@ -47,8 +47,10 @@ namespace Smart.House.Grains.Devices.Camera
 
                 IBroadcaster broadcaster = client.GetGrain<IBroadcaster>("broadcast");
 
-                await broadcaster.Broadcast(State.Identifier,
-                    Event.Motion, State.CurrentMotionFileName);
+                var notify = new Notify(State.Identifier,
+                    State.CurrentMotionFileName, Event.Motion);
+
+                await broadcaster.Broadcast(notify);
             }
         }
 

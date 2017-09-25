@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
+using System.Net.Mail;
 
 namespace Smart.House.Application.Dtos.Notificator
 {
@@ -10,7 +12,7 @@ namespace Smart.House.Application.Dtos.Notificator
 
         public string Login { get; }
         public string Password { get; }
-        public FileInfo[] Attachments { get; set; }
+        public List<Attachment> Attachments { get; set; }
         public override string Provider => _notficator.Provider;
         public override T As<T>()
         {
@@ -35,6 +37,8 @@ namespace Smart.House.Application.Dtos.Notificator
 
             Login = sender.RemoteLogin;
             Password = sender.RemotePassword;
+
+            Attachments = new List<Attachment>();
         }     
     }
 }

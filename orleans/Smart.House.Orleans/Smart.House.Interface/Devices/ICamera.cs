@@ -15,12 +15,6 @@ namespace Smart.House.Interface.Devices
         {
             Identifier = identifier;
         } 
-
-        public CameraState(CameraState previousState)
-        {
-            Identifier = previousState.Identifier;
-            CurrentMotionFileName = previousState.CurrentMotionFileName;
-        }
     }
 
     public interface ICamera : IGrainWithStringKey

@@ -2,7 +2,6 @@
 using Smart.House.Application.Dtos.Notificator;
 using Smart.House.Application.Providers.Notificator;
 using Smart.House.Application.Repositories;
-using Smart.House.Domain.Notifications.ValueTypes;
 using System.Threading.Tasks;
 
 namespace Smart.House.Services.Devices.Notificator.Handlers.Commands
@@ -13,7 +12,7 @@ namespace Smart.House.Services.Devices.Notificator.Handlers.Commands
     {
         public string Identifier { get; set; }
         public string Mobile { get; set; }
-        public EventType Type { get; set; }
+        public string Title { get; set; }
         public string Value { get; set; }
     }
 
@@ -37,7 +36,7 @@ namespace Smart.House.Services.Devices.Notificator.Handlers.Commands
             {
                 var provider = _messageProviderFactory.Create(notificator.MobileProvider);
 
-                var email = new TextMessage(notificator, command.Type.ToString())
+                var email = new TextMessage(notificator, command.Title)
                 {
                     Content = "Test Message",
                     Receiver = command.Mobile

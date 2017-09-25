@@ -1,4 +1,5 @@
 ﻿using Orleans;
+using Smart.House.Interface.Devices;
 using System.Threading.Tasks;
 
 namespace Smart.House.Interface.Notifications
@@ -10,6 +11,6 @@ namespace Smart.House.Interface.Notifications
 
     public interface IBroadcaster : IGrainWithStringKey
     {
-        Task Broadcast(string identifier, Event @event, string value);
+        Task Broadcast(Notify notify);
     }
 }
