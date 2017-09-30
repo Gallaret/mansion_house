@@ -1,5 +1,6 @@
-﻿using Smart.House.Application.Events;
-using Smart.House.Application.Repositories;
+﻿using Smart.House.Application.Domain.Devices.Camera.Repositories;
+using Smart.House.Application.Domain.Devices.Notificator.Repositories;
+using Smart.House.Application.Events;
 using Smart.House.Domain.Devices.Events;
 using Smart.House.Domain.Devices.Specifications;
 using Smart.House.Domain.Notifications.Factories;

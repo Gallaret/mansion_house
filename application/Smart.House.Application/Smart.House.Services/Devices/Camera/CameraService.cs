@@ -1,8 +1,9 @@
-﻿using Smart.House.Application.Dtos.Camera;
-using Smart.House.Application.Dtos.Connection;
-using Smart.House.Application.Providers.Camera;
-using Smart.House.Application.Repositories;
-using Smart.House.Application.Services.Devices;
+﻿using Smart.House.Application.Domain.Devices.Camera.Dtos;
+using Smart.House.Application.Domain.Devices.Camera.Factories;
+using Smart.House.Application.Domain.Devices.Camera.Repositories;
+using Smart.House.Application.Domain.Devices.Camera.Services;
+using Smart.House.Application.Domain.Devices.Storekeeper.Dtos;
+using Smart.House.Application.Domain.Devices.Storekeeper.Repositories;
 using System.Threading.Tasks;
 
 namespace Smart.House.Services.Devices.Camera
@@ -15,12 +16,15 @@ namespace Smart.House.Services.Devices.Camera
         private readonly DomainService _domainService = new DomainService();
 
         private readonly ICameraRepository _cameraRepository;
+        private readonly IStorekeeperRepository _storekeeperRepository;
         private readonly ICameraProviderFactory _cameraProviderFactory;
 
         public CameraService(ICameraRepository cameraRepository,
+            IStorekeeperRepository storekeeperRepository,
             ICameraProviderFactory cameraProviderFactory)
         {
             _cameraRepository = cameraRepository;
+            _storekeeperRepository = storekeeperRepository;
             _cameraProviderFactory = cameraProviderFactory;
         }
 
@@ -41,12 +45,13 @@ namespace Smart.House.Services.Devices.Camera
         }
 
         private async Task<Motion> DetectMotion(Camera camera, string fileName)
-        {
-            var settings = new MotionSettings(camera.RemotePath, fileName);
-            var credential = new Credential(camera);
-
+        {           
+            var storekeeper = await _storekeeperRepository.GetByProvider("ftp");
             var provider = _cameraProviderFactory.Create(camera.Provider);
-            return await provider.DetectMotion(settings, credential);
+
+            var storage = new Storage(storekeeper, fileName);
+
+            return await provider.DetectMotion(storage);
         }
     }
 }

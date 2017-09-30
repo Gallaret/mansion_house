@@ -1,4 +1,5 @@
-﻿using Smart.House.Application.Providers.Notificator;
+﻿using Smart.House.Application.Domain.Devices.Notificator.Factories;
+using Smart.House.Application.Domain.Devices.Notificator.Providers;
 using Smart.House.Messager.Providers.Email;
 using Smart.House.Messager.Providers.Text;
 using System;

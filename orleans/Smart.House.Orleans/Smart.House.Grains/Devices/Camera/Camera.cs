@@ -29,7 +29,7 @@ namespace Smart.House.Grains.Devices.Camera
 
                 await MotionDetection();
 
-            }, State, TimeSpan.FromSeconds(5), TimeSpan.FromSeconds(5));
+            }, State, TimeSpan.FromSeconds(5), TimeSpan.FromSeconds(30));
 
             return await Task.FromResult(true);
         }

@@ -8,7 +8,6 @@ using Microsoft.EntityFrameworkCore.Storage.Internal;
 using Microsoft.EntityFrameworkCore.ValueGeneration;
 using Smart.House.Data.Model;
 using Smart.House.Domain.Devices.Entities;
-using Smart.House.Domain.Devices.ValueTypes;
 using Smart.House.Domain.Notifications.ValueTypes;
 using System;
 

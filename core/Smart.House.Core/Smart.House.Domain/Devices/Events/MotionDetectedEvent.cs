@@ -11,7 +11,6 @@ namespace Smart.House.Domain.Devices.Events
         }
 
         public string Identifier { get; private set; }
-
         public string Value { get; private set; }
     }
 }

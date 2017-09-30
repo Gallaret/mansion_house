@@ -1,4 +1,4 @@
-﻿using Smart.House.Application.Services.Devices;
+﻿using Smart.House.Application.Domain.Devices.Notificator.Services;
 using Smart.House.Interface;
 using Smart.House.Interface.Devices;
 using System;
@@ -96,12 +96,6 @@ namespace Smart.House.Grains.Devices.Notificator
             foreach (var compressed in messagesByType)
             {
                 var notify = compressed.First();
-
-                compressed.Where(message => message.Value != message.Value)
-                    .Select(email =>
-                    {
-                        return email;
-                    });
 
                 state.SmsLimit ++;
                 state.SmsToSend.Add(notify);

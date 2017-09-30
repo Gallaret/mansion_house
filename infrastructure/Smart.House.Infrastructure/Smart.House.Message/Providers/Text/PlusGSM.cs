@@ -1,6 +1,7 @@
-﻿using Smart.House.Application.Dtos.Notificator;
-using System.Threading.Tasks;
-using Smart.House.Application.Providers.Notificator;
+﻿using System.Threading.Tasks;
+using Smart.House.Application.Domain.Devices.Notificator.Factories;
+using Smart.House.Application.Domain.Devices.Notificator.Providers;
+using Smart.House.Application.Domain.Devices.Notificator.Dtos;
 
 namespace Smart.House.Messager.Providers.Text
 {

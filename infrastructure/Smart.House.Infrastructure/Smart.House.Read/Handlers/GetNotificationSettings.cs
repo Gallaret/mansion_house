@@ -1,6 +1,5 @@
 ﻿using Dapper;
 using Smart.House.Application.Commands;
-using Smart.House.Domain.Notifications.ValueTypes;
 using Smart.House.Read.Connection;
 using Smart.House.Read.Handlers.Queries;
 using Smart.House.Read.Handlers.Results;
@@ -38,20 +37,20 @@ namespace Smart.House.Read
             {
                 connection.Open();
 
-                var eventType = await connection.QuerySingleAsync<EventType>(notificationQuery,
+                var eventType = await connection.QuerySingleAsync<int>(notificationQuery,
                         new { Value = command.NotificationValue });
 
                 var result = new NotificationSettingsResult
                 {
-                    ShouldSend = eventType != EventType.None
+                    ShouldSend = eventType != 0
                 };
 
                 if (!result.ShouldSend) return result;
 
-                result.Notificators = await connection.QueryAsync<NotificatorResult>(notificatorQuery,
+                result.Notificators = await connection.QueryAsync<NotificatorSettings>(notificatorQuery,
                     new { Type = eventType, Current = now.TimeOfDay });
 
-                result.Device = await connection.QuerySingleAsync<DeviceResult>(deviceQuery, 
+                result.Device = await connection.QuerySingleAsync<DeviceSettings>(deviceQuery, 
                     new { Identifier = command.Identifier });
 
                 return result;

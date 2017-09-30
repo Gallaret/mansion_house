@@ -2,12 +2,12 @@
 
 namespace Smart.House.Read.Handlers.Results
 {
-    public class NotificatorResult
+    public class NotificatorSettings
     {
         public string Identifier { get; set; }
     }
 
-    public class DeviceResult
+    public class DeviceSettings
     {
         public bool AmbientNotificationEnabled { get; set; }
         public bool EmailNotificationEnabled { get; set; }
@@ -17,7 +17,7 @@ namespace Smart.House.Read.Handlers.Results
     public class NotificationSettingsResult
     {
         public bool ShouldSend { get; set; }
-        public IEnumerable<NotificatorResult> Notificators { get; set; }
-        public DeviceResult Device { get; set; }
+        public IEnumerable<NotificatorSettings> Notificators { get; set; }
+        public DeviceSettings Device { get; set; }
     }
 }

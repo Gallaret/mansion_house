@@ -1,7 +1,7 @@
 ﻿using Smart.House.Application.Commands;
-using Smart.House.Application.Dtos.Connection;
-using Smart.House.Application.Providers.Ambilight;
-using Smart.House.Application.Repositories;
+using Smart.House.Application.Domain.Devices;
+using Smart.House.Application.Domain.Devices.Ambilight.Factories;
+using Smart.House.Application.Domain.Devices.Connector.Dtos;
 using System.Threading.Tasks;
 
 namespace Smart.House.Services.Devices.Ambilight.Handlers.Commands

@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Vlc.DotNet.Core" Version="2.2.0-develop200" />
+    <PackageReference Include="Vlc.DotNet.Core.Interops" Version="2.2.0-develop200" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\..\application\Smart.House.Application\Smart.House.Application\Smart.House.Application.csproj" />
   </ItemGroup>
 

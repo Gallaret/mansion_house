@@ -1,7 +1,7 @@
 ﻿using Smart.House.Application.Commands;
-using Smart.House.Application.Dtos.Notificator;
-using Smart.House.Application.Providers.Notificator;
-using Smart.House.Application.Repositories;
+using Smart.House.Application.Domain.Devices;
+using Smart.House.Application.Domain.Devices.Notificator.Dtos;
+using Smart.House.Application.Domain.Devices.Notificator.Factories;
 using System.Collections.Generic;
 using System.Net.Mail;
 using System.Threading.Tasks;

@@ -1,4 +1,5 @@
-﻿using Smart.House.Application.Providers.Ambilight;
+﻿using Smart.House.Application.Domain.Devices.Ambilight.Factories;
+using Smart.House.Application.Domain.Devices.Ambilight.Providers;
 using System;
 using System.Collections.Generic;
 

@@ -1,8 +1,8 @@
 ﻿using System.Linq;
-using Smart.House.Application.Repositories;
 using Smart.House.Domain.Notifications.ValueTypes;
 using System.Collections.Generic;
 using Smart.House.Data.Model;
+using Smart.House.Application.Domain.Devices.Notificator.Repositories;
 
 namespace Smart.House.Data.Repositories
 {

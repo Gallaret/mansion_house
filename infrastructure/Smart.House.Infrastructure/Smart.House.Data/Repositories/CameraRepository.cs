@@ -1,4 +1,4 @@
-﻿using Smart.House.Application.Repositories;
+﻿using Smart.House.Application.Domain.Devices.Camera.Repositories;
 using Smart.House.Data.Model;
 using Smart.House.Domain.Devices.Entities;
 

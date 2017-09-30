@@ -1,6 +1,6 @@
-﻿using Smart.House.Application.Dtos.Connection;
-using Smart.House.Application.Providers.Ambilight;
-using Smart.House.Application.Providers.Ssh;
+﻿using Smart.House.Application.Domain.Devices.Ambilight.Providers;
+using Smart.House.Application.Domain.Devices.Connector.Dtos;
+using Smart.House.Application.Domain.Devices.Connector.Providers;
 using System.Threading.Tasks;
 
 namespace Smart.House.Ambilight

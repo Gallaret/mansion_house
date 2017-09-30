@@ -1,7 +1,6 @@
-﻿using Smart.House.Application.Repositories.Users;
-using Smart.House.Domain.Users.Entities;
+﻿using Smart.House.Domain.Users.Entities;
 using Smart.House.Data.Model;
-using System.Threading.Tasks;
+using Smart.House.Application.Domain.Users.Repositories;
 
 namespace Smart.House.Data.Repositories
 {

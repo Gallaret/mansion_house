@@ -1,4 +1,5 @@
-﻿using Smart.House.Application.Providers.Camera;
+﻿using Smart.House.Application.Domain.Devices.Camera.Factories;
+using Smart.House.Application.Domain.Devices.Camera.Providers;
 using System;
 using System.Collections.Generic;
 

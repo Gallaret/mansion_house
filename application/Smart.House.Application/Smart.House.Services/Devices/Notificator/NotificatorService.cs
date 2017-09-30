@@ -1,7 +1,7 @@
-﻿using Smart.House.Application.Dtos.Connection;
-using Smart.House.Application.Providers.Communication.Ftp;
-using Smart.House.Application.Repositories;
-using Smart.House.Application.Services.Devices;
+﻿using Smart.House.Application.Domain.Devices;
+using Smart.House.Application.Domain.Devices.Connector.Dtos;
+using Smart.House.Application.Domain.Devices.Connector.Providers;
+using Smart.House.Application.Domain.Devices.Notificator.Services;
 using Smart.House.Domain.Devices.Entities;
 using System.Net.Mail;
 

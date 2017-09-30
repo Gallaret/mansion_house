@@ -1,5 +1,5 @@
-﻿using Smart.House.Application.Dtos.Notificator;
-using Smart.House.Application.Providers.Notificator;
+﻿using Smart.House.Application.Domain.Devices.Notificator.Dtos;
+using Smart.House.Application.Domain.Devices.Notificator.Providers;
 using System.Net;
 using System.Net.Mail;
 using System.Threading.Tasks;

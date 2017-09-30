@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using Smart.House.Application.Services.Devices;
 using Smart.House.Interface;
 using Smart.House.Interface.Devices;
+using Smart.House.Application.Domain.Devices.Camera.Services;
 
 namespace Smart.House.Grains.Devices.Camera
 {

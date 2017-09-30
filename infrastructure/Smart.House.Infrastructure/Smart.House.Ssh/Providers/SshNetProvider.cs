@@ -1,6 +1,6 @@
 ﻿using Renci.SshNet;
-using Smart.House.Application.Dtos.Connection;
-using Smart.House.Application.Providers.Ssh;
+using Smart.House.Application.Domain.Devices.Connector.Dtos;
+using Smart.House.Application.Domain.Devices.Connector.Providers;
 
 namespace Smart.House.Ssh.Providers
 {

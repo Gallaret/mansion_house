@@ -1,7 +1,7 @@
 ﻿using FluentFTP;
-using Smart.House.Application.Dtos.Connection;
-using Smart.House.Application.Dtos.Storage;
-using Smart.House.Application.Providers.Communication.Ftp;
+using Smart.House.Application.Domain.Devices.Connector.Dtos;
+using Smart.House.Application.Domain.Devices.Connector.Providers;
+using Smart.House.Application.Domain.Devices.Storekeeper.Dtos;
 using System;
 using System.Collections.Generic;
 using System.IO;

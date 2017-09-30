@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Smart.House.Application.Repositories;
+using Smart.House.Application.Domain.Devices;
 using Smart.House.Data.Model;
 using Smart.House.Domain.Devices.Entities;
 using System.Linq;
