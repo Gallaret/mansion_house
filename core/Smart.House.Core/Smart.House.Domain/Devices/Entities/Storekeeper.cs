@@ -5,7 +5,7 @@
         public Storekeeper() { }
 
         public Storekeeper(string identifier, string provider) 
-            : base(identifier, provider, DeviceType.Storekeeer)
+            : base(identifier, provider, DeviceType.Storage)
         {
 
         }

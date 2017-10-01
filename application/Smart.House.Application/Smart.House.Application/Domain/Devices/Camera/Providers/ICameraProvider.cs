@@ -7,7 +7,7 @@ namespace Smart.House.Application.Domain.Devices.Camera.Providers
     public interface ICameraProvider
     {
         Task<Motion> DetectMotion(Storage storage);
-        void StartRecording();
-        void StopRecording();
+        Task StartRecording(RecordingStream stream);
+        Task StopRecording(string recorder);
     }
 }

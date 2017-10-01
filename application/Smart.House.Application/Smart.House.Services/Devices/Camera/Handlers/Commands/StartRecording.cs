@@ -1,21 +1,22 @@
 ﻿using Smart.House.Application.Commands;
+using Smart.House.Application.Domain.Devices.Camera.Dtos;
 using Smart.House.Application.Domain.Devices.Camera.Factories;
 using Smart.House.Application.Domain.Devices.Camera.Repositories;
 using System.Threading.Tasks;
 
 namespace Smart.House.Services.Devices.Camera.Handlers.Commands
 {
-    public class Recording : IRequest
+    public class Start : IRequest
     {
         public string Identifier { get; set; }
 
-        public Recording(string identifier)
+        public Start(string identifier)
         {
             Identifier = identifier;
         }
     }
 
-    public class StartRecording : IRequestHandler<Recording>
+    public class StartRecording : IRequestHandler<Start>
     {
         private readonly ICameraProviderFactory _factory;
         private readonly ICameraRepository _cameraRepository;
@@ -27,13 +28,15 @@ namespace Smart.House.Services.Devices.Camera.Handlers.Commands
             _cameraRepository = cameraRepository;
         }
 
-        public async Task Handle(Recording command)
+        public async Task Handle(Start command)
         {
             var camera = await _cameraRepository.FindAsync(command.Identifier);
 
             var provider = _factory.Create(camera.Provider);
 
-            provider.StartRecording();
+            var stream = new RecordingStream(camera, "file");
+
+            await provider.StartRecording(stream);
         }
     }
 }

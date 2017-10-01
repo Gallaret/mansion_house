@@ -10,7 +10,7 @@ namespace Smart.House.Data.Repositories
     public class DeviceRepository<T> : IDeviceRepository<T>
         where T: Device
     {
-        private readonly DataContext _context;
+        protected readonly DataContext _context;
 
         public DeviceRepository(DataContext context)
         {

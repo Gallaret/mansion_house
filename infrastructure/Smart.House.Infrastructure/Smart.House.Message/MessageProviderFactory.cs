@@ -9,7 +9,8 @@ namespace Smart.House.Messager
 {
     public class MessageProviderFactory : Dictionary<string, Func<IMessageProvider>>, IMessageProviderFactory
     {
-        public IMessageProvider Create(string provider) => this[provider]();
+        public IMessageProvider Create(string provider) => Count > 0 
+            ? this[provider]() : Initialize()[provider]();
 
         private Dictionary<string, Func<IMessageProvider>> Initialize()
         {

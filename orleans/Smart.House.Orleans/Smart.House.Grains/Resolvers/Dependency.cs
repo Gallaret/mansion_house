@@ -6,12 +6,14 @@ using Smart.House.Application.Commands;
 using Smart.House.Application.Domain.Devices;
 using Smart.House.Application.Domain.Devices.Ambilight.Factories;
 using Smart.House.Application.Domain.Devices.Camera.Factories;
+using Smart.House.Application.Domain.Devices.Camera.Providers;
 using Smart.House.Application.Domain.Devices.Camera.Repositories;
 using Smart.House.Application.Domain.Devices.Camera.Services;
 using Smart.House.Application.Domain.Devices.Connector.Providers;
 using Smart.House.Application.Domain.Devices.Notificator.Factories;
 using Smart.House.Application.Domain.Devices.Notificator.Repositories;
 using Smart.House.Application.Domain.Devices.Notificator.Services;
+using Smart.House.Application.Domain.Devices.Storekeeper.Repositories;
 using Smart.House.Application.Domain.Users.Repositories;
 using Smart.House.Application.Events;
 using Smart.House.Application.Transaction;
@@ -28,6 +30,8 @@ using Smart.House.Messager.Providers.Email;
 using Smart.House.Messager.Providers.Text;
 using Smart.House.Read;
 using Smart.House.Read.Connection;
+using Smart.House.Recorder;
+using Smart.House.Recorder.Providers;
 using Smart.House.Services.Devices.Camera;
 using Smart.House.Services.Devices.Camera.Handlers.Events;
 using Smart.House.Services.Devices.Notificator;
@@ -71,6 +75,7 @@ namespace Smart.House.Grains.Resolvers
             container.Register<INotificatorService, NotificatorService>(Lifestyle.Scoped);
             container.Register<IFtpProvider, FluentFtpProvider>(Lifestyle.Singleton);
             container.Register<ISshProvider, SshNetProvider>(Lifestyle.Singleton);
+            container.Register<IRecordingProvider, RtspRecorder>(Lifestyle.Singleton);
 
             RegisterRepositories(container);
 
@@ -86,6 +91,10 @@ namespace Smart.House.Grains.Resolvers
             {
                 { "gmail", () => container.GetInstance<GmailProvider>() },
                 { "plusgsm", () => container.GetInstance<PlusGSM>() }
+            });
+            container.RegisterSingleton<IRecordingProviderFactory>(new RecorderProviderFactory
+            {
+                { "rtsp", () => container.GetInstance<RtspRecorder>() }
             });
 
             return container;
@@ -119,6 +128,7 @@ namespace Smart.House.Grains.Resolvers
             container.Register<ICameraRepository, CameraRepository>(Lifestyle.Scoped);
             container.Register<IUserRepository, UserRepository>(Lifestyle.Scoped);
             container.Register<INotificationRepository, NotificationRepository>(Lifestyle.Scoped);
+            container.Register<IStorekeeperRepository, StorekeeperRepository>(Lifestyle.Scoped);
         }
     }
 }

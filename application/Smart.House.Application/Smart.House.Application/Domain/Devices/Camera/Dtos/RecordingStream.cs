@@ -8,16 +8,16 @@ namespace Smart.House.Application.Domain.Devices.Camera.Dtos
     {
         private readonly Camera _camera;
 
-        public string Path { get; private set; }
         public string FileName { get; private set; }
+        public string Recorder { get; private set; }
         public Credential Credential => new Credential(_camera);
 
         public RecordingStream(Camera camera, string fileName)
         {
             _camera = camera;
 
+            Recorder = camera.Identifier;
             FileName = fileName;
-            Path = _camera.RemotePath;
         }
     }
 }

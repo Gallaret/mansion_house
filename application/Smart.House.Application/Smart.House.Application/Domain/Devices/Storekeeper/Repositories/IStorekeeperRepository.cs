@@ -6,6 +6,6 @@ namespace Smart.House.Application.Domain.Devices.Storekeeper.Repositories
 
     public interface IStorekeeperRepository
     {
-        Task<Storekeeper> GetByProvider(string provider);
+        Storekeeper GetByProvider(string provider);
     }
 }

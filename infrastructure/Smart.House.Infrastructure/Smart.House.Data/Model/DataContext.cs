@@ -18,6 +18,7 @@ namespace Smart.House.Data.Model
         public DbSet<Device> Devices { get; set; }
         public DbSet<Harmonogram> Harmonograms { get; set; }
         public DbSet<Notification> Notifications { get; set; }
+        public DbSet<Storekeeper> Storekeepers { get; set; }
         public DbSet<User> Users { get; set; }
 
         public DataContext(DbContextOptions<DataContext> options, IMediator mediator)
@@ -46,7 +47,8 @@ namespace Smart.House.Data.Model
                 .HasValue<Device>("device_base")
                 .HasValue<Camera>("device_camera")
                 .HasValue<Notificator>("device_notificator")
-                .HasValue<Ambilight>("device_ambilight");
+                .HasValue<Ambilight>("device_ambilight")
+                .HasValue<Storekeeper>("device_storage");
             modelBuilder.Entity<Device>()
                 .HasKey(dev => dev.Identifier);
             modelBuilder.Entity<Device>()

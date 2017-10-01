@@ -2,8 +2,6 @@
 using System.Linq;
 using System.IO;
 using System.Threading.Tasks;
-using System.Threading;
-using Vlc.DotNet.Core;
 using Smart.House.Application.Domain.Devices.Camera.Providers;
 using Smart.House.Application.Domain.Devices.Connector.Providers;
 using Smart.House.Application.Domain.Devices.Camera.Dtos;
@@ -42,34 +40,17 @@ namespace Smart.House.Camera
                     new Motion(false, storage.FileName));
         }
 
-        public void StopRecording()
+        public async Task StopRecording(string recorder)
         {
-            _recordingProvider.Stop("");
+            await _recordingProvider.Stop(recorder);
         }
 
-        public void StartRecording(RecordingStream stream)
+        public async Task StartRecording(RecordingStream stream)
         {
-            VlcMediaPlayer vlc = new VlcMediaPlayer(new DirectoryInfo(@"C:\Program Files\VideoLAN\VLC"));
-            //var path = Path.Combine(Environment.CurrentDirectory, "recording", "video.m4v");
-            var param = @":sout=#transcode{vcodec=h264,acodec=mpga,ab=128,channels=2,samplerate=44100}:file{dst=C:\\video\\myfile.mp4,no-overwrite}";
-            var second = ":sout-keep";
-            var endOfParam = ":run-time 10";
-            vlc.SetMedia(new Uri("rtsp://admin:Uncharted4@192.168.0.234/play2.sdp"), param, second, endOfParam);
+            if (!Directory.Exists(RECORDING_DIRECTORY))
+                Directory.CreateDirectory(RECORDING_DIRECTORY);
 
-            try
-            {
-                vlc.Play();
-                Thread.Sleep(15000);               
-            }
-            catch(Exception exc)
-            {
-
-            }
-            finally
-            {
-                vlc.Stop();
-                //vlc.Dispose();
-            }                   
+            await _recordingProvider.Start(RECORDING_DIRECTORY, stream);
         }
 
         private RemoteFile [] GetFiles(Storage settings)
