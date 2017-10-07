@@ -6,6 +6,7 @@ using System;
 using Orleans.Runtime.Configuration;
 using Smart.House.Interface.Notifications;
 using Smart.House.Services.Devices.Camera.Handlers.Commands;
+using Smart.House.Services.Devices.Center.Handlers.Commands;
 
 namespace Smart.House.Grains.Devices.Camera
 {
@@ -44,9 +45,6 @@ namespace Smart.House.Grains.Devices.Camera
         {
             if (State.IsMotionDetected)
             {
-                var command = new Start(State.Identifier);
-                await _mediator.DispatchRequest(command);
-
                 var client = await GetClient();
 
                 IBroadcaster broadcaster = client.GetGrain<IBroadcaster>("broadcast");
@@ -55,11 +53,6 @@ namespace Smart.House.Grains.Devices.Camera
                     State.CurrentMotionFileName, Event.Motion);
 
                 await broadcaster.Broadcast(notify);
-            }
-            else
-            {
-                var command = new Stop(State.Identifier);
-                await _mediator.DispatchRequest(command);
             }
         }
 

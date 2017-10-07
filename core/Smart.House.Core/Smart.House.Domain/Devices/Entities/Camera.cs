@@ -1,10 +1,13 @@
-﻿namespace Smart.House.Domain.Devices.Entities
+﻿using Smart.House.Domain.Devices.ValueTypes;
+
+namespace Smart.House.Domain.Devices.Entities
 {
     public class Camera : Device
     {
         private bool _isMotionDetected;
 
         public bool MotionDetectionEnabled { get; private set; }
+        public StorageType StorageType { get; private set; }
 
         public Camera() { }
 
@@ -26,6 +29,11 @@
             MotionDetectionEnabled = false;
             AmbientNotificationEnabled = false;
             SoundNotificationEnabled = false;
+        }
+
+        public void SetConnectionSettings(ConnectionSettings connection)
+        {
+            StorageType = connection.StorageType;
         }
 
         public bool IsMotionDetected => _isMotionDetected;

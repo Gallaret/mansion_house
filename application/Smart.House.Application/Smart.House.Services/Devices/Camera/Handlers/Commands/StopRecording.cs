@@ -5,29 +5,29 @@ using System.Threading.Tasks;
 
 namespace Smart.House.Services.Devices.Camera.Handlers.Commands
 {
-    public class Stop : IRequest
+    public class StopRecording : IRequest
     {
         public string Identifier { get; set; }
 
-        public Stop(string identifier)
+        public StopRecording(string identifier)
         {
             Identifier = identifier;
         }
     }
 
-    public class StopRecording : IRequestHandler<Stop>
+    public class StopRecordingHandler : IRequestHandler<StopRecording>
     {
         private readonly ICameraProviderFactory _factory;
         private readonly ICameraRepository _cameraRepository;
 
-        public StopRecording(ICameraProviderFactory factory,
+        public StopRecordingHandler(ICameraProviderFactory factory,
             ICameraRepository cameraRepository)
         {
             _factory = factory;
             _cameraRepository = cameraRepository;
         }
 
-        public async Task Handle(Stop command)
+        public async Task Handle(StopRecording command)
         {
             var camera = await _cameraRepository.FindAsync(command.Identifier);
             var provider = _factory.Create(camera.Provider);

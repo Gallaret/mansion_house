@@ -7,18 +7,18 @@ namespace Smart.House.Application.Domain.Devices.Storekeeper.Dtos
 
     public class Storage
     {
-        private readonly Device _storage; //need to be storage
+        private readonly Storekeeper _storage; //need to be storage
 
         public string Path { get; private set; }
         public string FileName { get; private set; }
         public Credential Credential => new Credential(_storage);
 
-        public Storage(Device storage, string fileName)
+        public Storage(Storekeeper storage, string fileName)
         {
             _storage = storage;
 
             FileName = fileName;
-            Path = _storage.RemotePath;
+            Path = _storage.Path;
         }
     }
 }

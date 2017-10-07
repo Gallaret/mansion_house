@@ -45,11 +45,11 @@ namespace Smart.House.Services.Devices.Camera
         }
 
         private async Task<Motion> DetectMotion(Camera camera, string fileName)
-        {           
-            //var storekeeper = _storekeeperRepository.GetByProvider("ftp");
+        {                  
             var provider = _cameraProviderFactory.Create(camera.Provider);
+            var storekeeper = _storekeeperRepository.GetByType(camera.StorageType);
 
-            var storage = new Storage(camera, fileName); //set to storage
+            var storage = new Storage(storekeeper, fileName); //set to storage
 
             return await provider.DetectMotion(storage);
         }

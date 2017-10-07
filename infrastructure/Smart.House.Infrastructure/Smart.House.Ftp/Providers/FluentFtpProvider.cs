@@ -60,7 +60,7 @@ namespace Smart.House.Ftp.Providers
             {
                 if (item.Type == FtpFileSystemObjectType.File)
                 {
-                    files.Add(new RemoteFile(item.FullName, item.Created));
+                    files.Add(new RemoteFile(item.FullName, item.Modified));
                 }
             }
 

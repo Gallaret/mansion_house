@@ -30,12 +30,12 @@ namespace Smart.House.Application.Domain.Devices.Notificator.Dtos
         }
 
         public EmailMessage(Notificator sender, string title)
-            : base (sender.RemoteAddress, title)
+            : base (sender.Address, title)
         {
             _notficator = sender;
 
-            Login = sender.RemoteLogin;
-            Password = sender.RemotePassword;
+            Login = sender.Login;
+            Password = sender.Password;
 
             Attachments = new List<Attachment>();
         }     

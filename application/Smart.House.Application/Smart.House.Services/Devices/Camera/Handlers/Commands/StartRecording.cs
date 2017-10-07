@@ -6,29 +6,29 @@ using System.Threading.Tasks;
 
 namespace Smart.House.Services.Devices.Camera.Handlers.Commands
 {
-    public class Start : IRequest
+    public class StartRecording : IRequest
     {
         public string Identifier { get; set; }
 
-        public Start(string identifier)
+        public StartRecording(string identifier)
         {
             Identifier = identifier;
         }
     }
 
-    public class StartRecording : IRequestHandler<Start>
+    public class StartRecordingHandler : IRequestHandler<StartRecording>
     {
         private readonly ICameraProviderFactory _factory;
         private readonly ICameraRepository _cameraRepository;
 
-        public StartRecording(ICameraProviderFactory factory,
+        public StartRecordingHandler(ICameraProviderFactory factory,
             ICameraRepository cameraRepository)
         {
             _factory = factory;
             _cameraRepository = cameraRepository;
         }
 
-        public async Task Handle(Start command)
+        public async Task Handle(StartRecording command)
         {
             var camera = await _cameraRepository.FindAsync(command.Identifier);
 

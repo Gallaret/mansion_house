@@ -10,9 +10,9 @@ namespace Smart.House.Application.Domain.Devices.Connector.Dtos
 
         public Credential(Device device)
         {
-            Address = device.RemoteAddress;
-            Login = device.RemoteLogin;
-            Password = device.RemotePassword;
+            Address = device.Address;
+            Login = device.Login;
+            Password = device.Password;
         }
     }
 }

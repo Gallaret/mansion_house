@@ -30,11 +30,11 @@
     <ProjectReference Include="..\..\..\application\Smart.House.Application\Smart.House.Services\Smart.House.Services.csproj" />
     <ProjectReference Include="..\..\..\infrastructure\Smart.House.Infrastructure\Smart.House.Ambilight\Smart.House.Ambilight.csproj" />
     <ProjectReference Include="..\..\..\infrastructure\Smart.House.Infrastructure\Smart.House.Camera\Smart.House.Camera.csproj" />
+    <ProjectReference Include="..\..\..\infrastructure\Smart.House.Infrastructure\Smart.House.Center\Smart.House.Center.csproj" />
     <ProjectReference Include="..\..\..\infrastructure\Smart.House.Infrastructure\Smart.House.Data\Smart.House.Data.csproj" />
     <ProjectReference Include="..\..\..\infrastructure\Smart.House.Infrastructure\Smart.House.Ftp\Smart.House.Ftp.csproj" />
     <ProjectReference Include="..\..\..\infrastructure\Smart.House.Infrastructure\Smart.House.Message\Smart.House.Messager.csproj" />
     <ProjectReference Include="..\..\..\infrastructure\Smart.House.Infrastructure\Smart.House.Read\Smart.House.Read.csproj" />
-    <ProjectReference Include="..\..\..\infrastructure\Smart.House.Infrastructure\Smart.House.Recorder\Smart.House.Recorder.csproj" />
     <ProjectReference Include="..\..\..\infrastructure\Smart.House.Infrastructure\Smart.House.Ssh\Smart.House.Ssh.csproj" />
     <ProjectReference Include="..\Smart.House.Interface\Smart.House.Interface.csproj" />
   </ItemGroup>

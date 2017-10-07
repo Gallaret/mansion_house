@@ -29,21 +29,21 @@ namespace Smart.House.Data.Migrations
                     b.Property<string>("Identifier")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("Address");
+
                     b.Property<bool>("AmbientNotificationEnabled");
 
                     b.Property<int>("DeviceType");
 
                     b.Property<bool>("EmailNotificationEnabled");
 
+                    b.Property<string>("Login");
+
+                    b.Property<string>("Password");
+
+                    b.Property<string>("Path");
+
                     b.Property<string>("Provider");
-
-                    b.Property<string>("RemoteAddress");
-
-                    b.Property<string>("RemoteLogin");
-
-                    b.Property<string>("RemotePassword");
-
-                    b.Property<string>("RemotePath");
 
                     b.Property<bool>("SmsNotificationEnabled");
 
@@ -144,6 +144,8 @@ namespace Smart.House.Data.Migrations
 
                     b.Property<bool>("MotionDetectionEnabled");
 
+                    b.Property<int>("StorageType");
+
                     b.ToTable("Camera");
 
                     b.HasDiscriminator().HasValue("device_camera");
@@ -162,6 +164,18 @@ namespace Smart.House.Data.Migrations
                     b.ToTable("Notificator");
 
                     b.HasDiscriminator().HasValue("device_notificator");
+                });
+
+            modelBuilder.Entity("Smart.House.Domain.Devices.Entities.Storekeeper", b =>
+                {
+                    b.HasBaseType("Smart.House.Domain.Devices.Entities.Device");
+
+                    b.Property<int>("StorageType")
+                        .HasColumnName("Storekeeper_StorageType");
+
+                    b.ToTable("Storekeeper");
+
+                    b.HasDiscriminator().HasValue("device_storage");
                 });
 
             modelBuilder.Entity("Smart.House.Domain.Devices.ValueTypes.Harmonogram", b =>

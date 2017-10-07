@@ -13,25 +13,18 @@ namespace Smart.House.Domain.Devices.Entities
         Storage
     }
 
-    public class Device : AggregateRoot<string>
+    public abstract class Device : AggregateRoot<string>
     {
         private string _identifier;
 
-        public override string Identifier
-        {
-            get
-            {
-                return _identifier;
-            }
-
-        }
+        public override string Identifier => _identifier;
 
         public string Provider { get; private set; }
         public DeviceType DeviceType { get; private set; }
-        public string RemoteLogin { get; private set; }
-        public string RemotePassword { get; private set; }
-        public string RemoteAddress { get; private set; }
-        public string RemotePath { get; private set; }
+        public string Login { get; private set; }
+        public string Password { get; private set; }
+        public string Address { get; private set; }
+        public string Path { get; private set; }
         public bool AmbientNotificationEnabled { get; protected set; }
         public bool SoundNotificationEnabled { get; protected set; }
         public bool EmailNotificationEnabled { get; protected set; }

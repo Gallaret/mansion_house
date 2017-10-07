@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+﻿using Smart.House.Domain.Devices.Entities;
 
 namespace Smart.House.Application.Domain.Devices.Storekeeper.Repositories
 {
@@ -6,6 +6,6 @@ namespace Smart.House.Application.Domain.Devices.Storekeeper.Repositories
 
     public interface IStorekeeperRepository
     {
-        Storekeeper GetByProvider(string provider);
+        Storekeeper GetByType(StorageType storageType);
     }
 }

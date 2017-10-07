@@ -9,10 +9,10 @@ namespace Smart.House.Data.Repositories
     {
         public StorekeeperRepository(DataContext context) : base(context) { }
 
-        public Storekeeper GetByProvider(string provider)
+        public Storekeeper GetByType(StorageType storageType)
         {
             return _context.Storekeepers.SingleOrDefault(
-                store => store.Provider.Equals(provider));
+                store => store.Provider == "ftp");
         }
     }
 }

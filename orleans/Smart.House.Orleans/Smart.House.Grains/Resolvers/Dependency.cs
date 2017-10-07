@@ -9,6 +9,7 @@ using Smart.House.Application.Domain.Devices.Camera.Factories;
 using Smart.House.Application.Domain.Devices.Camera.Providers;
 using Smart.House.Application.Domain.Devices.Camera.Repositories;
 using Smart.House.Application.Domain.Devices.Camera.Services;
+using Smart.House.Application.Domain.Devices.Center.Providers.Video;
 using Smart.House.Application.Domain.Devices.Connector.Providers;
 using Smart.House.Application.Domain.Devices.Notificator.Factories;
 using Smart.House.Application.Domain.Devices.Notificator.Repositories;
@@ -18,6 +19,8 @@ using Smart.House.Application.Domain.Users.Repositories;
 using Smart.House.Application.Events;
 using Smart.House.Application.Transaction;
 using Smart.House.Camera;
+using Smart.House.Camera.Recorders;
+using Smart.House.Center.Video;
 using Smart.House.Data.Model;
 using Smart.House.Data.Repositories;
 using Smart.House.Domain.Devices.Entities;
@@ -30,8 +33,6 @@ using Smart.House.Messager.Providers.Email;
 using Smart.House.Messager.Providers.Text;
 using Smart.House.Read;
 using Smart.House.Read.Connection;
-using Smart.House.Recorder;
-using Smart.House.Recorder.Providers;
 using Smart.House.Services.Devices.Camera;
 using Smart.House.Services.Devices.Camera.Handlers.Events;
 using Smart.House.Services.Devices.Notificator;
@@ -42,6 +43,8 @@ namespace Smart.House.Grains.Resolvers
 {
     public static class Dependency
     {
+        private const string VLC_DIRECTORY = @"C:\Program Files\VideoLAN\VLC";
+
         public static Container Build()
         {
             var container = new Container();
@@ -75,8 +78,8 @@ namespace Smart.House.Grains.Resolvers
             container.Register<INotificatorService, NotificatorService>(Lifestyle.Scoped);
             container.Register<IFtpProvider, FluentFtpProvider>(Lifestyle.Singleton);
             container.Register<ISshProvider, SshNetProvider>(Lifestyle.Singleton);
-            container.Register<IRecordingProvider, RtspRecorder>(Lifestyle.Singleton);
-
+            container.Register<IRtspRecorder>(() => new VlcRecorder(VLC_DIRECTORY), Lifestyle.Singleton);
+            container.Register<IVideoPlayer, VideoPlayer>(Lifestyle.Singleton);
             RegisterRepositories(container);
 
             container.RegisterSingleton<ICameraProviderFactory>(new CameraProviderFactory
@@ -91,10 +94,6 @@ namespace Smart.House.Grains.Resolvers
             {
                 { "gmail", () => container.GetInstance<GmailProvider>() },
                 { "plusgsm", () => container.GetInstance<PlusGSM>() }
-            });
-            container.RegisterSingleton<IRecordingProviderFactory>(new RecorderProviderFactory
-            {
-                { "rtsp", () => container.GetInstance<RtspRecorder>() }
             });
 
             return container;

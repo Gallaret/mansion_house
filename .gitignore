@@ -111,3 +111,5 @@ Temporary Items
 /orleans/Smart.House.Orleans/Smart.House.Host/Attachements
 /infrastructure/Smart.House.Infrastructure/Smart.House.Recorder/bin/Debug/netstandard2.0
 /infrastructure/Smart.House.Infrastructure/Smart.House.Recorder/obj
+/infrastructure/Smart.House.Infrastructure/Smart.House.Center/obj
+/infrastructure/Smart.House.Infrastructure/Smart.House.Center/bin/Debug/netstandard2.0

@@ -15,10 +15,10 @@ namespace Smart.House.Camera
         private const string RECORDING_DIRECTORY = "/Recording";
 
         private readonly IFtpProvider _ftpProvider;
-        private readonly IRecordingProvider _recordingProvider;
+        private readonly IRtspRecorder _recordingProvider;
 
         public DLink(IFtpProvider ftpProvider,
-            IRecordingProvider recordingProvider)
+            IRtspRecorder recordingProvider)
         {
             _recordingProvider = recordingProvider;
             _ftpProvider = ftpProvider;
@@ -50,7 +50,10 @@ namespace Smart.House.Camera
             if (!Directory.Exists(RECORDING_DIRECTORY))
                 Directory.CreateDirectory(RECORDING_DIRECTORY);
 
-            await _recordingProvider.Start(RECORDING_DIRECTORY, stream);
+            var param = @":sout=#transcode{vcodec = h264,vb = 3500,scale = Automatycznie,width = 1920,height = 1080,acodec = mp4a,ab = 192,channels = 2,samplerate = 44100}:file{dst=C:\\video\\myfile.mp4,no-overwrite}";
+            var uri = new Uri("rtsp://admin:Uncharted4@192.168.0.234/play2.sdp");
+
+            await _recordingProvider.Start(stream.Recorder, uri, param);
         }
 
         private RemoteFile [] GetFiles(Storage settings)

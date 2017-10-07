@@ -8,7 +8,7 @@
         public override string Provider => _notficator.MobileProvider;
 
         public TextMessage(Notificator sender, string title)
-            : base(sender.RemoteAddress, title)
+            : base(sender.Address, title)
         {
             _notficator = sender;
         }
