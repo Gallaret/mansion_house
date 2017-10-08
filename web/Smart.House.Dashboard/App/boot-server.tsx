@@ -6,7 +6,7 @@ import createMemoryHistory from 'history/lib/createMemoryHistory';
 import { createServerRenderer, RenderResult } from 'aspnet-prerendering';
 import routes from './routes';
 import configureStore from './configureStore';
-import { INIT_CAMERAS_REQUEST } from './store/camera'
+import { INIT_CAMERAS } from './store/cameraList'
 import { CameraModel } from './models/cameraModel';
 
 export default createServerRenderer(params => {
@@ -30,15 +30,15 @@ export default createServerRenderer(params => {
 
             let Cameras = ([] as CameraModel[]);
             Cameras.push({
-                name: 'dupa2',
+                name: 'Salon',
                 url: 'http://192.168.0.234/image/jpeg.cgi',
                 id: 1,
                 isMotionDetected: false,
-                isActive: false
+                isRecording: false
             });
 
             const store = configureStore();
-            store.dispatch({ type: INIT_CAMERAS_REQUEST, payload: Cameras });
+            store.dispatch({ type: INIT_CAMERAS, payload: Cameras });
 
             const app = (
                 <Provider store={store}>

@@ -1,41 +1,41 @@
 ﻿import * as React from 'react';
 import { connect } from 'react-redux';
 import { ApplicationState } from '../../../store';
-import * as CameraStore from '../../../store/camera';
+import * as CameraStore from '../../../store/cameraList';
 import { CameraModel } from '../../../models/cameraModel';
 import CameraItem from './Camera';
 
-interface CamerasProps {
-    list: CameraModel [];
+interface Props {
+    list: CameraModel[];
 }
 
-type Props = CamerasProps & typeof CameraStore.actionCreators;
+type CamerasProps = Props & typeof CameraStore.actionCreators;
 
-class CameraList extends React.Component<Props, CameraStore.CameraState> {
+class CameraList extends React.Component<CamerasProps, CameraStore.CameraListState> {
 
     render() {
+        const { getCameraState, startRecording, stopRecording } = this.props
         return <div className="form-inline" style={{ height: '200px', textAlign: 'center' }}>
-                <div style={{ display: 'inline-block' }}> {
-                    this.props.list.map((child) =>
+                    <div style={{ display: 'inline-block' }}> {this.props.list.map((child) =>
                         <CameraItem key={child.id} camera={child}
-                            getCameraImage={(model: CameraModel) => this.props.getCameraImage(model)}
-                            checkCameraMotion={(model: CameraModel) => this.props.checkCameraMotion(model)} /> )}
-                </div>
-              </div>
+                            getCameraState={() => getCameraState(child)}
+                            startRecording={() => startRecording(child)}
+                            stopRecording={() => stopRecording(child)} />)}
+                    </div>
+               </div>
     }
 }
 
 const mapStateToProps = (state: ApplicationState) => {
     return {
-        list: state.camera.list
+        list: state.cameras.cameraList
     };
-
 }
 
 // Wire up the React component to the Redux store
 export default connect(
-    mapStateToProps, // Selects which state properties are merged into the component's props
-    CameraStore.actionCreators                    // Selects which action creators are merged into the component's props
+    mapStateToProps,
+    CameraStore.actionCreators
 )(CameraList);
 
 // Set up HMR re-rendering.

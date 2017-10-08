@@ -46,10 +46,10 @@ namespace Smart.House.Grains.Notifications
                 var notificator = client.GetGrain<INotificator>(result.Identifier);
                 await notificator.Start(result.Identifier);
 
-                if (notificationSettings.Device.EmailNotificationEnabled)
-                    await notificator.SendEmail(notify);
-                if (notificationSettings.Device.SmsNotificationEnabled)
-                    await notificator.SendTextMessage(notify);
+                //if (notificationSettings.Device.EmailNotificationEnabled)
+                //    await notificator.SendEmail(notify);
+                //if (notificationSettings.Device.SmsNotificationEnabled)
+                //    await notificator.SendTextMessage(notify);
             });
         }
 

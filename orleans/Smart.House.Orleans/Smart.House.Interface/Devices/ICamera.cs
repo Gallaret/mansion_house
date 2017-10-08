@@ -8,7 +8,7 @@ namespace Smart.House.Interface.Devices
         public string Identifier { get; private set; }
         public string CurrentMotionFileName { get; set; }
         public bool IsMotionDetected { get; set; }
-
+        public bool IsRecording { get; set; }
         public CameraState() { }
 
         public CameraState(string identifier)
@@ -21,5 +21,7 @@ namespace Smart.House.Interface.Devices
     {
         Task<CameraState> GetState();
         Task<bool> Initialize(string identifier);
+        Task StartRecording();
+        Task StopRecording();
     }
 }

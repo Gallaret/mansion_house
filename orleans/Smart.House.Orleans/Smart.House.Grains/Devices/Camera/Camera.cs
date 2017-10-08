@@ -6,7 +6,6 @@ using System;
 using Orleans.Runtime.Configuration;
 using Smart.House.Interface.Notifications;
 using Smart.House.Services.Devices.Camera.Handlers.Commands;
-using Smart.House.Services.Devices.Center.Handlers.Commands;
 
 namespace Smart.House.Grains.Devices.Camera
 {
@@ -39,6 +38,26 @@ namespace Smart.House.Grains.Devices.Camera
         public async Task<CameraState> GetState()
         {
             return await Task.FromResult(State);
+        }
+
+        public async Task StartRecording()
+        {
+            if (State.IsRecording) return;
+
+            var command = new StartRecording(State.Identifier);
+            await _mediator.DispatchRequest(command);
+
+            State.IsRecording = true;
+        }
+
+        public async Task StopRecording()
+        {
+            //if (!State.IsRecording) return;
+
+            var command = new StopRecording(State.Identifier);
+            await _mediator.DispatchRequest(command);
+
+            State.IsRecording = false;
         }
 
         private async Task MotionDetection()

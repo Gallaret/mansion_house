@@ -29,10 +29,37 @@ namespace Smart.House.Dashboard.Controllers
             var viewModel = new CameraViewModel
             {
                 Identifier = id,
-                IsMotionDetected = state.IsMotionDetected
+                IsMotionDetected = state.IsMotionDetected,
+                IsRecording = state.IsRecording
             };
 
             return new JsonResult(viewModel);       
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> StartRecording([FromBody]string id)
+        {
+            var config = ClientConfiguration.LocalhostSilo();
+            var client = new ClientBuilder().UseConfiguration(config).Build();
+            await client.Connect();
+
+            ICamera camera = client.GetGrain<ICamera>("camera" + id);
+            await camera.StartRecording();
+
+            return Ok();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> StopRecording([FromBody]string id)
+        {
+            var config = ClientConfiguration.LocalhostSilo();
+            var client = new ClientBuilder().UseConfiguration(config).Build();
+            await client.Connect();
+
+            ICamera camera = client.GetGrain<ICamera>("camera" + id);
+            await camera.StopRecording();
+
+            return Ok();
         }
     }
 }

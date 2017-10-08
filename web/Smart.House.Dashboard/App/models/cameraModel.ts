@@ -2,6 +2,6 @@
     id: number;
     name: string;
     url: string;
-    isActive: boolean;
+    isRecording: boolean;
     isMotionDetected: boolean;
 }

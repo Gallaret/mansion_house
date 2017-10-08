@@ -9,5 +9,6 @@ namespace Smart.House.Dashboard.ViewModels
     {
         public string Identifier { get; set; }
         public bool IsMotionDetected { get; set; }
+        public bool IsRecording { get; set; }
     }
 }

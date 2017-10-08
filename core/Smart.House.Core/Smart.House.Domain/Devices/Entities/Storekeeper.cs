@@ -8,19 +8,22 @@
 
     public class Storekeeper : Device
     {
-        public StorageType StorageType { get; private set; }
-
         public Storekeeper() { }
 
         public Storekeeper(string identifier, StorageType storageType) 
             : base(identifier, GetProviderByStorageType(storageType), DeviceType.Storage)
         {
-            StorageType = storageType;
         }
 
-        public void SetStorageType(StorageType storageType)
+        public StorageType GetStorageType()
         {
-            StorageType = storageType;
+            switch (Provider.ToLower())
+            {
+                case "ftp":
+                    return StorageType.Ftp;
+                default:
+                    return StorageType.Local;
+            }
         }
 
         private static string GetProviderByStorageType(StorageType storageType)
@@ -28,9 +31,9 @@
             switch (storageType)
             {
                 case StorageType.Ftp:
-                    return StorageType.Ftp.ToString();
+                    return StorageType.Ftp.ToString().ToLower();
                 default:
-                    return StorageType.Local.ToString();
+                    return StorageType.Local.ToString().ToLower();
             }
         }
     }

@@ -1,49 +1,31 @@
 ﻿import * as React from 'react';
 import { connect } from 'react-redux';
 import { ApplicationState } from '../../../store';
-import * as CameraStore from '../../../store/camera';
+import * as CameraStore from '../../../store/cameraList';
 import { CameraModel } from '../../../models/cameraModel';
 
 interface Props {
     camera: CameraModel
 }
 
-interface PrivateProps {
-    intervals: any[],
-    getCameraImage: any,
-    checkCameraMotion: any
+interface CameraState {
+    model: CameraModel;
 }
 
 type CameraProps = Props & typeof CameraStore.actionCreators;
 
-export default class CameraItem extends React.Component<CameraProps, CameraStore.CameraState> {
-
-    defaultProps: Partial<PrivateProps> = {
-        intervals: [],
-    };
+export default class CameraItem extends React.Component<CameraProps, CameraState> {
 
     componentDidMount() {
 
         var model = this.props.camera;
-        var getCameraImage = this.props.getCameraImage;
-        var checkCameraMotion = this.props.checkCameraMotion;
+        var getState = this.props.getCameraState;
 
-        this.defaultProps.intervals.push(
-            setInterval(function () {
-                getCameraImage(model);
-            }, 1000));
-
-        this.defaultProps.intervals.push(
-            setInterval(function () {
-                checkCameraMotion(model);
-            }, 3000));
+        setInterval(function () { return getState(model) }, 1000);
     }
 
     componentWillUnmount() {
-
-        for (var item in this.defaultProps.intervals) {
-            clearInterval(this.defaultProps.intervals[item]);
-        }
+        clearInterval(0);
     }
 
     render() {
@@ -53,6 +35,8 @@ export default class CameraItem extends React.Component<CameraProps, CameraStore
                        <img src={camera.url} style={{ height: '150px', width: '250px' }} className={camera.isMotionDetected ? 'camera-alert' : 'camera-no-alert'} />
                    </p>
                    <label>{camera.name}</label>
-               </div>;
+                   <button onClick={camera.isRecording ? () => this.props.stopRecording(camera) : () => this.props.startRecording(camera)}>Start</button>
+                   <button onClick={() => this.props.stopRecording(camera)}>Stop</button>
+               </div>
     }
 }
