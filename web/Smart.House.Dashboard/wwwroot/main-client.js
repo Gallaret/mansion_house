@@ -933,58 +933,54 @@ var _this = this;
 var INIT_CAMERAS = 'InitCamerasAction';
 var UPDATE_CAMERA = 'UpdateCameraAction';
 var DefaultCameraListState = {
-    cameraList: []
+    cameraList: [],
+    listVisible: true
 };
 var counter = 0;
 var actionCreators = {
-    getCameraState: function getCameraState(model) {
+    getCameraState: function getCameraState(id) {
         return function (dispatch, getState) {
             return __WEBPACK_IMPORTED_MODULE_0_tslib__["b" /* __awaiter */](_this, void 0, void 0, regeneratorRuntime.mark(function _callee() {
-                var state, newState, response, cameraState;
+                var state, response, cameraState, newState;
                 return regeneratorRuntime.wrap(function _callee$(_context) {
                     while (1) {
                         switch (_context.prev = _context.next) {
                             case 0:
-                                console.log('getState');
                                 state = getState().cameras.cameraList.find(function (camera) {
-                                    return camera.id == model.id;
+                                    return camera.id == id;
                                 });
-                                newState = {
-                                    name: state.name,
-                                    url: state.url + '?data=' + counter++,
-                                    id: state.id,
-                                    isRecording: state.isRecording,
-                                    isMotionDetected: state.isMotionDetected
-                                };
-                                _context.next = 5;
-                                return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_domain_task__["fetch"])('/camera/getCameras?id=' + model.id, {
+                                _context.next = 3;
+                                return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_domain_task__["fetch"])('/camera/getCameras?id=' + id, {
                                     method: 'GET',
                                     headers: {
                                         'Content-Type': 'application/json'
                                     }
                                 });
 
-                            case 5:
+                            case 3:
                                 response = _context.sent;
 
                                 if (!response.ok) {
-                                    _context.next = 12;
+                                    _context.next = 10;
                                     break;
                                 }
 
-                                _context.next = 9;
+                                _context.next = 7;
                                 return response.json();
 
-                            case 9:
+                            case 7:
                                 cameraState = _context.sent;
+                                newState = {
+                                    name: state.name,
+                                    url: state.url,
+                                    id: state.id,
+                                    isRecording: cameraState.isRecording,
+                                    isMotionDetected: cameraState.isMotionDetected
+                                };
 
-                                newState.isMotionDetected = cameraState.isMotionDetected;
-                                newState.isRecording = cameraState.isRecording;
-
-                            case 12:
                                 dispatch({ type: UPDATE_CAMERA, payload: newState });
 
-                            case 13:
+                            case 10:
                             case 'end':
                                 return _context.stop();
                         }
@@ -993,7 +989,7 @@ var actionCreators = {
             }));
         };
     },
-    startRecording: function startRecording(model) {
+    startRecording: function startRecording(id) {
         return function (dispatch, getState) {
             return __WEBPACK_IMPORTED_MODULE_0_tslib__["b" /* __awaiter */](_this, void 0, void 0, regeneratorRuntime.mark(function _callee2() {
                 var response;
@@ -1004,7 +1000,7 @@ var actionCreators = {
                                 _context2.next = 2;
                                 return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_domain_task__["fetch"])('/camera/startRecording', {
                                     method: 'POST',
-                                    body: JSON.stringify(model.id),
+                                    body: JSON.stringify(id),
                                     headers: {
                                         'Content-Type': 'application/json'
                                     }
@@ -1026,7 +1022,7 @@ var actionCreators = {
             }));
         };
     },
-    stopRecording: function stopRecording(model) {
+    stopRecording: function stopRecording(id) {
         return function (dispatch, getState) {
             return __WEBPACK_IMPORTED_MODULE_0_tslib__["b" /* __awaiter */](_this, void 0, void 0, regeneratorRuntime.mark(function _callee3() {
                 var response;
@@ -1037,7 +1033,7 @@ var actionCreators = {
                                 _context3.next = 2;
                                 return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_domain_task__["fetch"])('/camera/stopRecording', {
                                     method: 'POST',
-                                    body: JSON.stringify(model.id),
+                                    body: JSON.stringify(id),
                                     headers: {
                                         'Content-Type': 'application/json'
                                     }
@@ -1063,7 +1059,7 @@ var actionCreators = {
 var reducer = function reducer(state, action) {
     switch (action.type) {
         case INIT_CAMERAS:
-            return Object.assign({}, state, { cameraList: action.payload });
+            return Object.assign({}, state, { cameraList: action.payload, listVisible: true });
         case UPDATE_CAMERA:
             return Object.assign({}, state, { cameraList: state.cameraList.map(function (camera) {
                     return camera.id == action.payload.id ? action.payload : camera;
@@ -2451,65 +2447,120 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 
+var updateView = void 0;
+var updateState = void 0;
+var counter = 0;
 
 var CameraItem = function (_React$Component) {
     _inherits(CameraItem, _React$Component);
 
-    function CameraItem() {
+    function CameraItem(props) {
         _classCallCheck(this, CameraItem);
 
-        return _possibleConstructorReturn(this, (CameraItem.__proto__ || Object.getPrototypeOf(CameraItem)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (CameraItem.__proto__ || Object.getPrototypeOf(CameraItem)).call(this, props));
+
+        _this.state = {
+            isActive: props.isActive,
+            isRecording: props.isRecording,
+            isMotionDetected: props.isMotionDetected,
+            name: props.name,
+            address: props.address
+        };
+        _this.setState = _this.setState.bind(_this);
+        return _this;
     }
 
     _createClass(CameraItem, [{
+        key: 'componentWillReceiveProps',
+        value: function componentWillReceiveProps(nextProps) {
+            this.setState({
+                isRecording: nextProps.isRecording,
+                isMotionDetected: nextProps.isMotionDetected
+            });
+        }
+    }, {
         key: 'componentDidMount',
         value: function componentDidMount() {
-            var model = this.props.camera;
-            var getState = this.props.getCameraState;
-            setInterval(function () {
-                return getState(model);
-            }, 1000);
+            updateView = setInterval(this.updateCameraView, 1000, this.state.address, this.setState);
+            updateState = setInterval(function (props) {
+                return props.getCameraState(props.id);
+            }, 5000, this.props);
         }
     }, {
         key: 'componentWillUnmount',
         value: function componentWillUnmount() {
-            clearInterval(0);
+            clearInterval(updateView);
+            clearInterval(updateState);
+        }
+    }, {
+        key: 'updateCameraView',
+        value: function updateCameraView(address, setState) {
+            setState({
+                address: address + '?data=' + counter++
+            });
+        }
+    }, {
+        key: 'setActive',
+        value: function setActive(value) {
+            this.setState({
+                isActive: value
+            });
+        }
+    }, {
+        key: 'startRecording',
+        value: function startRecording(id) {
+            this.setState({
+                isRecording: true
+            });
+            return this.props.startRecording(id);
+        }
+    }, {
+        key: 'stopRecording',
+        value: function stopRecording(id) {
+            this.setState({
+                isRecording: false
+            });
+            return this.props.stopRecording(id);
         }
     }, {
         key: 'render',
         value: function render() {
             var _this2 = this;
 
-            var camera = this.props.camera;
+            var id = this.props.id;
 
             return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
                 'div',
-                { className: 'form-group text-center', style: { margin: 'auto' } },
+                { className: 'form-group text-center camera-container', onMouseEnter: function onMouseEnter() {
+                        return _this2.setActive(true);
+                    }, onMouseLeave: function onMouseLeave() {
+                        return _this2.setActive(false);
+                    } },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
                     'p',
-                    { className: 'text-center' },
-                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]('img', { src: camera.url, style: { height: '150px', width: '250px' }, className: camera.isMotionDetected ? 'camera-alert' : 'camera-no-alert' })
+                    { className: 'text-center camera-frame', style: { margin: '0px' } },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]('img', { src: this.state.address, style: { height: '125px', width: '200px' }, className: this.state.isRecording ? 'camera-recording' : this.state.isMotionDetected ? 'camera-alert' : 'camera-no-alert' })
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
-                    'label',
-                    null,
-                    camera.name
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
-                    'button',
-                    { onClick: camera.isRecording ? function () {
-                            return _this2.props.stopRecording(camera);
-                        } : function () {
-                            return _this2.props.startRecording(camera);
-                        } },
-                    'Start'
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
-                    'button',
-                    { onClick: function onClick() {
-                            return _this2.props.stopRecording(camera);
-                        } },
-                    'Stop'
+                    'div',
+                    { className: this.state.isActive ? 'camera-bottom camera-visible' : 'camera-bottom camera-hidden' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                        'label',
+                        { className: 'camera-name' },
+                        this.state.name
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                        'div',
+                        { style: { float: 'right' } },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]('span', { className: 'glyphicon glyphicon-play camera-play', style: { padding: '3px' }, onClick: this.state.isRecording ? function () {
+                                return _this2.stopRecording(id);
+                            } : function () {
+                                return _this2.startRecording(id);
+                            } }),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]('span', { className: 'glyphicon glyphicon-stop', style: { width: '25px', cursor: 'pointer', color: 'gray', padding: '3px' }, onClick: function onClick() {
+                                return _this2.stopRecording(id);
+                            } })
+                    )
                 )
             );
         }
@@ -2547,15 +2598,30 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var CameraList = function (_React$Component) {
     _inherits(CameraList, _React$Component);
 
-    function CameraList() {
+    function CameraList(props) {
         _classCallCheck(this, CameraList);
 
-        return _possibleConstructorReturn(this, (CameraList.__proto__ || Object.getPrototypeOf(CameraList)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (CameraList.__proto__ || Object.getPrototypeOf(CameraList)).call(this, props));
+
+        _this.state = {
+            cameraList: props.list,
+            listVisible: props.listVisible
+        };
+        return _this;
     }
 
     _createClass(CameraList, [{
+        key: 'toogleCameras',
+        value: function toogleCameras() {
+            this.setState({
+                listVisible: !this.state.listVisible
+            });
+        }
+    }, {
         key: 'render',
         value: function render() {
+            var _this2 = this;
+
             var _props = this.props,
                 _getCameraState = _props.getCameraState,
                 _startRecording = _props.startRecording,
@@ -2566,17 +2632,32 @@ var CameraList = function (_React$Component) {
                 { className: 'form-inline', style: { height: '200px', textAlign: 'center' } },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
                     'div',
-                    { style: { display: 'inline-block' } },
-                    ' ',
-                    this.props.list.map(function (child) {
-                        return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__Camera__["a" /* default */], { key: child.id, camera: child, getCameraState: function getCameraState() {
-                                return _getCameraState(child);
-                            }, startRecording: function startRecording() {
-                                return _startRecording(child);
-                            }, stopRecording: function stopRecording() {
-                                return _stopRecording(child);
-                            } });
-                    })
+                    { className: 'camera-topbar' },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                        'div',
+                        { style: { height: '30px', position: 'relative' } },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]('span', { className: 'glyphicon glyphicon-chevron-down camera-collapse-down', onClick: function onClick() {
+                                return _this2.toogleCameras();
+                            }, style: { padding: '7px' } }),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]('span', { className: 'glyphicon glyphicon-play camera-play', style: { padding: '7px' } }),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]('span', { className: 'glyphicon glyphicon-eye-open camera-motion', style: { padding: '7px' } }),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]('span', { className: 'glyphicon glyphicon-volume-up camera-sound', style: { padding: '7px' } }),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]('span', { className: 'glyphicon glyphicon-option-horizontal camera-topbar-settings' })
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                        'div',
+                        { className: this.state.listVisible ? 'slide-down' : 'slide-up' },
+                        ' ',
+                        this.props.list.map(function (camera) {
+                            return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__Camera__["a" /* default */], { key: camera.id, id: camera.id, address: camera.url, name: camera.name, isActive: false, isMotionDetected: camera.isMotionDetected, isRecording: camera.isRecording, getCameraState: function getCameraState() {
+                                    return _getCameraState(camera.id);
+                                }, startRecording: function startRecording() {
+                                    return _startRecording(camera.id);
+                                }, stopRecording: function stopRecording() {
+                                    return _stopRecording(camera.id);
+                                } });
+                        })
+                    )
                 )
             );
         }
@@ -2587,7 +2668,8 @@ var CameraList = function (_React$Component) {
 
 var mapStateToProps = function mapStateToProps(state) {
     return {
-        list: state.cameras.cameraList
+        list: state.cameras.cameraList,
+        listVisible: state.cameras.listVisible
     };
 };
 

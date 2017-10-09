@@ -44,6 +44,14 @@ namespace Smart.House.Services.Devices.Camera
             return new Motion(motionDetected, result.FileName);
         }
 
+        public async Task<bool> Recording(string identifier)
+        {
+            var camera = await _cameraRepository.GetAsync(identifier);
+            var provider = _cameraProviderFactory.Create(camera.Provider);
+
+            return await provider.IsRecording(identifier);
+        }
+
         private async Task<Motion> DetectMotion(Camera camera, string fileName)
         {                  
             var provider = _cameraProviderFactory.Create(camera.Provider);

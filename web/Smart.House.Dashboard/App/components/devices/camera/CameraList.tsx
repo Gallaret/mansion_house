@@ -7,28 +7,59 @@ import CameraItem from './Camera';
 
 interface Props {
     list: CameraModel[];
+    listVisible: boolean;
 }
 
 type CamerasProps = Props & typeof CameraStore.actionCreators;
 
 class CameraList extends React.Component<CamerasProps, CameraStore.CameraListState> {
+    constructor(props: CamerasProps) {
+        super(props);
+
+        this.state = {
+            cameraList: props.list,
+            listVisible: props.listVisible
+        }
+    }
+
+    toogleCameras() {
+        this.setState({
+            listVisible: !this.state.listVisible
+        });
+    }
 
     render() {
         const { getCameraState, startRecording, stopRecording } = this.props
         return <div className="form-inline" style={{ height: '200px', textAlign: 'center' }}>
-                    <div style={{ display: 'inline-block' }}> {this.props.list.map((child) =>
-                        <CameraItem key={child.id} camera={child}
-                            getCameraState={() => getCameraState(child)}
-                            startRecording={() => startRecording(child)}
-                            stopRecording={() => stopRecording(child)} />)}
+                <div className="camera-topbar">
+                <div style={{ height: '30px', position: 'relative' }}>
+                        <span className="glyphicon glyphicon-chevron-down camera-collapse-down" onClick={() => this.toogleCameras()} style={{ padding: '7px' }} />
+                        <span className="glyphicon glyphicon-play camera-play" style={{ padding: '7px' }}></span>
+                        <span className="glyphicon glyphicon-eye-open camera-motion" style={{ padding: '7px' }}></span>
+                        <span className="glyphicon glyphicon-volume-up camera-sound" style={{ padding: '7px' }}></span>
+                        <span className="glyphicon glyphicon-option-horizontal camera-topbar-settings"></span>
                     </div>
+                    <div className={this.state.listVisible ? 'slide-down' : 'slide-up'}> {this.props.list.map((camera) =>
+                        <CameraItem key={camera.id}
+                                    id={camera.id}
+                                    address={camera.url}
+                                    name={camera.name} 
+                                    isActive={false}
+                                    isMotionDetected={camera.isMotionDetected}
+                                    isRecording={camera.isRecording}
+                                    getCameraState={() => getCameraState(camera.id)}
+                                    startRecording={() => startRecording(camera.id)}
+                                    stopRecording={() => stopRecording(camera.id)} />)}
+                   </div>
+                </div>
                </div>
     }
 }
 
 const mapStateToProps = (state: ApplicationState) => {
     return {
-        list: state.cameras.cameraList
+        list: state.cameras.cameraList,
+        listVisible: state.cameras.listVisible
     };
 }
 

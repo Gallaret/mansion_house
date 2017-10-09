@@ -8,10 +8,12 @@ export const UPDATE_CAMERA = 'UpdateCameraAction';
 
 export interface CameraListState {
     cameraList: CameraModel[];
+    listVisible: boolean;
 }
 
 const DefaultCameraListState: CameraListState = {
-    cameraList: []
+    cameraList: [],
+    listVisible: true
 }
 
 export interface UpdateCameraAction {
@@ -31,25 +33,14 @@ interface InitCamerasAction {
 // TODO import Success and Invalid actions from server and handle them
 type KnownAction = InitCamerasAction | UpdateCameraAction
 
-
 let counter = 0;
 
 export const actionCreators = {
-    getCameraState: (model: CameraModel): AppThunkAction<KnownAction> => async (dispatch, getState) => {
-        console.log('getState');
-
+    getCameraState: (id: number): AppThunkAction<KnownAction> => async (dispatch, getState) => {
         var state = getState().cameras.cameraList
-            .find(camera => camera.id == model.id);
+            .find(camera => camera.id == id);
 
-        var newState = {
-            name: state.name,
-            url: state.url + '?data=' + counter++,
-            id: state.id,
-            isRecording: state.isRecording,
-            isMotionDetected: state.isMotionDetected
-        };
-
-        let response = <Response>await fetch('/camera/getCameras?id=' + model.id, {
+        let response = <Response>await fetch('/camera/getCameras?id=' + id, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -58,18 +49,22 @@ export const actionCreators = {
 
         if (response.ok) {
             var cameraState = await response.json();
+            var newState = {
+                name: state.name,
+                url: state.url,
+                id: state.id,
+                isRecording: cameraState.isRecording,
+                isMotionDetected: cameraState.isMotionDetected
+            };
 
-            newState.isMotionDetected = cameraState.isMotionDetected;
-            newState.isRecording = cameraState.isRecording;
-        }
-
-        dispatch({ type: UPDATE_CAMERA, payload: newState });
+            dispatch({ type: UPDATE_CAMERA, payload: newState });
+        }       
     },
 
-    startRecording: (model: CameraModel): AppThunkAction<KnownAction> => async (dispatch, getState) => {
+    startRecording: (id: number): AppThunkAction<KnownAction> => async (dispatch, getState) => {
         let response = <Response>await fetch('/camera/startRecording', {
             method: 'POST',
-            body: JSON.stringify(model.id),
+            body: JSON.stringify(id),
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -80,10 +75,10 @@ export const actionCreators = {
         }
     },
 
-    stopRecording: (model: CameraModel): AppThunkAction<KnownAction> => async (dispatch, getState) => {
+    stopRecording: (id: number): AppThunkAction<KnownAction> => async (dispatch, getState) => {
         let response = <Response>await fetch('/camera/stopRecording', {
             method: 'POST',
-            body: JSON.stringify(model.id),
+            body: JSON.stringify(id),
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -98,7 +93,7 @@ export const actionCreators = {
 export const reducer: Reducer<CameraListState> = (state: CameraListState, action: KnownAction) => {
     switch (action.type) {
         case INIT_CAMERAS:
-            return { ...state, cameraList: action.payload };
+            return { ...state, cameraList: action.payload, listVisible: true };
         case UPDATE_CAMERA:
             return {
                 ...state, cameraList: state.cameraList.map(

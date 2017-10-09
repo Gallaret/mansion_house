@@ -19,6 +19,16 @@ namespace Smart.House.Camera.Recorders
             _libraryPath = libraryPath;
         }
 
+        public async Task<bool> IsRecording(string recorderId)
+        {
+            if (_players.TryGetValue(recorderId, out VlcMediaPlayer player))
+            {
+                return await Task.FromResult(player.IsPlaying());
+            }
+
+            return await Task.FromResult(false);
+        }
+
         public async Task Start(string recorderId, Uri uri, string param)
         {
             if (!_players.TryGetValue(recorderId, out VlcMediaPlayer player))

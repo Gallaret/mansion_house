@@ -19,10 +19,13 @@ namespace Smart.House.Grains.Devices.Camera
             var motion = await _cameraService.MotionDetection(state.Identifier,
                 state.CurrentMotionFileName);
 
+            var recording = await _cameraService.Recording(state.Identifier);
+
             return new CameraState(state.Identifier)
             {
                 CurrentMotionFileName = motion.FileName,
-                IsMotionDetected = motion.IsDetected
+                IsMotionDetected = motion.IsDetected,
+                IsRecording = recording
             };
         }
     }

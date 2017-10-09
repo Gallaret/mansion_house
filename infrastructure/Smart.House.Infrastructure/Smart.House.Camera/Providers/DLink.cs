@@ -45,6 +45,11 @@ namespace Smart.House.Camera
             await _recordingProvider.Stop(recorder);
         }
 
+        public async Task<bool> IsRecording(string recorder)
+        {
+            return await _recordingProvider.IsRecording(recorder);
+        }
+
         public async Task StartRecording(RecordingStream stream)
         {
             if (!Directory.Exists(RECORDING_DIRECTORY))

@@ -5,38 +5,109 @@ import * as CameraStore from '../../../store/cameraList';
 import { CameraModel } from '../../../models/cameraModel';
 
 interface Props {
-    camera: CameraModel
+    id: number,
+    isActive: boolean;
+    isRecording: boolean;
+    isMotionDetected: boolean;
+    name: string,
+    address: string
 }
 
 interface CameraState {
-    model: CameraModel;
+    isActive: boolean;
+    isRecording: boolean;
+    isMotionDetected: boolean;
+    name: string,
+    address: string
 }
 
 type CameraProps = Props & typeof CameraStore.actionCreators;
 
+let updateView;
+let updateState;
+let counter = 0;
+
 export default class CameraItem extends React.Component<CameraProps, CameraState> {
+    constructor(props: CameraProps) {
+        super(props);
+
+        this.state = {
+            isActive: props.isActive,
+            isRecording: props.isRecording,
+            isMotionDetected: props.isMotionDetected,
+            name: props.name,
+            address: props.address
+        };
+
+        this.setState = this.setState.bind(this);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            isRecording: nextProps.isRecording,
+            isMotionDetected: nextProps.isMotionDetected
+        });
+    }
 
     componentDidMount() {
+        updateView = setInterval(this.updateCameraView,
+            1000, this.state.address, this.setState);
 
-        var model = this.props.camera;
-        var getState = this.props.getCameraState;
-
-        setInterval(function () { return getState(model) }, 1000);
+        updateState = setInterval(function (props) {
+            return props.getCameraState(props.id);
+        }, 5000, this.props);
     }
 
     componentWillUnmount() {
-        clearInterval(0);
+        clearInterval(updateView);
+        clearInterval(updateState);
+    }
+
+    updateCameraView(address, setState) {
+        setState({
+            address: address + '?data=' + counter++
+        });
+    }
+
+    setActive(value: boolean) {
+        this.setState({
+            isActive: value
+        });
+    }
+
+    startRecording(id: number) {
+        this.setState({
+            isRecording: true
+        });
+
+        return this.props.startRecording(id);
+    }
+
+    stopRecording(id: number) {
+        this.setState({
+            isRecording: false
+        });
+
+        return this.props.stopRecording(id);
     }
 
     render() {
-        const { camera } = this.props
-        return <div className="form-group text-center" style={{ margin: 'auto' }}>
-                   <p className="text-center">
-                       <img src={camera.url} style={{ height: '150px', width: '250px' }} className={camera.isMotionDetected ? 'camera-alert' : 'camera-no-alert'} />
-                   </p>
-                   <label>{camera.name}</label>
-                   <button onClick={camera.isRecording ? () => this.props.stopRecording(camera) : () => this.props.startRecording(camera)}>Start</button>
-                   <button onClick={() => this.props.stopRecording(camera)}>Stop</button>
+        const { id } = this.props
+        return <div className="form-group text-center camera-container" onMouseEnter={() => this.setActive(true)} onMouseLeave={() => this.setActive(false)}>
+                    <p className="text-center camera-frame" style={{ margin: '0px' }}>
+                        <img src={this.state.address} style={{ height: '125px', width: '200px' }}
+                            className={this.state.isRecording ? 'camera-recording' : this.state.isMotionDetected ? 'camera-alert' : 'camera-no-alert'} />
+                    </p>
+                    <div className={this.state.isActive ? 'camera-bottom camera-visible' : 'camera-bottom camera-hidden'}>
+                        <label className="camera-name">{this.state.name}</label>
+                        <div style={{ float: 'right' }}>
+                            <span className="glyphicon glyphicon-play camera-play" style={{ padding: '3px' }}
+                                onClick={this.state.isRecording ? () => this.stopRecording(id) : () => this.startRecording(id)}></span>
+                            <span className="glyphicon glyphicon-stop" style={{ width: '25px', cursor: 'pointer', color: 'gray', padding: '3px' }}
+                                  onClick={() => this.stopRecording(id)}></span>
+                        </div>         
+                   </div>
+                  
                </div>
     }
 }

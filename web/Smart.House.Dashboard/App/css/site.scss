@@ -93,12 +93,135 @@ footer {
 }
 
 .camera-alert {
-    border: 2px solid red;
+    border-left: 4px solid #d9331b;
+    border-right: 4px solid #d9331b;
+    border-bottom: 4px solid #d9331b;
+}
+
+.camera-recording {
+    border-left: 4px solid mediumseagreen;
+    border-right: 4px solid mediumseagreen;
+    border-bottom: 4px solid mediumseagreen;
 }
 
 .camera-no-alert {
-    border: none;
+    border-left: 4px solid white;
+    border-right: 4px solid white;
+    border-bottom: 4px solid white;
 }
+
+.camera-topbar {
+    height: 30px;
+    background: white;
+    display: inline-block;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.camera-collapse-down {
+    padding: 5px;
+    position: absolute;
+    color: gray;
+    cursor: pointer;
+    left: -15px;
+    top: 3px;
+}
+
+.camera-frame {
+    -webkit-box-shadow: 0px 1px 4px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow: 0px 1px 4px 0px rgba(50, 50, 50, 0.75);
+    box-shadow: 0px 1px 4px 0px rgba(50, 50, 50, 0.75);
+}
+
+.camera-name {
+    color:gray;
+    margin:1px 10px 1px 10px;
+    font-family:'HoloLens MDL2 Assets';
+    float:left;
+    font-size:small;
+    font-variant:small-caps;
+}
+
+.camera-container {
+    margin: 0px;
+    float:left;
+}
+
+.camera-bottom {
+    background: white;
+    height: 25px;
+    width: 100%;
+    display: inline-block;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    -webkit-box-shadow: 0px 1px 4px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow: 0px 1px 4px 0px rgba(50, 50, 50, 0.75);
+    box-shadow: 0px 1px 4px 0px rgba(50, 50, 50, 0.75);
+}
+
+.camera-play:hover {
+    color: mediumseagreen;
+}
+
+.camera-play {
+    color: gray;
+    cursor: pointer;
+}
+
+.camera-motion:hover {
+    color: darkorange;
+}
+
+.camera-motion {
+    color: gray;
+    cursor: pointer;
+}
+
+.camera-sound:hover {
+    color: lightskyblue;
+}
+
+.camera-sound {
+    color: gray;
+    cursor: pointer;
+}
+
+.camera-topbar-settings {
+    padding: 5px;
+    position: absolute;
+    color: gray;
+    cursor: pointer;
+    right: -15px;
+    top: 3px;
+}
+
+.camera-visible {
+    display: inline-block;
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 1s linear;
+}
+
+.camera-hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 1s, opacity 1s linear;
+}
+
+.slide-up, .slide-down {
+    overflow: hidden;
+}
+
+.slide-up > div, .slide-down > div {
+    transform: translateY(-100%);
+    transition: .4s ease-in-out;
+}
+
+.slide-down > div {
+    transform: translateY(0);
+} 
 
 // Login
 .omb_login {

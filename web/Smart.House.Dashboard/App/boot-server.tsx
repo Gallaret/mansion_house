@@ -30,13 +30,12 @@ export default createServerRenderer(params => {
 
             let Cameras = ([] as CameraModel[]);
             Cameras.push({
-                name: 'Salon',
+                name: 'Salon Front',
                 url: 'http://192.168.0.234/image/jpeg.cgi',
                 id: 1,
                 isMotionDetected: false,
                 isRecording: false
             });
-
             const store = configureStore();
             store.dispatch({ type: INIT_CAMERAS, payload: Cameras });
 

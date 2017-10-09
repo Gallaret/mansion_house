@@ -7,5 +7,6 @@ namespace Smart.House.Application.Domain.Devices.Camera.Providers
     {
         Task Start(string recorderId, Uri uri, string param);
         Task Stop(string recorderId);
+        Task<bool> IsRecording(string recorderId);
     }
 }

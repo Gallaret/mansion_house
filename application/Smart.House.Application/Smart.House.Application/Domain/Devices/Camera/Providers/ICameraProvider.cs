@@ -9,5 +9,6 @@ namespace Smart.House.Application.Domain.Devices.Camera.Providers
         Task<Motion> DetectMotion(Storage storage);
         Task StartRecording(RecordingStream stream);
         Task StopRecording(string recorder);
+        Task<bool> IsRecording(string recorder);
     }
 }
