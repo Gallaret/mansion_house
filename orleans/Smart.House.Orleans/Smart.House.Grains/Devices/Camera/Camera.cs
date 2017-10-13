@@ -26,7 +26,7 @@ namespace Smart.House.Grains.Devices.Camera
 
             stateWorker = RegisterTimer(async (state) =>
             {
-                State = await _mediator.Dispatch(state as CameraState);
+                State = await _mediator.Dispatch(State);
 
                 await MotionDetection();
 

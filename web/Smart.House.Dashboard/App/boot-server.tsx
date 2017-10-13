@@ -6,8 +6,8 @@ import createMemoryHistory from 'history/lib/createMemoryHistory';
 import { createServerRenderer, RenderResult } from 'aspnet-prerendering';
 import routes from './routes';
 import configureStore from './configureStore';
-import { INIT_CAMERAS } from './store/cameraList'
-import { CameraModel } from './models/cameraModel';
+import { Camera, Display } from './components/devices/camera/model/model';
+import { ADD_CAMERA, CREATE_DISPLAY } from './components/devices/camera/state/displayer';
 
 export default createServerRenderer(params => {
     return new Promise<RenderResult>((resolve, reject) => {
@@ -28,17 +28,35 @@ export default createServerRenderer(params => {
                 throw new Error(`The location '${params.url}' doesn't match any route configured in react-router.`);
             }
 
-            let Cameras = ([] as CameraModel[]);
-            Cameras.push({
-                name: 'Salon Front',
-                url: 'http://192.168.0.234/image/jpeg.cgi',
-                id: 1,
-                isMotionDetected: false,
-                isRecording: false
-            });
             const store = configureStore();
-            store.dispatch({ type: INIT_CAMERAS, payload: Cameras });
 
+            store.dispatch({
+                type: CREATE_DISPLAY,
+                payload: {
+                    id: 1
+                }
+            });
+
+            store.dispatch({
+                type: ADD_CAMERA,
+                payload: {
+                    display: 1,
+                    camera: {
+                        name: 'Salon Front',
+                        id: 1
+                    }
+                }
+            });
+            store.dispatch({
+                type: ADD_CAMERA,
+                payload: {
+                    display: 1,
+                    camera: {
+                        name: 'Salon Back',
+                        id: 2,
+                    }
+                }
+            });
             const app = (
                 <Provider store={store}>
                     <RouterContext {...renderProps} />

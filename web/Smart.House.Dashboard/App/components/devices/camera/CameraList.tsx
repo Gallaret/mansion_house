@@ -1,23 +1,29 @@
 ﻿import * as React from 'react';
 import { connect } from 'react-redux';
 import { ApplicationState } from '../../../store';
-import * as CameraStore from '../../../store/cameraList';
 import { CameraModel } from '../../../models/cameraModel';
 import CameraItem from './Camera';
+import { activeCamerasSelector } from './model/orm';
+import { Display, Camera } from "../../../components/devices/camera/model/model";
+import { CameraViewModel } from "../../../components/devices/camera/model/viewmodel";
+import * as DisplayStore from "../../../components/devices/camera/state/displayer";
 
 interface Props {
-    list: CameraModel[];
+    list: CameraViewModel[];
     listVisible: boolean;
 }
 
-type CamerasProps = Props & typeof CameraStore.actionCreators;
+interface State {
+    listVisible: boolean;
+}
 
-class CameraList extends React.Component<CamerasProps, CameraStore.CameraListState> {
+type CamerasProps = Props & typeof DisplayStore.actionCreators;
+
+class CameraList extends React.Component<CamerasProps, State> {
     constructor(props: CamerasProps) {
         super(props);
 
         this.state = {
-            cameraList: props.list,
             listVisible: props.listVisible
         }
     }
@@ -42,7 +48,7 @@ class CameraList extends React.Component<CamerasProps, CameraStore.CameraListSta
                     <div className={this.state.listVisible ? 'slide-down' : 'slide-up'}> {this.props.list.map((camera) =>
                         <CameraItem key={camera.id}
                                     id={camera.id}
-                                    address={camera.url}
+                                    address={camera.address}
                                     name={camera.name} 
                                     isActive={false}
                                     isMotionDetected={camera.isMotionDetected}
@@ -58,15 +64,15 @@ class CameraList extends React.Component<CamerasProps, CameraStore.CameraListSta
 
 const mapStateToProps = (state: ApplicationState) => {
     return {
-        list: state.cameras.cameraList,
-        listVisible: state.cameras.listVisible
+        list: activeCamerasSelector(state.display),
+        listVisible: true
     };
 }
 
 // Wire up the React component to the Redux store
 export default connect(
     mapStateToProps,
-    CameraStore.actionCreators
+    DisplayStore.actionCreators
 )(CameraList);
 
 // Set up HMR re-rendering.

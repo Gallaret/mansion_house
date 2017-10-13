@@ -1,7 +1,7 @@
 ﻿import * as React from 'react';
 import { connect } from 'react-redux';
 import { ApplicationState } from '../../../store';
-import * as CameraStore from '../../../store/cameraList';
+import * as CameraStore from "../../../components/devices/camera/state/displayer";
 import { CameraModel } from '../../../models/cameraModel';
 
 interface Props {
@@ -13,12 +13,13 @@ interface Props {
     address: string
 }
 
-interface CameraState {
-    isActive: boolean;
+interface State {
+    id: number;
+    name: string;
+    address: string;
     isRecording: boolean;
     isMotionDetected: boolean;
-    name: string,
-    address: string
+    isActive: boolean;
 }
 
 type CameraProps = Props & typeof CameraStore.actionCreators;
@@ -27,11 +28,12 @@ let updateView;
 let updateState;
 let counter = 0;
 
-export default class CameraItem extends React.Component<CameraProps, CameraState> {
+export default class CameraItem extends React.Component<CameraProps, State> {
     constructor(props: CameraProps) {
         super(props);
 
         this.state = {
+            id: props.id,
             isActive: props.isActive,
             isRecording: props.isRecording,
             isMotionDetected: props.isMotionDetected,
@@ -101,7 +103,7 @@ export default class CameraItem extends React.Component<CameraProps, CameraState
                     <div className={this.state.isActive ? 'camera-bottom camera-visible' : 'camera-bottom camera-hidden'}>
                         <label className="camera-name">{this.state.name}</label>
                         <div style={{ float: 'right' }}>
-                            <span className="glyphicon glyphicon-play camera-play" style={{ padding: '3px' }}
+                            <span className="glyphicon glyphicon-record camera-play" style={{ padding: '3px' }}
                                 onClick={this.state.isRecording ? () => this.stopRecording(id) : () => this.startRecording(id)}></span>
                             <span className="glyphicon glyphicon-stop" style={{ width: '25px', cursor: 'pointer', color: 'gray', padding: '3px' }}
                                   onClick={() => this.stopRecording(id)}></span>
