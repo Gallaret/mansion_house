@@ -4,10 +4,10 @@ import { renderToString } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
 import createMemoryHistory from 'history/lib/createMemoryHistory';
 import { createServerRenderer, RenderResult } from 'aspnet-prerendering';
-import routes from './routes';
-import configureStore from './configureStore';
-import { Camera, Display } from './components/devices/camera/model/model';
-import { ADD_CAMERA, CREATE_DISPLAY } from './components/devices/camera/state/displayer';
+import routes from './composition/routes';
+import configureStore from './composition/configureStore';
+import { Camera, Display } from './composition/components/devices/camera/model/model';
+import { ADD_CAMERA, CREATE_DISPLAY } from './composition/components/devices/camera/state/displayer';
 
 export default createServerRenderer(params => {
     return new Promise<RenderResult>((resolve, reject) => {

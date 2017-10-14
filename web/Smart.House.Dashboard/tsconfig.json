@@ -6,6 +6,7 @@
     "module": "es2015",
     "jsx": "preserve",
     "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "sourceMap": true,
     "skipDefaultLibCheck": true,
     "importHelpers": true,
@@ -13,7 +14,7 @@
     "allowSyntheticDefaultImports": true, // for classNames
     "lib": [ "es6", "dom" ],
     "allowJs": false,
-    "types": [ "webpack-env" ],
+    "types": [ "webpack-env", "reflect-metadata" ],
     "paths": {
       "*": [ "./App/types/*", "*" ],
       // Fix "Duplicate identifier" errors caused by multiple dependencies fetching their own copies of type definitions.
