@@ -47,16 +47,6 @@ export default createServerRenderer(params => {
                     }
                 }
             });
-            store.dispatch({
-                type: ADD_CAMERA,
-                payload: {
-                    display: 1,
-                    camera: {
-                        name: 'Salon Back',
-                        id: 2,
-                    }
-                }
-            });
             const app = (
                 <Provider store={store}>
                     <RouterContext {...renderProps} />

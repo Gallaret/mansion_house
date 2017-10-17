@@ -23,10 +23,13 @@
     <None Remove="App\composition\components\devices\camera\model\viewmodel.ts" />
     <None Remove="App\composition\components\devices\camera\selector\selector.ts" />
     <None Remove="App\composition\components\devices\camera\state\displayer.ts" />
+    <None Remove="App\composition\components\devices\television\services\television.ts" />
+    <None Remove="App\composition\components\devices\television\Television.tsx" />
     <None Remove="App\composition\components\devices\types.ts" />
     <None Remove="App\composition\ioc\container.ts" />
     <None Remove="App\composition\ioc\decorators.ts" />
     <None Remove="App\composition\services\camera.ts" />
+    <None Remove="App\composition\services\television.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -69,7 +72,10 @@
     <TypeScriptCompile Include="App\composition\components\devices\camera\state\camera.ts" />
     <TypeScriptCompile Include="App\composition\components\devices\camera\state\displayer.ts" />
     <TypeScriptCompile Include="App\composition\components\devices\camera\services\camera.ts" />
+    <TypeScriptCompile Include="App\composition\components\devices\television\services\television.ts" />
+    <TypeScriptCompile Include="App\composition\components\devices\television\Television.tsx" />
     <TypeScriptCompile Include="App\composition\services\camera.ts" />
+    <TypeScriptCompile Include="App\composition\services\television.ts" />
     <TypeScriptCompile Include="App\composition\services\types.ts" />
     <TypeScriptCompile Include="App\composition\ioc\container.ts" />
     <TypeScriptCompile Include="App\composition\ioc\decorators.ts" />

@@ -32,11 +32,13 @@ body {
 }
 
 #hero {
-    color: white;
-    background-color: darkgray;
+    color: antiquewhite;
+    background-color: white;
     position: relative;
     display: block;
     transform-style: preserve-3d;
+    -webkit-box-shadow: inset 10px 10px 250px 50px #EDEDED;
+    box-shadow: inset 10px 10px 250px 50px #EDEDED;
 
     .container {
         height: 100%;
@@ -136,7 +138,7 @@ footer {
 }
 
 .camera-name {
-    color:gray;
+    color:lightblue;
     margin:1px 10px 1px 10px;
     font-family:'HoloLens MDL2 Assets';
     float:left;
@@ -211,6 +213,70 @@ footer {
     transition: visibility 0s 1s, opacity 1s linear;
 }
 
+.image-frame {
+    width: 130px;
+    width: 175px;
+    border: 3px solid silver;
+    -webkit-box-shadow: 0px 1px 4px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow: 0px 1px 4px 0px rgba(50, 50, 50, 0.75);
+    box-shadow: 0px 1px 4px 0px rgba(50, 50, 50, 0.75);
+}
+
+.image {
+    width: 125px;
+    width: 170px;
+    border: 5px solid white;
+    -webkit-box-shadow: 0px 1px 4px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow: 0px 1px 4px 0px rgba(50, 50, 50, 0.75);
+    box-shadow: 0px 1px 4px 0px rgba(50, 50, 50, 0.75);
+}
+
+.television-bottom {
+    background: black;
+    height: 20px;
+    width: 100%;
+    display: inline-block;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    -webkit-box-shadow: 0px 1px 4px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow: 0px 1px 4px 0px rgba(50, 50, 50, 0.75);
+    box-shadow: 0px 1px 4px 0px rgba(50, 50, 50, 0.75);
+}
+
+.television-fireplace:hover {
+    color: firebrick;
+}
+
+.television-fireplace {
+    color: floralwhite;
+    cursor: pointer;
+}
+
+.television-water:hover {
+    color: cornflowerblue;
+}
+
+.television-water {
+    color: floralwhite;
+    cursor: pointer;
+}
+
+.television-leaf:hover {
+    color: forestgreen;
+}
+
+.television-leaf {
+    color: floralwhite;
+    cursor: pointer;
+}
+
+.shelf {
+    -webkit-box-shadow: 0px 17px 5px 7px rgba(0,0,0,0.21);
+    -moz-box-shadow: 0px 17px 5px 7px rgba(0,0,0,0.21);
+    box-shadow: 0px 17px 5px 7px rgba(0,0,0,0.21);
+    background: rgba(255,255,255,1);
+}
+
 .slide-up, .slide-down {
     overflow: hidden;
 }
@@ -222,7 +288,20 @@ footer {
 
 .slide-down > div {
     transform: translateY(0);
-} 
+}
+
+.fancy-border {
+    border-left: 4px solid;
+    border-top: 4px solid;
+    border-right: 4px solid;
+    border-image: url("https://s12.postimg.org/kebji5qfd/border.png") 1 stretch repeat;
+    /*-webkit-filter: blur(3px) brightness(0.8);
+    -webkit-transform-origin: top left;
+    -webkit-transform: scale(5);
+    -moz-filter: blur(3px) brightness(0.8);
+    -moz-transform-origin: top left;
+    -moz-transform: scale(5);*/
+}
 
 // Login
 .omb_login {

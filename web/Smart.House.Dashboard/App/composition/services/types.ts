@@ -1,3 +1,4 @@
 ﻿export const Services = {
-    CameraService: Symbol("CameraService")
+    CameraService: Symbol("CameraService"),
+    TelevisionService: Symbol("TelevisionService")
 };

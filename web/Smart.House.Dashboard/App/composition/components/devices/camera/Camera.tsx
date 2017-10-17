@@ -58,7 +58,7 @@ export default class CameraItem extends React.Component<Props, State> {
 
     componentDidMount() {
         updateView = setInterval(this.updateCameraView,
-            1000, this.state.address, this.setState);
+            5000, this.state.address, this.setState);
 
         updateState = setInterval(this.updateCameraState,
             5000, this.state.id,
@@ -88,20 +88,20 @@ export default class CameraItem extends React.Component<Props, State> {
         updateState(camera);
     }
 
-    startRecording(id: number) {
+    async startRecording(id: number) {
         this.setState({
             isRecording: true
         });
 
-        this._printService.startRecording(id);
+        await this._printService.startRecording(id);
     }
 
-    stopRecording(id: number) {
+    async stopRecording(id: number) {
         this.setState({
             isRecording: false
         });
 
-        this._printService.stopRecording(id);
+        await this._printService.stopRecording(id);
     }
 
     render() {
@@ -117,7 +117,7 @@ export default class CameraItem extends React.Component<Props, State> {
                             <span className="glyphicon glyphicon-record camera-play" style={{ padding: '3px' }}
                                 onClick={this.state.isRecording ? () => this.stopRecording(id) : () => this.startRecording(id)}></span>
                             <span className="glyphicon glyphicon-stop" style={{ width: '25px', cursor: 'pointer', color: 'gray', padding: '3px' }}
-                                  onClick={() => this.stopRecording(id)}></span>
+                                onClick={() => this.stopRecording(id)}></span>
                         </div>         
                    </div>
                   
