@@ -6671,14 +6671,22 @@ var Home = function (_React$Component) {
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_5__devices_television_Television__["a" /* default */], { id: 1, isActive: false, isBurning: false }),
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
                                         'div',
-                                        { style: { height: "75px", clear: "both" } },
+                                        { style: { height: "80px", clear: "both" } },
                                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
                                             'div',
-                                            { className: 'shelf', style: { width: "90%", height: "50px", border: "3px solid rgba(193, 155, 108, 1)", margin: "0 auto" } },
-                                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]('div', { style: { width: "25%", height: "44px", float: "left", background: "white", borderRight: "3px solid rgba(193, 155, 108, 1)" } }),
-                                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]('div', { style: { width: "25%", height: "44px", float: "left", borderRight: "3px solid rgba(193, 155, 108, 1)" } }),
-                                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]('div', { style: { width: "25%", height: "44px", float: "left", borderRight: "3px solid rgba(193, 155, 108, 1)" } }),
-                                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]('div', { style: { width: "25%", height: "44px", float: "left", background: "white" } })
+                                            { className: 'shelf', style: { width: "90%", height: "50px", borderTop: "5px solid rgba(193, 155, 108, 1)", borderBottom: "5px solid rgba(193, 155, 108, 1)", margin: "0 auto" } },
+                                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]('div', { style: { borderBottom: "2px solid #444343", borderTop: "2px solid #444343", width: "25%", height: "40px", float: "left", background: "white" } }),
+                                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                                                'div',
+                                                { className: 'box box-shadow', style: { width: "25%", height: "40px", float: "left" } },
+                                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]('img', { src: '/images/ps4.png', width: '75px', height: '25px', style: { marginTop: "11px", marginLeft: "7px" } })
+                                            ),
+                                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                                                'div',
+                                                { className: 'box box-shadow', style: { width: "25%", height: "40px", float: "left" } },
+                                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]('img', { src: '/images/htpc.jpg', width: '75px', height: '30px', style: { marginTop: "7px", marginLeft: "7px" } })
+                                            ),
+                                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]('div', { className: 'box', style: { width: "25%", height: "40px", float: "left", background: "white" } })
                                         )
                                     )
                                 ),
@@ -6715,6 +6723,24 @@ var Home = function (_React$Component) {
                                     'div',
                                     { style: { float: "left", marginLeft: "50px", marginTop: "150px" } },
                                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]('img', { src: '/images/lamp.png', height: '250px', width: '40px' })
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                                    'div',
+                                    { style: { float: "left", marginLeft: "100px" } },
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                                        'div',
+                                        { className: 'frame-shadow', style: { width: "190px", height: "80px", background: "rgba(193, 155, 108, 1)", display: "inline-block" } },
+                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                                            'div',
+                                            { className: 'shadow', style: { marginLeft: "10px", marginRight: "10px", background: "white", height: "5px", marginTop: "10px" } },
+                                            ' '
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                                            'div',
+                                            { className: 'shadow', style: { marginLeft: "10px", marginRight: "10px", background: "white", height: "5px", marginTop: "50px" } },
+                                            ' '
+                                        )
+                                    )
                                 )
                             )
                         ),
@@ -7425,11 +7451,16 @@ var Television = function (_React$Component) {
                 { style: { height: '200px', margin: "auto" } },
                 __WEBPACK_IMPORTED_MODULE_1_react__["createElement"](
                     'div',
-                    { style: { margin: "0 auto", width: "250px" }, onMouseEnter: function onMouseEnter() {
+                    { style: { margin: "0 auto", width: "250px", position: "relative" }, onMouseEnter: function onMouseEnter() {
                             return _this2.setActive(true);
                         }, onMouseLeave: function onMouseLeave() {
                             return _this2.setActive(false);
                         } },
+                    __WEBPACK_IMPORTED_MODULE_1_react__["createElement"](
+                        'div',
+                        { className: 'ambilight', style: { width: "260px", height: "125px", left: "-5px", top: "35px", backgroundImage: "url('images/ambient.jpg')" } },
+                        ' '
+                    ),
                     __WEBPACK_IMPORTED_MODULE_1_react__["createElement"](
                         'p',
                         { style: { textAlign: "center", margin: "0px" } },
