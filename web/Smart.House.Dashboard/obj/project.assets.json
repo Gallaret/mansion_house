@@ -3939,8 +3939,8 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Microsoft.Orleans.Core": "2.0.0",
-          "Microsoft.Orleans.OrleansCodeGenerator": "2.0.0"
+          "Microsoft.Orleans.Core": "2.0.0-preview3-20170913",
+          "Microsoft.Orleans.OrleansCodeGenerator": "2.0.0-preview3-20170913"
         },
         "compile": {
           "bin/placeholder/Smart.House.Interface.dll": {}

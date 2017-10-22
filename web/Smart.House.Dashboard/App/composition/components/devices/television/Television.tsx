@@ -43,7 +43,7 @@ export default class Television extends React.Component<Props, State> {
 
     render() {
         const { id } = this.props
-        return <div style={{ height: '200px', margin: "auto" }}>
+        return <div style={{ height: '180px', margin: "auto" }}>
             <div style={{ margin: "0 auto", width: "250px", position: "relative" }} onMouseEnter={() => this.setActive(true)} onMouseLeave={() => this.setActive(false)}>
                 <div className="ambilight" style={{ width: "260px", height: "125px", left: "-5px", top: "35px", backgroundImage: "url('images/ambient.jpg')" }}> </div>
                     <p style={{ textAlign: "center", margin: "0px" }}>

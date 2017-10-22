@@ -21,6 +21,15 @@ body {
     align-items: center;
 }
 
+.navbar {
+    -webkit-box-shadow: 0px 1px 4px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow: 0px 1px 4px 0px rgba(50, 50, 50, 0.75);
+    box-shadow: 0px 1px 4px 0px rgba(50, 50, 50, 0.75);
+    background: #33302e;
+    color: floralwhite;
+    border: none;
+}
+
 .navbar-brand > img {
     padding-right: 14px;
 }
@@ -66,8 +75,41 @@ body {
 }
 
 #footer {
-    background-color: lightgray;
-    color: black;
+    height: 250px;
+    width: 60%;
+    margin-left: 20%;
+}
+
+.floor-container {
+    margin: auto;
+    width: 60%;
+    display: inline-block;
+    height: 250px;
+    -webkit-perspective: 100px;
+    -moz-perspective: 100px;
+    perspective: 150px;
+    -moz-perspective-origin: 50% 50%;
+    perspective-origin: 50% 50%;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    margin-left:20%;
+    z-index:-50;
+}
+
+.floor {
+    height: 250px;
+    //background-image: url(https://d18178273alp6b.cloudfront.net/production/bdsellerassets/ceramic-porcelain-tile/torino/images/torino-italian-porcelain-tile---tuscany-wood/sku_22763_vert.jpg);
+    background-image: url(https://img00.deviantart.net/165c/i/2008/148/b/8/wood_floor_by_gnrbishop.jpg);
+    -webkit-transform: rotateX(10deg) translateZ(0px);
+    -moz-transform: rotateX(10deg) translateZ(0px);
+    -ms-transform: rotateX(10deg) translateZ(0px);
+    -o-transform: rotateX(10deg) translateZ(0px);
+    transform: rotateX(10deg) translateZ(0px);
+    margin: auto;
+    width: 200%;
+    left: -50%;
+    //opacity: 0.7;
+    position: absolute;
 }
 
 footer {
@@ -107,43 +149,47 @@ footer {
 }
 
 .camera-no-alert {
-    border-left: 4px solid white;
-    border-right: 4px solid white;
-    border-bottom: 4px solid white;
+    border-left: 4px solid #33302e;
+    border-right: 4px solid #33302e;
+    border-bottom: 4px solid #33302e;
 }
 
 .camera-topbar {
     height: 30px;
-    background: white;
+    background: #33302e;
     display: inline-block;
     padding-left: 20px;
     padding-right: 20px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+    -webkit-box-shadow: 0px 1px 4px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow: 0px 1px 4px 0px rgba(50, 50, 50, 0.75);
+    box-shadow: 0px 1px 4px 0px rgba(50, 50, 50, 0.75);
 }
 
 .camera-collapse-down {
     padding: 5px;
     position: absolute;
-    color: gray;
+    color: floralwhite;
     cursor: pointer;
     left: -15px;
     top: 3px;
 }
 
 .camera-frame {
+    background: #33302e;
     -webkit-box-shadow: 0px 1px 4px 0px rgba(50, 50, 50, 0.75);
     -moz-box-shadow: 0px 1px 4px 0px rgba(50, 50, 50, 0.75);
     box-shadow: 0px 1px 4px 0px rgba(50, 50, 50, 0.75);
 }
 
 .camera-name {
-    color:lightblue;
-    margin:1px 10px 1px 10px;
-    font-family:'HoloLens MDL2 Assets';
-    float:left;
-    font-size:small;
-    font-variant:small-caps;
+    color: floralwhite;
+    margin: 1px 10px 1px 10px;
+    font-family: 'HoloLens MDL2 Assets';
+    float: left;
+    font-size: small;
+    font-variant: small-caps;
 }
 
 .camera-container {
@@ -153,7 +199,7 @@ footer {
 }
 
 .camera-bottom {
-    background: white;
+    background: #33302e;
     height: 25px;
     width: 100%;
     display: inline-block;
@@ -169,7 +215,7 @@ footer {
 }
 
 .camera-play {
-    color: gray;
+    color: floralwhite;
     cursor: pointer;
 }
 
@@ -178,7 +224,7 @@ footer {
 }
 
 .camera-motion {
-    color: gray;
+    color: floralwhite;
     cursor: pointer;
 }
 
@@ -187,14 +233,14 @@ footer {
 }
 
 .camera-sound {
-    color: gray;
+    color: floralwhite;
     cursor: pointer;
 }
 
 .camera-topbar-settings {
     padding: 5px;
     position: absolute;
-    color: gray;
+    color: floralwhite;
     cursor: pointer;
     right: -15px;
     top: 3px;
@@ -306,6 +352,25 @@ footer {
     border-top: 2px solid #444343;
     border-left: 1px solid #444343;
     position: relative;
+}
+.hue {
+    position: absolute;
+    top: 5px;
+    height: 130px;
+    width: 40px;
+    filter: blur(5px);
+    background-color: #23f343;
+    z-index: -1;
+}
+
+.hue2 {
+    position: absolute;
+    top: 5px;
+    height: 130px;
+    width: 40px;
+    filter: blur(5px);
+    background-color: #f650e8;
+    z-index: -1;
 }
 
 .box-shadow {
