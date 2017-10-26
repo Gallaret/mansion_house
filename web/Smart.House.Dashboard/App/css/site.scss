@@ -259,6 +259,86 @@ footer {
     transition: visibility 0s 1s, opacity 1s linear;
 }
 
+.smart {
+    position: absolute;
+    animation: run 60s infinite linear;
+    top: 5px;
+    width: 88px;
+    height: 40px;
+    z-index: -1;
+}
+.smart-container {
+    position: relative;
+    background: #cecbcb;
+    z-index: -2;
+}
+.player-display {
+    box-shadow: inset 0px 0px 4px 0px #1e1c1c;
+    background: silver;
+}
+
+.player-left {
+    background: rgba(82,82,82,1);
+    background: -moz-linear-gradient(left, rgba(82,82,82,1) 0%, rgba(82,82,82,1) 14%, rgba(51,48,46,1) 63%, rgba(51,48,46,1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(82,82,82,1)), color-stop(14%, rgba(82,82,82,1)), color-stop(63%, rgba(51,48,46,1)), color-stop(100%, rgba(51,48,46,1)));
+    background: -webkit-linear-gradient(left, rgba(82,82,82,1) 0%, rgba(82,82,82,1) 14%, rgba(51,48,46,1) 63%, rgba(51,48,46,1) 100%);
+    background: -o-linear-gradient(left, rgba(82,82,82,1) 0%, rgba(82,82,82,1) 14%, rgba(51,48,46,1) 63%, rgba(51,48,46,1) 100%);
+    background: -ms-linear-gradient(left, rgba(82,82,82,1) 0%, rgba(82,82,82,1) 14%, rgba(51,48,46,1) 63%, rgba(51,48,46,1) 100%);
+    background: linear-gradient(to right, rgba(82,82,82,1) 0%, rgba(82,82,82,1) 14%, rgba(51,48,46,1) 63%, rgba(51,48,46,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#525252', endColorstr='#33302e', GradientType=1 );
+}
+
+.player-right {
+    background: rgba(51,48,46,1);
+    background: -moz-linear-gradient(left, rgba(51,48,46,1) 0%, rgba(51,48,46,1) 37%, rgba(82,82,82,1) 86%, rgba(82,82,82,1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(51,48,46,1)), color-stop(37%, rgba(51,48,46,1)), color-stop(86%, rgba(82,82,82,1)), color-stop(100%, rgba(82,82,82,1)));
+    background: -webkit-linear-gradient(left, rgba(51,48,46,1) 0%, rgba(51,48,46,1) 37%, rgba(82,82,82,1) 86%, rgba(82,82,82,1) 100%);
+    background: -o-linear-gradient(left, rgba(51,48,46,1) 0%, rgba(51,48,46,1) 37%, rgba(82,82,82,1) 86%, rgba(82,82,82,1) 100%);
+    background: -ms-linear-gradient(left, rgba(51,48,46,1) 0%, rgba(51,48,46,1) 37%, rgba(82,82,82,1) 86%, rgba(82,82,82,1) 100%);
+    background: linear-gradient(to right, rgba(51,48,46,1) 0%, rgba(51,48,46,1) 37%, rgba(82,82,82,1) 86%, rgba(82,82,82,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#33302e', endColorstr='#525252', GradientType=1 );
+}
+
+.player-drive {
+    box-shadow: 0px 0px 6px 2px #242424;
+    text-align: center;
+    color: silver;
+    font-weight:bold;
+}
+
+.bottom {
+    width: 100%;
+    height: 148px;
+    margin-top: 20px;
+    box-shadow: 0px 1px 4px 0px rgba(50, 50, 50, 0.75);
+    background: #33302e;
+    border-top: 3px solid #cecbcb;
+}
+
+@keyframes run {
+    0% {
+        left: 0px;
+    }
+    5% {
+        left: 45px;
+    }
+    10% {
+        left: 88px;
+    }
+    20% {
+        left: 88px;
+        opacity: 0.5;
+    }
+    25% {
+        left: 88px;
+        opacity: 0;
+    }
+    100% {
+        left: 88px;
+        opacity: 0;
+    }
+}
+
 .ambilight {
     position:absolute;
     z-index:-1;

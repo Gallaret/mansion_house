@@ -17,7 +17,12 @@ class NavMenu extends React.Component<NavMenuProps, ApplicationState> {
         return <Navbar fixedTop={true}>
             <Navbar.Header>
                 <Navbar.Brand>
-                    <Link className='navbar-brand' to={'/'}><img src={logo} alt="Home Logo" />Smart-Home</Link>
+                    <Link className='navbar-brand' to={'/'}>
+                        <div className="smart-container">
+                            <div className="smart" style={{ backgroundImage: "url('images/gradient.png')" }} > </div>
+                            <img src="images/logo.png" height="50px" width="250px" alt="Home Logo" />
+                        </div>
+                    </Link>
                 </Navbar.Brand>
                 <Navbar.Toggle />
             </Navbar.Header>

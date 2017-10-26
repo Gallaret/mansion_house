@@ -6,7 +6,7 @@ namespace Smart.House.Services.Devices.Center.Handlers.Commands
 {
     public class StartPlaying : IRequest
     {
-        public int VideoId { get; set; } = 1;
+        public int VideoId { get; set; } = 2;
     }
 
     public class StartPlayingHandler : IRequestHandler<StartPlaying>

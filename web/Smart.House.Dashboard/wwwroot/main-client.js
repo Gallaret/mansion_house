@@ -8656,6 +8656,92 @@ var Home = function (_React$Component) {
                                 { className: 'floor-container' },
                                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]('div', { className: 'floor' })
                             )
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                            'div',
+                            { className: 'bottom' },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                                'div',
+                                { style: { marginTop: "55px", marginLeft: "550px", height: "50px", float: "left" } },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                                    'div',
+                                    { className: 'glyphicon glyphicon-facetime-video', style: { fontSize: "25px" } },
+                                    ' '
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                                    'div',
+                                    { className: 'glyphicon glyphicon-picture', style: { fontSize: "25px", marginLeft: "25px" } },
+                                    ' '
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                                    'div',
+                                    { className: 'glyphicon glyphicon-film', style: { fontSize: "25px", marginLeft: "25px" } },
+                                    ' '
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                                    'div',
+                                    { className: 'glyphicon glyphicon-music', style: { fontSize: "25px", marginLeft: "25px" } },
+                                    ' '
+                                )
+                            ),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                                'div',
+                                { className: 'player', style: { marginTop: "25px", height: "90px", width: "370px", marginLeft: "50px", float: "left", position: "relative" } },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]('div', { className: 'player-left', style: { position: "absolute", left: "-10px", width: "15px", height: "90px" } }),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                                    'div',
+                                    { style: { position: "absolute", left: "20px", width: "320px" } },
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                                        'output',
+                                        { className: 'player-display', style: { width: "200px", padding: "0 10px", display: "inline-block", fontSize: "15px", lineHeight: "40px" } },
+                                        'Ready to play'
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                                        'div',
+                                        { style: { lineHeight: "40px", display: "inline-block" } },
+                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                                            'div',
+                                            { className: 'glyphicon glyphicon-backward', style: { fontSize: "15px", marginLeft: "10px" } },
+                                            ' '
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                                            'div',
+                                            { className: 'glyphicon glyphicon-play', style: { fontSize: "20px", marginLeft: "10px" } },
+                                            ' '
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                                            'div',
+                                            { className: 'glyphicon glyphicon-stop', style: { fontSize: "15px", marginLeft: "10px" } },
+                                            ' '
+                                        ),
+                                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                                            'div',
+                                            { className: 'glyphicon glyphicon-forward', style: { fontSize: "15px", marginLeft: "10px" } },
+                                            ' '
+                                        )
+                                    )
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                                    'div',
+                                    { style: { position: "absolute", width: "320px", bottom: "10px", left: "20px", display: "inline-block" } },
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                                        'div',
+                                        { className: 'glyphicon glyphicon-eject', style: { fontSize: "15px", display: "inline-block" } },
+                                        ' '
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                                        'output',
+                                        { className: 'player-drive', style: { padding: "5px", lineHeight: "15px", marginLeft: "25px", width: "225px", display: "inline-block" } },
+                                        'Detroit'
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                                        'div',
+                                        { className: 'glyphicon glyphicon-folder-open', style: { fontSize: "15px", marginLeft: "25px" } },
+                                        ' '
+                                    )
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]('div', { className: 'player-right', style: { position: "absolute", width: "15px", right: "20px", height: "90px" } })
+                            )
                         )
                     )
                 )
@@ -8771,8 +8857,16 @@ var NavMenu = function (_React$Component) {
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
                             __WEBPACK_IMPORTED_MODULE_1_react_router__["Link"],
                             { className: 'navbar-brand', to: '/' },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]('img', { src: logo, alt: 'Home Logo' }),
-                            'Smart-Home'
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                                'div',
+                                { className: 'smart-container' },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                                    'div',
+                                    { className: 'smart', style: { backgroundImage: "url('images/gradient.png')" } },
+                                    ' '
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]('img', { src: 'images/logo.png', height: '50px', width: '250px', alt: 'Home Logo' })
+                            )
                         )
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3_react_bootstrap__["Navbar"].Toggle, null)
