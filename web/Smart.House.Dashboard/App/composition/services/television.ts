@@ -18,4 +18,18 @@ export class TelevisionActionService implements TelevisionService {
             console.log('set fireplace');
         }
     };
+
+    async setVideo(id: number) {
+        let response = <Response>await fetch('/television/setVideo', {
+            method: 'POST',
+            body: JSON.stringify(id),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (response.ok) {
+            console.log('set video');
+        }
+    };
 }

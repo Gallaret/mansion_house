@@ -6,5 +6,6 @@ namespace Smart.House.Interface.Devices
     public interface ITelevision : IGrainWithStringKey
     {
         Task SetFireplace();
+        Task SetVideo();
     }
 }

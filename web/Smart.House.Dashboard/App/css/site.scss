@@ -420,6 +420,14 @@ footer {
     cursor: pointer;
 }
 
+.burning {
+    border: 2px solid red;
+}
+
+.not-burning {
+    border: 2px solid black;
+}
+
 .shelf {
     -webkit-box-shadow: 0px 17px 5px 7px rgba(0,0,0,0.21);
     -moz-box-shadow: 0px 17px 5px 7px rgba(0,0,0,0.21);

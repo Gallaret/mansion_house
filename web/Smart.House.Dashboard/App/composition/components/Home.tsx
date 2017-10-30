@@ -29,7 +29,7 @@ export default class Home extends React.Component<{}, {}> {
                         <div style={{ width: "20%", float: "left" }}>
                             <div style={{ width: "100%", height: "300px" }}>
 
-                                <Television id={1} isActive={false} isBurning={false} />
+                                <Television />
 
                                 <div style={{ float: "left", width: "100%", textAlign: "center" }}>
                                     <img src="/images/speaker-front.png" width="75px" height="20px" />

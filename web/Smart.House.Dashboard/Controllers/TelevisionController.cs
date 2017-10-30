@@ -23,5 +23,18 @@ namespace Smart.House.Dashboard.Controllers
 
             return Ok();
         }
+
+        [HttpPost]
+        public async Task<IActionResult> SetVideo([FromBody]string id)
+        {
+            var config = ClientConfiguration.LocalhostSilo();
+            var client = new ClientBuilder().UseConfiguration(config).Build();
+            await client.Connect();
+
+            var television = client.GetGrain<ITelevision>("television" + id);
+            await television.SetVideo();
+
+            return Ok();
+        }
     }
 }

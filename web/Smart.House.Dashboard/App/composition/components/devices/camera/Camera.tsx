@@ -58,7 +58,7 @@ export default class CameraItem extends React.Component<Props, State> {
 
     componentDidMount() {
         updateView = setInterval(this.updateCameraView,
-            5000, this.state.address, this.setState);
+            1000, this.state.address, this.setState);
 
         updateState = setInterval(this.updateCameraState,
             5000, this.state.id,

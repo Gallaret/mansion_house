@@ -8,6 +8,7 @@ import routes from './composition/routes';
 import configureStore from './composition/configureStore';
 import { Camera, Display } from './composition/components/devices/camera/model/model';
 import { ADD_CAMERA, CREATE_DISPLAY } from './composition/components/devices/camera/state/displayer';
+import { ADD_TELEVISION } from './composition/components/devices/television/states/television';
 
 export default createServerRenderer(params => {
     return new Promise<RenderResult>((resolve, reject) => {
@@ -47,6 +48,16 @@ export default createServerRenderer(params => {
                     }
                 }
             });
+            store.dispatch({
+                type: ADD_TELEVISION,
+                payload: {
+                    id: 1,
+                    name: "sony bravia",
+                    isFireplaceRunning: false,
+                    isAquariumRunning: false
+                }
+            });
+
             const app = (
                 <Provider store={store}>
                     <RouterContext {...renderProps} />

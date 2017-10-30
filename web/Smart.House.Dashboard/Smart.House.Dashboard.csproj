@@ -18,12 +18,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="App\composition\components\actions\effects.ts" />
     <None Remove="App\composition\components\devices\camera\model\model.ts" />
     <None Remove="App\composition\components\devices\camera\model\orm.ts" />
     <None Remove="App\composition\components\devices\camera\model\viewmodel.ts" />
     <None Remove="App\composition\components\devices\camera\selector\selector.ts" />
     <None Remove="App\composition\components\devices\camera\state\displayer.ts" />
+    <None Remove="App\composition\components\devices\television\effects\fireplace\fire.ts" />
+    <None Remove="App\composition\components\devices\television\models\model.ts" />
+    <None Remove="App\composition\components\devices\television\models\schema.ts" />
+    <None Remove="App\composition\components\devices\television\models\viewmodel.ts" />
     <None Remove="App\composition\components\devices\television\services\television.ts" />
+    <None Remove="App\composition\components\devices\television\states\television.ts" />
     <None Remove="App\composition\components\devices\television\Television.tsx" />
     <None Remove="App\composition\components\devices\types.ts" />
     <None Remove="App\composition\ioc\container.ts" />
@@ -59,12 +65,15 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App\composition\components\devices\ambilight\" />
+    <Folder Include="App\composition\components\devices\lighting\" />
     <Folder Include="App\dist\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\orleans\Smart.House.Orleans\Smart.House.Interface\Smart.House.Interface.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="App\composition\components\actions\effects.ts" />
     <TypeScriptCompile Include="App\composition\components\devices\camera\model\model.ts" />
     <TypeScriptCompile Include="App\composition\components\devices\camera\model\orm.ts" />
     <TypeScriptCompile Include="App\composition\components\devices\camera\model\viewmodel.ts" />
@@ -72,7 +81,12 @@
     <TypeScriptCompile Include="App\composition\components\devices\camera\state\camera.ts" />
     <TypeScriptCompile Include="App\composition\components\devices\camera\state\displayer.ts" />
     <TypeScriptCompile Include="App\composition\components\devices\camera\services\camera.ts" />
+    <TypeScriptCompile Include="App\composition\components\devices\television\effects\fireplace\fire.ts" />
+    <TypeScriptCompile Include="App\composition\components\devices\television\models\model.ts" />
+    <TypeScriptCompile Include="App\composition\components\devices\television\models\schema.ts" />
+    <TypeScriptCompile Include="App\composition\components\devices\television\models\viewmodel.ts" />
     <TypeScriptCompile Include="App\composition\components\devices\television\services\television.ts" />
+    <TypeScriptCompile Include="App\composition\components\devices\television\states\television.ts" />
     <TypeScriptCompile Include="App\composition\components\devices\television\Television.tsx" />
     <TypeScriptCompile Include="App\composition\services\camera.ts" />
     <TypeScriptCompile Include="App\composition\services\television.ts" />

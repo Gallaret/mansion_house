@@ -20,5 +20,11 @@ namespace Smart.House.Grains.Devices.Television
             var start = new StartPlaying();
             await _mediator.DispatchRequest(start);
         }
+
+        public async Task SetVideo()
+        {
+            var start = new StartPlaying { VideoId = 1 };
+            await _mediator.DispatchRequest(start);
+        }
     }
 }
