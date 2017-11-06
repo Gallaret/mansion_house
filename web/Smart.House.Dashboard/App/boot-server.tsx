@@ -9,6 +9,8 @@ import configureStore from './composition/configureStore';
 import { Camera, Display } from './composition/components/devices/camera/model/model';
 import { ADD_CAMERA, CREATE_DISPLAY } from './composition/components/devices/camera/state/displayer';
 import { ADD_TELEVISION } from './composition/components/devices/television/states/television';
+import * as Ambilight from './composition/components/devices/ambilight/state/actions';
+import * as Lamp from './composition/components/devices/lighting/state/actions';
 
 export default createServerRenderer(params => {
     return new Promise<RenderResult>((resolve, reject) => {
@@ -57,7 +59,35 @@ export default createServerRenderer(params => {
                     isAquariumRunning: false
                 }
             });
-
+            store.dispatch({
+                type: Ambilight.ADD,
+                payload: {
+                    id: 1,
+                    name: "hyperion",
+                    background: 'url(images/ambient.jpg)',
+                    isActive: true
+                }
+            });
+            store.dispatch({
+                type: Lamp.ADD_LAMP,
+                payload: {
+                    id: 1,
+                    name: "hue-left",
+                    color: '#f650e8',
+                    isActive: true,
+                    position: 'left'
+                }
+            });
+            store.dispatch({
+                type: Lamp.ADD_LAMP,
+                payload: {
+                    id: 2,
+                    name: "hue-right",
+                    color: '#23f343',
+                    isActive: true,
+                    position: 'right'
+                }
+            });
             const app = (
                 <Provider store={store}>
                     <RouterContext {...renderProps} />

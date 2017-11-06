@@ -8,13 +8,17 @@
     data: any;
     colors: any[];
     imageData: any;
+    backgroundImage: any;
     ctx: any;
     intensity: any;
 
-    initialize = function (canvas) {
-        this.ctx = canvas.getContext('2d');
-        this.canvasWidth = canvas.width;
-        this.canvasHeight = canvas.height;
+    initialize = function (background, foreground, imageId) {
+        //this.backgroundImage = document.getElementById('imageBackground');
+        //this.createBackground(background);
+
+        this.ctx = foreground.getContext('2d');
+        this.canvasWidth = foreground.width;
+        this.canvasHeight = foreground.height;
         this.intensity = null;
         this.fps = 30;
         this.threshold = 0.5;
@@ -62,9 +66,24 @@
         this.time = new Date().getTime();
     }
 
+    clear = function (background, foreground) {
+        var bgContext = background.getContext('2d');
+        bgContext.clearRect(0, 0, background.width, background.height);
+
+        this.ctx.clearRect(0, 0, foreground.width, foreground.height);    
+    }
+
     randomizeThreshold = function () {
         this.threshold += Math.random() * 0.2 - 0.1;
         this.threshold = Math.min(Math.max(this.threshold, 0.5), 0.8);
+    }
+
+    createBackground = function (background) {
+        var ctx = background.getContext('2d');
+        var canvasWidth = background.width;
+        var canvasHeight = background.height;
+
+        ctx.drawImage(this.backgroundImage, 0, 0, canvasWidth, canvasHeight);
     }
 
     burnBurnBurn = function () {

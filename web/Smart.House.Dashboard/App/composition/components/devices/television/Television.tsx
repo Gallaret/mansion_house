@@ -9,6 +9,7 @@ import { activeTelevisionSelector } from './models/schema';
 import * as Model from './models/model';
 import { TelevisionViewModel } from './models/viewmodel';
 import * as Fire from '../../../../composition/components/devices/television/effects/fireplace/fire';
+import { Aquarium } from './effects/aquarium/aquarium';
 
 interface TelevisionProps {
     television: TelevisionViewModel;
@@ -17,27 +18,42 @@ interface TelevisionProps {
 interface State {
     id: number,
     isActive: boolean,
-    isBurning: boolean
+    isFireplace: boolean,
+    isAquarium: boolean
 }
 
 type Props = TelevisionProps & typeof Effects.actionCreators;
 
+let fireplace;
+let fire;
+let aquarium;
+let aqua;
+
 class Television extends React.Component<Props, State> {
+
+    aquarium: Aquarium;
+
     constructor(props: Props) {
         super(props);
 
         this.state = {
             id: props.television.id,
             isActive: props.television.isActive,
-            isBurning: props.television.isFireplaceRunning
+            isFireplace: props.television.isFireplaceRunning,
+            isAquarium: props.television.isAquariumRunning
         };
 
+        fire = new Fire.Fire();
+        aquarium = new Aquarium();
         this.setState = this.setState.bind(this);
     }
 
-    componentWillReceiveProps(nextProps) {
-        console.log("receive Props");
+    componentWillReceiveProps(nextProps: Props) {
         console.log(nextProps);
+        this.setState({
+            isFireplace: nextProps.television.isFireplaceRunning,
+            isAquarium: nextProps.television.isAquariumRunning
+        });
     }
 
     setActive(value: boolean) {
@@ -47,21 +63,45 @@ class Television extends React.Component<Props, State> {
     }
 
     async setFireplace(id: number) {
-        var fire = new Fire.Fire();
-        var context = this.refs.television;
-        fire.initialize(context);
-        
-        setInterval(function () {
-            return fire.burnBurnBurn();
-        }, 100, fire);
+        var background = this.refs.television;
+        var foreground = this.refs.tvContent;
 
-        this.props.setFireplace(this.state.id, !this.state.isBurning);
+        if (this.state.isFireplace) {
+            clearInterval(fireplace);
+            fire.clear(background, foreground);
+        }
+        else {
+            fire.initialize(background, foreground, 'imageBackground');
+            fireplace = setInterval(function () {
+                return fire.burnBurnBurn();
+            }, 100, fire);
 
-        //this._service.setFireplace(id);
-    }
+            this._service.setFireplace(id);
+        }
+
+        this.props.setFireplace(this.state.id, !this.state.isFireplace);    }
 
     async setVideo(id: number) {
-        this._service.setVideo(id);
+        var background = this.refs.television;
+        var foreground = this.refs.tvContent;
+
+        console.log(this.state.isAquarium);
+
+        if (this.state.isAquarium) {
+            clearInterval(aqua);
+            aquarium.clear(background);
+            aquarium.clear(foreground);
+        }
+        else {
+            aquarium.init(background);
+            aqua = setInterval(function () {
+                return aquarium.draw(foreground);
+            }, 16.7, aquarium, foreground);
+
+            this._service.setVideo(id);
+        }        
+
+        this.props.setAquarium(this.state.id, !this.state.isAquarium);
     }
 
     @lazyInject(Services.TelevisionService)
@@ -69,23 +109,21 @@ class Television extends React.Component<Props, State> {
 
     render() {
         const { television } = this.props
-        return <div style={{ height: '180px', margin: "auto" }}>
-            <div style={{ margin: "0 auto", width: "250px", position: "relative" }} onMouseEnter={() => this.setActive(true)} onMouseLeave={() => this.setActive(false)}>
-                <div className="ambilight" style={{ width: "260px", height: "125px", left: "-5px", top: "35px", backgroundImage: "url('images/ambient.jpg')" }}> </div>
-                <p style={{ textAlign: "center", margin: "0px" }}>
-                    <canvas className={this.props.television.isFireplaceRunning ? "burning" : "not-burning"} style={{ background: "black", height: "125px", width: "250px", marginTop: "40px" }} ref="television">
-                            <img src="/images/tv.png" height="125px" width="250px"/>
-                        </canvas>
-                    </p>
-                    <div className={this.state.isActive ? 'television-bottom camera-visible' : 'television-bottom camera-hidden'}>
-                        <label className="camera-name">Sony Bravia</label>
-                        <div style={{ float: 'right' }}>
-                            <span className="glyphicon glyphicon-fire television-fireplace"
-                                onClick={this.state.isBurning ? () => this.setFireplace(television.id) : () => this.setFireplace(television.id)} /> 
-                            <span className="glyphicon glyphicon-leaf television-leaf"></span>
-                            <span className="glyphicon glyphicon-tint television-water"
-                                onClick={this.state.isBurning ? () => this.setVideo(television.id) : () => this.setVideo(television.id)}></span>
-                        </div>
+        return <div style={{ margin: "auto" }} onMouseEnter={() => this.setActive(true)} onMouseLeave={() => this.setActive(false)}>
+                <p style={{ textAlign: "center", margin: "40px 0 0 0", position: 'relative' }}>
+                    <canvas style={{ background: "black", height: "125px", width: "250px", border: "2px solid black" }} ref="television"></canvas>
+                    <canvas style={{ height: "125px", width: "250px", position: "absolute", top: '0px', left: '0px' }} ref="tvContent"></canvas>
+                    <img id="imageBackground" src="images/background-flip2.jpg" style={{ height: '125px', width: '250px', display: 'none' }} />
+                    <img id="imageStrip" src="images/fishstrip.png" style={{ height: '125px', width: '250px', display: 'none' }} />
+                </p>
+                <div className={this.state.isActive ? 'television-bottom camera-visible' : 'television-bottom camera-hidden'}>
+                    <label className="camera-name">Sony Bravia</label>
+                    <div style={{ float: 'right' }}>
+                        <span className="glyphicon glyphicon-fire television-fireplace"
+                            onClick={this.state.isFireplace ? () => this.setFireplace(television.id) : () => this.setFireplace(television.id)} /> 
+                        <span className="glyphicon glyphicon-leaf television-leaf"></span>
+                        <span className="glyphicon glyphicon-tint television-water"
+                            onClick={this.state.isFireplace ? () => this.setVideo(television.id) : () => this.setVideo(television.id)}></span>
                     </div>
                 </div>
                </div>

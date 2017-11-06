@@ -74,6 +74,11 @@ body {
     }
 }
 
+.floors {
+    height: 250px;
+    display:block;
+}
+
 #footer {
     height: 250px;
     width: 60%;
@@ -441,6 +446,23 @@ footer {
     border-left: 1px solid #444343;
     position: relative;
 }
+
+.lamp {
+    height: 130px;
+    width: 40px;
+    filter: blur(5px);
+    z-index: -1;
+}
+
+.hue-left {
+    float:left;
+    margin-left:220px;
+}
+.hue-right {
+    float: right;
+    margin-right: 220px;
+}
+
 .hue {
     position: absolute;
     top: 5px;

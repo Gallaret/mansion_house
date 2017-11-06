@@ -6,6 +6,8 @@ export const orm = new ORM();
 orm.register(Display, Camera, Harmonogram);
 
 export const activeCamerasSelector = orm.createSelector(session => {
+    console.log(session);
+
     return session.DisplayCameras.all().toRefArray().map(camera => {
         const obj = session.Camera.withId(camera.toCameraId);
 

@@ -10,7 +10,7 @@ namespace Smart.House.Center.Builders
         {
             HttpClientHandler handler = new HttpClientHandler();
             HttpClient httpClient = new HttpClient(handler);
-            string uriString = "http://" + "192.168.0.206" + ":" + "8080" + "/jsonrpc?request=";
+            string uriString = "http://" + "192.168.0.10" + ":" + "8080" + "/jsonrpc?request=";
             httpClient.BaseAddress = new Uri(uriString);
            
             //HttpResponseMessage response = await httpClient.SendAsync(request);

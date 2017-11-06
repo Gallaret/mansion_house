@@ -33,7 +33,7 @@ type KnownAction = CreateDisplayAction | AddCameraAction | UpdateCameraAction
 export const actionCreators = {
     updateCamera: (camera: CameraViewModel): AppThunkAction<KnownAction> => async (dispatch, getState) => {
         const session = orm.session(getState().display);
-        console.log(camera);
+        console.log(session);
 
         var state = session.Camera.withId(camera.id);
 
