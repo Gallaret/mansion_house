@@ -14,9 +14,6 @@ export default class Wall extends React.Component<Props, State> {
     render() {
         return  <div className="center" style={{ display: "block", height: "300px" }}>
                         <div style={{ width: "40%", float: "left", height: "300px" }}>
-                            <div style={{ float: "right", marginTop: "300px", position: "relative" }}>
-                                <img src="/images/speaker-back.png" height="120px" width="20px" style={{ position: "absolute", top: "100px", right: "30px" }} />
-                            </div>
                             <div className="image-frame" style={{ float: "right", marginRight: "75px" }}>
                                 <img src="/images/marilyn.jpg" className="image" width="125px" height="170px" />
                             </div>
@@ -49,38 +46,11 @@ export default class Wall extends React.Component<Props, State> {
                                         </div>
                                     </div>
                                 </div>
-                                <div style={{ height: "50px", clear: "both", position: "relative" }}>
-                                    <div style={{ position: "absolute", top:"15px", left:"50px" }}>
-                                        <img src="/images/speaker.png" width="40px" height="60px" className="frame-shadow" />
-                                    </div>
-                                    <div style={{ position: "absolute", top: "15px", right: "50px" }}>
-                                        <img src="/images/speaker.png" width="40px" height="60px" className="frame-shadow" />
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div style={{ position:"relative" }}>
-                                <div style={{ float: "left", position: "absolute", top: "60px" }}>
-                                    <div style={{ height: "150px" }}>
-                                        <img src="/images/sofa.png" width="380px" height="150px" />
-                                    </div>
-                                    <div style={{ height: "50px" }}>
-                                        <div style={{ float: "left", marginLeft: "50px" }}>
-                                            <img src="/images/speaker-back-small.png" width="25px" height="40px" />
-                                        </div>
-                                        <div style={{ float: "right", marginRight: "50px" }}>
-                                            <img src="/images/speaker-back-small.png" width="25px" height="40px" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            </div>                      
 
                         </div>
                                            
                         <div style={{ width: "40%", float: "right", height: "300px" }}>
-                            <div style={{ float: "left", marginTop: "300px", position: "relative" }}>
-                                <img src="/images/speaker-back.png" height="120px" width="20px" style={{ position: "absolute", top: "100px", left: "30px" }} />
-                            </div>
                             <div style={{ float: "left", marginLeft: "100px" }}>
                                 <div className="frame-shadow" style={{ width: "190px", height: "80px", background: "rgba(193, 155, 108, 1)", display: "inline-block" }}>
                                     <div className="shadow" style={{ marginLeft: "10px", marginRight: "10px", background: "white", height: "5px", marginTop: "10px" }}> </div>

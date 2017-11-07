@@ -29,6 +29,9 @@
     <None Remove="App\composition\components\devices\camera\model\viewmodel.ts" />
     <None Remove="App\composition\components\devices\camera\selector\selector.ts" />
     <None Remove="App\composition\components\devices\camera\state\displayer.ts" />
+    <None Remove="App\composition\components\devices\hifi\FrontSpeaker.tsx" />
+    <None Remove="App\composition\components\devices\hifi\speakers\Back.tsx" />
+    <None Remove="App\composition\components\devices\hifi\speakers\Side.tsx" />
     <None Remove="App\composition\components\devices\lighting\Lamp.tsx" />
     <None Remove="App\composition\components\devices\lighting\models\model.ts" />
     <None Remove="App\composition\components\devices\lighting\models\schema.ts" />
@@ -44,6 +47,7 @@
     <None Remove="App\composition\components\devices\television\Television.tsx" />
     <None Remove="App\composition\components\devices\types.ts" />
     <None Remove="App\composition\components\floor\Floor.tsx" />
+    <None Remove="App\composition\components\floor\Sofa.tsx" />
     <None Remove="App\composition\components\wall\Picture.tsx" />
     <None Remove="App\composition\components\wall\Wall.tsx" />
     <None Remove="App\composition\ioc\container.ts" />
@@ -101,6 +105,14 @@
     <TypeScriptCompile Include="App\composition\components\devices\camera\state\camera.ts" />
     <TypeScriptCompile Include="App\composition\components\devices\camera\state\displayer.ts" />
     <TypeScriptCompile Include="App\composition\components\devices\camera\services\camera.ts" />
+    <TypeScriptCompile Include="App\composition\components\devices\hifi\models\model.ts" />
+    <TypeScriptCompile Include="App\composition\components\devices\hifi\models\schema.ts" />
+    <TypeScriptCompile Include="App\composition\components\devices\hifi\models\view.ts" />
+    <TypeScriptCompile Include="App\composition\components\devices\hifi\speakers\Back.tsx" />
+    <TypeScriptCompile Include="App\composition\components\devices\hifi\speakers\Front.tsx" />
+    <TypeScriptCompile Include="App\composition\components\devices\hifi\speakers\Side.tsx" />
+    <TypeScriptCompile Include="App\composition\components\devices\hifi\state\actions.ts" />
+    <TypeScriptCompile Include="App\composition\components\devices\hifi\state\reducer.ts" />
     <TypeScriptCompile Include="App\composition\components\devices\lighting\Lamp.tsx" />
     <TypeScriptCompile Include="App\composition\components\devices\lighting\models\model.ts" />
     <TypeScriptCompile Include="App\composition\components\devices\lighting\models\schema.ts" />
@@ -117,6 +129,7 @@
     <TypeScriptCompile Include="App\composition\components\devices\television\states\television.ts" />
     <TypeScriptCompile Include="App\composition\components\devices\television\Television.tsx" />
     <TypeScriptCompile Include="App\composition\components\floor\Floor.tsx" />
+    <TypeScriptCompile Include="App\composition\components\floor\Sofa.tsx" />
     <TypeScriptCompile Include="App\composition\components\wall\Picture.tsx" />
     <TypeScriptCompile Include="App\composition\components\wall\Wall.tsx" />
     <TypeScriptCompile Include="App\composition\services\camera.ts" />

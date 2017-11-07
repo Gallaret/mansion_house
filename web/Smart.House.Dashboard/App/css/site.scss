@@ -86,18 +86,16 @@ body {
 }
 
 .floor-container {
-    margin: auto;
-    width: 60%;
-    display: inline-block;
+    margin: 0 auto;
+    width: 100%;
     height: 250px;
-    -webkit-perspective: 100px;
-    -moz-perspective: 100px;
-    perspective: 150px;
+    -webkit-perspective: 300px;
+    -moz-perspective: 300px;
+    perspective: 300px;
     -moz-perspective-origin: 50% 50%;
     perspective-origin: 50% 50%;
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
-    margin-left:20%;
     z-index:-50;
 }
 
@@ -105,16 +103,12 @@ body {
     height: 250px;
     //background-image: url(https://d18178273alp6b.cloudfront.net/production/bdsellerassets/ceramic-porcelain-tile/torino/images/torino-italian-porcelain-tile---tuscany-wood/sku_22763_vert.jpg);
     background-image: url(https://img00.deviantart.net/165c/i/2008/148/b/8/wood_floor_by_gnrbishop.jpg);
-    -webkit-transform: rotateX(10deg) translateZ(0px);
-    -moz-transform: rotateX(10deg) translateZ(0px);
-    -ms-transform: rotateX(10deg) translateZ(0px);
-    -o-transform: rotateX(10deg) translateZ(0px);
-    transform: rotateX(10deg) translateZ(0px);
-    margin: auto;
-    width: 200%;
-    left: -50%;
-    //opacity: 0.7;
-    position: absolute;
+    -webkit-transform: rotateX(20deg) translateZ(0px);
+    -moz-transform: rotateX(20deg) translateZ(0px);
+    -ms-transform: rotateX(20deg) translateZ(0px);
+    -o-transform: rotateX(20deg) translateZ(0px);
+    transform: rotateX(20deg) translateZ(0px);
+    width: 100%;
 }
 
 footer {
@@ -452,6 +446,36 @@ footer {
     width: 40px;
     filter: blur(5px);
     z-index: -1;
+}
+
+.speaker-back-left {
+    float: left;
+    margin-left: 40%;
+}
+
+.speaker-back-right {
+    float: right;
+    margin-right: 40%;
+}
+
+.speaker-front-left {
+    float: left;
+    margin-left: 40%;
+}
+
+.speaker-front-right {
+    float: right;
+    margin-right: 40%;
+}
+
+.speaker-side-left {
+    float: left;
+    margin-left: 30%;
+}
+
+.speaker-side-right {
+    float: right;
+    margin-right: 30%;
 }
 
 .hue-left {

@@ -36,8 +36,8 @@ export class Lamp extends React.Component<Props, State> {
 
     render() {
         return <div style={{ position: 'relative' }}>
-                   <img src="/images/hue.png" height="150px" width="40px" style={{ position: 'absolute', top: '-80px', left: '0', zIndex: 0 }} />
-                   <div className="lamp" style={{ background: this.state.color, position: 'absolute', top: '-80px', left: '0' }}></div>
+                   <img src="/images/hue.png" height="150px" width="40px" style={{ position: 'absolute', top: '-100px', left: '-20px', zIndex: 0 }} />
+                   <div className="lamp" style={{ background: this.state.color, position: 'absolute', top: '-100px', left: '-20px' }}></div>
                </div>          
     }
 }

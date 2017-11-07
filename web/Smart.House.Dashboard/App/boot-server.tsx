@@ -11,6 +11,7 @@ import { ADD_CAMERA, CREATE_DISPLAY } from './composition/components/devices/cam
 import { ADD_TELEVISION } from './composition/components/devices/television/states/television';
 import * as Ambilight from './composition/components/devices/ambilight/state/actions';
 import * as Lamp from './composition/components/devices/lighting/state/actions';
+import * as Hifi from './composition/components/devices/hifi/state/actions';
 
 export default createServerRenderer(params => {
     return new Promise<RenderResult>((resolve, reject) => {
@@ -86,6 +87,92 @@ export default createServerRenderer(params => {
                     color: '#23f343',
                     isActive: true,
                     position: 'right'
+                }
+            });
+            store.dispatch({
+                type: Hifi.ADD_HIFI,
+                payload: {
+                    id: 1,
+                    name: 'my-hifi'
+                }
+            });
+
+            store.dispatch({
+                type: Hifi.ADD_SPEAKER,
+                payload: {
+                    hifi: 1,
+                    speaker: {
+                        name: 'Front-Left',
+                        id: 1,
+                        type: 'Front',
+                        position: 'left',
+                        isActive: true
+                    }
+                }
+            });
+            store.dispatch({
+                type: Hifi.ADD_SPEAKER,
+                payload: {
+                    hifi: 1,
+                    speaker: {
+                        name: 'Front-Right',
+                        id: 2,
+                        type: 'Front',
+                        position: 'right',
+                        isActive: true
+                    }
+                }
+            });
+            store.dispatch({
+                type: Hifi.ADD_SPEAKER,
+                payload: {
+                    hifi: 1,
+                    speaker: {
+                        name: 'Side-Left',
+                        id: 3,
+                        type: 'Side',
+                        position: 'left',
+                        isActive: true
+                    }
+                }
+            });
+            store.dispatch({
+                type: Hifi.ADD_SPEAKER,
+                payload: {
+                    hifi: 1,
+                    speaker: {
+                        name: 'Side-Right',
+                        id: 4,
+                        type: 'Side',
+                        position: 'right',
+                        isActive: true
+                    }
+                }
+            });
+            store.dispatch({
+                type: Hifi.ADD_SPEAKER,
+                payload: {
+                    hifi: 1,
+                    speaker: {
+                        name: 'Back-Left',
+                        id: 5,
+                        type: 'Back',
+                        position: 'left',
+                        isActive: true
+                    }
+                }
+            });
+            store.dispatch({
+                type: Hifi.ADD_SPEAKER,
+                payload: {
+                    hifi: 1,
+                    speaker: {
+                        name: 'Back-Right',
+                        id: 6,
+                        type: 'Back',
+                        position: 'right',
+                        isActive: true
+                    }
                 }
             });
             const app = (
