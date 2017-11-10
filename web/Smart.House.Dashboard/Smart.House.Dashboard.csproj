@@ -19,6 +19,8 @@
 
   <ItemGroup>
     <None Remove="App\composition\components\actions\effects.ts" />
+    <None Remove="App\composition\components\background\Background.tsx" />
+    <None Remove="App\composition\components\basement\Basement.tsx" />
     <None Remove="App\composition\components\devices\ambilight\Ambilight.tsx" />
     <None Remove="App\composition\components\devices\ambilight\models\schema.ts" />
     <None Remove="App\composition\components\devices\ambilight\models\view.ts" />
@@ -36,6 +38,7 @@
     <None Remove="App\composition\components\devices\lighting\models\model.ts" />
     <None Remove="App\composition\components\devices\lighting\models\schema.ts" />
     <None Remove="App\composition\components\devices\lighting\models\view.ts" />
+    <None Remove="App\composition\components\devices\player\services\player.ts" />
     <None Remove="App\composition\components\devices\television\effects\aquarium\aquarium.ts" />
     <None Remove="App\composition\components\devices\television\effects\aquarium\fish.ts" />
     <None Remove="App\composition\components\devices\television\effects\fireplace\fire.ts" />
@@ -48,11 +51,14 @@
     <None Remove="App\composition\components\devices\types.ts" />
     <None Remove="App\composition\components\floor\Floor.tsx" />
     <None Remove="App\composition\components\floor\Sofa.tsx" />
+    <None Remove="App\composition\components\wall\bookcase\Bookcase.tsx" />
     <None Remove="App\composition\components\wall\Picture.tsx" />
+    <None Remove="App\composition\components\wall\shelf\Shelf.tsx" />
     <None Remove="App\composition\components\wall\Wall.tsx" />
     <None Remove="App\composition\ioc\container.ts" />
     <None Remove="App\composition\ioc\decorators.ts" />
     <None Remove="App\composition\services\camera.ts" />
+    <None Remove="App\composition\services\player.ts" />
     <None Remove="App\composition\services\television.ts" />
   </ItemGroup>
 
@@ -83,15 +89,20 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App\composition\components\wall\bookcase\" />
-    <Folder Include="App\composition\components\wall\shelf\" />
     <Folder Include="App\dist\" />
+    <Folder Include="wwwroot\video\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\orleans\Smart.House.Orleans\Smart.House.Interface\Smart.House.Interface.csproj" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="App\composition\components\actions\effects.ts" />
+    <TypeScriptCompile Include="App\composition\components\background\Background.tsx" />
+    <TypeScriptCompile Include="App\composition\components\basement\Basement.tsx" />
+    <TypeScriptCompile Include="App\composition\components\devices\player\models\model.ts" />
+    <TypeScriptCompile Include="App\composition\components\devices\player\models\schema.ts" />
+    <TypeScriptCompile Include="App\composition\components\devices\player\models\view.ts" />
+    <TypeScriptCompile Include="App\composition\components\devices\player\Player.tsx" />
     <TypeScriptCompile Include="App\composition\components\devices\ambilight\Ambilight.tsx" />
     <TypeScriptCompile Include="App\composition\components\devices\ambilight\models\model.ts" />
     <TypeScriptCompile Include="App\composition\components\devices\ambilight\models\schema.ts" />
@@ -119,6 +130,9 @@
     <TypeScriptCompile Include="App\composition\components\devices\lighting\models\view.ts" />
     <TypeScriptCompile Include="App\composition\components\devices\lighting\state\actions.ts" />
     <TypeScriptCompile Include="App\composition\components\devices\lighting\state\reducer.ts" />
+    <TypeScriptCompile Include="App\composition\components\devices\player\services\player.ts" />
+    <TypeScriptCompile Include="App\composition\components\devices\player\state\actions.ts" />
+    <TypeScriptCompile Include="App\composition\components\devices\player\state\reducer.ts" />
     <TypeScriptCompile Include="App\composition\components\devices\television\effects\aquarium\aquarium.ts" />
     <TypeScriptCompile Include="App\composition\components\devices\television\effects\aquarium\fish.ts" />
     <TypeScriptCompile Include="App\composition\components\devices\television\effects\fireplace\fire.ts" />
@@ -130,9 +144,12 @@
     <TypeScriptCompile Include="App\composition\components\devices\television\Television.tsx" />
     <TypeScriptCompile Include="App\composition\components\floor\Floor.tsx" />
     <TypeScriptCompile Include="App\composition\components\floor\Sofa.tsx" />
+    <TypeScriptCompile Include="App\composition\components\wall\bookcase\Bookcase.tsx" />
     <TypeScriptCompile Include="App\composition\components\wall\Picture.tsx" />
+    <TypeScriptCompile Include="App\composition\components\wall\shelf\Shelf.tsx" />
     <TypeScriptCompile Include="App\composition\components\wall\Wall.tsx" />
     <TypeScriptCompile Include="App\composition\services\camera.ts" />
+    <TypeScriptCompile Include="App\composition\services\player.ts" />
     <TypeScriptCompile Include="App\composition\services\television.ts" />
     <TypeScriptCompile Include="App\composition\services\types.ts" />
     <TypeScriptCompile Include="App\composition\ioc\container.ts" />

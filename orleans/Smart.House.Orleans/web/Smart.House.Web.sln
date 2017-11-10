@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26906.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Dashboard", "Smart.House.Dashboard\Smart.House.Dashboard.csproj", "{F288721E-98E9-438C-8B40-56F6C84F625F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "interface", "interface", "{A0DACAB6-ADA1-4056-8A8D-4A4499356DE9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.House.Interface", "..\orleans\Smart.House.Orleans\Smart.House.Interface\Smart.House.Interface.csproj", "{FBA8DA39-DC7B-4465-846C-E6486E13FA9C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F288721E-98E9-438C-8B40-56F6C84F625F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F288721E-98E9-438C-8B40-56F6C84F625F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F288721E-98E9-438C-8B40-56F6C84F625F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F288721E-98E9-438C-8B40-56F6C84F625F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBA8DA39-DC7B-4465-846C-E6486E13FA9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBA8DA39-DC7B-4465-846C-E6486E13FA9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBA8DA39-DC7B-4465-846C-E6486E13FA9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBA8DA39-DC7B-4465-846C-E6486E13FA9C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FBA8DA39-DC7B-4465-846C-E6486E13FA9C} = {A0DACAB6-ADA1-4056-8A8D-4A4499356DE9}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {843FACF0-2921-4A07-8C84-45B13BFCE60C}
+	EndGlobalSection
+EndGlobal

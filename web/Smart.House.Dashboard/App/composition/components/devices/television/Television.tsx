@@ -97,8 +97,6 @@ class Television extends React.Component<Props, State> {
             aqua = setInterval(function () {
                 return aquarium.draw(foreground);
             }, 16.7, aquarium, foreground);
-
-            this._service.setVideo(id);
         }        
 
         this.props.setAquarium(this.state.id, !this.state.isAquarium);

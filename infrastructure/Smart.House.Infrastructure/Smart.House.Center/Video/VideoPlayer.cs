@@ -12,6 +12,18 @@ namespace Smart.House.Center.Video
             new JProperty("resume", false),
             new JProperty("shuffled", null));
 
+        public async Task Pause()
+        {
+            using (var client = RequestBuilder.BuildClient(""))
+            {
+                JObject parameters = new JObject(new JProperty("playerid", 1));
+                var request = JsonBuilder.BuildRequest("Player.PlayPause", parameters);
+                var message = RequestBuilder.BuildMessage(request.ToString());
+
+                await client.SendAsync(message);
+            }
+        }
+
         public async Task Play(int videoId) //dto to provide full data
         {
             var playerItem = new JObject(new JProperty("movieid", videoId));
@@ -22,6 +34,18 @@ namespace Smart.House.Center.Video
             using (var client = RequestBuilder.BuildClient(""))
             {
                 var request = JsonBuilder.BuildRequest("Player.Open", parameters);
+                var message = RequestBuilder.BuildMessage(request.ToString());
+
+                await client.SendAsync(message);
+            }
+        }
+
+        public async Task Stop()
+        {
+            using (var client = RequestBuilder.BuildClient(""))
+            {
+                JObject parameters = new JObject(new JProperty("playerid", 1));
+                var request = JsonBuilder.BuildRequest("Player.Stop", parameters);
                 var message = RequestBuilder.BuildMessage(request.ToString());
 
                 await client.SendAsync(message);

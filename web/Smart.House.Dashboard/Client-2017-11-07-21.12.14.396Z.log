@@ -1,0 +1,9 @@
+[2017-11-07 21:12:14.660 GMT     3	INFO   	100000	AssemblyLoader.Client	192.168.0.129:0]	Recursively searching for assemblies in C:\Users\Robert Wojda\.nuget\packages\microsoft.orleans.core\2.0.0-preview3-20170913\lib\netstandard2.0...	
+[2017-11-07 21:12:14.665 GMT     3	INFO   	100000	AssemblyLoader.Client	192.168.0.129:0]	User assembly ignored: C:\Users\Robert Wojda\.nuget\packages\microsoft.orleans.core\2.0.0-preview3-20170913\lib\netstandard2.0\Orleans.dll
+	* Assembly filename is excluded.	
+[2017-11-07 21:12:14.667 GMT     3	INFO   	100000	AssemblyLoader.Client	192.168.0.129:0]	0 assemblies loaded.	
+[2017-11-07 21:12:14.695 GMT     3	ERROR  	100319	OutsideRuntimeClient	192.168.0.129:0]	!!!!!!!!!! OutsideRuntimeClient constructor failed.	
+Exc level 0: Orleans.Runtime.OrleansException: Failed to get a local IP address.
+   at Orleans.Runtime.Configuration.ClusterConfiguration.GetLocalIPAddress(AddressFamily family, String interfaceName)
+   at Orleans.OutsideRuntimeClient.ConsumeServices(IServiceProvider services)
+[2017-11-07 21:12:14.700 GMT     3	INFO   	100000	OutsideRuntimeClient	192.168.0.129:0]	OutsideRuntimeClient.ConstructorReset(): client Id 	

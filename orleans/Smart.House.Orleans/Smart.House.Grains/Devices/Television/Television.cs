@@ -15,6 +15,12 @@ namespace Smart.House.Grains.Devices.Television
             _mediator = mediator;
         }
 
+        public async Task PausePlayer()
+        {
+            var pause = new PausePlayer();
+            await _mediator.DispatchRequest(pause);
+        }
+
         public async Task SetFireplace()
         {
             var start = new StartPlaying();
@@ -25,6 +31,12 @@ namespace Smart.House.Grains.Devices.Television
         {
             var start = new StartPlaying { VideoId = 1 };
             await _mediator.DispatchRequest(start);
+        }
+
+        public async Task StopPlayer()
+        {
+            var pause = new StopPlayer();
+            await _mediator.DispatchRequest(pause);
         }
     }
 }

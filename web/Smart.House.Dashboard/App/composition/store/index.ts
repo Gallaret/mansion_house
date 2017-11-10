@@ -3,11 +3,13 @@ import { Television } from "../components/devices/television/models/model";
 import { Ambilight } from "../components/devices/ambilight/models/model";
 import { Lamp } from "../components/devices/lighting/models/model";
 import { Hifi } from "../components/devices/hifi/models/model";
+import { Player } from "../components/devices/player/models/model";
 import * as Displayer from "../components/devices/camera/state/displayer";
 import * as TelevisionReducer from "../components/devices/television/states/television";
 import * as AmbilightReducer from "../components/devices/ambilight/state/reducer";
 import * as LampReducer from "../components/devices/lighting/state/reducer";
 import * as HifiReducer from "../components/devices/hifi/state/reducer";
+import * as PlayerReducer from "../components/devices/player/state/reducer";
 
 export interface ApplicationState {
     navmenu: {},
@@ -15,7 +17,8 @@ export interface ApplicationState {
     television: Television,
     ambilight: Ambilight,
     lamp: Lamp,
-    hifi: Hifi
+    hifi: Hifi,
+    player: Player
 }
 
 // Whenever an action is dispatched, Redux will update each top-level application state property using
@@ -26,7 +29,8 @@ export const reducers = {
     television: TelevisionReducer.default,
     ambilight: AmbilightReducer.default,
     lamp: LampReducer.default,
-    hifi: HifiReducer.default
+    hifi: HifiReducer.default,
+    player: PlayerReducer.default
 };
 
 // This type can be used as a hint on action creators so that its 'dispatch' and 'getState' params are

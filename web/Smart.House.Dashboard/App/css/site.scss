@@ -76,7 +76,8 @@ body {
 
 .floors {
     height: 250px;
-    display:block;
+    display: block;
+    margin-top: 20px;
 }
 
 #footer {
@@ -109,11 +110,21 @@ body {
     -o-transform: rotateX(20deg) translateZ(0px);
     transform: rotateX(20deg) translateZ(0px);
     width: 100%;
+    opacity: 0.7;
 }
 
 footer {
     text-align: center;
 }
+
+.player-button {
+
+}
+
+.player-button:hover{
+    cursor: pointer;
+}
+
 /* Socials links */
 #share {
     margin: 50px 0 0;
@@ -273,29 +284,42 @@ footer {
 }
 .player-display {
     box-shadow: inset 0px 0px 4px 0px #1e1c1c;
-    background: silver;
+    background: white;
+}
+
+.player-media-type {
+    margin-top: 25px;
+    margin-left: 45px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    background: #ecd8bb;
+    border-radius: 15px;
+    border: 3px solid #926234;
+    width: 250px;
+    padding-left: 30px;
+    color: #7b4e28;
 }
 
 .player-left {
-    background: rgba(82,82,82,1);
-    background: -moz-linear-gradient(left, rgba(82,82,82,1) 0%, rgba(82,82,82,1) 14%, rgba(51,48,46,1) 63%, rgba(51,48,46,1) 100%);
-    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(82,82,82,1)), color-stop(14%, rgba(82,82,82,1)), color-stop(63%, rgba(51,48,46,1)), color-stop(100%, rgba(51,48,46,1)));
-    background: -webkit-linear-gradient(left, rgba(82,82,82,1) 0%, rgba(82,82,82,1) 14%, rgba(51,48,46,1) 63%, rgba(51,48,46,1) 100%);
-    background: -o-linear-gradient(left, rgba(82,82,82,1) 0%, rgba(82,82,82,1) 14%, rgba(51,48,46,1) 63%, rgba(51,48,46,1) 100%);
-    background: -ms-linear-gradient(left, rgba(82,82,82,1) 0%, rgba(82,82,82,1) 14%, rgba(51,48,46,1) 63%, rgba(51,48,46,1) 100%);
-    background: linear-gradient(to right, rgba(82,82,82,1) 0%, rgba(82,82,82,1) 14%, rgba(51,48,46,1) 63%, rgba(51,48,46,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#525252', endColorstr='#33302e', GradientType=1 );
+    background: rgba(182,141,76,0.55);
+    background: -moz-linear-gradient(left, rgba(182,141,76,0.55) 0%, rgba(217,190,150,0.55) 0%, rgba(193,158,103,0.59) 9%, rgba(152,120,84,1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(182,141,76,0.55)), color-stop(0%, rgba(217,190,150,0.55)), color-stop(9%, rgba(193,158,103,0.59)), color-stop(100%, rgba(152,120,84,1)));
+    background: -webkit-linear-gradient(left, rgba(182,141,76,0.55) 0%, rgba(217,190,150,0.55) 0%, rgba(193,158,103,0.59) 9%, rgba(152,120,84,1) 100%);
+    background: -o-linear-gradient(left, rgba(182,141,76,0.55) 0%, rgba(217,190,150,0.55) 0%, rgba(193,158,103,0.59) 9%, rgba(152,120,84,1) 100%);
+    background: -ms-linear-gradient(left, rgba(182,141,76,0.55) 0%, rgba(217,190,150,0.55) 0%, rgba(193,158,103,0.59) 9%, rgba(152,120,84,1) 100%);
+    background: linear-gradient(to right, rgba(182,141,76,0.55) 0%, rgba(217,190,150,0.55) 0%, rgba(193,158,103,0.59) 9%, rgba(152,120,84,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b68d4c', endColorstr='#987854', GradientType=1 );
 }
 
 .player-right {
-    background: rgba(51,48,46,1);
-    background: -moz-linear-gradient(left, rgba(51,48,46,1) 0%, rgba(51,48,46,1) 37%, rgba(82,82,82,1) 86%, rgba(82,82,82,1) 100%);
-    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(51,48,46,1)), color-stop(37%, rgba(51,48,46,1)), color-stop(86%, rgba(82,82,82,1)), color-stop(100%, rgba(82,82,82,1)));
-    background: -webkit-linear-gradient(left, rgba(51,48,46,1) 0%, rgba(51,48,46,1) 37%, rgba(82,82,82,1) 86%, rgba(82,82,82,1) 100%);
-    background: -o-linear-gradient(left, rgba(51,48,46,1) 0%, rgba(51,48,46,1) 37%, rgba(82,82,82,1) 86%, rgba(82,82,82,1) 100%);
-    background: -ms-linear-gradient(left, rgba(51,48,46,1) 0%, rgba(51,48,46,1) 37%, rgba(82,82,82,1) 86%, rgba(82,82,82,1) 100%);
-    background: linear-gradient(to right, rgba(51,48,46,1) 0%, rgba(51,48,46,1) 37%, rgba(82,82,82,1) 86%, rgba(82,82,82,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#33302e', endColorstr='#525252', GradientType=1 );
+    background: rgba(152,120,84,1);
+    background: -moz-linear-gradient(left, rgba(152,120,84,1) 0%, rgba(193,158,103,0.59) 91%, rgba(217,190,150,0.55) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(152,120,84,1)), color-stop(91%, rgba(193,158,103,0.59)), color-stop(100%, rgba(217,190,150,0.55)));
+    background: -webkit-linear-gradient(left, rgba(152,120,84,1) 0%, rgba(193,158,103,0.59) 91%, rgba(217,190,150,0.55) 100%);
+    background: -o-linear-gradient(left, rgba(152,120,84,1) 0%, rgba(193,158,103,0.59) 91%, rgba(217,190,150,0.55) 100%);
+    background: -ms-linear-gradient(left, rgba(152,120,84,1) 0%, rgba(193,158,103,0.59) 91%, rgba(217,190,150,0.55) 100%);
+    background: linear-gradient(to right, rgba(152,120,84,1) 0%, rgba(193,158,103,0.59) 91%, rgba(217,190,150,0.55) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#987854', endColorstr='#d9be96', GradientType=1 );
 }
 
 .player-drive {
@@ -306,12 +330,12 @@ footer {
 }
 
 .bottom {
-    width: 100%;
-    height: 148px;
-    margin-top: 20px;
+    width: 70%;
+    height: 110px;
     box-shadow: 0px 1px 4px 0px rgba(50, 50, 50, 0.75);
-    background: #33302e;
-    border-top: 3px solid #cecbcb;
+    background: #987854;
+    border: 2px solid #cecbcb;
+    margin: 10px auto 0 auto;
 }
 
 @keyframes run {
@@ -337,6 +361,38 @@ footer {
         opacity: 0;
     }
 }
+
+.video-container::before {
+    content: "";
+    background: inherit;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    box-shadow: inset 0 0 0 10px rgba(255,255,255,0.3);
+    filter: blur(15px);
+}
+
+.video-container {
+    position: fixed;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -100;
+}
+
+video {
+    position: absolute;
+    width: 100% !important;
+    height: auto !important;
+    background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/polina.jpg") no-repeat;
+    background-size: cover;
+    transition: 1s opacity;
+    z-index: -100;
+    bottom: -80px;
+}  
 
 .ambilight {
     position:absolute;

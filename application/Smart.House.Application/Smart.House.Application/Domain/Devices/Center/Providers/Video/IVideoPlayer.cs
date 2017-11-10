@@ -5,5 +5,7 @@ namespace Smart.House.Application.Domain.Devices.Center.Providers.Video
     public interface IVideoPlayer
     {
         Task Play(int movieId);
+        Task Pause();
+        Task Stop();
     }
 }

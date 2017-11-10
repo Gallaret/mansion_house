@@ -36,5 +36,32 @@ namespace Smart.House.Dashboard.Controllers
 
             return Ok();
         }
+
+
+        [HttpPost]
+        public async Task<IActionResult> PausePlayer([FromBody]string id)
+        {
+            var config = ClientConfiguration.LocalhostSilo();
+            var client = new ClientBuilder().UseConfiguration(config).Build();
+            await client.Connect();
+
+            var television = client.GetGrain<ITelevision>("television" + id);
+            await television.PausePlayer();
+
+            return Ok();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> StopPlayer([FromBody]string id)
+        {
+            var config = ClientConfiguration.LocalhostSilo();
+            var client = new ClientBuilder().UseConfiguration(config).Build();
+            await client.Connect();
+
+            var television = client.GetGrain<ITelevision>("television" + id);
+            await television.StopPlayer();
+
+            return Ok();
+        }
     }
 }

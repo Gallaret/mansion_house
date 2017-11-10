@@ -7,5 +7,7 @@ namespace Smart.House.Interface.Devices
     {
         Task SetFireplace();
         Task SetVideo();
+        Task PausePlayer();
+        Task StopPlayer();
     }
 }

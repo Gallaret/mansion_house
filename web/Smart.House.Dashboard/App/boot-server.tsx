@@ -12,6 +12,7 @@ import { ADD_TELEVISION } from './composition/components/devices/television/stat
 import * as Ambilight from './composition/components/devices/ambilight/state/actions';
 import * as Lamp from './composition/components/devices/lighting/state/actions';
 import * as Hifi from './composition/components/devices/hifi/state/actions';
+import * as Player from './composition/components/devices/player/state/actions';
 
 export default createServerRenderer(params => {
     return new Promise<RenderResult>((resolve, reject) => {
@@ -172,6 +173,21 @@ export default createServerRenderer(params => {
                         type: 'Back',
                         position: 'right',
                         isActive: true
+                    }
+                }
+            });
+            store.dispatch({
+                type: Player.ADD_PLAYER,
+                payload: {
+                    id: 1,
+                    name: 'smart-player',
+                    video: 'Detroit',
+                    isRunning: false,
+                    isPaused: false,
+                    isActive: true,
+                    settings: {
+                        id: 1,
+                        backgroundPlay: true
                     }
                 }
             });
