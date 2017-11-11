@@ -6505,44 +6505,165 @@ var Basement = function (_React$Component) {
     function Basement() {
         _classCallCheck(this, Basement);
 
-        return _possibleConstructorReturn(this, (Basement.__proto__ || Object.getPrototypeOf(Basement)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (Basement.__proto__ || Object.getPrototypeOf(Basement)).call(this));
+
+        _this.state = {
+            isMusic: false,
+            isVideo: false,
+            isTheme: false,
+            isPicture: false
+        };
+        return _this;
     }
 
     _createClass(Basement, [{
+        key: 'selectMusic',
+        value: function selectMusic() {
+            this.setState({
+                isMusic: true,
+                isVideo: false,
+                isPicture: false,
+                isTheme: false
+            });
+        }
+    }, {
+        key: 'selectPicture',
+        value: function selectPicture() {
+            this.setState({
+                isMusic: false,
+                isVideo: false,
+                isPicture: true,
+                isTheme: false
+            });
+        }
+    }, {
+        key: 'selectVideo',
+        value: function selectVideo() {
+            this.setState({
+                isMusic: false,
+                isVideo: true,
+                isPicture: false,
+                isTheme: false
+            });
+        }
+    }, {
+        key: 'selectTheme',
+        value: function selectTheme() {
+            this.setState({
+                isMusic: false,
+                isVideo: false,
+                isPicture: false,
+                isTheme: true
+            });
+        }
+    }, {
         key: 'render',
         value: function render() {
+            var _this2 = this;
+
             return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
                 'div',
                 { className: 'bottom' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
                     'div',
-                    { style: { width: '400px', height: '105px', float: "left" } },
+                    { style: { width: '370px', height: '105px', float: "left" } },
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
                         'div',
-                        { className: 'player-media-type' },
+                        { className: 'player-media-type', style: { width: '200px', marginTop: '25px', marginLeft: '125px' } },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
                             'div',
-                            { className: 'glyphicon glyphicon-facetime-video', style: { fontSize: "25px" } },
-                            ' '
+                            { className: 'glyphicon glyphicon-facetime-video', onClick: function onClick() {
+                                    return _this2.selectVideo();
+                                }, style: { fontSize: "25px", position: 'relative' } },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                                'div',
+                                { style: { position: 'absolute', left: '10px' }, className: this.state.isVideo ? 'player-media-selected' : '' },
+                                ' '
+                            )
                         ),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
                             'div',
-                            { className: 'glyphicon glyphicon-picture', style: { fontSize: "25px", marginLeft: "25px" } },
-                            ' '
+                            { className: 'glyphicon glyphicon-picture', onClick: function onClick() {
+                                    return _this2.selectPicture();
+                                }, style: { fontSize: "25px", marginLeft: "20px" } },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                                'div',
+                                { style: { position: 'absolute', left: '10px' }, className: this.state.isPicture ? 'player-media-selected' : '' },
+                                ' '
+                            )
                         ),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
                             'div',
-                            { className: 'glyphicon glyphicon-film', style: { fontSize: "25px", marginLeft: "25px" } },
-                            ' '
+                            { className: 'glyphicon glyphicon-film', onClick: function onClick() {
+                                    return _this2.selectTheme();
+                                }, style: { fontSize: "25px", marginLeft: "20px" } },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                                'div',
+                                { style: { position: 'absolute', left: '10px' }, className: this.state.isTheme ? 'player-media-selected' : '' },
+                                ' '
+                            )
                         ),
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
                             'div',
-                            { className: 'glyphicon glyphicon-music', style: { fontSize: "25px", marginLeft: "25px" } },
-                            ' '
+                            { className: 'glyphicon glyphicon-music', onClick: function onClick() {
+                                    return _this2.selectMusic();
+                                }, style: { fontSize: "25px", marginLeft: "20px" } },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                                'div',
+                                { style: { position: 'absolute', left: '10px' }, className: this.state.isMusic ? 'player-media-selected' : '' },
+                                ' '
+                            )
                         )
                     )
                 ),
-                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__devices_player_Player__["a" /* default */], null)
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__devices_player_Player__["a" /* default */], null),
+                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                    'div',
+                    { style: { width: '360px', height: '105px', float: "left" } },
+                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                        'div',
+                        { style: { height: '100%', display: 'inline' } },
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                            'div',
+                            { className: 'player-media-type', style: { float: 'left', display: 'inline-block', width: '200px', height: '60px', position: 'relative', marginLeft: '45px', marginTop: '25px' } },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]('input', { type: 'range', min: '0', max: '100', step: '1', style: { display: 'inline', width: '185px', position: 'absolute', top: '18px', left: '5px' } }),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                                'div',
+                                { style: { display: 'inline', position: 'absolute', top: ' 16px', width: '185px', left: '5' } },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                                    'span',
+                                    { style: { marginRight: '30px' } },
+                                    '0'
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                                    'span',
+                                    { style: { marginRight: '30px' } },
+                                    '25'
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                                    'span',
+                                    { style: { marginRight: '30px' } },
+                                    '50'
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                                    'span',
+                                    null,
+                                    '75'
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                                    'span',
+                                    { style: { float: 'right' } },
+                                    '100'
+                                )
+                            )
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](
+                            'div',
+                            { className: 'player-quickSettings', style: { height: '60px', width: '60px', float: 'right' } },
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]('img', { src: 'images/settings.png', height: '60px', width: '60px' })
+                        )
+                    )
+                )
             );
         }
     }]);
@@ -7676,10 +7797,10 @@ var Player = function (_React$Component) {
 
             return __WEBPACK_IMPORTED_MODULE_1_react__["createElement"](
                 'div',
-                { className: 'player', style: { marginTop: "10px", marginLeft: '10px', height: "90px", width: "550px", float: "left", position: "relative" } },
+                { className: 'player', style: { marginTop: "10px", marginLeft: '10px', height: "90px", width: "580px", float: "left", position: "relative" } },
                 __WEBPACK_IMPORTED_MODULE_1_react__["createElement"](
                     'div',
-                    { style: { float: 'left', width: '60px', height: '60px', marginTop: '15px' } },
+                    { style: { float: 'left', width: '60px', height: '60px', marginTop: '15px', marginRight: '30px' } },
                     __WEBPACK_IMPORTED_MODULE_1_react__["createElement"]('img', { src: 'images/knob.png', height: '60px', width: '60px' })
                 ),
                 __WEBPACK_IMPORTED_MODULE_1_react__["createElement"]('div', { className: 'player-left', style: { width: "15px", height: "90px", float: 'left', marginLeft: '15px' } }),
@@ -7691,8 +7812,8 @@ var Player = function (_React$Component) {
                         { style: { position: "absolute", width: "320px", left: "20px", display: "inline-block" } },
                         __WEBPACK_IMPORTED_MODULE_1_react__["createElement"](
                             'output',
-                            { className: 'player-display', style: { width: "200px", padding: "0 10px", display: "inline-block", fontSize: "15px", lineHeight: "40px" } },
-                            'Ready to play'
+                            { className: 'player-display', style: { width: "200px", padding: "0 5px", display: "inline-block", fontSize: "12px", lineHeight: "35px" } },
+                            'Video: '
                         ),
                         __WEBPACK_IMPORTED_MODULE_1_react__["createElement"](
                             'div',
@@ -7742,7 +7863,7 @@ var Player = function (_React$Component) {
                 __WEBPACK_IMPORTED_MODULE_1_react__["createElement"]('div', { className: 'player-right', style: { float: 'left', width: "15px", height: "90px", marginLeft: '15px', marginRight: '15px' } }),
                 __WEBPACK_IMPORTED_MODULE_1_react__["createElement"](
                     'div',
-                    { style: { float: 'left', width: '60px', height: '60px', marginTop: '15px' } },
+                    { style: { float: 'left', width: '60px', height: '60px', marginTop: '15px', marginLeft: '30px' } },
                     __WEBPACK_IMPORTED_MODULE_1_react__["createElement"]('img', { src: 'images/knob.png', height: '60px', width: '60px' })
                 )
             );

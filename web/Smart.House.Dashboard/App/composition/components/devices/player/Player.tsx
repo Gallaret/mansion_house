@@ -66,8 +66,8 @@ class Player extends React.Component<Props, State> {
 
     render() {
         const { playVideo, pause, stop } = this.props
-        return <div className="player" style={{ marginTop: "10px", marginLeft: '10px', height: "90px", width: "550px", float: "left", position: "relative" }}>
-                <div style={{ float: 'left', width:'60px', height:'60px', marginTop: '15px'}}>
+        return <div className="player" style={{ marginTop: "10px", marginLeft: '10px', height: "90px", width: "580px", float: "left", position: "relative" }}>
+                <div style={{ float: 'left', width:'60px', height:'60px', marginTop: '15px', marginRight: '30px'}}>
                     <img src="images/knob.png" height="60px" width="60px" />
                 </div>
 
@@ -75,7 +75,7 @@ class Player extends React.Component<Props, State> {
 
                 <div style={{ float: 'left', position: 'relative', width: "320px", height: '90px' }}>
                     <div style={{ position: "absolute", width: "320px", left: "20px", display: "inline-block"}}>
-                        <output className="player-display" style={{ width: "200px", padding: "0 10px", display: "inline-block", fontSize: "15px", lineHeight: "40px" }}>Ready to play</output>
+                        <output className="player-display" style={{ width: "200px", padding: "0 5px", display: "inline-block", fontSize: "12px", lineHeight: "35px" }}>Video: </output>
                         <div className="glyphicon glyphicon-backward" style={{ fontSize: "15px", marginLeft: "10px" }}> </div>
                         <div className={this.state.isRunning ? "glyphicon glyphicon-pause player-button" : "glyphicon glyphicon-play player-button"}
                             onClick={() => this.state.isRunning ? this.pause(pause) : this.play(playVideo, pause)} style={{ fontSize: "20px", marginLeft: "10px" }}> </div>
@@ -91,7 +91,7 @@ class Player extends React.Component<Props, State> {
                 </div>
 
                 <div className="player-right" style={{ float: 'left', width: "15px", height: "90px", marginLeft: '15px', marginRight: '15px' }}></div>
-                <div style={{ float: 'left', width: '60px', height: '60px', marginTop: '15px' }}>
+                <div style={{ float: 'left', width: '60px', height: '60px', marginTop: '15px', marginLeft: '30px' }}>
                     <img src="images/knob.png" height="60px" width="60px" />
                 </div>
               </div>
